@@ -12,6 +12,6 @@ eformsign API / Webhook 연계 가이드
 
 
    eformsign_api_overview
-   eformsign_api_embedding
+   eformsign_embedding
    eformsign_api
    eformsign_webhook
