@@ -3,15 +3,21 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-eformsign API / Webhook 연계 가이드
-====================================
+eformsign オンラインサポート
+============================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   help/chapter1
+   help/chapter2
+   help/chapter3
+   help/chapter4
+   help/chapter5
+   help/chapter6
+   help/chapter7
+   help/chapter8
+   help/chapter9   
 
-   help/eformsign_api_overview
-   help/eformsign_embedding
-   help/eformsign_api
-   help/eformsign_webhook
+
