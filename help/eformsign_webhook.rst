@@ -131,123 +131,188 @@ PHP
 .. code-tabs::
 
     .. code-tab:: java
-        :title: Java
+        :title: Python
 
         import java.io.*;
-		import java.math.BigInteger;
-		import java.security.*;
-		import java.security.spec.X509EncodedKeySpec;
-		 
-		....
-		/**
-		 *  request에서 header와 body를 읽습니다.
-		 *
-		 */
-		 
-		 
-		//1. get eformsign signature
-		//eformsignSignature는 request header에 담겨 있습니다.
-		String eformsignSignature = request.getHeader("eformsign_signature");
-		 
-		 
-		//2. get request body data
-		// eformsign signature 검증을 위해 body의 데이터를 String으로 변환 합니다.
-		String eformsignEventBody = null;
-		StringBuilder stringBuilder = new StringBuilder();
-		BufferedReader bufferedReader = null;
-		 
-		try {
-		    InputStream inputStream = request.getInputStream();
-		    if (inputStream != null) {
-		        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-		        char[] charBuffer = new char[128];
-		        int bytesRead = -1;
-		        while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
-		            stringBuilder.append(charBuffer, 0, bytesRead);
-		        }
-		    }
-		 } catch (IOException ex) {
-		    throw ex;
-		 } finally {
-		    if (bufferedReader != null) {
-		        try {
-		            bufferedReader.close();
-		        } catch (IOException ex) {
-		            throw ex;
-		        }
-		    }
-		 }
-		eformsignEventBody = stringBuilder.toString();
-		 
-		 
-		 
-		 
-		//3. publicKey 세팅
-		String publicKeyHex = "발급 받은 Public Key(String)";
-		KeyFactory publicKeyFact = KeyFactory.getInstance("EC");
-		X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(new BigInteger(publicKeyHex,16).toByteArray());
-		PublicKey publicKey = publicKeyFact.generatePublic(x509KeySpec);
-		 
-		//4. verify
-		Signature signature = Signature.getInstance("SHA256withECDSA");
-		signature.initVerify(publicKey);
-		signature.update(eformsignEventBody.getBytes("UTF-8"));
-		if(signature.verify(new BigInteger(eformsignSignature,16).toByteArray())){
-		    //verify success
-		    System.out.println("verify success");
-		    /*
-		     * 이곳에서 이벤트에 맞는 처리를 진행합니다.
-		     */
-		}else{
-		    //verify fail
-		    System.out.println("verify fail");
-		}
+        import java.math.BigInteger;
+        import java.security.*;
+        import java.security.spec.X509EncodedKeySpec;
+         
+        ....
+        /**
+         *  request에서 header와 body를 읽습니다.
+         *
+         */
+         
+         
+        //1. get eformsign signature
+        //eformsignSignature는 request header에 담겨 있습니다.
+        String eformsignSignature = request.getHeader("eformsign_signature");
+         
+         
+        //2. get request body data
+        // eformsign signature 검증을 위해 body의 데이터를 String으로 변환 합니다.
+        String eformsignEventBody = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        BufferedReader bufferedReader = null;
+         
+        try {
+            InputStream inputStream = request.getInputStream();
+            if (inputStream != null) {
+                bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                char[] charBuffer = new char[128];
+                int bytesRead = -1;
+                while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
+                    stringBuilder.append(charBuffer, 0, bytesRead);
+                }
+            }
+         } catch (IOException ex) {
+            throw ex;
+         } finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException ex) {
+                    throw ex;
+                }
+            }
+         }
+        eformsignEventBody = stringBuilder.toString();
+         
+         
+         
+         
+        //3. publicKey 세팅
+        String publicKeyHex = "발급 받은 Public Key(String)";
+        KeyFactory publicKeyFact = KeyFactory.getInstance("EC");
+        X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(new BigInteger(publicKeyHex,16).toByteArray());
+        PublicKey publicKey = publicKeyFact.generatePublic(x509KeySpec);
+         
+        //4. verify
+        Signature signature = Signature.getInstance("SHA256withECDSA");
+        signature.initVerify(publicKey);
+        signature.update(eformsignEventBody.getBytes("UTF-8"));
+        if(signature.verify(new BigInteger(eformsignSignature,16).toByteArray())){
+            //verify success
+            System.out.println("verify success");
+            /*
+             * 이곳에서 이벤트에 맞는 처리를 진행합니다.
+             */
+        }else{
+            //verify fail
+            System.out.println("verify fail");
+        }
 
 
     .. code-tab:: python
         :title: Python
 
         import hashlib
-		import binascii
-		 
-		from ecdsa import VerifyingKey, BadSignatureError
-		from ecdsa.util import sigencode_der, sigdecode_der
-		from flask import request
-		 
-		 
-		...
-		# request에서 header와 body를 읽습니다.
-		# 1. get eformsign signature
-		# eformsignSignature는 request header에 담겨 있습니다.
-		eformsignSignature = request.headers['eformsign_signature']
-		 
-		 
-		# 2. get request body data
-		# eformsign signature 검증을 위해 body의 데이터를 String으로 변환 합니다.
-		data = request.json
-		 
-		 
-		# 3. publicKey 세팅
-		publicKeyHex = "발급받은 public key"
-		publickey = VerifyingKey.from_der(binascii.unhexlify(publicKeyHex))
-		 
-		 
-		# 4. verify
-		try:
-		    if publickey.verify(eformsignSignature, data.encode('utf-8'), hashfunc=hashlib.sha256, sigdecode=sigdecode_der):
-		        print("verify success")
-		        # 이곳에 이벤트에 맞는 처리를 진행 합니다.
-		except BadSignatureError:
-		    print("verify fail")
+    		import binascii
+    		 
+    		from ecdsa import VerifyingKey, BadSignatureError
+    		from ecdsa.util import sigencode_der, sigdecode_der
+    		from flask import request
+    		 
+    		 
+    		...
+    		# request에서 header와 body를 읽습니다.
+    		# 1. get eformsign signature
+    		# eformsignSignature는 request header에 담겨 있습니다.
+    		eformsignSignature = request.headers['eformsign_signature']
+    		 
+    		 
+    		# 2. get request body data
+    		# eformsign signature 검증을 위해 body의 데이터를 String으로 변환 합니다.
+    		data = request.json
+    		 
+    		 
+    		# 3. publicKey 세팅
+    		publicKeyHex = "발급받은 public key"
+    		publickey = VerifyingKey.from_der(binascii.unhexlify(publicKeyHex))
+    		 
+    		 
+    		# 4. verify
+    		try:
+    		    if publickey.verify(eformsignSignature, data.encode('utf-8'), hashfunc=hashlib.sha256, sigdecode=sigdecode_der):
+    		        print("verify success")
+    		        # 이곳에 이벤트에 맞는 처리를 진행 합니다.
+    		except BadSignatureError:
+    		    print("verify fail")
 
     .. code-tab:: php
         :title: PHP - keycheck.inc.php
 
-
+        <?php
+        namespace eformsignECDSA;
+          
+        class PublicKey
+        {
+          
+            function __construct($str)
+            {
+                $pem_data = base64_encode(hex2bin($str));
+                $offset = 0;
+                $pem = "-----BEGIN PUBLIC KEY-----\n";
+                while ($offset < strlen($pem_data)) {
+                    $pem = $pem . substr($pem_data, $offset, 64) . "\n";
+                    $offset = $offset + 64;
+                }
+                $pem = $pem . "-----END PUBLIC KEY-----\n";
+                $this->openSslPublicKey = openssl_get_publickey($pem);
+            }
+        }
+         
+        function Verify($message, $signature, $publicKey)
+        {
+            return openssl_verify($message, $signature, $publicKey->openSslPublicKey, OPENSSL_ALGO_SHA256);
+        }
+        ?>
 
     .. code-tab:: php
         :title: PHP - test.php
 
+        <?php
+        require_once __DIR__ . '/keycheck.inc.php';
+        use eformsignECDSA\PublicKey;
+         
+        define('PUBLIC_KEY', '발급 받은 public key를 넣어주세요.');
+        ...
+        /*
+         *  request에서 header와 body를 읽습니다.
+         *
+         */
+         
+         
+        //1. get eformsign signature
+        //eformsignSignature는 request header에 담겨 있습니다.
+        $eformsignSignature = $_SERVER['HTTP_eformsign_signature'];
+         
+         
+        //2. get request body data
+        // eformsign signature 검증을 위해 body의 데이터를 읽습니다.
+        $eformsignEventBody = json_decode(file_get_contents('php://input'), true);
+         
+         
+        //3. publicKey 세팅
+        $publicKey = new PublicKey(PUBLIC_KEY);
+         
+         
+        //4. verify
+        $ret = - 1;
+        $ret = eformsignECDSA\Verify(MESSAGE, $eformsignSignature, $publicKey);
+          
+        if ($ret == 1) {
+            print 'verify success' . PHP_EOL;
+            /*
+             * 이곳에서 이벤트에 맞는 처리를 진행합니다.
+             */
+        } else {
+            print 'verify fail' . PHP_EOL;
+        }
+         ...
+          
+        ?>
 
 
 
@@ -285,6 +350,7 @@ PHP
 다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다.
 
 다음은 각 언어별 테스트 키와 예제입니다.
+
 
 .. code-tabs::
 
@@ -439,6 +505,7 @@ PHP
         }
          
         ?>
+
 
 
 

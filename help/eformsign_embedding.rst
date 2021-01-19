@@ -17,7 +17,7 @@ eformsign 기능을 직접 삽입해 연계하게 되면, 고객이 제공하고
 
 eformsign의 기능을 사용하고자 하는 웹 페이지에 다음의 스크립트를 추가합니다.
 
-.. code-block:: Javascript
+.. code-block:: javascript
 
    //jquery
    <script src="https://www.eformsign.com/plugins/jquery/jquery.min.js"/>
@@ -66,7 +66,8 @@ eformsign 객체는 embedding과 redirect의 두 가지 타입으로 구성되�
 
    redirect 방식은 추후 공개할 예정입니다. 
 
-.. code-block::javascript
+
+.. code-block:: javascript
 
      var eformsign = new EformSign();
      
@@ -212,6 +213,7 @@ eformsign을 삽입해 고객사의 사이트/서비스에서 문서를 작성�
 
 
 document-option에서는 크게 다음의 5가지 항목에 대해 설정할 수 있습니다. 
+
 - 회사 정보
 - 유저 정보
 - 모드
@@ -402,8 +404,10 @@ document-option에서는 크게 다음의 5가지 항목에 대해 설정할 수
      - 지정하지 않을 경우, 신규 작성 시에 템플릿 설정의 필드 설정 옵션을 따른다
      - 지정할 경우, 템플릿 설정의 필드 설정보다 우선한다
 
+
            
 .. code:: javascript
+
     var document_option = {
         "prefill" : {
         "fields": [ {
@@ -416,6 +420,7 @@ document-option에서는 크게 다음의 5가지 항목에 대해 설정할 수
     }
 
 .. code-block:: javascript
+
     var document_option = {
         "prefill": {
             "document_name": "",
@@ -443,9 +448,10 @@ document-option에서는 크게 다음의 5가지 항목에 대해 설정할 수
  error_callback      function         비필수        eformsign 문서 작성 실패 시, 호출될 callback 함수
 ==================  ===============  ===========  ===================================================
 
-Callback 함수는 다음과 같이 설정합니다. (아래 코드 비표시됨)
+Callback 함수는 다음과 같이 설정합니다.
 
 .. code-block:: javascript
+
    var eformsign = new eformsign(); // iframe document 함수 인자로 이동
  
  
@@ -467,6 +473,7 @@ Callback 함수는 다음과 같이 설정합니다. (아래 코드 비표시됨
  
  
   eformsign.document(document_option , "eformsign_iframe" , sucess_callback , error_callback);
+
 
 document 함수의 파라미터로 Callback 함수를 설정한 경우, Callback 함수 호출 시에 다음과 같은 값을 반환합니다. 
 
