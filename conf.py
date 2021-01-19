@@ -174,3 +174,10 @@ epub_title = project
 
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
+
+html_theme_options = {
+    'logo_only': True,
+    # ...
+}
+html_logo = "C:\docbook\eformsignkr_developers\images\\forcs.png"
+
