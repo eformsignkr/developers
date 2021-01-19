@@ -131,7 +131,7 @@ PHP
 .. code-tabs::
 
     .. code-tab:: java
-        :title: Python
+        :title: java
 
         import java.io.*;
         import java.math.BigInteger;
