@@ -33,7 +33,7 @@ eformsign의 기능을 사용하고자 하는 웹 페이지에 다음의 스크�
 
 
 --------------------------
-eformsign 객체에 대하여
+eformsign 객체에 대한 설명
 --------------------------
 
 eformsign 객체는 embedding과 redirect의 두 가지 타입으로 구성되어 있습니다.
@@ -127,15 +127,15 @@ eformsign 객체는 embedding과 redirect의 두 가지 타입으로 구성되�
 embedding_document 함수
 ===========================
 
+.. note::
+
+   함수 형태
+   document(document_option, iframe_id, success_callback , error_callback)
 
 eformsign을 삽입해 고객사의 사이트/서비스에서 문서를 작성할 수 있도록 해주는 함수입니다. eformsign 내 document 함수를 호출해 사용하세요.
 
 크게 document_option과 callback의 2가지 파라미터를 사용할 수 있습니다.
 
-.. note::
-
-   함수 형태
-   document(document_option, iframe_id, success_callback , error_callback)
 
 ===================  ===============  ==========  ==========================================================
  Paramter Name       Paramter Type    필수여부      설명 
@@ -211,7 +211,18 @@ eformsign을 삽입해 고객사의 사이트/서비스에서 문서를 작성�
 ================================
 
 
-document-option에서는 크게 회사 정보, 유저 정보, 모드, 리턴 필드, 자동 기입에 대해 설정할 수 있습니다. 회사 정보와 모드는 필수 입력정보입니다. 
+document-option에서는 크게 다음의 5가지 항목에 대해 설정할 수 있습니다. 
+- 회사 정보
+- 유저 정보
+- 모드
+- 리턴 필드
+- 자동 기입
+
+.. note::
+
+   회사 정보와 모드는 필수 입력정보입니다. 
+
+
 
 1. 회사 정보(필수)
 -------------------------
@@ -233,6 +244,7 @@ document-option에서는 크게 회사 정보, 유저 정보, 모드, 리턴 필
 **회사 내 멤버 로그인을 통한 신규 작성**
     - 유저 정보를 지정하지 않을 경우에 해당하며, 유저 정보를 지정하지 않습니다.	
     - 이 경우, eformsign 로그인 페이지가 기동되며, 로그인 과정 이후에 문서를 작성할 수 있게 됩니다.
+
 
 **회사 내 멤버의 토큰을 이용한 작성(신규 및 수신한 문서 포함)**	
     - 임베딩시, eformsign 로그인 과정 없이, 특정 계정의 token을 이용하여 문서를 작성 및 수신한 문서를 작성합니다.
@@ -431,7 +443,7 @@ document-option에서는 크게 회사 정보, 유저 정보, 모드, 리턴 필
  error_callback      function         비필수        eformsign 문서 작성 실패 시, 호출될 callback 함수
 ==================  ===============  ===========  ===================================================
 
-Callback 함수는 다음과 같이 설정합니다. 
+Callback 함수는 다음과 같이 설정합니다. (아래 코드 비표시됨)
 
 .. code-block:: javascript
    var eformsign = new eformsign(); // iframe document 함수 인자로 이동
