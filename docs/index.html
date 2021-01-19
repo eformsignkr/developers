@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html  lang="ko">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-      <title>eformsign オンラインサポート</title>
+      <title>eformsign API / Webhook 연계 가이드</title>
     
       <link rel="stylesheet" href="_static/pygments.css">
       <link rel="stylesheet" href="_static/theme.css">
       <link rel="stylesheet" href="_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="_static/code-tabs.css" type="text/css" />
       
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
 
@@ -15,21 +16,23 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+        <script src="_static/code-tabs.js"></script>
 
       
       <script src="_static/theme-vendors.js"></script>
       <script src="_static/theme.js" defer></script>
     
-  <link rel="index" title="Index" href="genindex.html" />
-  <link rel="search" title="Search" href="search.html" />
-  <link rel="next" title="Overview" href="help/chapter1.html" /> 
+  <link rel="index" title="색인" href="genindex.html" />
+  <link rel="search" title="검색" href="search.html" />
+  <link rel="next" title="개요" href="help/eformsign_api_overview.html" /> 
   </head>
 
   <body>
     <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="#" class="home-link">
     
-      <img class="logo" src="_static/forcs.png" alt="doit logo"/>
+      <span class="site-name">eformsign API guide</span>
     
   </router-link>
 
@@ -54,11 +57,11 @@
 
             
           </navlinks><div id="searchbox" class="searchbox" role="search">
-  <div class="caption"><span class="caption-text">Quick search</span>
+  <div class="caption"><span class="caption-text">빠른 검색</span>
     <div class="searchformwrapper">
       <form class="search" action="search.html" method="get">
         <input type="text" name="q" />
-        <input type="submit" value="Search" />
+        <input type="submit" value="검색" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
       </form>
@@ -68,59 +71,29 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="#eformsign">Contents:</a></span>
+        <span class="caption-text"><a href="#eformsign-api-webhook">Contents:</a></span>
       </p>
       <ul class="">
         
-          <li class="toctree-l1 "><a href="help/chapter1.html" class="reference internal ">Overview</a>
+          <li class="toctree-l1 "><a href="help/eformsign_api_overview.html" class="reference internal ">개요</a>
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="help/chapter2.html" class="reference internal ">Basic Info</a>
+          <li class="toctree-l1 "><a href="help/eformsign_embedding.html" class="reference internal ">eformsign 기능 직접 삽입하기</a>
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="help/chapter3.html" class="reference internal ">Introduction to Web Form Designer</a>
+          <li class="toctree-l1 "><a href="help/eformsign_api.html" class="reference internal ">eformsign API 사용하기</a>
 
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="help/chapter4.html" class="reference internal ">Introduction to Form Builder</a>
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 "><a href="help/chapter5.html" class="reference internal ">Managing Templates in Web Form Designer</a>
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 "><a href="help/chapter6.html" class="reference internal ">Managing Templates in Form Builder</a>
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 "><a href="help/chapter7.html" class="reference internal ">Managing Documents</a>
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 "><a href="help/chapter8.html" class="reference internal ">Customizing eformsign</a>
-
-            
-          </li>
-
-        
-          <li class="toctree-l1 "><a href="help/chapter9.html" class="reference internal ">Connecting with External Services</a>
+          <li class="toctree-l1 "><a href="help/eformsign_webhook.html" class="reference internal ">eformsign Webhook 사용하기</a>
 
             
           </li>
@@ -138,14 +111,14 @@
   <ul class="breadcrumbs">
     <li><a href="#">Docs</a> &raquo;</li>
     
-    <li>eformsign オンラインサポート</li>
+    <li>eformsign API / Webhook 연계 가이드</li>
   </ul>
   
 
   <ul class="page-nav">
   <li class="next">
-    <a href="help/chapter1.html"
-       title="next chapter">Overview →</a>
+    <a href="help/eformsign_api_overview.html"
+       title="다음 장">개요 →</a>
   </li>
 </ul>
   
@@ -153,69 +126,29 @@
 <hr>
           <div class="content" role="main">
             
-  <div class="section" id="eformsign">
-<h1>eformsign オンラインサポート<a class="headerlink" href="#eformsign" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="eformsign-api-webhook">
+<h1>eformsign API / Webhook 연계 가이드<a class="headerlink" href="#eformsign-api-webhook" title="제목 주소">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="help/chapter1.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter1.html#introduction-to-eformsign">Introduction to eformsign</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter1.html#basic-terms">Basic Terms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter1.html#eformsign-usage-flow">eformsign Usage Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter1.html#use-cases">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help/eformsign_api_overview.html">개요</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help/eformsign_embedding.html">eformsign 기능 직접 삽입하기</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding.html#id1">시작하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding.html#id3">eformsign 객체에 대하여</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="help/chapter2.html">Basic Info</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter2.html#dashboard">Dashboard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter2.html#view-and-change-basic-information">View and Change Basic Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter2.html#permissions">Permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter2.html#manage-groups-and-members">Manage Groups and Members</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter2.html#my-signature">My Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help/eformsign_api.html">eformsign API 사용하기</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_api.html#id1">시작하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_api.html#id2">서명 생성하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_api.html#id3">API 테스트해보기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_api.html#open-api">Open API 리스트</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="help/chapter3.html">Introduction to Web Form Designer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter3.html#web-form-designer-overview">Web Form Designer Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter3.html#overview-of-components">Overview of Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter3.html#setting-properties-for-each-component-type">Setting Properties for Each Component Type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter3.html#configuring-template-settings">Configuring Template Settings</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="help/chapter4.html">Introduction to Form Builder</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter4.html#form-builder-overview">Form Builder Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter4.html#overview-of-components">Overview of Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter4.html#how-to-use-each-component-type">How to Use Each Component Type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter4.html#upload-form-file">Upload Form File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter4.html#configuring-template-settings">Configuring Template Settings</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="help/chapter5.html">Managing Templates in Web Form Designer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter5.html#about-templates">About Templates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter5.html#template-settings">Template Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter5.html#menus-for-each-template">Menus for Each Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter5.html#search-templates">Search Templates</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="help/chapter6.html">Managing Templates in Form Builder</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter6.html#about-templates">About Templates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter6.html#template-settings">Template Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter6.html#menus-for-each-template">Menus for Each Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter6.html#search-templates">Search Templates</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="help/chapter7.html">Managing Documents</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter7.html#documents">Documents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter7.html#creating-new-documents">Creating New Documents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter7.html#send-in-bulk">Send in Bulk</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="help/chapter8.html">Customizing eformsign</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter8.html#manage-custom-fields-manage-custom-fields">Manage Custom Fields Manage custom fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter8.html#notification-template-management">Notification Template Management</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="help/chapter9.html">Connecting with External Services</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter9.html#how-to-connect-with-external-cloud-storages">How to Connect with External Cloud Storages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/chapter9.html#analytics-and-reporting">Analytics and Reporting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help/eformsign_webhook.html">eformsign Webhook 사용하기</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#id1">시작하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#id3">서명 생성하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#id4">Webhook 테스트해보기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#id8">Webhook 리스트</a></li>
 </ul>
 </li>
 </ul>
@@ -227,11 +160,11 @@
           <div class="page-nav">
             <div class="inner"><ul class="page-nav">
   <li class="next">
-    <a href="help/chapter1.html"
-       title="next chapter">Overview →</a>
+    <a href="help/eformsign_api_overview.html"
+       title="다음 장">개요 →</a>
   </li>
 </ul><div class="footer" role="contentinfo">
-      &#169; Copyright 2020, FORCS CO., LTD. All rights reserved..
+      &#169; Copyright 2021, forcs.
     <br>
     Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
