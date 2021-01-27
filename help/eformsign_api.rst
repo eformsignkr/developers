@@ -128,6 +128,13 @@ PHP
 
 다음은 각 언어별 예제입니다.
 
+
+.. note:: 
+
+   execution_time은 long 타입을 사용합니다. 따라서, execution_time 입력 시에는 Access Token 발급 시에 확인한 시간 뒤에 L을 넣어 입력합니다.  
+
+
+
 .. code-tabs::
 
     .. code-tab:: java
@@ -139,13 +146,14 @@ PHP
         import java.security.Signature;
          
         //private key
-        String privateKeyHexStr = "발급 받은 private key(String)";
+        String privateKeyHexStr = "발급 받은 private key(String)";    //회사 커넥트 > API Key의 Private key 값을 넣어야 함
         KeyFactory keyFact = KeyFactory.getInstance("EC");
         PKCS8EncodedKeySpec psks8KeySpec = new PKCS8EncodedKeySpec(new BigInteger(privateKeyHexStr,16).toByteArray());
         PrivateKey privateKey = keyFact.generatePrivate(psks8KeySpec);
          
         //execution_time - 서버 현재 시간
-        long execution_time = new Date().getTime();
+        //long execution_time = new Date().getTime();
+        long execution_time = 1611537340731L;     //Access_token 발급 시에 취득한 execute_time을 여기에 입력. long 값이기 때문에 받은 시간 뒤에 L 추가     
         String execution_time_str = String.valueOf(execution_time);
          
         //eformsign_signature 생성
@@ -258,11 +266,11 @@ API 테스트해보기
 
 생성한 eformsign_signature를 테스트해 봅니다. 
 
-다음의 eformsign_signature 생성 및 검증용 샘플은 Open API 또는 Webhook의 서명값을 생성 및 검증하는 테스트 샘플 소스코드 입니다.
+다음의 eformsign_signature 생성 및 검증용 샘플은 Open API 또는 Webhook의 서명값을 생성 및 검증하는 테스트 샘플 소스코드입니다.
 
 .. note::
 
-   샘플 키를 사용하고 있어 실 사용시에는 정상 동작 하지 않습니다. 생성하신 서명 값의 검증용으로만 사용해 주세요.
+   샘플 키를 사용하고 있어 실 사용 시에는 정상 동작 하지 않습니다. 생성하신 서명 값의 검증용으로만 사용해 주세요.
 
 
 Java
@@ -635,7 +643,7 @@ Access Token API에 대한 자세한 설명은
 .. note:: 
    
    서명 생성에는 30초의 시간 제한이 있습니다. 30초 이내에 서명을 생성하고 토큰을 발급받아야 합니다. 
-   또한, 서버 상의 시간과 현재 시간이 일치하지 않을 수 있습니다. Access Token API를 호출 시 응답 메시지의 "execution_time"을 확인하세요.
+   또한, 서버 상의 시간과 현재 시간이 일치하지 않을 수 있습니다. Access Token API를 호출한 후 수신한 응답 메시지의 "execution_time"을 확인하세요.
 
    .. code:: JSON
 
@@ -650,7 +658,7 @@ Access Token API에 대한 자세한 설명은
    |image6| 
 
 
-   이후 해당 API를 실행하면 Access Token이 발급되며, 다음과 같은 응답을 얻을 수 있습니다.
+   이후 해당 API를 실행하면 Access Token이 발급되며, 다음과 같은 형태의 응답을 수신할 수 있습니다.
 
    .. code:: JSON
 
@@ -669,7 +677,7 @@ Access Token API에 대한 자세한 설명은
 문서 작성 및 처리를 위한 API
 ----------------------------------
 
-서명을 생성한 후에는 다음의 API를 사용해 새 문서를 작성하거나 문서 정보를 조회할 수 있으며, 완료 문서 파일(문서 PDF, 감사추적증명서)  다운로드하거나 문서의 첨부파일을 다운로드할 수 있습니다. 
+서명을 생성한 후에는 다음의 문서 API를 사용해 새 문서를 작성하거나 문서 정보를 조회할 수 있으며, 완료 문서 파일(문서 PDF, 감사추적증명서)  다운로드하거나 문서의 첨부파일을 다운로드할 수 있습니다. 
 
 
 .. note:: 
