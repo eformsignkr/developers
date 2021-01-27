@@ -2,7 +2,7 @@
 eformsign Webhook 사용하기
 ----------------------------
 
-eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고객 시스템/서비스로 알려주는 기능입니다. Webhook을 설정하면, 고객의 webhook endpoint로 해당 이벤트 정보를 HTTP POST형식으로 알려 줍니다.
+eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고객 시스템/서비스로 알려주는 기능입니다. Webhook을 설정하면, 고객의 Webhook endpoint로 해당 이벤트 정보를 HTTP POST형식으로 알려 줍니다.
 
 .. tip:: 
 
@@ -349,6 +349,11 @@ PHP
 
 다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다.
 
+
+
+각 언어별 예제
+---------------------
+
 다음은 각 언어별 테스트 키와 예제입니다.
 
 
@@ -599,4 +604,16 @@ eformsign에서 문서의 PDF 파일이 생성될 때 발생하는 이벤트입�
 Webhook 제공 리스트
 ====================
 
-swagger 링크
+다음의 Webhook을 설정하면 해당 이벤트 발생 시 설정한 Webhook endpoint로 변경 정보를 수신할 수 있습니다. 
+
+현재 제공 중인 `Webhook <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook>`_\은 다음과 같습니다.
+
+
+``POST``: `/webhook document event <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook#/default/post-webhook-document-event>`_\  문서 이벤트 전송
+
+``POST``: `/webhook pdf <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook#/default/post-webhook-pdf>`_\  PDF 생성 이벤트 전송
+
+
+각 eformsign Webhook에 대한 자세한 설명은 
+`다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook>`__\ 에서 확인하실 수 있습니다.
+
