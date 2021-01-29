@@ -97,11 +97,9 @@
                 
                   <li class="toctree-l2"><a href="#id2" class="reference internal">서명 생성하기</a></li>
                 
-                  <li class="toctree-l2"><a href="#id4" class="reference internal">테스트해보기</a></li>
+                  <li class="toctree-l2"><a href="#id4" class="reference internal">API 제공 리스트</a></li>
                 
-                  <li class="toctree-l2"><a href="#id9" class="reference internal">API 제공 리스트</a></li>
-                
-                  <li class="toctree-l2"><a href="#id13" class="reference internal">API 관련 정보</a></li>
+                  <li class="toctree-l2"><a href="#id8" class="reference internal">API 관련 정보</a></li>
                 
               </ul>
             
@@ -362,184 +360,10 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2>테스트해보기<a class="headerlink" href="#id4" title="제목 주소">¶</a></h2>
-<p>생성한 eformsign_signature를 테스트해 봅니다.</p>
-<p>다음의 eformsign_signature 생성 및 검증용 샘플은 Open API 또는 Webhook의 서명값을 생성 및 검증하는 테스트 샘플 소스코드입니다.</p>
-<div class="admonition note">
-<p class="admonition-title">참고</p>
-<p>샘플 키를 사용하고 있어 실 사용 시에는 정상 동작 하지 않습니다. 생성하신 서명 값의 검증용으로만 사용해 주세요.</p>
-</div>
-<div class="section" id="id5">
-<h3>Java<a class="headerlink" href="#id5" title="제목 주소">¶</a></h3>
-<p>다음의 샘플 키로 서명 및 검틍 테스트를 해보시기 바랍니다.</p>
-</div>
-<div class="section" id="id6">
-<h3>Python<a class="headerlink" href="#id6" title="제목 주소">¶</a></h3>
-<p>키 포맷 처리용 라이브러리를 사용해야 합니다. 작업전 다음의 명령어를 통해 해당 라이브러리를 설치해 주십시오.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">warner</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">ecdsa</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">master</span><span class="o">.</span><span class="n">zip</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id7">
-<h3>PHP<a class="headerlink" href="#id7" title="제목 주소">¶</a></h3>
-<p>다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다.</p>
-</div>
-<div class="section" id="id8">
-<h3>각 언어별 예제<a class="headerlink" href="#id8" title="제목 주소">¶</a></h3>
-<p>다음은 각 언어별 테스트 키와 예제입니다.</p>
-<div class="code-tabs docutils container">
-<div class="code-tab" data-title="Java">
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">privateKeyHex</span> <span class="o">=</span> <span class="s">&quot;3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207eae51d5e4272ebb3fe2701d25026a8c2850965981fb2efa68c8db48b32ede07&quot;</span><span class="p">;</span>
-<span class="n">String</span> <span class="n">publicKeyHex</span> <span class="o">=</span> <span class="s">&quot;3059301306072a8648ce3d020106082a8648ce3d030107034200045ac8a472cee38601e99b2a2d731c958e738eee1ee6aca28f6f5637f231e9a8444f3cb80d9ce6c5bace1d0e71167673ff81743e0ea811ebd999f2f314f1d0a676&quot;</span><span class="p">;</span>     <span class="c1">//private key</span>
-<span class="n">KeyFactory</span> <span class="n">privateKeyFact</span> <span class="o">=</span> <span class="n">KeyFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;EC&quot;</span><span class="p">);</span>
-<span class="n">PKCS8EncodedKeySpec</span> <span class="n">psks8KeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PKCS8EncodedKeySpec</span><span class="p">(</span><span class="k">new</span> <span class="n">BigInteger</span><span class="p">(</span><span class="n">privateKeyHex</span><span class="p">,</span><span class="mi">16</span><span class="p">).</span><span class="na">toByteArray</span><span class="p">());</span>
-<span class="n">PrivateKey</span> <span class="n">privateKey</span> <span class="o">=</span> <span class="n">privateKeyFact</span><span class="p">.</span><span class="na">generatePrivate</span><span class="p">(</span><span class="n">psks8KeySpec</span><span class="p">);</span>
-
-<span class="c1">//signature</span>
-<span class="n">String</span> <span class="n">testData</span> <span class="o">=</span> <span class="s">&quot;{\&quot;test\&quot;:\&quot;signature test\&quot;}&quot;</span><span class="p">;</span>
-<span class="n">Signature</span> <span class="n">ecdsa</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;SHA256withECDSA&quot;</span><span class="p">);</span>
-<span class="n">ecdsa</span><span class="p">.</span><span class="na">initSign</span><span class="p">(</span><span class="n">privateKey</span><span class="p">);</span>
-<span class="n">ecdsa</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="n">testData</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="s">&quot;UTF-8&quot;</span><span class="p">));</span>
-<span class="n">String</span> <span class="n">eformsign_signature</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigInteger</span><span class="p">(</span><span class="n">ecdsa</span><span class="p">.</span><span class="na">sign</span><span class="p">()).</span><span class="na">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;data : &quot;</span><span class="o">+</span><span class="n">testData</span><span class="p">);</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;eformsign_signature : &quot;</span><span class="o">+</span><span class="n">eformsign_signature</span><span class="p">);</span>
-
-<span class="c1">//public key</span>
-<span class="n">KeyFactory</span> <span class="n">publicKeyFact</span> <span class="o">=</span> <span class="n">KeyFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;EC&quot;</span><span class="p">);</span>
-<span class="n">X509EncodedKeySpec</span> <span class="n">x509KeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">X509EncodedKeySpec</span><span class="p">(</span><span class="k">new</span> <span class="n">BigInteger</span><span class="p">(</span><span class="n">publicKeyHex</span><span class="p">,</span><span class="mi">16</span><span class="p">).</span><span class="na">toByteArray</span><span class="p">());</span>
-<span class="n">PublicKey</span> <span class="n">publicKey</span> <span class="o">=</span> <span class="n">publicKeyFact</span><span class="p">.</span><span class="na">generatePublic</span><span class="p">(</span><span class="n">x509KeySpec</span><span class="p">);</span>
-
-
-<span class="c1">//verify</span>
-<span class="n">Signature</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;SHA256withECDSA&quot;</span><span class="p">);</span>
-<span class="n">signature</span><span class="p">.</span><span class="na">initVerify</span><span class="p">(</span><span class="n">publicKey</span><span class="p">);</span>
-<span class="n">signature</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="n">testData</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="s">&quot;UTF-8&quot;</span><span class="p">));</span>
-<span class="k">if</span><span class="p">(</span><span class="n">signature</span><span class="p">.</span><span class="na">verify</span><span class="p">(</span><span class="k">new</span> <span class="n">BigInteger</span><span class="p">(</span><span class="n">eformsign_signature</span><span class="p">,</span><span class="mi">16</span><span class="p">).</span><span class="na">toByteArray</span><span class="p">())){</span>
-    <span class="c1">//verify success</span>
-    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;verify success&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="k">else</span><span class="p">{</span>
-    <span class="c1">//verify fail</span>
-    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;verify fail&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div><div class="code-tab" data-title="Python">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
-<span class="kn">import</span> <span class="nn">binascii</span>
-
-<span class="kn">from</span> <span class="nn">ecdsa</span> <span class="kn">import</span> <span class="n">SigningKey</span><span class="p">,</span> <span class="n">VerifyingKey</span><span class="p">,</span> <span class="n">BadSignatureError</span>
-<span class="kn">from</span> <span class="nn">ecdsa.util</span> <span class="kn">import</span> <span class="n">sigencode_der</span><span class="p">,</span> <span class="n">sigdecode_der</span>
-
-<span class="n">privateKeyHex</span> <span class="o">=</span> <span class="s2">&quot;3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207eae51d5e4272ebb3fe2701d25026a8c2850965981fb2efa68c8db48b32ede07&quot;</span>
-<span class="n">publicKeyHex</span> <span class="o">=</span> <span class="s2">&quot;3059301306072a8648ce3d020106082a8648ce3d030107034200045ac8a472cee38601e99b2a2d731c958e738eee1ee6aca28f6f5637f231e9a8444f3cb80d9ce6c5bace1d0e71167673ff81743e0ea811ebd999f2f314f1d0a676&quot;</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">test</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">signature test</span><span class="se">\&quot;</span><span class="s2">}&quot;</span>
-
-<span class="n">sk</span> <span class="o">=</span> <span class="n">SigningKey</span><span class="o">.</span><span class="n">from_der</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">privateKeyHex</span><span class="p">))</span>
-<span class="n">vk</span> <span class="o">=</span> <span class="n">VerifyingKey</span><span class="o">.</span><span class="n">from_der</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">publicKeyHex</span><span class="p">))</span>
-
-<span class="n">signature</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">hashfunc</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">,</span> <span class="n">sigencode</span><span class="o">=</span><span class="n">sigencode_der</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;data: &quot;</span> <span class="o">+</span> <span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;eformsign_signature : &quot;</span> <span class="o">+</span> <span class="n">binascii</span><span class="o">.</span><span class="n">hexlify</span><span class="p">(</span><span class="n">signature</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">vk</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">hashfunc</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">,</span> <span class="n">sigdecode</span><span class="o">=</span><span class="n">sigdecode_der</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;verify success&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">BadSignatureError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;verify fail&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div><div class="code-tab" data-title="PHP - keycheck.inc.php">
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">eformsignECDSA</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">PublicKey</span>
-<span class="p">{</span>
-
-    <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$pem_data</span> <span class="o">=</span> <span class="nb">base64_encode</span><span class="p">(</span><span class="nb">hex2bin</span><span class="p">(</span><span class="nv">$str</span><span class="p">));</span>
-        <span class="nv">$offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nv">$pem</span> <span class="o">=</span> <span class="s2">&quot;-----BEGIN PUBLIC KEY-----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="nv">$offset</span> <span class="o">&lt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$pem_data</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nv">$pem</span> <span class="o">=</span> <span class="nv">$pem</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$pem_data</span><span class="p">,</span> <span class="nv">$offset</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-            <span class="nv">$offset</span> <span class="o">=</span> <span class="nv">$offset</span> <span class="o">+</span> <span class="mi">64</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nv">$pem</span> <span class="o">=</span> <span class="nv">$pem</span> <span class="o">.</span> <span class="s2">&quot;-----END PUBLIC KEY-----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">openSslPublicKey</span> <span class="o">=</span> <span class="nb">openssl_get_publickey</span><span class="p">(</span><span class="nv">$pem</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">class</span> <span class="nc">PrivateKey</span>
-<span class="p">{</span>
-
-    <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$pem_data</span> <span class="o">=</span> <span class="nb">base64_encode</span><span class="p">(</span><span class="nb">hex2bin</span><span class="p">(</span><span class="nv">$str</span><span class="p">));</span>
-        <span class="nv">$offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nv">$pem</span> <span class="o">=</span> <span class="s2">&quot;-----BEGIN EC PRIVATE KEY-----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="nv">$offset</span> <span class="o">&lt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$pem_data</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nv">$pem</span> <span class="o">=</span> <span class="nv">$pem</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$pem_data</span><span class="p">,</span> <span class="nv">$offset</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-            <span class="nv">$offset</span> <span class="o">=</span> <span class="nv">$offset</span> <span class="o">+</span> <span class="mi">64</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nv">$pem</span> <span class="o">=</span> <span class="nv">$pem</span> <span class="o">.</span> <span class="s2">&quot;-----END EC PRIVATE KEY-----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">openSslPrivateKey</span> <span class="o">=</span> <span class="nb">openssl_get_privatekey</span><span class="p">(</span><span class="nv">$pem</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="nf">Sign</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nv">$privateKey</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nb">openssl_sign</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nv">$signature</span><span class="p">,</span> <span class="nv">$privateKey</span><span class="o">-&gt;</span><span class="na">openSslPrivateKey</span><span class="p">,</span> <span class="nx">OPENSSL_ALGO_SHA256</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nv">$signature</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="nf">Verify</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nv">$signature</span><span class="p">,</span> <span class="nv">$publicKey</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="nb">openssl_verify</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nv">$signature</span><span class="p">,</span> <span class="nv">$publicKey</span><span class="o">-&gt;</span><span class="na">openSslPublicKey</span><span class="p">,</span> <span class="nx">OPENSSL_ALGO_SHA256</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</pre></div>
-</div>
-</div><div class="code-tab" data-title="PHP - test.php">
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/keycheck.inc.php&#39;</span><span class="p">;</span>
-
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PRIVATE_KEY&#39;</span><span class="p">,</span> <span class="s1">&#39;3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207eae51d5e4272ebb3fe2701d25026a8c2850965981fb2efa68c8db48b32ede07&#39;</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PUBLIC_KEY&#39;</span><span class="p">,</span> <span class="s1">&#39;3059301306072a8648ce3d020106082a8648ce3d030107034200045ac8a472cee38601e99b2a2d731c958e738eee1ee6aca28f6f5637f231e9a8444f3cb80d9ce6c5bace1d0e71167673ff81743e0ea811ebd999f2f314f1d0a676&#39;</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;MESSAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;{&quot;test&quot;:&quot;signature test&quot;}&#39;</span><span class="p">);</span>
-
-<span class="k">use</span> <span class="nx">eformsignECDSA\PrivateKey</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">eformsignECDSA\PublicKey</span><span class="p">;</span>
-
-<span class="nv">$sk</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PrivateKey</span><span class="p">(</span><span class="nx">PRIVATE_KEY</span><span class="p">);</span>
-<span class="nv">$vk</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PublicKey</span><span class="p">(</span><span class="nx">PUBLIC_KEY</span><span class="p">);</span>
-
-<span class="nv">$signature</span> <span class="o">=</span> <span class="nx">eformsignECDSA\Sign</span><span class="p">(</span><span class="nx">MESSAGE</span><span class="p">,</span> <span class="nv">$sk</span><span class="p">);</span>
-
-<span class="k">print</span> <span class="s1">&#39;data: &#39;</span> <span class="o">.</span> <span class="nx">MESSAGE</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="k">print</span> <span class="s1">&#39;eformsign_signature : &#39;</span> <span class="o">.</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nv">$signature</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-<span class="nv">$ret</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-<span class="nv">$ret</span> <span class="o">=</span> <span class="nx">eformsignECDSA\Verify</span><span class="p">(</span><span class="nx">MESSAGE</span><span class="p">,</span> <span class="nv">$signature</span><span class="p">,</span> <span class="nv">$vk</span><span class="p">);</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nv">$ret</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">print</span> <span class="s1">&#39;verify success&#39;</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">print</span> <span class="s1">&#39;verify fail&#39;</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="cp">?&gt;</span><span class="x"></span>
-</pre></div>
-</div>
-</div></div>
-</div>
-</div>
-<div class="section" id="id9">
-<h2>API 제공 리스트<a class="headerlink" href="#id9" title="제목 주소">¶</a></h2>
+<h2>API 제공 리스트<a class="headerlink" href="#id4" title="제목 주소">¶</a></h2>
 <p>eformsign API는 서명 생성을 위한 API와 문서 작성 및 처리를 위한 API로 구분되어 있습니다.</p>
-<div class="section" id="id10">
-<h3>서명 생성을 위한 API<a class="headerlink" href="#id10" title="제목 주소">¶</a></h3>
+<div class="section" id="id5">
+<h3>서명 생성을 위한 API<a class="headerlink" href="#id5" title="제목 주소">¶</a></h3>
 <p>서명 생성을 위해 먼저 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth">Access Token API</a>를 활용해 주십시오.</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth#/eformsign/post-api_auth-access_token">/api_auth/access_token</a> Access Token 발급</p>
 <p>Access Token API에 대한 자세한 설명은
@@ -565,8 +389,8 @@
 <p>발급한 API 키는 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth">다음</a>의 위치에 있는 <strong>Authorize</strong> 버튼(<img alt="image4" src="../_images/authorize_icon.png" />)을 눌러 등록하세요. 단, API 키 값에는 <strong>반드시 Base64</strong>로 인코딩한 문자열을 넣어야 합니다. <a class="reference external" href="https://www.base64encode.org/">https://www.base64encode.org/</a> 에 접속하여 발급한 API 키를 넣고 인코딩된 텍스트를 받아 삽입하세요.</p>
 </div>
 </div>
-<div class="section" id="id11">
-<h3>문서 작성 및 처리를 위한 API<a class="headerlink" href="#id11" title="제목 주소">¶</a></h3>
+<div class="section" id="id6">
+<h3>문서 작성 및 처리를 위한 API<a class="headerlink" href="#id6" title="제목 주소">¶</a></h3>
 <p>서명을 생성한 후에는 다음의 문서 API를 사용해 새 문서를 작성하거나 문서 정보를 조회할 수 있으며, 완료 문서 파일(문서 PDF, 감사추적증명서)  다운로드하거나 문서의 첨부파일을 다운로드할 수 있습니다.</p>
 <div class="admonition note">
 <p class="admonition-title">참고</p>
@@ -583,13 +407,13 @@
 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general">다음</a>에서 확인하실 수 있습니다.</p>
 </div>
 </div>
-<div class="section" id="id13">
-<h2>API 관련 정보<a class="headerlink" href="#id13" title="제목 주소">¶</a></h2>
-<div class="section" id="id14">
-<h3>API 상태 코드<a class="headerlink" href="#id14" title="제목 주소">¶</a></h3>
+<div class="section" id="id8">
+<h2>API 관련 정보<a class="headerlink" href="#id8" title="제목 주소">¶</a></h2>
+<div class="section" id="id9">
+<h3>API 상태 코드<a class="headerlink" href="#id9" title="제목 주소">¶</a></h3>
 <p>API 상태 코드는 다음과 같습니다.</p>
-<div class="section" id="id15">
-<h4>200<a class="headerlink" href="#id15" title="제목 주소">¶</a></h4>
+<div class="section" id="id10">
+<h4>200<a class="headerlink" href="#id10" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 18%" />
@@ -610,8 +434,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id16">
-<h4>202<a class="headerlink" href="#id16" title="제목 주소">¶</a></h4>
+<div class="section" id="id11">
+<h4>202<a class="headerlink" href="#id11" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 9%" />
@@ -636,8 +460,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id17">
-<h4>400<a class="headerlink" href="#id17" title="제목 주소">¶</a></h4>
+<div class="section" id="id12">
+<h4>400<a class="headerlink" href="#id12" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 13%" />
@@ -670,8 +494,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id18">
-<h4>403<a class="headerlink" href="#id18" title="제목 주소">¶</a></h4>
+<div class="section" id="id13">
+<h4>403<a class="headerlink" href="#id13" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 14%" />
@@ -704,8 +528,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id19">
-<h4>405<a class="headerlink" href="#id19" title="제목 주소">¶</a></h4>
+<div class="section" id="id14">
+<h4>405<a class="headerlink" href="#id14" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
@@ -726,8 +550,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id20">
-<h4>500<a class="headerlink" href="#id20" title="제목 주소">¶</a></h4>
+<div class="section" id="id15">
+<h4>500<a class="headerlink" href="#id15" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 28%" />
