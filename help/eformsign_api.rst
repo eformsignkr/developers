@@ -79,8 +79,7 @@ API 키 발급 및 비밀키 확인하기
 
 .. note:: **API 키 수정 방법**
 
-    생성된 키 목록에서 **수정** 버튼을 클릭하면 별칭과 어플리케이션 이름을 수정할 수
-  	있습니다. 또한, 상태 영역을 클릭하여 활성/비활성 상태로 변경할 수도 있습니다.
+    생성된 키 목록에서 **수정** 버튼을 클릭하면 별칭과 어플리케이션 이름을 수정할 수 있습니다. 또한, 상태 영역을 클릭하여 활성/비활성 상태로 변경할 수도 있습니다.
 
 .. note:: **API 키 삭제 방법**
 
@@ -277,7 +276,7 @@ eformsign API는 서명 생성을 위한 API와 문서 작성 및 처리를 위�
 서명 생성을 위한 API
 -------------------------
 
-서명 생성을 위해 먼저 `Access Token API <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`_\를 활용해 주십시오. 
+서명 생성을 위해 먼저 `Access Token API <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`_\를 사용해 주십시오. 
 
 ``POST``: `/api_auth/access_token <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth#/eformsign/post-api_auth-access_token>`_\  Access Token 발급
 
@@ -315,7 +314,12 @@ Access Token API에 대한 자세한 설명은
 
 .. caution:: 
    
-   발급한 API 키는 `다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 단, API 키 값에는 **반드시 Base64**\ 로 인코딩한 문자열을 넣어야 합니다. https://www.base64encode.org/ 에 접속하여 발급한 API 키를 넣고 인코딩된 텍스트를 받아 삽입하세요.
+   발급한 API 키는 `다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 단, API 키 값에는 **반드시 Base64**\ 로 인코딩한 문자열을 넣어야 합니다. https://www.base64encode.org/ 에 접속하여 발급한 API 키를 넣고 인코딩된 텍스트를 받아 삽입하세요. 
+
+
+.. caution:: 
+  
+   Access Token API의 **Authorize** 버튼에는 API 키 값을 입력해야 합니다.
 
 
 
@@ -327,7 +331,13 @@ Access Token API에 대한 자세한 설명은
 
 .. note:: 
 
-   본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다.
+   본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급 받은 Access Token을 `다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
+
+
+.. caution:: 
+  
+   문서 API의 **Authorize** 버튼에는 Access Token 값을 입력해야 합니다. 
+   
 
 현재 제공 중인 `문서 API <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general>`_\는 다음과 같습니다.
 

@@ -99,7 +99,7 @@
                 
                   <li class="toctree-l2"><a href="#id4" class="reference internal">API 제공 리스트</a></li>
                 
-                  <li class="toctree-l2"><a href="#id8" class="reference internal">API 관련 정보</a></li>
+                  <li class="toctree-l2"><a href="#id9" class="reference internal">API 관련 정보</a></li>
                 
               </ul>
             
@@ -192,10 +192,7 @@
 <div class="admonition note">
 <p class="admonition-title">참고</p>
 <p><strong>API 키 수정 방법</strong></p>
-<dl class="simple">
-<dt>생성된 키 목록에서 <strong>수정</strong> 버튼을 클릭하면 별칭과 어플리케이션 이름을 수정할 수</dt><dd><p>있습니다. 또한, 상태 영역을 클릭하여 활성/비활성 상태로 변경할 수도 있습니다.</p>
-</dd>
-</dl>
+<p>생성된 키 목록에서 <strong>수정</strong> 버튼을 클릭하면 별칭과 어플리케이션 이름을 수정할 수 있습니다. 또한, 상태 영역을 클릭하여 활성/비활성 상태로 변경할 수도 있습니다.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">참고</p>
@@ -364,7 +361,7 @@
 <p>eformsign API는 서명 생성을 위한 API와 문서 작성 및 처리를 위한 API로 구분되어 있습니다.</p>
 <div class="section" id="id5">
 <h3>서명 생성을 위한 API<a class="headerlink" href="#id5" title="제목 주소">¶</a></h3>
-<p>서명 생성을 위해 먼저 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth">Access Token API</a>를 활용해 주십시오.</p>
+<p>서명 생성을 위해 먼저 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth">Access Token API</a>를 사용해 주십시오.</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth#/eformsign/post-api_auth-access_token">/api_auth/access_token</a> Access Token 발급</p>
 <p>Access Token API에 대한 자세한 설명은
 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth">다음</a>에서 확인하실 수 있습니다.</p>
@@ -388,13 +385,21 @@
 <p class="admonition-title">조심</p>
 <p>발급한 API 키는 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth">다음</a>의 위치에 있는 <strong>Authorize</strong> 버튼(<img alt="image4" src="../_images/authorize_icon.png" />)을 눌러 등록하세요. 단, API 키 값에는 <strong>반드시 Base64</strong>로 인코딩한 문자열을 넣어야 합니다. <a class="reference external" href="https://www.base64encode.org/">https://www.base64encode.org/</a> 에 접속하여 발급한 API 키를 넣고 인코딩된 텍스트를 받아 삽입하세요.</p>
 </div>
+<div class="admonition caution">
+<p class="admonition-title">조심</p>
+<p>Access Token API의 <strong>Authorize</strong> 버튼에는 API 키 값을 입력해야 합니다.</p>
+</div>
 </div>
 <div class="section" id="id6">
 <h3>문서 작성 및 처리를 위한 API<a class="headerlink" href="#id6" title="제목 주소">¶</a></h3>
 <p>서명을 생성한 후에는 다음의 문서 API를 사용해 새 문서를 작성하거나 문서 정보를 조회할 수 있으며, 완료 문서 파일(문서 PDF, 감사추적증명서)  다운로드하거나 문서의 첨부파일을 다운로드할 수 있습니다.</p>
 <div class="admonition note">
 <p class="admonition-title">참고</p>
-<p>본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다.</p>
+<p>본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth">Access Token API</a>으로 발급 받은 Access Token을 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general">다음</a>의 위치에 있는 <strong>Authorize</strong> 버튼(<img alt="image4" src="../_images/authorize_icon.png" />)을 눌러 등록하세요.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">조심</p>
+<p>문서 API의 <strong>Authorize</strong> 버튼에는 Access Token 값을 입력해야 합니다.</p>
 </div>
 <p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general">문서 API</a>는 다음과 같습니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general#/eformsign/post-api_auth-refresh_token">/api_auth/refresh_token</a> Access Token 갱신</p>
@@ -407,13 +412,13 @@
 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general">다음</a>에서 확인하실 수 있습니다.</p>
 </div>
 </div>
-<div class="section" id="id8">
-<h2>API 관련 정보<a class="headerlink" href="#id8" title="제목 주소">¶</a></h2>
 <div class="section" id="id9">
-<h3>API 상태 코드<a class="headerlink" href="#id9" title="제목 주소">¶</a></h3>
-<p>API 상태 코드는 다음과 같습니다.</p>
+<h2>API 관련 정보<a class="headerlink" href="#id9" title="제목 주소">¶</a></h2>
 <div class="section" id="id10">
-<h4>200<a class="headerlink" href="#id10" title="제목 주소">¶</a></h4>
+<h3>API 상태 코드<a class="headerlink" href="#id10" title="제목 주소">¶</a></h3>
+<p>API 상태 코드는 다음과 같습니다.</p>
+<div class="section" id="id11">
+<h4>200<a class="headerlink" href="#id11" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 18%" />
@@ -434,8 +439,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id11">
-<h4>202<a class="headerlink" href="#id11" title="제목 주소">¶</a></h4>
+<div class="section" id="id12">
+<h4>202<a class="headerlink" href="#id12" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 9%" />
@@ -460,8 +465,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id12">
-<h4>400<a class="headerlink" href="#id12" title="제목 주소">¶</a></h4>
+<div class="section" id="id13">
+<h4>400<a class="headerlink" href="#id13" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 13%" />
@@ -494,8 +499,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id13">
-<h4>403<a class="headerlink" href="#id13" title="제목 주소">¶</a></h4>
+<div class="section" id="id14">
+<h4>403<a class="headerlink" href="#id14" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 14%" />
@@ -528,8 +533,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id14">
-<h4>405<a class="headerlink" href="#id14" title="제목 주소">¶</a></h4>
+<div class="section" id="id15">
+<h4>405<a class="headerlink" href="#id15" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
@@ -550,8 +555,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id15">
-<h4>500<a class="headerlink" href="#id15" title="제목 주소">¶</a></h4>
+<div class="section" id="id16">
+<h4>500<a class="headerlink" href="#id16" title="제목 주소">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 28%" />
