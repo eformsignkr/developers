@@ -317,7 +317,7 @@ Access Token API에 대한 자세한 설명은
    발급한 API 키는 `다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 단, API 키 값에는 **반드시 Base64**\ 로 인코딩한 문자열을 넣어야 합니다. https://www.base64encode.org/ 에 접속하여 발급한 API 키를 넣고 인코딩된 텍스트를 받아 삽입하세요. 
 
 
-.. caution:: 
+.. note:: 
   
    Access Token API의 **Authorize** 버튼에는 API 키 값을 입력해야 합니다.
 
@@ -329,15 +329,15 @@ Access Token API에 대한 자세한 설명은
 서명을 생성한 후에는 다음의 문서 API를 사용해 새 문서를 작성하거나 문서 정보를 조회할 수 있으며, 완료 문서 파일(문서 PDF, 감사추적증명서)  다운로드하거나 문서의 첨부파일을 다운로드할 수 있습니다. 
 
 
-.. note:: 
+.. caution:: 
 
    본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급 받은 Access Token을 `다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
 
 
-.. caution:: 
+.. note:: 
   
    문서 API의 **Authorize** 버튼에는 Access Token 값을 입력해야 합니다. 
-   
+
 
 현재 제공 중인 `문서 API <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general>`_\는 다음과 같습니다.
 
