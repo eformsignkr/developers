@@ -20,46 +20,54 @@ eformsign embedding 기능을 사용하기 위해서는 회사 ID, 템플릿 ID�
 
 회사 관리 > 회사 정보 > 기본 정보에서 회사 ID를 확인할 수 있습니다.
 
+
+[eformsign 메뉴 들어가기]
 .. image:: resources/Dashboard_menu_icon.png
     :alt: eformsign 메뉴 들어가기
     :width: 700px
 
-eformsign 메뉴 들어가기
 
+
+[eformsign 회사정보 메뉴]
 .. image:: resources/Dashboard_sidemenu_companyinfo.png
     :alt: eformsign 회사정보 메뉴
     :width: 700px
 
-eformsign 회사정보 메뉴
 
+
+[회사 정보 > 기본 정보]
 .. image:: resources/companyinfo_companyid.png
     :alt: 회사 정보 > 기본 정보
     :width: 700px
 
-회사 정보 > 기본 정보
+
 
 **템플릿 ID 확인 방법**
 
 템플릿 관리 메뉴로 이동하여 사용하려는 템플릿의 설정아이콘을 클릭하면 해당 템플릿의 URL에서 form_id를 확인할 수 있습니다. 
 
 
+[eformsign 템플릿 관리 메뉴]
 .. image:: resources/sidemenu_managetemplate.png
     :alt: eformsign 메뉴-템플릿 관리
     :width: 700px
 
-eformsign 템플릿 관리 메뉴
 
+
+[eformsign 템플릿 관리 화면]
 .. image:: resources/managetemplate.png
     :alt: eformsign 템플릿 관리 화면
     :width: 700px
 
-eformsign 템플릿 관리 화면
 
+
+[템플릿 ID 위치]
 .. image:: resources/templateURL_templateID.png
     :alt: 템플릿 ID 위치
     :width: 700px
 
-템플릿 ID 위치
+
+
 
 
 
