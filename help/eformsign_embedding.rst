@@ -7,61 +7,73 @@ eformsign 기능 직접 삽입하기
 eformsign 기능을 직접 삽입해 연계하게 되면, 고객이 제공하고 있는 서비스(혹은 사이트) 내에서 고객사의 사용자(최종 사용자)가 eformsign 서비스 사이트를 통하지 않고 고객의 서비스를 통해 자연스럽게 eformsign 전자문서를 사용할 수 있습니다.
 예로 들면, 내 블로그에서 특정 YouTube 동영상을 소개하려고 할 때, 블로그에서 YouTube 동영상을 직접 삽입함으로써 해당 동영상을 블로그 내에서 바로 플레이할 수 있도록 하는 방식과 유사합니다.
 
-------------
-시작하기
-------------
 
-준비 사항
-=============
+-------------
+준비하기
+-------------
 
 eformsign embedding 기능을 사용하기 위해서는 회사 ID, 템플릿 ID가 필요합니다.
 
-**회사 ID 확인 방법**
+회사 ID 확인 방법
+========================
 
 회사 관리 > 회사 정보 > 기본 정보에서 회사 ID를 확인할 수 있습니다.
 
 
-[eformsign 메뉴 들어가기]
+eformsign 메뉴 들어가기
+-------------------------
+
 .. image:: resources/Dashboard_menu_icon.png
     :alt: eformsign 메뉴 들어가기
     :width: 700px
 
 
 
-[eformsign 회사정보 메뉴]
+eformsign 회사정보 메뉴
+--------------------------
+
 .. image:: resources/Dashboard_sidemenu_companyinfo.png
     :alt: eformsign 회사정보 메뉴
     :width: 700px
 
 
 
-[회사 정보 > 기본 정보]
+회사 정보 > 기본 정보
+-------------------------
+
 .. image:: resources/companyinfo_companyid.png
     :alt: 회사 정보 > 기본 정보
     :width: 700px
 
 
 
-**템플릿 ID 확인 방법**
+템플릿 ID 확인 방법
+=======================
 
 템플릿 관리 메뉴로 이동하여 사용하려는 템플릿의 설정아이콘을 클릭하면 해당 템플릿의 URL에서 form_id를 확인할 수 있습니다. 
 
 
-[eformsign 템플릿 관리 메뉴]
+eformsign 템플릿 관리 메뉴
+------------------------------
+
 .. image:: resources/sidemenu_managetemplate.png
     :alt: eformsign 메뉴-템플릿 관리
     :width: 700px
 
 
 
-[eformsign 템플릿 관리 화면]
+eformsign 템플릿 관리 화면
+---------------------------------
+
 .. image:: resources/managetemplate.png
     :alt: eformsign 템플릿 관리 화면
     :width: 700px
 
 
 
-[템플릿 ID 위치]
+템플릿 ID 위치
+-----------------------
+
 .. image:: resources/templateURL_templateID.png
     :alt: 템플릿 ID 위치
     :width: 700px
@@ -70,9 +82,9 @@ eformsign embedding 기능을 사용하기 위해서는 회사 ID, 템플릿 ID�
 
 
 
-
+---------------
 설치하기
-=============
+---------------
 
 eformsign의 기능을 사용하고자 하는 웹 페이지에 다음의 스크립트를 추가합니다.
 
