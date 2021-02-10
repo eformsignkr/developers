@@ -113,10 +113,10 @@ eformsign 객체는 embedding과 redirect의 두 가지 타입으로 구성되�
 +----------+-----------------------+--------------------------------------+
 | Type     | Name                  | 설명                                 |
 +==========+=======================+======================================+
-| embedding| eformsign.document    | eformsign을 삽입해 문서를 작성할 수    |
-|          | (document_option,     | 있도록 해주는 함수                    |
+| embedding| eformsign.document    | eformsign을 삽입해 문서를 작성할 수  |
+|          | (document_option,     | 있도록 해주는 함수                   |
 |          | iframe_id,            |                                      |
-|          | success_callback,     | callback 파라미터는 옵션              |
+|          | success_callback,     | callback 파라미터는 옵션             |
 |          | error_callback)       |                                      |
 |          |                       | -  document_option, iframe_id: 필수  |
 |          |                       |                                      |
@@ -124,8 +124,8 @@ eformsign 객체는 embedding과 redirect의 두 가지 타입으로 구성되�
 |          |                       |                                      |
 |          |                       | -  error_callback: 옵션              |
 +----------+-----------------------+--------------------------------------+
-| redirect | eformsign.document    | eformsign으로의 페이지 전환 방식으로   |
-|          | (document_option)     | 문서를 작성할 수 있도록 해주는 함수     |
+| redirect | eformsign.document    | eformsign으로의 페이지 전환 방식으로 |
+|          | (document_option)     | 문서를 작성할 수 있도록 해주는 함수  |
 |          |                       |                                      |
 |          |                       | -  document_option : 필수            |
 +----------+-----------------------+--------------------------------------+
