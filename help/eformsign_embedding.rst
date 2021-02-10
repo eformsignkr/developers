@@ -110,25 +110,25 @@ eformsign 객체에 대한 설명
 eformsign 객체는 embedding과 redirect의 두 가지 타입으로 구성되어 있습니다.
 
 
-+----------+--------------------+--------------------------------------+
-| Type     | Name               | 설명                                 |
-+==========+====================+======================================+
-| embedding| eformsign.         | eformsign을 삽입해 문서를 작성할 수  |
-|          | document(          | 있도록 해주는 함수                   |
-|          | document_option,   |                                      |
-|          | iframe_id,         | callback 파라미터는 옵션             |
-|          | success_callback,  |                                      |
-|          | error_callback)    | -  document_option, iframe_id: 필수  |
-|          |                    |                                      |
-|          |                    | -  success_callback: 옵션            |
-|          |                    |                                      |
-|          |                    | -  error_callback: 옵션              |
-+----------+--------------------+--------------------------------------+
-| redirect | eformsign.documen  | eformsign으로의 페이지 전환 방식으로 |
-|          | t(document_option) | 문서를 작성할 수 있도록 해주는 함수  |
-|          |                    |                                      |
-|          |                    | -  document_option : 필수            |
-+----------+--------------------+--------------------------------------+
++----------+-----------------------+--------------------------------------+
+| Type     | Name                  | 설명                                 |
++==========+=======================+======================================+
+| embedding| eformsign.document    | eformsign을 삽입해 문서를 작성할 수    |
+|          | (document_option,     | 있도록 해주는 함수                    |
+|          | iframe_id,            |                                      |
+|          | success_callback,     | callback 파라미터는 옵션              |
+|          | error_callback)       |                                      |
+|          |                       | -  document_option, iframe_id: 필수  |
+|          |                       |                                      |
+|          |                       | -  success_callback: 옵션            |
+|          |                       |                                      |
+|          |                       | -  error_callback: 옵션              |
++----------+-----------------------+--------------------------------------+
+| redirect | eformsign.document    | eformsign으로의 페이지 전환 방식으로   |
+|          | (document_option)     | 문서를 작성할 수 있도록 해주는 함수     |
+|          |                       |                                      |
+|          |                       | -  document_option : 필수            |
++----------+-----------------------+--------------------------------------+
 
 
 
@@ -554,12 +554,12 @@ document 함수의 파라미터로 Callback 함수를 설정한 경우, Callback
 | code     | string | 문서 제출 실패시 결과의  | -1 일 경우, 정상     |
 |          |        | 오류 코드를 반환한다     |                      |
 +----------+--------+--------------------------+----------------------+
-| doc      | string | 문서 제출 성공시, 작성한 | ex)                  |
-| ument_id |        | 문서의 document_id를     | 910b8a965f9          |
+| document | string | 문서 제출 성공시, 작성한 | ex)                  |
+| _id      |        | 문서의 document_id를     | 910b8a965f9          |
 |          |        | 반환한다                 | 402b82152f48c6da5a5c |
 +----------+--------+--------------------------+----------------------+
-| fiel     | object | document_option에 정의한 | ex).                 |
-| d_values |        | return_fields 컬럼에     | field_values["name"] |
+| field    | object | document_option에 정의한 | ex).                 |
+| _values  |        | return_fields 컬럼에     | field_values["name"] |
 |          |        | 사용자가 입력한 값을     | // john              |
 |          |        | 가져올 수 있다           |                      |
 +----------+--------+--------------------------+----------------------+

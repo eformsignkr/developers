@@ -66,7 +66,7 @@ Webhook 키 발급하기
 
 
 
-5. 생성된 Webhook 리스트에서 테스트 버튼을 클릭하면 테스트 Webhook을 전송하고 결과를 반환합니다.
+5. 생성된 Webhook 리스트에서 **테스트** 버튼을 클릭하면 테스트 Webhook을 전송하고 결과를 반환합니다.
 
 .. image:: resources/webhook6.PNG
     :width: 700
@@ -108,6 +108,7 @@ Java
 eformsign 서버로 부터 전달 받은 이벤트 정보를 `Webhook Key 발급하기 <#webhook>`__\에서 발급받은 public key로 검증하여 eformsign에서 정상적으로 호출한 이벤트인지에 대한  검증을 진행합니다. 
 
 .. note:: 
+
   서명 알고리즘은 SHA256withECDSA을 사용합니다.
 
 
