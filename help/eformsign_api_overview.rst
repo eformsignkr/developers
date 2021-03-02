@@ -20,3 +20,10 @@ eformsign이 제공하는 API를 사용해 eformsign의 기능을 고객의 시�
 **eformsign Webhook 사용하기**
 
 eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고객 시스템/서비스로 알려주는 기능입니다. 
+
+
+.. note:: 
+
+  본 eformsign API 문서는 v2.0으로 기존 v1.0이 필요하신 분은 이폼사인 서비스 팀(eformsign@forcs.com, 02-6188-8400)으로 문의주시기 바랍니다.
+
+
