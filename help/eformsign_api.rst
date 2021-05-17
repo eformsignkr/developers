@@ -272,19 +272,21 @@ PHP
 API 제공 리스트
 ======================
 
-eformsign API는 서명 생성을 위한 API와 문서 작성 및 처리를 위한 API로 구분되어 있습니다.
+eformsign API는 서명 생성을 위한 API와 문서 작성 및 처리를 위한 API, 멤버 및 그룹 관리 API, 템플릿 API로 구분되어 있습니다.
+
+
 
 서명 생성을 위한 API
 -------------------------
 
-서명 생성을 위해 먼저 `Access Token API <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`_\를 사용해 주십시오. 
+서명 생성을 위해 먼저 `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`_\를 사용해 주십시오. 
 
-``POST``: `/api_auth/access_token <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth#/eformsign/post-api_auth-access_token>`_\  Access Token 발급
+``POST``: `/api_auth/access_token <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth#/eformsign/post-api_auth-access_token>`_\  Access Token 발급
 
 
 Access Token API에 대한 자세한 설명은 
-`다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 에서 확인하실 수 있습니다.
-
+`다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 에서 확인하실 수 있습니다.
+ 
 .. caution:: 
    
    서명 생성에는 30초의 시간 제한이 있습니다. 30초 이내에 서명을 생성하고 토큰을 발급받아야 합니다. 
@@ -294,7 +296,7 @@ Access Token API에 대한 자세한 설명은
 
       { "code": "4000002", "ErrorMessage": "The validation time has expired.",     "execution_time": 1611538409405 }
 
-   `다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 의 예제 위치에도 "execution_time"을 입력하세요.
+   `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 의 예제 위치에도 "execution_time"을 입력하세요.
    
    |image5| 
 
@@ -315,7 +317,7 @@ Access Token API에 대한 자세한 설명은
 
 .. caution:: 
    
-   발급한 API 키는 `다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 단, API 키 값에는 **반드시 Base64**\ 로 인코딩한 문자열을 넣어야 합니다. https://www.base64encode.org/ 에 접속하여 발급한 API 키를 넣고 인코딩된 텍스트를 받아 삽입하세요. 
+   발급한 API 키는 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 단, API 키 값에는 **반드시 Base64**\ 로 인코딩한 문자열을 넣어야 합니다. https://www.base64encode.org/ 에 접속하여 발급한 API 키를 넣고 인코딩된 텍스트를 받아 삽입하세요. 
 
 
 .. note:: 
@@ -327,12 +329,12 @@ Access Token API에 대한 자세한 설명은
 문서 작성 및 처리를 위한 API
 ----------------------------------
 
-서명을 생성한 후에는 다음의 문서 API를 사용해 새 문서를 작성하거나 문서 정보를 조회할 수 있으며, 완료 문서 파일(문서 PDF, 감사추적증명서)  다운로드하거나 문서의 첨부파일을 다운로드할 수 있습니다. 
+서명을 생성한 후에는 다음의 문서 API를 사용해 새 문서를 작성하거나 문서 정보를 조회할 수 있으며, 완료 문서 파일(문서 PDF, 감사추적증명서) 다운로드하거나 문서의 첨부파일을 다운로드할 수 있습니다. 
 
 
 .. caution:: 
 
-   본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급 받은 Access Token을 `다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
+   본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
 
 
 .. note:: 
@@ -340,29 +342,100 @@ Access Token API에 대한 자세한 설명은
    문서 API의 **Authorize** 버튼에는 Access Token 값을 입력해야 합니다. 
 
 
-현재 제공 중인 `문서 API <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general>`_\는 다음과 같습니다.
-
-
-``POST``: `/api_auth/refresh_token <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general#/eformsign/post-api_auth-refresh_token>`_\  Access Token 갱신
-
-``POST``: `/api/documents <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general#/eformsign/post-api-documents>`_\  새 문서 작성(내부 수신자)
-
-``POST``: `/api/documents/external <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general#/eformsign/post-api-documents-external>`_\  새 문서 작성(외부 수신자)
-
-``GET``: `/api/documents/{document_id} <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general#/eformsign/get-api-documents-DOCUMENT_ID>`_\  문서정보 조회
-
-``GET``: `/api/docuemnts/{document_id}/download_files <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general#/eformsign/get-api-documents-DOCUMENT_ID-download_files>`_\  문서 파일 다운로드(문서 PDF, 감사추적증명서)
-
-``GET``: `/api/doduments/{document_id}/download_attach_files <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general#/eformsign/get-api-documents-DOCUMENT_ID-download_attach_files>`_\  문서 첨부 파일 다운로드
-
-
-각 eformsign 문서 API에 대한 자세한 설명은 
-`다음 <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/2.0_general>`__\ 에서 확인하실 수 있습니다.
+현재 제공 중인 `문서 API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`_\는 다음과 같습니다.
 
 
 
-API 관련 정보
+``POST``: `/api/documents <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents>`_\  새 문서 작성(내부 수신자)
+
+``POST``: `/api/documents/external <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/post-api-documents-external>`_\  새 문서 작성(외부 수신자)
+
+``GET``: `/api/documents/{document_id} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID>`_\  문서정보 조회
+
+``GET``: `/api/documents/{document_id}/download_files <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID-download_files>`_\  문서 파일 다운로드(문서 PDF, 감사추적증명서)
+
+``GET``: `/api/documents/{document_id}/download_attach_files <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID-download_attach_files>`_\  문서 첨부 파일 다운로드
+
+``GET``: `/api/documents <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-documents>`_\  문서 목록 조회
+
+``DELETE``: `/api/documents <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/delete-api-documents>`_\  문서 삭제
+
+``POST``: `/api/documents/{document_id}/re_request_outsider <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents-document_id-re_request_outsider>`_\  외부 수신자 문서 재요청
+
+
+멤버 및 그룹 관리를 위한 API
+----------------------------------
+
+API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그룹 목록을 조회할 수 있으며, 멤버 및 그룹을 추가, 수정, 삭제할 수 있습니다. 
+
+
+.. caution:: 
+
+   본 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
+
+
+.. note:: 
+  
+   API의 **Authorize** 버튼에는 Access Token 값을 입력해야 합니다. 
+
+
+현재 제공 중인 `멤버 및 그룹 관리 API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`_\는 다음과 같습니다.
+
+
+``GET``: `/api/members <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-members>`_\  멤버 목록 조회
+
+``POST``: `/api/members <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-members>`_\  멤버 추가
+
+``PATCH``: `/api/members/{member_id} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/patch-api-members-member_id>`_\  멤버 수정
+
+``DELETE``: `/api/members/{member_id} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/delete-api-members-member_id>`_\  멤버 삭제
+
+``GET``: `/api/groups <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-groups>`_\  그룹 목록 조회
+
+``POST``: `/api/groups <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-groups>`_\  그룹 추가
+
+``PATCH``: `/api/groups/{group_id} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/patch-api-groups>`_\  그룹 수정
+
+``DELETE``: `/api/groups <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/delete-api-groups>`_\  그룹 삭제
+
+
+템플릿 관리를 위한 API
+----------------------------------
+
+API를 사용해 사용 가능한 템플릿의 목록을 조회하거나 템플릿으로 문서 일괄 작성을 할 수 있습니다. 
+
+
+.. caution:: 
+
+   본 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
+
+
+.. note:: 
+  
+   API의 **Authorize** 버튼에는 Access Token 값을 입력해야 합니다. 
+
+
+현재 제공 중인 `템플릿 API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`_\는 다음과 같습니다.
+
+
+``GET``: `/api/forms <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-forms>`_\  작성가능한 템플릿 목록 조회
+
+``POST``: `/api/forms/mass_documents?template_id={{form_id}} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-forms-mass_documents%3Ftemplate_id%3D-form_id>`_\  문서 일괄 작성
+
+
+
+각 eformsign API에 대한 자세한 설명은 
+`다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`__\ 에서 확인하실 수 있습니다.
+
+
+
+
+
+
+API 코드
 ===================
+
+Open API 사용 시 다음의 코드를 참조하시기 바랍니다.
 
 API 상태 코드
 --------------
@@ -385,22 +458,23 @@ Code         설명              비고
 ===========  ===============  ===================================
 Code         설명              비고
 ===========  ===============  ===================================
-2020001      PDF 생성 중        - PDF 파일 다운로드 시 파일은 비동기로 생성되기 때문에 문서 저장 후 PDF 생성까지 추가 시간 필요 
-                                - 수초에서 수분 내에 재 요청시 다운로드 가능
+2020001      PDF 생성 중        - PDF 파일 다운로드 시 파일은 비동기로 생성되기 때문에 문서 저장 후 PDF 생성까지 시간이 추가로 필요함
+                                - 수초에서 수분 내에 재요청시 다운로드 가능
 ===========  ===============  ===================================
 
 
 400
 '''''''
 
-===========  ===================  ==========================================
-Code         설명                  비고
-===========  ===================  ==========================================
-4000001      필수 입력값 누락      API 의 필수 입력값(헤더 값 또는 파라미터)이 누락됐을 경우                        
-4000002      인증 시간 만료        API 인증 요청 시간이 만료됐을 경우
-4000003      API 키 없음           API 키가 삭제 되었거나 잘못 입력했을 경우
-4000004      문서가 없음           문서 ID를 잘못 입력했을 경우
-===========  ===================  ==========================================
+===========  =======================  ==========================================
+Code         설명                      비고
+===========  =======================  ==========================================
+4000001      필수 입력값 누락           API의 필수 입력값(헤더 값 또는 파라미터)이 누락됐을 경우                        
+4000002      인증 시간 만료             API 인증 요청 시간이 만료되었을 경우
+4000003      API 키가 존재하지 않음     API 키가 삭제되었거나 잘못 입력했을 경우
+4000004      문서가 존재하지 않음       문서 ID를 잘못 입력했을 경우
+4000005      회사가 존재하지 않음       회사가 삭제되었을 경우
+===========  =======================  ==========================================
 
 
 403
@@ -409,8 +483,9 @@ Code         설명                  비고
 ===========  =========================  ==========================================
 Code         설명                        비고
 ===========  =========================  ==========================================
-4030002      Access Token 인증 오류      Access Token이 올바르지 않을 경우
-4030003      Refresh Token 인증 오류     Refresh Token이 올바르지 않을 경우
+4030001      접근 권한 없음              API가 비활성화 되었을 경우
+4030002      access_token 인증 오류      Access Token이 올바르지 않을 경우
+4030003      refresh_token 인증 오류     Refresh Token이 올바르지 않을 경우
 4030004      서명값 검증 실패            서명값이 올바르지 않을 경우
 4030005      지원하지 않는 API           지원하지 않는 API 호출 시
 ===========  =========================  ==========================================
@@ -431,7 +506,7 @@ Code         설명                    비고
 ===================  ===============  ===================================
 Code                 설명              비고
 ===================  ===============  ===================================
-5000001~5000003      서버 오류         서버에 오류가 발생했을 경우
+5000001~5000003      서버 에러         서버에 오류가 발생했을 경우
 ===================  ===============  ===================================
 
 
@@ -446,8 +521,10 @@ Type         Code             설명
 Start         00               시작 단계
 Complete      01               완료 단계
 Approval      02               결재 단계
-External      03               외부수신자 단계
-Accept        04               내부수신자 단계
+External      03               외부수신인 단계
+Accept        04               내부수신인 단계
+Participant   05               참여자
+Reviewer      06               검토자
 ===========  ===============  ===================================
 
 
@@ -464,68 +541,104 @@ Type         Code             설명
 Status 타입
 --------------
 
-======================  ===============  ===================================
-Type                     Code             설명
-======================  ===============  ===================================
-doc_tempsave             001              초안 (최초 작성자 임시 저장 상태)
-doc_create               002              문서 작성
-doc_complete             003              문서 완료
-doc_update               043              문서 수정
-doc_request_delete       047              문서 삭제 요청
-doc_delete               049              문서 삭제
-doc_request_revoke       040              문서 취소 요청
-doc_revoke               041              문서 취소
-doc_request_reject       045              문서 반려 요청
-doc_request_approval     010              문서 결재 요청
-doc_accept_approval      012              문서 결재 승인
-doc_reject_approval      011              문서 결재 반려
-doc_cancel               013              문서 결재 취소
-doc_request_reception    020              문서 내부 멤버 요청
-doc_accept_reception     022              문서 내부 멤버 승인
-doc_reject_reception     021              문서 내부 멤버 반려
-doc_request_outsider     030              문서 외부수신자 요청
-doc_accept_outsider      032              문서 외부수신자 승인
-doc_reject_outsider      031              문서 외부수신자 반려
-======================  ===============  ===================================
+===========  ===============  ==================================================
+Type          Code             설명
+===========  ===============  ==================================================
+초안          00               시작단계 임시저장된 문서 상태
+진행 중       01               결재 요청, 외부자 요청, 열람, 내부자 요청 단계 상태
+수정 중       02               문서를 수정 중일 때 (멤버, 최초 작성자)
+완료          03               문서가 완료되었을 때
+반려          04               결재 반려, 내부자 반려, 외부자 반려
+취소          05               문서가 취소된 상태
+취소 요청     06                내부 수신인 단계
+===========  ===============  ==================================================
 
 
 
 Action 타입
 --------------
 
-======================  ===============  ===================================
-Type                     Code             설명
-======================  ===============  ===================================
-doc_tempsave             001              문서 임시 저장
-doc_create               002              문서 생성
-doc_complete             003              문서 최종 완료
-doc_request_approval     010              문서 결재 요청
-doc_reject_approval      011              문서 결재 반려
-doc_accept_approval      012              문서 결재 승인
-doc_cancel               013              문서 결재 취소
-doc_request_reception    020              문서 내부 멤버 요청
-doc_reject_reception     021              문서 내부 멤버 반려
-doc_accept_reception     022              문서 내부 멤버 승인
-doc_accept_tempsave      023              내부 멤버 임시 저장
-doc_request_outsider     030              문서 외부수신자 요청
-doc_reject_outsider      031              문서 외부수신자 반려
-doc_accept_outsider      032              문서 외부수신자 승인
-doc_rerequest_outsider   033              외부수신자 재요청
-doc_open_outsider        034              외부수신자 열람
-doc_outsider_tempsave    035              외부수신자 임시 저장
-doc_request_revoke       040              문서 취소 요청
-doc_refuse_revoke        041              문서 취소 요청 거절
-doc_revoke               042              문서 취소
-doc_update               043              문서 수정
-doc_cancel_update        044              문서 수정 취소
-doc_request_reject       045              문서 반려 요청
-doc_refuse_reject        046              문서 반려 요청 거절
-doc_request_delete       047              문서 삭제 요청
-doc_refuse_delete        048              문서 삭제 요청 거절
-doc_delete               049              문서 삭제
-doc_complete_send_pdf    050              완료 문서 PDF 전송
-doc_transfer             051              문서 이관
-======================  ===============  ===================================
+==========================  ===============  ===================================
+Type                         Code             설명
+==========================  ===============  ===================================
+doc_tempsave                 001              문서 임시 저장
+doc_create                   002              문서 생성
+doc_complete                 003              문서 최종 완료
+doc_request_approval         010              결재 요청
+doc_reject_approval          011              결재 반려
+doc_accept_approval          012              결재 승인
+doc_cancel                   013              결재 요청 취소
+doc_request_reception        020              내부 멤버 요청
+doc_reject_reception         021              내부 멤버 반려
+doc_accept_reception         022              내부 멤버 승인
+doc_accept_tempsave          023              내부 멤버 임시 저장
+doc_request_outsider         030              외부수신자 요청
+doc_reject_outsider          031              외부수신자 반려
+doc_accept_outsider          032              외부수신자 승인
+doc_rerequest_outsider       033              외부수신자 재요청
+doc_open_outsider            034              외부수신자 열람
+doc_outsider_tempsave        035              외부수신자 임시 저장
+doc_request_revoke           040              문서 취소 요청
+doc_refuse_revoke            041              문서 취소 요청 거절
+doc_revoke                   042              문서 취소
+doc_update                   043              문서 수정
+doc_cancel_update            044              문서 수정 취소
+doc_request_reject           045              문서 반려 요청
+doc_refuse_reject            046              문서 반려 요청 거절
+doc_request_delete           047              문서 삭제 요청
+doc_refuse_delete            048              문서 삭제 요청 거절
+doc_delete                   049              문서 삭제
+doc_complete_send_pdf        050              완료 문서 PDF 전송
+doc_transfer                 051              문서 이관
+doc_request_participant      060              참여자 요청
+doc_reject_participant       061              참여자 반려
+doc_accept_participant       062              참여자 승인
+doc_rerequest_participant    063              참여자 재요청(외부자)
+doc_open_participant         064              참여자 문서 열람(외부자)
+doc_request_reviewer         070              검토자 요청
+doc_reject_reviewer          071              검토자 반려
+doc_request_reviewer         072              검토자 승인 
+doc_rerequest_reviewer       073              검토자 재요청(외부자)
+doc_open_review              074              검토자 문서 열람(외부자)
+==========================  ===============  ===================================
+
+
+
+
+상세 문서 상태 타입
+-----------------------
+
+==========================  ===============  ===================================
+Type                         Code             설명
+==========================  ===============  ===================================
+doc_tempsave                 001              초안 (최초 작성자 임시저장 상태)
+doc_create                   002              문서 작성
+doc_complete                 003              문서 완료
+doc_update                   043              문서 수정
+doc_request_delete           047              문서 삭제 요청
+doc_delete                   049              문서 삭제
+doc_request_revoke           040              문서 취소 요청
+doc_revoke                   042              문서 취소
+doc_request_reject           045              문서 반려 요청
+doc_request_approval         010              결재 요청
+doc_accept_approval          012              결재 승인
+doc_reject_approval          011              결재 반려
+doc_cancel                   013              결재 취소
+doc_request_reception        020              내부 멤버 요청
+doc_accept_reception         022              내부 멤버 승인
+doc_reject_reception         021              내부 멤버 반려
+doc_request_outsider         030              외부수신자 요청
+doc_accept_outsider          032              외부수신자 승인
+doc_reject_outsider          031              외부수신자 반려
+doc_request_participant      060              참여자 요청
+doc_accept_participant       062              참여자 승인
+doc_reject_participant       061              참여자 반려
+doc_request_reviewer         070              검토자 요청
+doc_accept_reviewer          072              검토자 승인 
+doc_reject_reviewer          071              검토자 반려
+==========================  ===============  ===================================
+
+
 
 
 
