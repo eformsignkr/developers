@@ -279,13 +279,13 @@ eformsign API는 서명 생성을 위한 API와 문서 작성 및 처리를 위�
 서명 생성을 위한 API
 -------------------------
 
-서명 생성을 위해 먼저 `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`_\를 사용해 주십시오. 
+서명 생성을 위해 먼저 `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`_\를 사용해 주십시오. 
 
-``POST``: `/api_auth/access_token <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth#/eformsign/post-api_auth-access_token>`_\  Access Token 발급
+``POST``: `Access Token 발급 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`_\
 
 
 Access Token API에 대한 자세한 설명은 
-`다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 에서 확인하실 수 있습니다.
+`다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`__\ 에서 확인하실 수 있습니다.
  
 .. caution:: 
    
@@ -296,7 +296,7 @@ Access Token API에 대한 자세한 설명은
 
       { "code": "4000002", "ErrorMessage": "The validation time has expired.",     "execution_time": 1611538409405 }
 
-   `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 의 예제 위치에도 "execution_time"을 입력하세요.
+   `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`__\ 의 예제 위치에도 "execution_time"을 입력하세요.
    
    |image5| 
 
@@ -317,13 +317,15 @@ Access Token API에 대한 자세한 설명은
 
 .. caution:: 
    
-   발급한 API 키는 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 단, API 키 값에는 **반드시 Base64**\ 로 인코딩한 문자열을 넣어야 합니다. https://www.base64encode.org/ 에 접속하여 발급한 API 키를 넣고 인코딩된 텍스트를 받아 삽입하세요. 
+   발급한 API 키는 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 단, API 키 값에는 **반드시 Base64**\ 로 인코딩한 문자열을 넣어야 합니다. https://www.base64encode.org/ 에 접속하여 발급한 API 키를 넣고 인코딩된 텍스트를 받아 삽입하세요. 
 
 
 .. note:: 
   
    Access Token API의 **Authorize** 버튼에는 API 키 값을 입력해야 합니다.
 
+
+------------
 
 
 문서 작성 및 처리를 위한 API
@@ -334,7 +336,7 @@ Access Token API에 대한 자세한 설명은
 
 .. caution:: 
 
-   본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
+   본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`_\으로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
 
 
 .. note:: 
@@ -342,25 +344,31 @@ Access Token API에 대한 자세한 설명은
    문서 API의 **Authorize** 버튼에는 Access Token 값을 입력해야 합니다. 
 
 
-현재 제공 중인 `문서 API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`_\는 다음과 같습니다.
+현재 제공 중인 `문서 API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document>`_\는 다음과 같습니다.
 
 
 
-``POST``: `/api/documents <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents>`_\  새 문서 작성(내부 수신자)
+``POST``: `새 문서 작성_내부 수신자 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents>`_\ 
 
-``POST``: `/api/documents/external <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/post-api-documents-external>`_\  새 문서 작성(외부 수신자)
+``POST``: `새 문서 작성_외부 수신자 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/post-api-documents-external>`_\ 
 
-``GET``: `/api/documents/{document_id} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID>`_\  문서정보 조회
+``GET``: `문서정보 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID>`_\
 
-``GET``: `/api/documents/{document_id}/download_files <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID-download_files>`_\  문서 파일 다운로드(문서 PDF, 감사추적증명서)
+``GET``: `문서 파일 다운로드_문서 PDF 및 감사추적증명서 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID-download_files>`_\
 
-``GET``: `/api/documents/{document_id}/download_attach_files <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID-download_attach_files>`_\  문서 첨부 파일 다운로드
+``GET``: `문서 첨부 파일 다운로드 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID-download_attach_files>`_\ 
 
-``GET``: `/api/documents <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-documents>`_\  문서 목록 조회
+``GET``: `문서 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-documents>`_\ 
 
-``DELETE``: `/api/documents <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/delete-api-documents>`_\  문서 삭제
+``DELETE``: `문서 삭제 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/delete-api-documents>`_\ 
 
-``POST``: `/api/documents/{document_id}/re_request_outsider <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents-document_id-re_request_outsider>`_\  외부 수신자 문서 재요청
+``POST``: `외부 수신자 문서 재요청 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents-document_id-re_request_outsider>`_\ 
+
+``GET``: `작성가능한 템플릿 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-forms>`_\  
+
+``POST``: `문서 일괄 작성 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-forms-mass_documents%3Ftemplate_id%3D-form_id>`_\  
+
+-----------------
 
 
 멤버 및 그룹 관리를 위한 API
@@ -371,7 +379,7 @@ API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그
 
 .. caution:: 
 
-   본 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
+   본 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
 
 
 .. note:: 
@@ -379,53 +387,39 @@ API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그
    API의 **Authorize** 버튼에는 Access Token 값을 입력해야 합니다. 
 
 
-현재 제공 중인 `멤버 및 그룹 관리 API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`_\는 다음과 같습니다.
+현재 제공 중인 `멤버 및 그룹 관리 API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members>`_\는 다음과 같습니다.
 
 
-``GET``: `/api/members <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-members>`_\  멤버 목록 조회
-
-``POST``: `/api/members <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-members>`_\  멤버 추가
-
-``PATCH``: `/api/members/{member_id} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/patch-api-members-member_id>`_\  멤버 수정
-
-``DELETE``: `/api/members/{member_id} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/delete-api-members-member_id>`_\  멤버 삭제
-
-``GET``: `/api/groups <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-groups>`_\  그룹 목록 조회
-
-``POST``: `/api/groups <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-groups>`_\  그룹 추가
-
-``PATCH``: `/api/groups/{group_id} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/patch-api-groups>`_\  그룹 수정
-
-``DELETE``: `/api/groups <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/delete-api-groups>`_\  그룹 삭제
+멤버 관리 API
+^^^^^^^^^^^^^^^^^
 
 
-템플릿 관리를 위한 API
-----------------------------------
+``GET``: `멤버 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-members>`_\  
 
-API를 사용해 사용 가능한 템플릿의 목록을 조회하거나 템플릿으로 문서 일괄 작성을 할 수 있습니다. 
+``POST``: `멤버 추가 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-members>`_\  
+
+``PATCH``: `멤버 수정 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/patch-api-members-member_id>`_\  
+
+``DELETE``: `멤버 삭제 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/delete-api-members-member_id>`_\  
 
 
-.. caution:: 
+그룹 관리 API
+^^^^^^^^^^^^^^^^^
 
-   본 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0_auth>`_\으로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
+
+``GET``: `그룹 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-groups>`_\  
+
+``POST``: `그룹 추가 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-groups>`_\  
+
+``PATCH``: `그룹 수정 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/patch-api-groups>`_\  
+
+``DELETE``: `그룹 삭제 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/delete-api-groups>`_\  
+
 
 
 .. note:: 
-  
-   API의 **Authorize** 버튼에는 Access Token 값을 입력해야 합니다. 
 
-
-현재 제공 중인 `템플릿 API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`_\는 다음과 같습니다.
-
-
-``GET``: `/api/forms <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-forms>`_\  작성가능한 템플릿 목록 조회
-
-``POST``: `/api/forms/mass_documents?template_id={{form_id}} <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-forms-mass_documents%3Ftemplate_id%3D-form_id>`_\  문서 일괄 작성
-
-
-
-각 eformsign API에 대한 자세한 설명은 
-`다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0>`__\ 에서 확인하실 수 있습니다.
+    각 eformsign API에 대한 자세한 설명은 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/>`__\ 에서 확인하실 수 있습니다.
 
 
 
@@ -443,7 +437,7 @@ API 상태 코드
 API 상태 코드는 다음과 같습니다.
 
 200
-'''''''
+^^^^^^^^
 
 ===========  ===============  ===================================
 Code         설명              비고
@@ -453,7 +447,7 @@ Code         설명              비고
 
 
 202
-'''''''
+^^^^^^^^
 
 ===========  ===============  ===================================
 Code         설명              비고
@@ -464,7 +458,7 @@ Code         설명              비고
 
 
 400
-'''''''
+^^^^^^^^
 
 ===========  =======================  ==========================================
 Code         설명                      비고
@@ -478,7 +472,7 @@ Code         설명                      비고
 
 
 403
-'''''''
+^^^^^^^^
 
 ===========  =========================  ==========================================
 Code         설명                        비고
@@ -491,7 +485,7 @@ Code         설명                        비고
 ===========  =========================  ==========================================
 
 405
-'''''''
+^^^^^^^^
 
 ===========  =====================  ===================================
 Code         설명                    비고
@@ -501,7 +495,7 @@ Code         설명                    비고
 
 
 500
-'''''''
+^^^^^^^^
 
 ===================  ===============  ===================================
 Code                 설명              비고
@@ -510,6 +504,7 @@ Code                 설명              비고
 ===================  ===============  ===================================
 
 
+---------
 
 
 Step 타입
