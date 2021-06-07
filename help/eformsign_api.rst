@@ -124,8 +124,7 @@ Python
 PHP
 -------
 
-PHP 예제를 사용하시려면 PHP OpenSSL 라이브러리가 설치되어 있어야 합니다.
-또한, 다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다.
+PHP 예제를 사용하시려면 PHP OpenSSL 라이브러리가 설치되어 있어야 하며, 다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다.
 
 
 각 언어별 예제
@@ -221,35 +220,20 @@ PHP 예제를 사용하시려면 PHP OpenSSL 라이브러리가 설치되어 있
         }
 
         class PrivateKey
-
-        {
-
-         
+        {         
 
             function __construct($str)
-
             {
-
                 $pem_data = base64_encode(hex2bin($str));
-
                 $offset = 0;
-
                 $pem = "-----BEGIN EC PRIVATE KEY-----\n";
-
                 while ($offset < strlen($pem_data)) {
-
                     $pem = $pem . substr($pem_data, $offset, 64) . "\n";
-
                     $offset = $offset + 64;
-
                 }
-
                 $pem = $pem . "-----END EC PRIVATE KEY-----\n";
-
                 $this->openSslPrivateKey = openssl_get_privatekey($pem);
-
             }
-
         }
 
 
