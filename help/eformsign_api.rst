@@ -97,7 +97,7 @@ eformsign_signature는 비대칭 키 방식과 타원곡선 암호화(Elliptic c
    타원곡선 암호화는 공개키 암호화 방식 중 하나로, 데이터 암호화 디지털 인증 등 현재 가장 많이 쓰이는 암호방식입니다. 
 
 
-서명 생성 방법에 대해서는  Java, Python, PHP 언어별로 설명합니다.
+서명 생성 방법에 대해서는 Java, Python, PHP 언어별로 설명합니다.
 
 Java
 -------
@@ -124,7 +124,7 @@ Python
 PHP
 -------
 
-PHP 예제를 사용하시려면 PHP OpenSSL 라이브러리가 설치되어 있어야 하며, 다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다.
+PHP 예제를 사용하시려면 PHP OpenSSL 라이브러리가 설치되어 있어야 하며, 다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다. 
 
 
 각 언어별 예제
@@ -393,7 +393,7 @@ Access Token API에 대한 자세한 설명은
 멤버 및 그룹 관리를 위한 API
 ----------------------------------
 
-API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그룹 목록을 조회할 수 있으며, 멤버 및 그룹을 추가, 수정, 삭제할 수 있습니다. 
+API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그룹 목록을 조회할 수 있으며, 멤버 및 그룹을 수정, 삭제할 수 있습니다. 
 
 
 .. caution:: 
@@ -413,9 +413,7 @@ API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그
 ^^^^^^^^^^^^^^^^^
 
 
-``GET``: `멤버 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-members>`_\  
-
-``POST``: `멤버 추가 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-members>`_\  
+``GET``: `멤버 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/get-api-members>`_\   
 
 ``PATCH``: `멤버 수정 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/patch-api-members-member_id>`_\  
 
@@ -449,6 +447,7 @@ API 코드
 ===================
 
 Open API 사용 시 다음의 코드를 참조하시기 바랍니다.
+
 
 API 상태 코드
 --------------
