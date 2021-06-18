@@ -109,12 +109,21 @@ Java
    서명 알고리즘은 SHA256withECDSA을 사용합니다.
 
 
+Javascript(Node.JS)
+------------------------
+
+Jsrsasign(https://kjur.github.io/jsrsasign/) npm 종속성이 설치되어 있어야 합니다.
+
+.. code:: Javascript
+
+   npm install jsrsasign
+
 
 
 Python
 -------
 
-키 포맷 처리용 라이브러리를 사용해야 합니다. 작업전 다음의 명령어를 통해 해당 라이브러리를 설치해 주십시오.
+키 포맷 처리용 라이브러리를 사용해야 합니다. 작업전 다음의 명령어를 통해 해당 라이브러리를 설치해 주세요.
 
 .. code:: python
 
@@ -124,7 +133,7 @@ Python
 PHP
 -------
 
-PHP 예제를 사용하시려면 PHP OpenSSL 라이브러리가 설치되어 있어야 하며, 다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다. 
+PHP 예제를 사용하려면 PHP OpenSSL 라이브러리가 설치되어 있어야 하며, 다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다. 
 
 
 각 언어별 예제
@@ -171,6 +180,27 @@ PHP 예제를 사용하시려면 PHP OpenSSL 라이브러리가 설치되어 있
         System.out.print("execution_time : "+execution_time);
         System.out.print("eformsign_signature : "+eformsign_signature);
 
+    .. code-tab:: javascript
+        :title: Javascript(Node.JS)
+
+        const rs = require('jsrsasign');
+
+
+        // User-Data-Here
+        const execution_time  = Date.now()+"";
+        const privateKeyHex = "발급 받은 private key(String)";
+
+        // User-Data-Here
+        var privateKey = rs.KEYUTIL.getKeyFromPlainPrivatePKCS8Hex(privateKeyHex);
+
+        // Sign
+        var s_sig = new rs.Signature({alg: 'SHA256withECDSA'});
+        s_sig.init(privateKey);
+        s_sig.updateString(execution_time);
+        var signature = s_sig.sign();
+        console.log('data:', execution_time);
+        console.log('eformsign_signature:', signature);
+
 
     .. code-tab:: python
         :title: Python
@@ -195,6 +225,7 @@ PHP 예제를 사용하시려면 PHP OpenSSL 라이브러리가 설치되어 있
         # 현재 시간 및 현재 시간 서명값
         print("execution_time : " + execution_time)
         print("eformsign_signature : " + binascii.hexlify(signature).decode('utf-8'))
+
 
     .. code-tab:: php
         :title: PHP - keycheck.inc.php
@@ -274,15 +305,13 @@ PHP 예제를 사용하시려면 PHP OpenSSL 라이브러리가 설치되어 있
          
          
         //eformsign_signature 생성
-        $signature = eformsignECDSA\Sign(execution_time, $privateKey);
+        $signature = eformsignECDSA\Sign($execution_time, $privateKey);
          
          
         //현재 시간 및 현재 시간 서명값
-        print 'execution_time : ' . execution_time . PHP_EOL;
+        print 'execution_time : ' . $execution_time . PHP_EOL;
         print 'eformsign_signature : ' . bin2hex($signature) . PHP_EOL;
         ?>
-
-
 
 
 
