@@ -240,7 +240,7 @@ PHP
     		 
     		# 4. verify
     		try:
-    		    if publickey.verify(eformsignSignature, data, hashfunc=hashlib.sha256, sigdecode=sigdecode_der):
+    		    if publickey.verify(eformsign_signature, data, hashfunc=hashlib.sha256, sigdecode=sigdecode_der):
     		        print("verify success")
     		        # 이곳에 이벤트에 맞는 처리를 진행합니다.
     		except BadSignatureError:

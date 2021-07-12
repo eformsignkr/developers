@@ -217,7 +217,8 @@ PHP 예제를 사용하려면 PHP OpenSSL 라이브러리가 설치되어 있어
         privateKey = SigningKey.from_der(binascii.unhexlify(privateKeyHex))
          
         # execution_time - 서버 현재 시간
-        execution_time = int(time() * 1000)
+        execution_time_int = int(time() * 1000)
+        execution_time = str(execution_time_int)
           
         # eformsign_signature 생성
         eformsign_signature = privateKey.sign(execution_time.encode('utf-8'), hashfunc=hashlib.sha256, sigencode=sigencode_der)
