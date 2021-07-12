@@ -210,7 +210,7 @@ PHP
 
 
     .. code-tab:: python
-        :title: Python
+        :title: Python 3.9.6
 
         import hashlib
     		import binascii
@@ -224,12 +224,13 @@ PHP
     		# request에서 header와 body를 읽습니다.
     		# 1. get eformsign signature
     		# eformsignSignature는 request header에 담겨 있습니다.
-    		eformsignSignature = request.headers['eformsign_signature']
+                eformsign_signature_str= request.headers['eformsign_signature']
+                eformsign_signature = binascii.unhexlify(eformsign_signature_str)
     		 
     		 
     		# 2. get request body data
-    		# eformsign signature 검증을 위해 body의 데이터를 String으로 변환 합니다.
-    		data = request.json
+    		# eformsign signature 검증을 위해 body의 데이터를 String으로 변환합니다.
+    		data = request.data
     		 
     		 
     		# 3. publicKey 세팅
@@ -239,7 +240,7 @@ PHP
     		 
     		# 4. verify
     		try:
-    		    if publickey.verify(eformsignSignature, data.encode('utf-8'), hashfunc=hashlib.sha256, sigdecode=sigdecode_der):
+    		    if publickey.verify(eformsignSignature, data, hashfunc=hashlib.sha256, sigdecode=sigdecode_der):
     		        print("verify success")
     		        # 이곳에 이벤트에 맞는 처리를 진행 합니다.
     		except BadSignatureError:
@@ -330,9 +331,7 @@ Webhook 제공 리스트
 현재 제공 중인 `Webhook <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook>`_\은 다음과 같습니다.
 
 
-``POST``: `/webhook document event <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook#/default/post-webhook-document-event>`_\  문서 이벤트 전송
-
-``POST``: `/webhook pdf <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook#/default/post-webhook-pdf>`_\  PDF 생성 이벤트 전송
+``POST``: `/webhook document event <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook#/default/post-webhook-document-event>`_\  웹훅 전송
 
 
 각 eformsign Webhook에 대한 자세한 설명은 
