@@ -105,7 +105,7 @@ Webhook 키 발급하기
 Java
 -------
 
-eformsign 서버로 부터 전달 받은 이벤트 정보를 `Webhook Key 발급하기 <#webhook>`__\에서 발급받은 public key로 검증하여 eformsign에서 정상적으로 호출한 이벤트인지에 대한  검증을 진행합니다. 
+eformsign 서버로부터 전달받은 이벤트 정보를 `Webhook Key 발급하기 <#webhook>`__\에서 발급받은 public key로 검증하여 eformsign에서 정상적으로 호출한 이벤트인지에 대한 검증을 진행합니다. 
 
 .. note:: 
 
@@ -242,7 +242,7 @@ PHP
     		try:
     		    if publickey.verify(eformsignSignature, data, hashfunc=hashlib.sha256, sigdecode=sigdecode_der):
     		        print("verify success")
-    		        # 이곳에 이벤트에 맞는 처리를 진행 합니다.
+    		        # 이곳에 이벤트에 맞는 처리를 진행합니다.
     		except BadSignatureError:
     		    print("verify fail")
 
