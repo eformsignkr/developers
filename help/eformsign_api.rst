@@ -136,6 +136,13 @@ PHP
 PHP 예제를 사용하려면 PHP OpenSSL 라이브러리가 설치되어 있어야 하며, 다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다. 
 
 
+C# (.NET)
+-----------------------
+
+암호화 처리를 위해 BouncyCastle 라이브러리를 사용하여 검증하는 예제입니다.(NuGet 패키지로도 설치 가능, MIT License)
+
+
+
 각 언어별 예제
 ---------------------
 
@@ -313,6 +320,85 @@ PHP 예제를 사용하려면 PHP OpenSSL 라이브러리가 설치되어 있어
         print 'execution_time : ' . $execution_time . PHP_EOL;
         print 'eformsign_signature : ' . bin2hex($signature) . PHP_EOL;
         ?>
+
+    .. code-tab:: C#(.NET)
+        :title: C#(.NET) - Program.cs
+
+        using System;
+        using System.Text;
+        using Org.BouncyCastle.Crypto;
+        using Org.BouncyCastle.Security;
+        using Org.BouncyCastle.Crypto.Parameters;
+         
+        namespace eformsign_signature_verify
+        {
+            class Program
+            {
+                private static readonly string HASH_ENCRYPTION_ALGORITHM = "SHA256withECDSA";
+         
+                static void Main(string[] args)
+                {
+                    byte[] privateKeyBytes = HexStringToByteArray("3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207eae51d5e4272ebb3fe2701d25026a8c2850965981fb2efa68c8db48b32ede07");
+                    byte[] publicKeyBytes = HexStringToByteArray("3059301306072a8648ce3d020106082a8648ce3d030107034200045ac8a472cee38601e99b2a2d731c958e738eee1ee6aca28f6f5637f231e9a8444f3cb80d9ce6c5bace1d0e71167673ff81743e0ea811ebd999f2f314f1d0a676");
+         
+                    string data = "{\"test\":\"signature test\"}";
+         
+                    ISigner signer = SignerUtilities.GetSigner("SHA256withECDSA");
+                    signer.Init(true, (ECPrivateKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes));
+         
+                    byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+         
+                    signer.BlockUpdate(dataBytes, 0, dataBytes.Length);
+                    byte[] signatureBytes = signer.GenerateSignature();
+         
+                    Console.WriteLine("data : {0}", data);
+                    Console.WriteLine("eformsign_signature : {0}", ByteArrayToHexString(signatureBytes));
+         
+                    if (Verify(dataBytes, signatureBytes, PublicKeyFactory.CreateKey(publicKeyBytes)))
+                    {
+                        Console.WriteLine("verify success");
+                    }
+                    else
+                    {
+                        Console.WriteLine("verify fail");
+                    }
+                }
+         
+         
+                public static bool Verify(byte[] messageBytes, byte[] signatureBytes, AsymmetricKeyParameter publicKey)
+                {
+                    ISigner signer = SignerUtilities.GetSigner(HASH_ENCRYPTION_ALGORITHM);
+                    signer.Init(false, publicKey);
+                    signer.BlockUpdate(messageBytes, 0, messageBytes.Length);
+                    return signer.VerifySignature(signatureBytes);
+                }
+         
+                public static string ByteArrayToHexString(byte[] data)
+                {
+                    StringBuilder builder = new StringBuilder();
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        builder.Append(data[i].ToString("x2"));
+                    }
+                    return builder.ToString();
+                }
+         
+                public static byte[] HexStringToByteArray(string hexString)
+                {
+                    if (hexString.Length % 2 != 0)
+                    {
+                        throw new ArgumentException("{0} must have an even length", nameof(hexString));
+                    }
+                    byte[] bytes = new byte[hexString.Length / 2];
+                    for (int i = 0; i < bytes.Length; i++)
+                    {
+                        string currentHex = hexString.Substring(i * 2, 2);
+                        bytes[i] = Convert.ToByte(currentHex, 16);
+                    }
+                    return bytes;
+                }
+            }
+        }
 
 
 
