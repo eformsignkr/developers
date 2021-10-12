@@ -239,7 +239,7 @@ document_option과 callback의 2가지 파라미터를 사용할 수 있습니�
     eformsign.document(document_option, "eformsign_iframe", success_callback, error_callback);
 
 
-파라미터 설명: document-option
+document-option 파라미터
 ================================
 
 
@@ -552,7 +552,7 @@ comment                            다음 수신자에게 전달할 메시지   
 
 
 
-파라미터 설명: Callback
+Callback 파라미터
 ============================
 
 
