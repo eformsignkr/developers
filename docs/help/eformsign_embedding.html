@@ -24,9 +24,7 @@
       <script src="../_static/theme.js" defer></script>
     
   <link rel="index" title="Index" href="../genindex.html" />
-  <link rel="search" title="Search" href="../search.html" />
-  <link rel="next" title="eformsign API 사용하기" href="eformsign_api.html" />
-  <link rel="prev" title="개요" href="eformsign_api_overview.html" /> 
+  <link rel="search" title="Search" href="../search.html" /> 
   </head>
 
   <body>
@@ -72,9 +70,9 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="../index.html#eformsign-api-webhook">Contents:</a></span>
+        <span class="caption-text"><a href="../index.html#eformsign-api-webhook">eformsign api / webhook 가이드</a></span>
       </p>
-      <ul class="current">
+      <ul class="">
         
           <li class="toctree-l1 "><a href="eformsign_api_overview.html" class="reference internal ">개요</a>
 
@@ -82,18 +80,8 @@
           </li>
 
         
-          <li class="toctree-l1 current"><a href="#" class="reference internal current">eformsign 기능 직접 삽입하기</a>
+          <li class="toctree-l1 "><a href="eformsign_embedding.html" class="reference internal ">eformsign 기능 직접 삽입하기</a>
 
-            
-              <ul>
-                
-                  <li class="toctree-l2"><a href="#id1" class="reference internal">준비하기</a></li>
-                
-                  <li class="toctree-l2"><a href="#id9" class="reference internal">설치하기</a></li>
-                
-                  <li class="toctree-l2"><a href="#id10" class="reference internal">eformsign 객체에 대한 설명</a></li>
-                
-              </ul>
             
           </li>
 
@@ -127,14 +115,6 @@
   
 
   <ul class="page-nav">
-  <li class="prev">
-    <a href="eformsign_api_overview.html"
-       title="previous chapter">← 개요</a>
-  </li>
-  <li class="next">
-    <a href="eformsign_api.html"
-       title="next chapter">eformsign API 사용하기 →</a>
-  </li>
 </ul>
   
 </div>
@@ -241,66 +221,6 @@ error_callback)</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>redirect 방식은 추후 공개할 예정입니다.</p>
-</div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">eformsign</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EformSign</span><span class="p">();</span>
-
-<span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;company&quot;</span> <span class="o">:</span> <span class="p">{</span>
-     <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">// company id 입력</span>
-     <span class="s2">&quot;country_code&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// 국가 코드 입력 (ex: kr)</span>
-     <span class="s2">&quot;user_key&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>  <span class="c1">// 고객 시스템의 고유한 Key (고객시스템에 로그인한 사용자의 unique key) - option</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;user&quot;</span> <span class="o">:</span> <span class="p">{</span>
-       <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;01&quot;</span> <span class="p">,</span>
-       <span class="s2">&quot;access_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// access Token 입력 openAPI accessToken 참조</span>
-       <span class="s2">&quot;refresh_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// refresh Token 입력 openAPI accessToken 참조</span>
-       <span class="s2">&quot;external_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// 외부자 처리 시 external Token 입력 openAPI accessToken 참조</span>
-       <span class="s2">&quot;external_user_info&quot;</span> <span class="o">:</span> <span class="p">{</span>
-          <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span> <span class="c1">// 외부자 처리 시 외부자 이름 입력</span>
-       <span class="p">}</span>
-   <span class="p">},</span>
-   <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="p">{</span>
-       <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;02&quot;</span><span class="p">,</span>
-       <span class="s2">&quot;template_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// template id 입력</span>
-       <span class="s2">&quot;document_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>  <span class="c1">// document_id 입력</span>
-   <span class="p">},</span>
-   <span class="s2">&quot;prefill&quot;</span> <span class="o">:</span> <span class="p">{</span>
-       <span class="s2">&quot;document_name&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// 문서 제목 입력</span>
-       <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span>
-           <span class="s2">&quot;id&quot;</span> <span class="p">;</span> <span class="s2">&quot;고객명&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;value&quot;</span> <span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;enabled&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-           <span class="s2">&quot;required&quot;</span> <span class="o">:</span> <span class="kc">true</span>
-       <span class="p">}]</span>
-   <span class="p">},</span>
-   <span class="s2">&quot;return_fields&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s1">&#39;고객명&#39;</span><span class="p">]</span>
-<span class="p">};</span>
-
-<span class="c1">//callback option</span>
-<span class="kd">var</span> <span class="nx">success_callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
-   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
-   <span class="k">if</span><span class="p">(</span> <span class="nx">response</span><span class="p">.</span><span class="nx">code</span> <span class="o">==</span> <span class="s2">&quot;-1&quot;</span><span class="p">){</span>
-       <span class="c1">//문서 작성 성공</span>
-       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">document_id</span><span class="p">);</span>
-       <span class="c1">// return_fields에 넘긴 데이터를 조회 가능함. fields는 폼을 작성할 때 만든 입력 컴포넌트의 id를 의미함.</span>
-       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">field_values</span><span class="p">[</span><span class="s2">&quot;company_name&quot;</span><span class="p">]);</span>
-       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">field_values</span><span class="p">[</span><span class="s2">&quot;position&quot;</span><span class="p">]);</span>
-   <span class="p">}</span>
-<span class="p">};</span>
-
-<span class="kd">var</span> <span class="nx">error_callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
-   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
-   <span class="c1">//문서 작성 실패</span>
-   <span class="nx">alert</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-
-<span class="p">};</span>
-
-<span class="nx">eformsign</span><span class="p">.</span><span class="nb">document</span><span class="p">(</span><span class="nx">document_option</span> <span class="p">,</span> <span class="s2">&quot;eformsign_iframe&quot;</span> <span class="p">,</span> <span class="nx">success_callback</span> <span class="p">,</span> <span class="nx">error_callback</span>  <span class="p">);</span>
-</pre></div>
-</div>
 <div class="section" id="embedding-document">
 <h3>embedding_document 함수<a class="headerlink" href="#embedding-document" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
@@ -308,14 +228,14 @@ error_callback)</p></td>
 <p>함수 형태
 document(document_option, iframe_id, success_callback , error_callback)</p>
 </div>
-<p>eformsign을 삽입해 고객사의 사이트/서비스에서 문서를 작성할 수 있도록 해주는 함수입니다. eformsign 내 document 함수를 호출해 사용하세요.</p>
-<p>크게 document_option과 callback의 2가지 파라미터를 사용할 수 있습니다.</p>
+<p>eformsign을 임베딩하여 고객사의 사이트/서비스에서 문서를 작성, 처리, 미리보기 할 수 있도록 해주는 함수입니다. eformsign 내 document 함수를 호출해 사용할 수 있습니다.</p>
+<p>document_option과 callback의 2가지 파라미터를 사용할 수 있습니다.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 15%" />
-<col style="width: 10%" />
-<col style="width: 57%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 60%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter Name</p></th>
@@ -328,77 +248,101 @@ document(document_option, iframe_id, success_callback , error_callback)</p>
 <tr class="row-even"><td><p>document_option</p></td>
 <td><p>Json</p></td>
 <td><p>필수</p></td>
-<td><p>임베딩하여 eformsign 구동시, document 관련된 옵션을 지정</p></td>
+<td><p>eformsign을 임베딩하여 구동할 회사, 사용자, 문서 등의 옵션을 지정</p></td>
 </tr>
 <tr class="row-odd"><td><p>iframe_id</p></td>
 <td><p>String</p></td>
 <td><p>필수</p></td>
-<td><p>임베딩되어 표시될 iframe id</p></td>
+<td><p>eformsign이 임베딩되어 표시될 iframe id</p></td>
 </tr>
 <tr class="row-even"><td><p>success_callback</p></td>
-<td><p>function</p></td>
+<td><p>Function</p></td>
 <td><p>비필수</p></td>
 <td><p>eformsign 문서 작성 성공 시, 호출될 callback 함수</p></td>
 </tr>
 <tr class="row-odd"><td><p>error_callback</p></td>
-<td><p>function</p></td>
+<td><p>Function</p></td>
 <td><p>비필수</p></td>
 <td><p>eformsign 문서 작성 실패 시, 호출될 callback 함수</p></td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">eformsign</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EformSign</span><span class="p">();</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">eformsign</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EformSignDocument</span><span class="p">();</span>
+
 <span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="s2">&quot;company&quot;</span><span class="o">:</span> <span class="p">{</span>
-       <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">// company id 입력</span>
-       <span class="s2">&quot;country_code&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// 국가 코드 입력 (ex: kr)</span>
-       <span class="s2">&quot;user_key&quot;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span> <span class="c1">// 고객 시스템의 고유한 Key (고객시스템에 로그인한 사용자의 unique key) - option</span>
+   <span class="s2">&quot;company&quot;</span> <span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>            <span class="c1">// Company ID 입력</span>
+      <span class="s2">&quot;country_code&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1">// 국가 코드 입력 (ex: kr)</span>
+      <span class="s2">&quot;user_key&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>        <span class="c1">// 임베딩한 고객 측 시스템에 로그인한 사용자의 unique key. 브라우저 쿠키의 이폼사인 로그인 정보와 비교</span>
    <span class="p">},</span>
-   <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="p">{</span>
-       <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;01&quot;</span><span class="p">,</span>
-       <span class="s2">&quot;access_token&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// access Token 입력 openAPI accessToken 참조</span>
-       <span class="s2">&quot;refresh_token&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// refresh Token 입력 openAPI accessToken 참조</span>
-       <span class="s2">&quot;external_token&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// 외부자 처리 시 external Token 입력 openAPI accessToken 참조</span>
-       <span class="s2">&quot;external_user_info&quot;</span><span class="o">:</span> <span class="p">{</span>
-           <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span> <span class="c1">// 외부자 처리 시 외부자 이름 입력</span>
-       <span class="p">}</span>
-   <span class="p">},</span>
-   <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="p">{</span>
-       <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;02&quot;</span><span class="p">,</span>
-       <span class="s2">&quot;template_id&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// template id 입력</span>
-       <span class="s2">&quot;document_id&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span> <span class="c1">// document_id 입력</span>
-   <span class="p">},</span>
-   <span class="s2">&quot;prefill&quot;</span><span class="o">:</span> <span class="p">{</span>
-       <span class="s2">&quot;document_name&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// 문서 제목 입력</span>
-       <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">[{</span>
-           <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;고객명&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-           <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
-       <span class="p">}]</span>
-   <span class="p">},</span>
-   <span class="s2">&quot;return_fields&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;고객명&#39;</span><span class="p">]</span>
+   <span class="s2">&quot;user&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;01&quot;</span> <span class="p">,</span>         <span class="c1">// 사용자 구분 (01: 멤버, 02: 외부자)</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;test1@forcs.com&quot;</span> <span class="c1">// 사용자 ID(이메일)</span>
+        <span class="s2">&quot;access_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>    <span class="c1">// Access Token 입력 (OpenAPI Access Token 참조)</span>
+        <span class="s2">&quot;refresh_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>   <span class="c1">// Refresh Token 입력 (OpenAPI Access Token 참조)</span>
+        <span class="s2">&quot;external_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1">// 외부자 처리 시 사용자를 인증할 External Token 입력 (Webhook에서 제공)</span>
+        <span class="s2">&quot;external_user_info&quot;</span> <span class="o">:</span> <span class="p">{</span>
+           <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>          <span class="c1">// 외부자 처리 시 외부자 이름 입력</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;02&quot;</span><span class="p">,</span>      <span class="c1">// 모드 (01: 새 문서 작성, 02: 문서 처리, 03: 문서 미리보기)</span>
+        <span class="s2">&quot;template_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// template id 입력</span>
+        <span class="s2">&quot;document_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>  <span class="c1">// document_id 입력</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;layout&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;lang_code&quot;</span> <span class="o">:</span> <span class="s2">&quot;ko&quot;</span> <span class="c1">// 이폼사인 언어. ko, en, ja</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;prefill&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;document_name&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// 문서 제목 입력</span>
+        <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span> <span class="p">;</span> <span class="s2">&quot;고객명&quot;</span><span class="p">,</span>       <span class="c1">// 필드명</span>
+                <span class="s2">&quot;value&quot;</span> <span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>    <span class="c1">// 필드값</span>
+                <span class="s2">&quot;enabled&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">// 활성화 여부</span>
+                <span class="s2">&quot;required&quot;</span> <span class="o">:</span> <span class="kc">true</span>   <span class="c1">// 필수 여부</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;recipients&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;step_idx&quot;</span> <span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>       <span class="c1">// 워크플로우 순서. 수신자가 있을 경우 2부터 시작</span>
+                <span class="s2">&quot;step_type&quot;</span><span class="o">:</span> <span class="s2">&quot;06&quot;</span><span class="p">,</span>      <span class="c1">// 단계 종류. 05: 참여자, 06: 검토자</span>
+                <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s1">&#39;김테스트&#39;</span><span class="p">,</span>        <span class="c1">// 수신자 이름</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;test@forcs.com&quot;</span><span class="p">,</span> <span class="c1">// 수신자 ID/이메일</span>
+                <span class="s2">&quot;sms&quot;</span><span class="o">:</span> <span class="s2">&quot;01023456789&quot;</span><span class="p">,</span>   <span class="c1">// 수신자 핸드폰 번호</span>
+                <span class="s2">&quot;use_mail&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>       <span class="c1">// 이메일 알림 사용 여부</span>
+                <span class="s2">&quot;use_sms&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>        <span class="c1">// SMS 알림 사용 여부</span>
+                <span class="s2">&quot;auth&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>     <span class="c1">// 워크플로우 설정에서 문서 열람 전 본인확인 설정 - 본인확인 정보에 체크한 경우 비밀번호 입력</span>
+                    <span class="s2">&quot;password_hint&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span><span class="c1">// 위 조건에 따라 비밀번호를 입력한 경우, 비밀번호 힌트</span>
+                    <span class="s2">&quot;valid&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;day&quot;</span><span class="o">:</span> <span class="mf">7</span><span class="p">,</span>       <span class="c1">// 문서 전송 기한 (일)</span>
+                        <span class="s2">&quot;hour&quot;</span><span class="o">:</span> <span class="mf">0</span>       <span class="c1">// 문서 전송 기한 (시간)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;여기에 코멘트 입력&quot;</span>     <span class="c1">// 메시지</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;return_fields&quot;</span> <span class="o">:</span> <span class="p">[</span><span class="s1">&#39;고객명&#39;</span><span class="p">]</span>           <span class="c1">// Success Callback에서 값을 확인할 수 있도록 넘겨줄 필드명</span>
 <span class="p">};</span>
 
 <span class="c1">//callback option</span>
-<span class="kd">var</span> <span class="nx">success_callback</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
-   <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span> <span class="o">==</span> <span class="s2">&quot;-1&quot;</span><span class="p">)</span> <span class="p">{</span>
-       <span class="c1">//문서 작성 성공</span>
-       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">document_id</span><span class="p">);</span>
-       <span class="c1">// return_fields에 넘긴 데이터를 조회 가능함. fields는 폼을 작성할 때 만든 입력 컴포넌트의 id를 의미함.</span>
-       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">field_values</span><span class="p">[</span><span class="s2">&quot;company_name&quot;</span><span class="p">]);</span>
-       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">field_values</span><span class="p">[</span><span class="s2">&quot;position&quot;</span><span class="p">]);</span>
-   <span class="p">}</span>
+<span class="kd">var</span> <span class="nx">success_callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">response</span><span class="p">.</span><span class="nx">code</span> <span class="o">==</span> <span class="s2">&quot;-1&quot;</span><span class="p">){</span>
+        <span class="c1">//문서 작성 성공</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">document_id</span><span class="p">);</span>
+        <span class="c1">// return_fields에 넘긴 데이터를 조회 가능함. fields는 폼을 작성할 때 만든 입력 컴포넌트의 id를 의미함.</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">field_values</span><span class="p">[</span><span class="s2">&quot;company_name&quot;</span><span class="p">]);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">field_values</span><span class="p">[</span><span class="s2">&quot;position&quot;</span><span class="p">]);</span>
+    <span class="p">}</span>
 <span class="p">};</span>
 
-
-<span class="kd">var</span> <span class="nx">error_callback</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
-   <span class="c1">//문서 작성 실패</span>
-   <span class="nx">alert</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-
+<span class="kd">var</span> <span class="nx">error_callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
+    <span class="c1">//문서 작성 실패</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="nx">eformsign</span><span class="p">.</span><span class="nb">document</span><span class="p">(</span><span class="nx">document_option</span><span class="p">,</span> <span class="s2">&quot;eformsign_iframe&quot;</span><span class="p">,</span> <span class="nx">success_callback</span><span class="p">,</span> <span class="nx">error_callback</span><span class="p">);</span>
@@ -407,102 +351,156 @@ document(document_option, iframe_id, success_callback , error_callback)</p>
 </div>
 <div class="section" id="document-option">
 <h3>파라미터 설명: document-option<a class="headerlink" href="#document-option" title="Permalink to this headline">¶</a></h3>
-<p>document-option에서는 크게 다음의 5가지 항목에 대해 설정할 수 있습니다.</p>
-<ul class="simple">
-<li><p>회사 정보</p></li>
-<li><p>유저 정보</p></li>
-<li><p>모드</p></li>
-<li><p>리턴 필드</p></li>
-<li><p>자동 기입</p></li>
-</ul>
+<p>document-option에서는 다음의 6가지 항목에 대해 설정할 수 있습니다.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 4%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>변수명</p></th>
+<th class="head"><p>설명</p></th>
+<th class="head"><p>데이터 타입</p></th>
+<th class="head"><p>필수</p></th>
+<th class="head"><p>하위 옵션</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>company</p></td>
+<td><p>회사 정보</p></td>
+<td><p>Object</p></td>
+<td><p>O</p></td>
+<td><p>id, country_code, user_key</p></td>
+</tr>
+<tr class="row-odd"><td><p>mode</p></td>
+<td><p>임베딩 모드</p></td>
+<td><p>Object</p></td>
+<td><p>O</p></td>
+<td><p>type, template_id, document_id</p></td>
+</tr>
+<tr class="row-even"><td><p>user</p></td>
+<td><p>사용자 정보</p></td>
+<td><p>Object</p></td>
+<td><p>X</p></td>
+<td><p>type, id, access_token, refresh_token, external_token, external_user_info</p></td>
+</tr>
+<tr class="row-odd"><td><p>layout</p></td>
+<td><p>레이아웃</p></td>
+<td><p>Object</p></td>
+<td><p>X</p></td>
+<td><p>lang_code</p></td>
+</tr>
+<tr class="row-even"><td><p>prefill</p></td>
+<td><p>자동 기입</p></td>
+<td><p>Object</p></td>
+<td><p>X</p></td>
+<td><p>document_name, fields, recipients, comment</p></td>
+</tr>
+<tr class="row-odd"><td><p>return_fields</p></td>
+<td><p>리턴 필드</p></td>
+<td><p>Array</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>회사 정보와 모드는 필수 입력정보입니다.</p>
 </div>
-<div class="section" id="id11">
-<h4>1. 회사 정보(필수)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>  <span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;company&quot;</span> <span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s1">&#39;f9aec832efef4133a1e849efaf8a9aed&#39;</span><span class="p">,</span>  <span class="c1">// 회사의 id - 회사관리 - 회사 정보 에서 확인 - 필수</span>
-        <span class="s2">&quot;country_code&quot;</span> <span class="o">:</span> <span class="s2">&quot;kr&quot;</span><span class="p">,</span> <span class="c1">// 비필수 이나, 지정해 주는 것이 좋음. ( 회사 관리의 회사 정보에서 국가에 대한 코드를 지정 ) - 빠른 open이 가능함.</span>
-        <span class="s2">&quot;user_key&quot;</span><span class="o">:</span> <span class="s2">&quot;eformsign@forcs.com&quot;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id12">
-<h4>2. 유저 정보(비필수)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
-<dl class="simple">
-<dt><strong>회사 내 멤버 로그인을 통한 신규 작성</strong></dt><dd><ul class="simple">
-<li><p>유저 정보를 지정하지 않을 경우에 해당하며, 유저 정보를 지정하지 않습니다.</p></li>
-<li><p>이 경우, eformsign 로그인 페이지가 기동되며, 로그인 과정 이후에 문서를 작성할 수 있게 됩니다.</p></li>
-</ul>
-</dd>
-<dt><strong>회사 내 멤버의 토큰을 이용한 작성(신규 및 수신한 문서 포함)</strong></dt><dd><ul class="simple">
-<li><p>임베딩시, eformsign 로그인 과정 없이, 특정 계정의 token을 이용하여 문서를 작성 및 수신한 문서를 작성합니다.</p></li>
-<li><p>토큰 발급 방법은 Open API의 Access token 발급을 통해 가능합니다.</p></li>
-</ul>
-</dd>
-</dl>
+<div class="section" id="company">
+<h4>1. company(회사 정보/필수)<a class="headerlink" href="#company" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 15%" />
+<col style="width: 7%" />
+<col style="width: 4%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>변수명</p></th>
+<th class="head"><p>설명</p></th>
+<th class="head"><p>데이터 타입</p></th>
+<th class="head"><p>필수</p></th>
+<th class="head"><p>비고</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>회사 ID</p></td>
+<td><p>String</p></td>
+<td><p>O</p></td>
+<td><p>회사 관리 - 회사 정보에서 확인</p></td>
+</tr>
+<tr class="row-odd"><td><p>country_code</p></td>
+<td><p>국가 코드</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>회사 관리 - 회사 정보의 국가에 대한 코드를 지정. 비필수이나, 입력 시 빠른 open이 가능함</p></td>
+</tr>
+<tr class="row-even"><td><p>user_key</p></td>
+<td><p>고객시스템 사용자 고유 키</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>임베딩하는 고객사의 시스템에서 해당 유저가 누구인지를 명확히 설정하기 위해 eformsign에 넘겨주는 사용자 계정 정보임</p>
+<p>브라우저에 이미 로그인 정보가 있을 경우, 해당 key와 비교하여 일치하지 않는 경우 로그아웃 처리됨</p>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;user&quot;</span><span class="o">:</span><span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;01&quot;</span> <span class="p">,</span> <span class="c1">// 01 - internal or  02 - external  (필수)</span>
-        <span class="s2">&quot;access_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// access Token 입력 openAPI accessToken 참조</span>
-        <span class="s2">&quot;refresh_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// refresh Token 입력 openAPI accessToken 참조</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<dl class="simple">
-<dt><strong>회사 내 멤버가 아닌 사용자가 신규 문서 작성</strong></dt><dd><ul class="simple">
-<li><p>eformsign의 회원이 아닌 사용자로 하여금 문서를 작성하게 하는 방식</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;user&quot;</span><span class="o">:</span><span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;02&quot;</span> <span class="p">,</span> <span class="c1">// 01 - internal or  02 - external  (필수)</span>
-        <span class="s2">&quot;external_user_info&quot;</span> <span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span> <span class="c1">// 외부자 처리 시 외부자 이름 입력</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<dl class="simple">
-<dt><strong>회사 내 멤버가 아닌 사용자가 수신한 문서를 작성</strong></dt><dd><ul class="simple">
-<li><p>임베딩시, eformsign의 회원이 아닌 사용자가 수신한 문서를 작성하게 하는 방식</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;user&quot;</span><span class="o">:</span><span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;02&quot;</span> <span class="p">,</span> <span class="c1">// 01 - internal or  02 - external  (필수)</span>
-    <span class="s2">&quot;external_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// 외부자 처리 시 external Token 입력 openAPI accessToken 참조</span>
-    <span class="s2">&quot;external_user_info&quot;</span> <span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span> <span class="c1">// 외부자 처리 시 외부자 이름 입력</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;user&quot;</span><span class="o">:</span><span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;01&quot;</span> <span class="p">,</span> <span class="c1">// 01 - internal or  02 - external  (필수)</span>
-        <span class="s2">&quot;access_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// access Token 입력 openAPI accessToken 참조</span>
-        <span class="s2">&quot;refresh_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// refresh Token 입력 openAPI accessToken 참조</span>
-        <span class="s2">&quot;external_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// 외부자 처리 시 external Token 입력 openAPI accessToken 참조</span>
-        <span class="s2">&quot;external_user_info&quot;</span> <span class="o">:</span> <span class="p">{</span>
-           <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span> <span class="c1">// 외부자 처리 시 외부자 이름 입력</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">};</span>
+      <span class="s2">&quot;company&quot;</span> <span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;id&quot;</span> <span class="o">:</span> <span class="s1">&#39;f9aec832efef4133a1e849efaf8a9aed&#39;</span><span class="p">,</span>
+          <span class="s2">&quot;country_code&quot;</span> <span class="o">:</span> <span class="s2">&quot;kr&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;user_key&quot;</span><span class="o">:</span> <span class="s2">&quot;eformsign@forcs.com&quot;</span>
+      <span class="p">}</span>
+ <span class="p">};</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id13">
-<h4>3. 모드(필수)<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="mode">
+<h4>2. mode(임베딩 모드/필수)<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 11%" />
+<col style="width: 5%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>변수명</p></th>
+<th class="head"><p>설명</p></th>
+<th class="head"><p>데이터 타입</p></th>
+<th class="head"><p>필수</p></th>
+<th class="head"><p>비고</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>기능 타입</p></td>
+<td><p>String</p></td>
+<td><p>O</p></td>
+<td><p>01: 문서 작성, 02: 문서 처리, 03: 미리 보기</p></td>
+</tr>
+<tr class="row-odd"><td><p>template_id</p></td>
+<td><p>템플릿 ID</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>document_id</p></td>
+<td><p>문서 ID</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>문서 처리, 미리 보기 시 필수</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="simple">
 <dt><strong>템플릿을 이용한 신규 작성</strong></dt><dd><ul class="simple">
 <li><p>템플릿을 이용하여 문서를 새로 작성합니다.</p></li>
@@ -510,25 +508,25 @@ document(document_option, iframe_id, success_callback , error_callback)</p>
 </dd>
 </dl>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="p">{</span>
+   <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;01&quot;</span> <span class="p">,</span>  <span class="c1">// 01 : 문서 작성 , 02 : 문서 처리 , 03 : 미리 보기</span>
-    <span class="s2">&quot;template_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span> <span class="c1">// template id 입력</span>
-    <span class="p">}</span>
+    <span class="s2">&quot;template_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;a2c6ed9df9b642f2ade43c7efe58c9a3&quot;</span> <span class="c1">// template id 입력</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <dl class="simple">
-<dt><strong>수신한 문서에 추가 작성</strong></dt><dd><ul class="simple">
-<li><p>수신한 문서에 대해 추가 작성합니다.</p></li>
+<dt><strong>수신한 문서를 이용한 추가 작성</strong></dt><dd><ul class="simple">
+<li><p>수신한 문서를 이용하여 추가로 문서를 작성합니다.</p></li>
 </ul>
 </dd>
 </dl>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="p">{</span>
+   <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;02&quot;</span> <span class="p">,</span>  <span class="c1">// 01 : 문서 작성 , 02 : 문서 처리 , 03 : 미리 보기</span>
-    <span class="s2">&quot;template_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// template id 입력</span>
-    <span class="s2">&quot;document_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>  <span class="c1">// document_id 입력</span>
-    <span class="p">}</span>
+    <span class="s2">&quot;template_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;a2c6ed9df9b642f2ade43c7efe58c9a3&quot;</span><span class="p">,</span> <span class="c1">// template id 입력</span>
+    <span class="s2">&quot;document_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;5c19ff8c703f401c968236837d701e92&quot;</span>  <span class="c1">// document_id 입력</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -539,26 +537,395 @@ document(document_option, iframe_id, success_callback , error_callback)</p>
 </dd>
 </dl>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="p">{</span>
+   <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;03&quot;</span> <span class="p">,</span>  <span class="c1">// 01 : 문서 작성 , 02 : 문서 처리 , 03 : 미리 보기</span>
-    <span class="s2">&quot;template_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// template id 입력</span>
-    <span class="s2">&quot;document_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>  <span class="c1">// document_id 입력</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;mode&quot;</span> <span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;01&quot;</span> <span class="p">,</span>  <span class="c1">//01 : 문서 작성 , 02 : 문서 처리 , 03 : 미리 보기</span>
-    <span class="s2">&quot;template_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="c1">// template id 입력</span>
-    <span class="s2">&quot;document_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>  <span class="c1">// document_id 입력</span>
+    <span class="s2">&quot;template_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;a2c6ed9df9b642f2ade43c7efe58c9a3&quot;</span><span class="p">,</span> <span class="c1">// template id 입력</span>
+    <span class="s2">&quot;document_id&quot;</span> <span class="o">:</span> <span class="s2">&quot;5c19ff8c703f401c968236837d701e92&quot;</span>  <span class="c1">// document_id 입력</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id14">
-<h4>4. 리턴 필드(비필수)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="user">
+<h4>3. user(사용자 정보/비필수)<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>변수명</p></th>
+<th class="head"><p>설명</p></th>
+<th class="head"><p>데이터 타입</p></th>
+<th class="head"><p>필수</p></th>
+<th class="head"><p>비고</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>사용자 타입</p></td>
+<td><p>String</p></td>
+<td><p>O</p></td>
+<td><p>01: 회사 멤버, 02: 외부 작성자</p></td>
+</tr>
+<tr class="row-odd"><td><p>id</p></td>
+<td><p>계정(이메일)</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>사용자 ID/이메일 입력</p></td>
+</tr>
+<tr class="row-even"><td><p>access_token</p></td>
+<td><p>Access Token</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>Open API &gt; Access Token 발급 참조</p></td>
+</tr>
+<tr class="row-odd"><td><p>refresh_token</p></td>
+<td><p>Refresh Token</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>Open API &gt; Access Token 발급 참조</p></td>
+</tr>
+<tr class="row-even"><td><p>external_token</p></td>
+<td><p>외부자 처리용 토큰</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>멤버가 아닌 사용자가 수신한 문서 처리 시 필수 입력 (Webhook에서 제공)</p></td>
+</tr>
+<tr class="row-odd"><td><p>external_user_info</p></td>
+<td><p>외부 작성자 정보</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>멤버가 아닌 사용자가 문서 작성 또는 처리 시 필수 입력</p></td>
+</tr>
+<tr class="row-even"><td><p>external_user_info.name</p></td>
+<td><p>외부 작성자 이름</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>멤버가 아닌 사용자가 문서 작성 또는 처리 시 필수 입력</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><strong>회사 내 멤버 로그인을 통한 작성 또는 처리</strong></dt><dd><ul class="simple">
+<li><p>유저 정보를 지정하지 않을 경우에 해당합니다.</p></li>
+<li><p>이 경우, eformsign 로그인 페이지가 구동되며, 로그인 과정 이후에 문서를 작성할 수 있게 됩니다.</p></li>
+</ul>
+</dd>
+<dt><strong>회사 내 멤버 로그인을 통한 작성 또는 처리 (ID 사전 입력)</strong></dt><dd><ul class="simple">
+<li><p>임베딩시, eformsign 로그인 페이지가 구동되어, 로그인 과정 이후에 문서를 작성할 수 있습니다. 이때, ID가 로그인 화면에 미리 입력되어 있습니다.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;access_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJlZ...&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;refresh_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;0161ac6c-0f47-4cc3-9301-381f57c41495&quot;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>회사 내 멤버의 토큰을 이용한 작성 또는 처리</strong></dt><dd><ul class="simple">
+<li><p>임베딩시, eformsign 로그인 과정없이, 특정 계정의 token을 이용하여 문서를 작성 및 수신한 문서를 작성합니다.</p></li>
+<li><p>토큰 발급 방법은 Open API의 Access token 발급을 통해 가능합니다.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;access_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJlZ...&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;refresh_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;0161ac6c-0f47-4cc3-9301-381f57c41495&quot;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>회사 내 멤버가 아닌 사용자가 신규 문서 작성</strong></dt><dd><ul class="simple">
+<li><p>eformsign의 회원이 아닌 사용자로 하여금 문서를 작성하게 하는 방식입니다.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;external_user_info&quot;</span> <span class="o">:</span> <span class="p">{</span>
+           <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>회사 내 멤버가 아닌 사용자가 수신한 문서를 작성</strong></dt><dd><ul class="simple">
+<li><p>임베딩시, eformsign의 회원이 아닌 사용자가 수신한 문서를 작성하게 하는 방식입니다.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span> <span class="o">:</span> <span class="s2">&quot;02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;external_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;f8e2ff29114445dcac1e2889ac2f8a5e&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;external_user_info&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="layout">
+<h4>4. layout(레이아웃/비필수)<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 11%" />
+<col style="width: 5%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>변수명</p></th>
+<th class="head"><p>설명</p></th>
+<th class="head"><p>데이터 타입</p></th>
+<th class="head"><p>필수</p></th>
+<th class="head"><p>비고</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>lang_code</p></td>
+<td><p>eformsign 언어</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>ko: 한국어, en: 영어, ja: 일본어</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;layout&quot;</span> <span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;lang_code&quot;</span> <span class="o">:</span> <span class="s2">&quot;ko&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prefill">
+<h4>5. prefill(자동 기입/비필수)<a class="headerlink" href="#prefill" title="Permalink to this headline">¶</a></h4>
+<p>문서 작성 과정 중에 자동으로 입력될 수 있도록 처리 시 사용합니다.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 17%" />
+<col style="width: 7%" />
+<col style="width: 3%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>변수명</p></th>
+<th class="head"><p>설명</p></th>
+<th class="head"><p>데이터 타입</p></th>
+<th class="head"><p>필수</p></th>
+<th class="head"><p>비고</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>document_name</p></td>
+<td><p>문서 제목</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>fields</p></td>
+<td><p>필드 목록</p></td>
+<td><p>Array</p></td>
+<td><p>X</p></td>
+<td><p>필드 설정 Object의 목록</p></td>
+</tr>
+<tr class="row-even"><td><p>fields[].id</p></td>
+<td><p>필드명</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>필드 설정 Object 내에서는 필수 (필드명을 기준으로 설정 적용)</p></td>
+</tr>
+<tr class="row-odd"><td><p>fields[].value</p></td>
+<td><p>필드값</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><ul class="simple">
+<li><p>지정하지 않을 경우, 신규 작성의 경우 템플릿 설정의 필드 설정 옵션을 따름</p></li>
+<li><p>설정할 경우, 템플릿 설정의 필드 설정 보다 우선 순위 높음</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>fields[].enabled</p></td>
+<td><p>필드 활성화 여부</p></td>
+<td><p>Boolean</p></td>
+<td><p>X</p></td>
+<td><ul class="simple">
+<li><p>지정하지 않을 경우, 템플릿 설정의 항목 제어 옵션에 따름</p></li>
+<li><p>설정할 경우, 템플릿 설정의 항목 제어 옵션보다 우선 순위 높음</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>fields[].required</p></td>
+<td><p>필드 필수 여부</p></td>
+<td><p>Boolean</p></td>
+<td><p>X</p></td>
+<td><ul class="simple">
+<li><p>지정하지 않을 경우, 템플릿 설정의 항목 제어 옵션에 따름</p></li>
+<li><p>설정할 경우, 템플릿 설정의 항목 제어 옵션보다 우선 순위 높음</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>recipients</p></td>
+<td><p>수신자 목록</p></td>
+<td><p>Array</p></td>
+<td><p>X</p></td>
+<td><p>수신자 정보 Object의 목록</p></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].step_idx</p></td>
+<td><p>워크플로우 순서</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>첫 번째 수신자: “2”, 두 번째 이후 수신자: 순서에 따라 1씩 증가</p></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].step_type</p></td>
+<td><p>수신자 종류</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><ul class="simple">
+<li><p>기존 워크플로우: “01”(완료), “02”(결재), “03”(외부 수신자), “04”(내부 수신자)</p></li>
+<li><p>신규 워크플로우: “01”(완료), “05”(참여자), “06”(검토자)</p></li>
+</ul>
+<p>recipients 내 각 객체에 필수 설정되어야 함</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].name</p></td>
+<td><p>수신자 이름</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].id</p></td>
+<td><p>계정(이메일)</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><ul class="simple">
+<li><p>회사 멤버의 계정 정보 (ID/이메일) 입력</p></li>
+<li><p>step_type이 05(참여자) 혹은 06(검토자)인 경우, 멤버 여부 관계 없이 이메일 주소 입력 가능</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].sms</p></td>
+<td><p>휴대폰 번호</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].use_mail</p></td>
+<td><p>이메일 발송 여부</p></td>
+<td><p>Boolean</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].use_sms</p></td>
+<td><p>SMS 발송 여부</p></td>
+<td><p>Boolean</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].auth</p></td>
+<td><dl class="simple">
+<dt>본인 확인 및</dt><dd><p>문서 전송 기한 정보</p>
+</dd>
+</dl>
+</td>
+<td><p>Object</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].auth.password</p></td>
+<td><p>본인 확인 정보 (비밀번호)</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>워크플로우 설정에서 문서 열람 전 본인확인 설정 - 본인확인 정보에 체크한 경우 비밀번호 입력</p></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].auth.password_hint</p></td>
+<td><p>본인 확인 정보 도움말
+(비밀번호 힌트)</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td><p>위 조건에 따라 비밀번호를 입력한 경우, 비밀번호 힌트</p></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].auth.valid</p></td>
+<td><p>문서 전송 기한 정보</p></td>
+<td><p>Object</p></td>
+<td><p>X</p></td>
+<td><p>미 입력시 기본값: 0일 0시간 (멤버의 경우 무제한, 외부 수신자의 경우 화면 상에서 재입력 필요)</p></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].auth.valid.day</p></td>
+<td><p>문서 전송 기한 (일)</p></td>
+<td><p>Integer</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].auth.valid.hour</p></td>
+<td><p>문서 전송 기한 (시간)</p></td>
+<td><p>Integer</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>comment</p></td>
+<td><p>다음 수신자에게 전달할 메시지</p></td>
+<td><p>String</p></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;prefill&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;document_name&quot;</span><span class="o">:</span> <span class="s2">&quot;개인정보활용동의서&quot;</span><span class="p">,</span>   <span class="c1">// 문서 제목 입력</span>
+        <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span> <span class="p">;</span> <span class="s2">&quot;고객명&quot;</span><span class="p">,</span>       <span class="c1">// 필드명</span>
+                <span class="s2">&quot;value&quot;</span> <span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>    <span class="c1">// 필드값</span>
+                <span class="s2">&quot;enabled&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">// 활성화 여부</span>
+                <span class="s2">&quot;required&quot;</span> <span class="o">:</span> <span class="kc">true</span>   <span class="c1">// 필수 여부</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;recipients&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;step_idx&quot;</span> <span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>       <span class="c1">// 워크플로우 순서. 수신자가 있을 경우 2부터 시작</span>
+                <span class="s2">&quot;step_type&quot;</span><span class="o">:</span> <span class="s2">&quot;06&quot;</span><span class="p">,</span>      <span class="c1">// 단계 종류. 05: 참여자, 06: 검토자</span>
+                <span class="s2">&quot;name&quot;</span> <span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>        <span class="c1">// 수신자 이름</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;test@forcs.com&quot;</span><span class="p">,</span> <span class="c1">// 수신자 ID/이메일</span>
+                <span class="s2">&quot;sms&quot;</span><span class="o">:</span> <span class="s2">&quot;01023456789&quot;</span><span class="p">,</span>   <span class="c1">// 수신자 핸드폰 번호</span>
+                <span class="s2">&quot;use_mail&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>       <span class="c1">// 이메일 알림 사용 여부</span>
+                <span class="s2">&quot;use_sms&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>        <span class="c1">// SMS 알림 사용 여부</span>
+                <span class="s2">&quot;auth&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;6789&quot;</span><span class="p">,</span> <span class="c1">// 워크플로우 설정에서 문서 열람 전 본인확인 설정 - 본인확인 정보에 체크한 경우 비밀번호 입력</span>
+                    <span class="s2">&quot;password_hint&quot;</span><span class="o">:</span> <span class="s2">&quot;핸드폰 뒷자리를 입력하세요.&quot;</span><span class="p">,</span> <span class="c1">// 위 조건에 따라 비밀번호를 입력한 경우, 비밀번호 힌트</span>
+                    <span class="s2">&quot;valid&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;day&quot;</span><span class="o">:</span> <span class="mf">7</span><span class="p">,</span>       <span class="c1">// 문서 전송 기한 (일)</span>
+                        <span class="s2">&quot;hour&quot;</span><span class="o">:</span> <span class="mf">0</span>       <span class="c1">// 문서 전송 기한 (시간)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;확인 및 서명 바랍니다.&quot;</span>  <span class="c1">// 메시지</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h4>6. 리턴 필드(비필수)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <p>문서 작성 및 수정 후, 사용자가 작성한 필드의 내용 중 callback 함수를 통해 받을 수 있는 항목을 지정합니다.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -570,180 +937,223 @@ document(document_option, iframe_id, success_callback , error_callback)</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id15">
-<h4>5. 자동 기입(문서 작성 과정 중에 자동으로 기입 처리시 사용)<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
-<dl class="simple">
-<dt><strong>문서 제목</strong></dt><dd><ul class="simple">
-<li><p>document_name에 작성할 문서의 제목을 지정합니다.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;prefill&quot;</span> <span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;document_name&quot;</span><span class="o">:</span> <span class="s2">&quot;휴가신청서&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<dl class="simple">
-<dt><strong>문서내 필드 설정 기입</strong></dt><dd><ul class="simple">
-<li><p>폼 생성시에 지정한 입력 컴포넌트의 ID를 기준으로, 필드 초기값 및 활성 여부, 필수 여부를 지정합니다.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>enabled
-- 지정하지 않을 경우, 템플릿 설정의 항목 제어 옵션에 따른다
-- 지정할 경우, 템플릿 설정의 항목 제어 옵션보다 우선한다</p></li>
-<li><p>required
-- 지정하지 않을 경우, 템플릿 설정의 항목 제어 옵션에 따른다
-- 지정할 경우, 템플릿 설정의 항목 제어 옵션보다 우선한다</p></li>
-<li><p>value
-- 지정하지 않을 경우, 신규 작성 시에 템플릿 설정의 필드 설정 옵션을 따른다
-- 지정할 경우, 템플릿 설정의 필드 설정보다 우선한다</p></li>
-</ul>
-</div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;prefill&quot;</span> <span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span>
-        <span class="s2">&quot;id&quot;</span> <span class="p">;</span> <span class="s2">&quot;고객명&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span> <span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;enabled&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;required&quot;</span> <span class="o">:</span> <span class="kc">true</span>
-    <span class="p">}]</span>
-<span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;prefill&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;document_name&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;고객명&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-                <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="callback">
 <h3>파라미터 설명: Callback<a class="headerlink" href="#callback" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="response">
+<h4>1. response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h4>
+<p>문서 작성/처리를 성공 혹은 실패 시 다음과 같은 구조로 response가 반환됩니다.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 16%" />
-<col style="width: 12%" />
-<col style="width: 54%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 28%" />
+<col style="width: 44%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Paramter Name</p></th>
-<th class="head"><p>Paramter Type</p></th>
-<th class="head"><p>필수 여부</p></th>
-<th class="head"><p>설명</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>success_callback</p></td>
-<td><p>function</p></td>
-<td><p>비필수</p></td>
-<td><p>eformsign 문서 작성 성공 시, 호출될 callback 함수</p></td>
-</tr>
-<tr class="row-odd"><td><p>error_callback</p></td>
-<td><p>function</p></td>
-<td><p>비필수</p></td>
-<td><p>eformsign 문서 작성 실패 시, 호출될 callback 함수</p></td>
-</tr>
-</tbody>
-</table>
-<p>Callback 함수는 다음과 같이 설정합니다.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span> <span class="kd">var</span> <span class="nx">eformsign</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eformsign</span><span class="p">();</span> <span class="c1">// iframe document 함수 인자로 이동</span>
-
-
- <span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{};</span>
-
-
-<span class="kd">var</span> <span class="nx">sucess_callback</span><span class="o">=</span> <span class="nx">funtion</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">document_id</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">title</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">field_values</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]);</span>
-<span class="p">};</span>
-
-
-<span class="kd">var</span> <span class="nx">error_callback</span><span class="o">=</span> <span class="nx">funtion</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
-  <span class="nx">alert</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-<span class="p">};</span>
-
-
-<span class="nx">eformsign</span><span class="p">.</span><span class="nb">document</span><span class="p">(</span><span class="nx">document_option</span> <span class="p">,</span> <span class="s2">&quot;eformsign_iframe&quot;</span> <span class="p">,</span> <span class="nx">sucess_callback</span> <span class="p">,</span> <span class="nx">error_callback</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>document 함수의 파라미터로 Callback 함수를 설정한 경우, Callback 함수 호출 시에 다음과 같은 값을 반환합니다.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 12%" />
-<col style="width: 39%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Callback</p></th>
-<th class="head"><p>Type</p></th>
+<tr class="row-odd"><th class="head"><p>변수명</p></th>
+<th class="head"><p>타입</p></th>
 <th class="head"><p>설명</p></th>
 <th class="head"><p>비고</p></th>
 </tr>
 </thead>
 <tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>String</p></td>
+<td><p>임베딩하여 작성한 작업의 종류</p></td>
+<td><ul class="simple">
+<li><p>document</p></li>
+<li><p>이외 기능은 추후 제공 예정</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>fn</p></td>
+<td><p>String</p></td>
+<td><p>수행한 기능</p></td>
+<td><ul class="simple">
+<li><p>saveSuccess : 저장 성공</p></li>
+<li><p>그 외 : 오류</p></li>
+</ul>
+</td>
+</tr>
 <tr class="row-even"><td><p>code</p></td>
-<td><p>string</p></td>
-<td><p>문서 제출 실패시 결과의
-오류 코드를 반환한다</p></td>
-<td><p>-1 일 경우, 정상</p></td>
-</tr>
-<tr class="row-odd"><td><p>document
-_id</p></td>
-<td><p>string</p></td>
-<td><p>문서 제출 성공시, 작성한
-문서의 document_id를
-반환한다</p></td>
-<td><p>ex)
-910b8a965f9
-402b82152f48c6da5a5c</p></td>
-</tr>
-<tr class="row-even"><td><p>field
-_values</p></td>
-<td><p>object</p></td>
-<td><p>document_option에 정의한
-return_fields 컬럼에
-사용자가 입력한 값을
-가져올 수 있다</p></td>
-<td><p>ex).
-field_values[“name”]
-// john</p></td>
+<td><p>String</p></td>
+<td><p>문서 작성 혹은 처리 시 결과 코드를 반환</p></td>
+<td><ul class="simple">
+<li><p>-1 : 문서 작성/처리 성공</p></li>
+<li><p>0 : 로그아웃 성공</p></li>
+<li><p>그 외: 오류</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-odd"><td><p>message</p></td>
-<td><p>string</p></td>
-<td><p>문서 제출 실패시, 오류
-메시지를 반환한다</p></td>
-<td><p>빈 값일 경우, 정상</p></td>
+<td><p>String</p></td>
+<td></td>
+<td><ul class="simple">
+<li><p>문서 작성 혹은 처리 시 성공/오류 메시지를 반환</p></li>
+<li><p>‘성공하였습니다.’ : 문서 작성/처리 성공</p></li>
+<li><p>그 외: 오류</p></li>
+</ul>
+</td>
 </tr>
-<tr class="row-even"><td><p>title</p></td>
-<td><p>string</p></td>
-<td><p>문서 제출 성공시, 작성한
-문서의 제목을 반환한다</p></td>
-<td><p>ex) 계약서</p></td>
+<tr class="row-even"><td><p>document_id</p></td>
+<td><p>String</p></td>
+<td><p>문서 제출 성공시, 작성한 문서의 document_id 반환</p></td>
+<td><p>ex) ‘910b8a965f9402b82152f48c6da5a5c’</p></td>
+</tr>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>String</p></td>
+<td><p>문서 제출 성공시, 작성한 문서의 제목을 반환</p></td>
+<td><p>ex) ‘계약서’’</p></td>
+</tr>
+<tr class="row-even"><td><p>values</p></td>
+<td><p>Object</p></td>
+<td><p>document_option에 정의한 return_fields에</p>
+<p>입력한 필드명에 대해 사용자가 입력한 값을 반환</p>
+</td>
+<td><p>{‘필드명’: ‘필드값’} 형태의 Object로 제공</p>
+<p>ex) {‘성함’: ‘홍길동’}</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>recipients</p></td>
+<td><p>Array</p></td>
+<td><p>다음 수신자 정보 Object 목록을 반환</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].step_idx</p></td>
+<td><p>String</p></td>
+<td><p>워크플로우 순서</p></td>
+<td><p>첫 번째 수신자: ‘2’, 두 번째 이후 수신자: 순서에 따라 1씩 증가</p></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].step_type</p></td>
+<td><p>String</p></td>
+<td><p>수신자 종류</p></td>
+<td><p>기존 워크플로우: ‘01’(완료), ‘02’(결재), ‘03’(외부 수신자), ‘04’(내부 수신자)</p>
+<p>신규 워크플로우: ‘01’(완료), ‘05’(참여자), ‘06’(검토자)</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>recipients[].recipient_type</p></td>
+<td><p>String</p></td>
+<td><p>수신자 유형</p></td>
+<td><p>‘01’ : 회사 멤버</p>
+<p>‘02’ : 외부 수신자</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].use_mail</p></td>
+<td><p>Boolean</p></td>
+<td><p>이메일 발송 여부</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].use_sms</p></td>
+<td><p>Boolean</p></td>
+<td><p>SMS 발송 여부</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].id</p></td>
+<td><p>String</p></td>
+<td><p>계정(이메일)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].name</p></td>
+<td><p>String</p></td>
+<td><p>수신자 이름</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].sms</p></td>
+<td><p>String</p></td>
+<td><p>휴대폰 번호</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].auth</p></td>
+<td><p>Object</p></td>
+<td><p>본인 확인 및 문서 전송 기한 정보</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].auth.password</p></td>
+<td><p>String</p></td>
+<td><p>본인 확인 정보 (비밀번호)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].auth.password_hint</p></td>
+<td><p>String</p></td>
+<td><p>본인 확인 정보 도움말 (비밀번호 힌트)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].auth.valid</p></td>
+<td><p>Object</p></td>
+<td><p>문서 전송 기한 정보</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>recipients[].auth.valid.day</p></td>
+<td><p>Integer</p></td>
+<td><p>문서 전송 기한 (일)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>recipients[].auth.valid.hour</p></td>
+<td><p>Integer</p></td>
+<td><p>문서 전송 기한 (시간)</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;document&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;fn&quot;</span><span class="o">:</span> <span class="s2">&quot;saveSuccess&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;-1&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;성공하였습니다.&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;document_id&quot;</span><span class="o">:</span> <span class="s2">&quot;c59c522ea9294660bfa84263c95c4e54&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;개인정보활용동의서&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;성함&quot;</span><span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;recipients&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;step_idx&quot;</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
+      <span class="s2">&quot;step_type&quot;</span><span class="o">:</span> <span class="s2">&quot;06&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;recipient_type&quot;</span><span class="o">:</span> <span class="s2">&quot;02&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;use_mail&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;use_sms&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;test@forcs.com&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;sms&quot;</span><span class="o">:</span> <span class="s2">&quot;+821023456789&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;auth&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password_hint&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;valid&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;day&quot;</span><span class="o">:</span> <span class="mf">7</span><span class="p">,</span>
+          <span class="s2">&quot;hour&quot;</span><span class="o">:</span> <span class="mf">0</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h4>2. callback<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<p>문서 작성/처리 성공 혹은 실패 시 반환되는 response를 받아서 원하는 작업을 하도록 success_callback과 error_callback 함수를 작성할 수 있습니다.</p>
+<p>필요에 따라 콘솔에 출력하거나 (console.log) 경고창을 표출할 수 있으며(alert), 조건문 등을 이용해 원하는 상황에 원하는 기능을 수행하도록 할 수 있습니다.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">eformsign</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EformSignDocument</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">document_option</span> <span class="o">=</span> <span class="p">{</span> <span class="cm">/* 생략 */</span> <span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">success_callback</span><span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">document_id</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">title</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="s2">&quot;성함&quot;</span><span class="p">]);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">error_callback</span><span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">eformsign</span><span class="p">.</span><span class="nb">document</span><span class="p">(</span><span class="nx">document_option</span><span class="p">,</span> <span class="s2">&quot;eformsign_iframe&quot;</span><span class="p">,</span> <span class="nx">success_callback</span><span class="p">,</span> <span class="nx">error_callback</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -752,14 +1162,6 @@ field_values[“name”]
           </div>
           <div class="page-nav">
             <div class="inner"><ul class="page-nav">
-  <li class="prev">
-    <a href="eformsign_api_overview.html"
-       title="previous chapter">← 개요</a>
-  </li>
-  <li class="next">
-    <a href="eformsign_api.html"
-       title="next chapter">eformsign API 사용하기 →</a>
-  </li>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2021. FORCS CO., LTD. All rights reserved.
     <br>
