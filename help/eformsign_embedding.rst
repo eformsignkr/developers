@@ -238,6 +238,8 @@ document_option과 callback의 2가지 파라미터를 사용할 수 있습니�
     };
      
     eformsign.document(document_option, "eformsign_iframe", success_callback, error_callback);
+    eformsign.open();
+
 
 
 2.  EformSignDocument.open 함수
