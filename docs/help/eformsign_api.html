@@ -296,7 +296,7 @@
 </div>
 <div class="section" id="c-net">
 <h3>C# (.NET)<a class="headerlink" href="#c-net" title="Permalink to this headline">¶</a></h3>
-<p>암호화 처리를 위해 BouncyCastle 라이브러리를 사용하여 검증하는 예제입니다.(NuGet 패키지로도 설치 가능, MIT License)</p>
+<p>암호화 관련 처리를 위해 BouncyCastle 라이브러리를 설치해야 합니다. (NuGet 패키지로도 설치 가능, MIT License)</p>
 </div>
 <div class="section" id="id3">
 <h3>각 언어별 예제<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
@@ -313,14 +313,13 @@
 <span class="kn">import</span> <span class="nn">java.security.Signature</span><span class="p">;</span>
 
 <span class="c1">//private key</span>
-<span class="n">String</span> <span class="n">privateKeyHexStr</span> <span class="o">=</span> <span class="s">&quot;발급 받은 private key(String)&quot;</span><span class="p">;</span>    <span class="c1">//회사 커넥트 &gt; API Key의 Private key 값을 넣어야 함</span>
+<span class="n">String</span> <span class="n">privateKeyHexStr</span> <span class="o">=</span> <span class="s">&quot;이 곳에 발급 받은 비밀 키 (Private Key) 입력 (String 형태)&quot;</span><span class="p">;</span>
 <span class="n">KeyFactory</span> <span class="n">keyFact</span> <span class="o">=</span> <span class="n">KeyFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;EC&quot;</span><span class="p">);</span>
 <span class="n">PKCS8EncodedKeySpec</span> <span class="n">psks8KeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PKCS8EncodedKeySpec</span><span class="p">(</span><span class="k">new</span> <span class="n">BigInteger</span><span class="p">(</span><span class="n">privateKeyHexStr</span><span class="p">,</span><span class="mi">16</span><span class="p">).</span><span class="na">toByteArray</span><span class="p">());</span>
 <span class="n">PrivateKey</span> <span class="n">privateKey</span> <span class="o">=</span> <span class="n">keyFact</span><span class="p">.</span><span class="na">generatePrivate</span><span class="p">(</span><span class="n">psks8KeySpec</span><span class="p">);</span>
 
 <span class="c1">//execution_time - 서버 현재 시간</span>
-<span class="c1">//long execution_time = new Date().getTime();</span>
-<span class="kt">long</span> <span class="n">execution_time</span> <span class="o">=</span> <span class="mi">1611537340731L</span><span class="p">;</span>     <span class="c1">//Access_token 발급 시에 취득한 execute_time을 여기에 입력. long 값이기 때문에 받은 시간 뒤에 L 추가</span>
+<span class="kt">long</span> <span class="n">execution_time</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="p">().</span><span class="na">getTime</span><span class="p">();</span>
 <span class="n">String</span> <span class="n">execution_time_str</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">execution_time</span><span class="p">);</span>
 
 <span class="c1">//eformsign_signature 생성</span>
@@ -464,81 +463,74 @@
 </pre></div>
 </div>
 </div><div class="code-tab" data-title="C#(.NET) - Program.cs">
-<div class="highlight-C#(.NET) notranslate"><div class="highlight"><pre><span></span>using System;
-using System.Text;
-using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Security;
-using Org.BouncyCastle.Crypto.Parameters;
-
-namespace eformsign_signature_verify
-{
-    class Program
-    {
-        private static readonly string HASH_ENCRYPTION_ALGORITHM = &quot;SHA256withECDSA&quot;;
-
-        static void Main(string[] args)
-        {
-            byte[] privateKeyBytes = HexStringToByteArray(&quot;3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207eae51d5e4272ebb3fe2701d25026a8c2850965981fb2efa68c8db48b32ede07&quot;);
-            byte[] publicKeyBytes = HexStringToByteArray(&quot;3059301306072a8648ce3d020106082a8648ce3d030107034200045ac8a472cee38601e99b2a2d731c958e738eee1ee6aca28f6f5637f231e9a8444f3cb80d9ce6c5bace1d0e71167673ff81743e0ea811ebd999f2f314f1d0a676&quot;);
-
-            string data = &quot;{\&quot;test\&quot;:\&quot;signature test\&quot;}&quot;;
-
-            ISigner signer = SignerUtilities.GetSigner(&quot;SHA256withECDSA&quot;);
-            signer.Init(true, (ECPrivateKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes));
-
-            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
-
-            signer.BlockUpdate(dataBytes, 0, dataBytes.Length);
-            byte[] signatureBytes = signer.GenerateSignature();
-
-            Console.WriteLine(&quot;data : {0}&quot;, data);
-            Console.WriteLine(&quot;eformsign_signature : {0}&quot;, ByteArrayToHexString(signatureBytes));
-
-            if (Verify(dataBytes, signatureBytes, PublicKeyFactory.CreateKey(publicKeyBytes)))
-            {
-                Console.WriteLine(&quot;verify success&quot;);
-            }
-            else
-            {
-                Console.WriteLine(&quot;verify fail&quot;);
-            }
-        }
+<div class="highlight-C# notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Org.BouncyCastle.Crypto</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Org.BouncyCastle.Security</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Org.BouncyCastle.Crypto.Parameters</span><span class="p">;</span>
 
 
-        public static bool Verify(byte[] messageBytes, byte[] signatureBytes, AsymmetricKeyParameter publicKey)
-        {
-            ISigner signer = SignerUtilities.GetSigner(HASH_ENCRYPTION_ALGORITHM);
-            signer.Init(false, publicKey);
-            signer.BlockUpdate(messageBytes, 0, messageBytes.Length);
-            return signer.VerifySignature(signatureBytes);
-        }
+<span class="k">namespace</span> <span class="nn">eformsign_signature</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">HASH_ENCRYPTION_ALGORITHM</span> <span class="p">=</span> <span class="s">&quot;SHA256withECDSA&quot;</span><span class="p">;</span>
 
-        public static string ByteArrayToHexString(byte[] data)
-        {
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i &lt; data.Length; i++)
-            {
-                builder.Append(data[i].ToString(&quot;x2&quot;));
-            }
-            return builder.ToString();
-        }
 
-        public static byte[] HexStringToByteArray(string hexString)
-        {
-            if (hexString.Length % 2 != 0)
-            {
-                throw new ArgumentException(&quot;{0} must have an even length&quot;, nameof(hexString));
-            }
-            byte[] bytes = new byte[hexString.Length / 2];
-            for (int i = 0; i &lt; bytes.Length; i++)
-            {
-                string currentHex = hexString.Substring(i * 2, 2);
-                bytes[i] = Convert.ToByte(currentHex, 16);
-            }
-            return bytes;
-        }
-    }
-}
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">byte</span><span class="p">[]</span> <span class="n">privateKeyBytes</span> <span class="p">=</span> <span class="n">HexStringToByteArray</span><span class="p">(</span><span class="s">&quot;이 곳에 발급 받은 비밀 키 (Private Key) 입력 (String 형태)&quot;</span><span class="p">);</span>
+
+            <span class="n">DateTime</span> <span class="n">unixEpoch</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+            <span class="n">DateTime</span> <span class="n">currentTime</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">;</span>
+            <span class="n">TimeSpan</span> <span class="n">timeDiff</span> <span class="p">=</span> <span class="n">currentTime</span><span class="p">.</span><span class="n">Subtract</span><span class="p">(</span><span class="n">unixEpoch</span><span class="p">);</span>
+            <span class="kt">long</span> <span class="n">unixCurrentTime</span> <span class="p">=</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">timeDiff</span><span class="p">.</span><span class="n">TotalMilliseconds</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">execution_time</span> <span class="p">=</span> <span class="n">unixCurrentTime</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+
+
+            <span class="n">ISigner</span> <span class="n">signer</span> <span class="p">=</span> <span class="n">SignerUtilities</span><span class="p">.</span><span class="n">GetSigner</span><span class="p">(</span><span class="s">&quot;SHA256withECDSA&quot;</span><span class="p">);</span>
+            <span class="n">signer</span><span class="p">.</span><span class="n">Init</span><span class="p">(</span><span class="k">true</span><span class="p">,</span> <span class="p">(</span><span class="n">ECPrivateKeyParameters</span><span class="p">)</span><span class="n">PrivateKeyFactory</span><span class="p">.</span><span class="n">CreateKey</span><span class="p">(</span><span class="n">privateKeyBytes</span><span class="p">));</span>
+
+
+            <span class="kt">byte</span><span class="p">[]</span> <span class="n">dataBytes</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">execution_time</span><span class="p">);</span>
+
+
+            <span class="n">signer</span><span class="p">.</span><span class="n">BlockUpdate</span><span class="p">(</span><span class="n">dataBytes</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">dataBytes</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+            <span class="kt">byte</span><span class="p">[]</span> <span class="n">signatureBytes</span> <span class="p">=</span> <span class="n">signer</span><span class="p">.</span><span class="n">GenerateSignature</span><span class="p">();</span>
+
+
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;execution_time : {0}&quot;</span><span class="p">,</span> <span class="n">execution_time</span><span class="p">);</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;eformsign_signature : {0}&quot;</span><span class="p">,</span> <span class="n">ByteArrayToHexString</span><span class="p">(</span><span class="n">signatureBytes</span><span class="p">));</span>
+        <span class="p">}</span>
+
+
+        <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">ByteArrayToHexString</span><span class="p">(</span><span class="kt">byte</span><span class="p">[]</span> <span class="n">data</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">StringBuilder</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">data</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="n">builder</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ToString</span><span class="p">(</span><span class="s">&quot;x2&quot;</span><span class="p">));</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">builder</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+        <span class="p">}</span>
+
+
+        <span class="k">public</span> <span class="k">static</span> <span class="kt">byte</span><span class="p">[]</span> <span class="nf">HexStringToByteArray</span><span class="p">(</span><span class="kt">string</span> <span class="n">hexString</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">hexString</span><span class="p">.</span><span class="n">Length</span> <span class="p">%</span> <span class="m">2</span> <span class="p">!=</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">(</span><span class="s">&quot;{0} must have an even length&quot;</span><span class="p">,</span> <span class="n">nameof</span><span class="p">(</span><span class="n">hexString</span><span class="p">));</span>
+            <span class="p">}</span>
+            <span class="kt">byte</span><span class="p">[]</span> <span class="n">bytes</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="p">[</span><span class="n">hexString</span><span class="p">.</span><span class="n">Length</span> <span class="p">/</span> <span class="m">2</span><span class="p">];</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">bytes</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">currentHex</span> <span class="p">=</span> <span class="n">hexString</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">i</span> <span class="p">*</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+                <span class="n">bytes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToByte</span><span class="p">(</span><span class="n">currentHex</span><span class="p">,</span> <span class="m">16</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">bytes</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div></div>
@@ -591,8 +583,8 @@ namespace eformsign_signature_verify
 <p>문서 API의 <strong>Authorize</strong> 버튼에는 Access Token 값을 입력해야 합니다.</p>
 </div>
 <p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document">문서 API</a>는 다음과 같습니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents">새 문서 작성_내부 수신자</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/post-api-documents-external">새 문서 작성_외부 수신자</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents">새 문서 작성_최초 작성자가 회사 멤버</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/post-api-documents-external">새 문서 작성_최초 작성자가 외부 수신자</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID">문서정보 조회</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID-download_files">문서 파일 다운로드_문서 PDF 및 감사추적증명서</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID-download_attach_files">문서 첨부 파일 다운로드</a></p>
