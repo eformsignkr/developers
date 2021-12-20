@@ -139,7 +139,7 @@ PHP 예제를 사용하려면 PHP OpenSSL 라이브러리가 설치되어 있어
 C# (.NET)
 -----------------------
 
-암호화 처리를 위해 BouncyCastle 라이브러리를 사용하여 검증하는 예제입니다.(NuGet 패키지로도 설치 가능, MIT License)
+암호화 관련 처리를 위해 BouncyCastle 라이브러리를 설치해야 합니다. (NuGet 패키지로도 설치 가능, MIT License)
 
 
 
@@ -166,14 +166,13 @@ C# (.NET)
         import java.security.Signature;
          
         //private key
-        String privateKeyHexStr = "발급 받은 private key(String)";    //회사 커넥트 > API Key의 Private key 값을 넣어야 함
+        String privateKeyHexStr = "이 곳에 발급 받은 비밀 키 (Private Key) 입력 (String 형태)";
         KeyFactory keyFact = KeyFactory.getInstance("EC");
         PKCS8EncodedKeySpec psks8KeySpec = new PKCS8EncodedKeySpec(new BigInteger(privateKeyHexStr,16).toByteArray());
         PrivateKey privateKey = keyFact.generatePrivate(psks8KeySpec);
          
         //execution_time - 서버 현재 시간
-        //long execution_time = new Date().getTime();
-        long execution_time = 1611537340731L;     //Access_token 발급 시에 취득한 execute_time을 여기에 입력. long 값이기 때문에 받은 시간 뒤에 L 추가     
+        long execution_time = new Date().getTime();
         String execution_time_str = String.valueOf(execution_time);
          
         //eformsign_signature 생성
@@ -321,7 +320,7 @@ C# (.NET)
         print 'eformsign_signature : ' . bin2hex($signature) . PHP_EOL;
         ?>
 
-    .. code-tab:: C#(.NET)
+    .. code-tab:: C#
         :title: C#(.NET) - Program.cs
 
         using System;
@@ -330,48 +329,40 @@ C# (.NET)
         using Org.BouncyCastle.Security;
         using Org.BouncyCastle.Crypto.Parameters;
          
-        namespace eformsign_signature_verify
+         
+        namespace eformsign_signature
         {
             class Program
             {
                 private static readonly string HASH_ENCRYPTION_ALGORITHM = "SHA256withECDSA";
          
+         
                 static void Main(string[] args)
                 {
-                    byte[] privateKeyBytes = HexStringToByteArray("3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207eae51d5e4272ebb3fe2701d25026a8c2850965981fb2efa68c8db48b32ede07");
-                    byte[] publicKeyBytes = HexStringToByteArray("3059301306072a8648ce3d020106082a8648ce3d030107034200045ac8a472cee38601e99b2a2d731c958e738eee1ee6aca28f6f5637f231e9a8444f3cb80d9ce6c5bace1d0e71167673ff81743e0ea811ebd999f2f314f1d0a676");
+                    byte[] privateKeyBytes = HexStringToByteArray("이 곳에 발급 받은 비밀 키 (Private Key) 입력 (String 형태)");
+                     
+                    DateTime unixEpoch = new DateTime(1970, 1, 1);
+                    DateTime currentTime = DateTime.UtcNow;
+                    TimeSpan timeDiff = currentTime.Subtract(unixEpoch);
+                    long unixCurrentTime = (long)timeDiff.TotalMilliseconds;
+                    string execution_time = unixCurrentTime.ToString();
          
-                    string data = "{\"test\":\"signature test\"}";
          
                     ISigner signer = SignerUtilities.GetSigner("SHA256withECDSA");
                     signer.Init(true, (ECPrivateKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes));
          
-                    byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+         
+                    byte[] dataBytes = Encoding.UTF8.GetBytes(execution_time);
+         
          
                     signer.BlockUpdate(dataBytes, 0, dataBytes.Length);
                     byte[] signatureBytes = signer.GenerateSignature();
          
-                    Console.WriteLine("data : {0}", data);
+         
+                    Console.WriteLine("execution_time : {0}", execution_time);
                     Console.WriteLine("eformsign_signature : {0}", ByteArrayToHexString(signatureBytes));
-         
-                    if (Verify(dataBytes, signatureBytes, PublicKeyFactory.CreateKey(publicKeyBytes)))
-                    {
-                        Console.WriteLine("verify success");
-                    }
-                    else
-                    {
-                        Console.WriteLine("verify fail");
-                    }
                 }
          
-         
-                public static bool Verify(byte[] messageBytes, byte[] signatureBytes, AsymmetricKeyParameter publicKey)
-                {
-                    ISigner signer = SignerUtilities.GetSigner(HASH_ENCRYPTION_ALGORITHM);
-                    signer.Init(false, publicKey);
-                    signer.BlockUpdate(messageBytes, 0, messageBytes.Length);
-                    return signer.VerifySignature(signatureBytes);
-                }
          
                 public static string ByteArrayToHexString(byte[] data)
                 {
@@ -382,6 +373,7 @@ C# (.NET)
                     }
                     return builder.ToString();
                 }
+         
          
                 public static byte[] HexStringToByteArray(string hexString)
                 {
@@ -483,9 +475,9 @@ Access Token API에 대한 자세한 설명은
 
 
 
-``POST``: `새 문서 작성_내부 수신자 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents>`_\ 
+``POST``: `새 문서 작성_최초 작성자가 회사 멤버 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/default/post-api-documents>`_\ 
 
-``POST``: `새 문서 작성_외부 수신자 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/post-api-documents-external>`_\ 
+``POST``: `새 문서 작성_최초 작성자가 외부 수신자 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/post-api-documents-external>`_\ 
 
 ``GET``: `문서정보 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/eformsign/get-api-documents-DOCUMENT_ID>`_\
 
