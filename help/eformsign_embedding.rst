@@ -90,45 +90,33 @@ eformsign의 기능을 사용하고자 하는 웹 페이지에 다음의 스크�
 
 .. code-block:: javascript
 
-   //jquery
-   <script src="https://www.eformsign.com/plugins/jquery/jquery.min.js"/>
-   //eformsign embedded script
-   <script src="https://www.eformsign.com/lib/js/efs_embedded_v2.js"/>
-   //eformsign redirect script
-   <script src="https://www.eformsign.com/lib/js/efs_redirect_v2.js"/>
+    //jquery
+    <script src="https://www.eformsign.com/plugins/jquery/jquery.min.js"/>
+    //eformsign 템플릿 문서 임베딩 (EformSignDocument 객체)
+    <script src="https://www.eformsign.com/lib/js/efs_embedded_v2.js"/>
 
 
 .. note::
 
-   eformsign 기능을 삽입하고자 하는 페이지에 이 스크립트를 추가하면 eformsign 객체를 전역변수로 사용할 수 있습니다.
+   eformsign 기능을 삽입하고자 하는 페이지에 이 스크립트를 추가하면 eformsign 기능 삽입용 객체를 전역변수로 사용할 수 있습니다.
 
 
 --------------------------
-eformsign 객체에 대한 설명
+eformsign 기능 삽입용 객체
 --------------------------
 
-eformsign 객체는 embedding과 redirect의 두 가지 타입으로 구성되어 있습니다.
+eformsign 기능 삽입용 객체는 현재 EformSignDocument 객체 한 종류를 지원하고 있으며, 템플릿 문서 임베딩 기능을 이용하실 수 있습니다.
 
+==================  ===================  =================================================================  =============================================================  =================================================================================================
+ 객체명              기능 구분             문서정보 설정 함수 형태                                              인자 필수 여부                                                  설명       
+==================  ===================  =================================================================  =============================================================  =================================================================================================
+EformSignDocument   템플릿 문서 임베딩   EformSignDocument.document                                         - document_option, iframe_id: 필수                               eformsign 화면을 사이트에 임베딩하여 템플릿 문서를 작성, 처리, 미리보기 할 수 있도록 구동
+                                                                                                                                                                           
+                                         (document_option, iframe_id, success_callback, error_callback)     - success_callback, error_callback: 옵션
 
-+----------+-----------------------+--------------------------------------+
-| Type     | Name                  | 설명                                 |
-+==========+=======================+======================================+
-| embedding| eformsign.document    | eformsign을 삽입해 문서를 작성할 수  |
-|          | (document_option,     | 있도록 해주는 함수                   |
-|          | iframe_id,            |                                      |
-|          | success_callback,     | callback 파라미터는 옵션             |
-|          | error_callback)       |                                      |
-|          |                       | -  document_option, iframe_id: 필수  |
-|          |                       |                                      |
-|          |                       | -  success_callback: 옵션            |
-|          |                       |                                      |
-|          |                       | -  error_callback: 옵션              |
-+----------+-----------------------+--------------------------------------+
-| redirect | eformsign.document    | eformsign으로의 페이지 전환 방식으로 |
-|          | (document_option)     | 문서를 작성할 수 있도록 해주는 함수  |
-|          |                       |                                      |
-|          |                       | -  document_option : 필수            |
-+----------+-----------------------+--------------------------------------+
+                                                                                                            (callback이 없는 것이 기본값이며, 필요 시 입력하여 사용)
+==================  ===================  =================================================================  =============================================================  =================================================================================================
+
 
 
 
@@ -138,7 +126,8 @@ eformsign 객체는 embedding과 redirect의 두 가지 타입으로 구성되�
 .. note::
 
    함수 형태
-   document(document_option, iframe_id, success_callback , error_callback)
+
+   EformSignDocument.document(document_option, iframe_id, success_callback, error_callback)
 
 eformsign을 임베딩하여 고객사의 사이트/서비스에서 문서를 작성, 처리, 미리보기 할 수 있습니다.
 EformSignDocument.document 함수는 임베딩할 문서의 상세 옵션을 설정하는 함수입니다.
@@ -170,8 +159,8 @@ document_option과 callback의 2가지 파라미터를 사용할 수 있습니�
        "user" : {
             "type" : "01" ,         // 사용자 구분 (01: 멤버, 02: 외부자)
             "id": "test1@forcs.com" // 사용자 ID(이메일)
-            "access_token" : "",    // Access Token 입력 (OpenAPI Access Token 참조)
-            "refresh_token" : "",   // Refresh Token 입력 (OpenAPI Access Token 참조)
+            "access_token" : "",    // Access Token 입력 (eformsign API 사용하기 - Access Token 발급 참조)
+            "refresh_token" : "",   // Refresh Token 입력 (eformsign API 사용하기 - Access Token 발급 참조)
             "external_token" : "",  // 외부자 처리 시 사용자를 인증할 External Token 입력 (Webhook에서 제공)
             "external_user_info" : {
                "name" : ""          // 외부자 처리 시 외부자 이름 입력
@@ -242,29 +231,10 @@ document_option과 callback의 2가지 파라미터를 사용할 수 있습니�
 
 
 
-2.  EformSignDocument.open 함수
-=============================================
-
-문서 임베딩을 시작하는 함수입니다.
-
-EformSignDocument.document 함수로 문서 옵션을 우선 설정한 후 EformSignDocument.open을 실행하시기 바랍니다.
-
-
-.. code-block:: javascript
-
-    var eformsign = new EformSignDocument();
-    //중략
-    eformsign.document(document_option, "eformsign_iframe", success_callback, error_callback, action_callback);
-    eformsign.open();
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
--------------------------------
-document-option 파라미터
+document_option 파라미터
 -------------------------------
 
-document-option에서는 다음 6가지 항목을 설정할 수 있습니다. 
+document_option에서는 다음 6가지 항목을 설정할 수 있습니다. 
 
 ===============  =============  ============  =====  ================================================================================
  변수명           설명           데이터 타입   필수    하위 옵션 
@@ -285,7 +255,7 @@ document-option에서는 다음 6가지 항목을 설정할 수 있습니다.
 
 
 1. company(회사 정보/필수)
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 ===============  ==========================  =============  =======  =================================================================================================================
@@ -318,7 +288,7 @@ document-option에서는 다음 6가지 항목을 설정할 수 있습니다.
 
 
 2. mode(임베딩 모드/필수)
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ===============  ===============  ===========  =====  ==================================================
  변수명           설명            데이터 타입   필수    비고 
@@ -378,7 +348,7 @@ document-option에서는 다음 6가지 항목을 설정할 수 있습니다.
 
 
 3. user(사용자 정보/비필수)
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 =========================  ===================  =============  =======  ==========================================================================
  변수명                     설명                 데이터 타입    필수     비고 
@@ -397,7 +367,7 @@ document-option에서는 다음 6가지 항목을 설정할 수 있습니다.
 
 **회사 내 멤버 로그인을 통한 작성 또는 처리**
 
-- 유저 정보를 지정하지 않을 경우에 해당합니다.	
+- 유저 정보를 지정하지 않을 경우에 해당합니다. 
 - 이 경우, eformsign 로그인 페이지가 구동되며 로그인 과정 이후에 문서를 작성할 수 있습니다.
 
 
@@ -410,28 +380,26 @@ document-option에서는 다음 6가지 항목을 설정할 수 있습니다.
     var document_option = {
         "user":{
             "type" : "01",
-            "access_token" : "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJlZ...",
-            "refresh_token" : "0161ac6c-0f47-4cc3-9301-381f57c41495"
+            "id" : "eformsign@forcs.com"
         }
     };
 
 
-
-**회사 내 멤버의 토큰을 이용한 작성 또는 처리**	
+**회사 내 멤버의 토큰을 이용한 작성 또는 처리**   
 
 - 임베딩 시, eformsign 로그인 과정없이, 특정 계정의 token을 이용하여 문서를 작성 및 수신한 문서를 작성합니다.
-- 토큰 발급 방법은 Open API의 Access token 발급을 통해 가능합니다.
+- 토큰 발급 방법은 eformsign API 사용하기 - `Access Token 발급 <https://eformsignkr.github.io/developers/help/eformsign_api.html#id5>`__\ 을 확인해 주세요.
 
 .. code-block:: javascript
 
     var document_option = {
         "user":{
             "type" : "01",
+            "id" : "eformsign@forcs.com",
             "access_token" : "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJlZ...",
             "refresh_token" : "0161ac6c-0f47-4cc3-9301-381f57c41495"
         }
     };
-
 
 
 **회사 내 멤버가 아닌 사용자가 신규 문서 작성**  
@@ -468,7 +436,7 @@ document-option에서는 다음 6가지 항목을 설정할 수 있습니다.
 
 
 4. layout(레이아웃/비필수)
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ===============  ===============  ===========  =====  ==================================================
  변수명           설명            데이터 타입   필수    비고 
@@ -487,7 +455,7 @@ document-option에서는 다음 6가지 항목을 설정할 수 있습니다.
 
 
 5. prefill(자동 기입/비필수)
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 문서 작성 과정 중에 자동으로 입력될 수 있도록 처리 시 사용합니다.
 
@@ -570,7 +538,7 @@ comment                            다음 수신자에게 전달할 메시지   
 
 
 6. 리턴 필드(비필수)
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 문서 작성 및 수정 후, 사용자가 작성한 필드의 내용 중 callback 함수를 통해 받을 수 있는 항목을 지정합니다.
     
@@ -588,14 +556,14 @@ comment                            다음 수신자에게 전달할 메시지   
 
 
 
--------------------------------
+
 Callback 파라미터
 -------------------------------
 
 
 
 1. response
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 문서 작성/처리를 성공 혹은 실패 시 다음과 같은 구조로 response가 반환됩니다.
 
@@ -693,7 +661,7 @@ recipients[].auth.valid.hour        Integer             문서 전송 기한 (�
 
 
 2. callback
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 문서 작성/처리 성공 혹은 실패 시 반환되는 response를 받아서 원하는 작업을 하도록 success_callback과 error_callback 함수를 작성할 수 있습니다.
 
@@ -719,3 +687,23 @@ recipients[].auth.valid.hour        Integer             문서 전송 기한 (�
     };
      
     eformsign.document(document_option, "eformsign_iframe", success_callback, error_callback);
+
+
+
+
+2.  EformSignDocument.open 함수
+=============================================
+
+문서 임베딩을 시작하는 함수입니다.
+
+EformSignDocument.document 함수로 문서 옵션을 우선 설정한 후 EformSignDocument.open을 실행하시기 바랍니다.
+
+
+.. code-block:: javascript
+
+    var eformsign = new EformSignDocument();
+    //중략
+    eformsign.document(document_option, "eformsign_iframe", success_callback, error_callback);
+    eformsign.open();
+
+
