@@ -484,7 +484,7 @@ Access Token API에 대한 자세한 설명은
 
 .. caution:: 
 
-   본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`_\으로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
+   본 문서 API를 사용하기 위해서는 Access Token을 먼저 발급받아야 합니다. `Access Token API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`_\로 발급받은 Access Token을 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/>`__\ 의 위치에 있는 **Authorize** 버튼(|image4|)을 눌러 등록하세요. 
 
 
 .. note:: 
