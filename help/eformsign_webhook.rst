@@ -484,7 +484,7 @@ PHP
         ?>
 
 
-
+.. _webhookevent:
 
 Webhook 이벤트
 ====================
@@ -494,7 +494,7 @@ Webhook을 설정하면 eformsign에서 특정 이벤트 발생 시 설정한 We
 현재 제공 중인 `Webhook <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/>`_\ 은 다음과 같습니다.
 
 
-``POST``: `/webhook document event <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/>`_\  웹훅 전송
+``POST``: `/webhook document event <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/>`_\  웹훅 이벤트
 
 
 

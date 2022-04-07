@@ -39,7 +39,8 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="eformsign API 사용하기" href="eformsign_api.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,11 +88,40 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="eformsign_api_overview.html">eformsign API 가이드</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_embedding.html">eformsign 기능 직접 삽입하기</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_api.html">eformsign API 사용하기</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eformsign_webhook.html">eformsign Webhook 사용하기</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">eformsign Webhook 사용하기</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">시작하기</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#addwebhook">Webhook 추가하기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Webhook 관리하기</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">키보기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">편집</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">삭제</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">테스트</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#webhookauth">Webhook 검증하기</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">서명 검증을 위한 샘플 코드</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#java">Java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#php">PHP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">각 언어별 예제</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#webhookevent">Webhook 이벤트</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Webhook 이벤트 종류</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Webhook 구조</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status">문서 상태 코드</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -144,7 +174,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/help/eformsign_webhook_수정중.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/help/eformsign_webhook.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -520,11 +550,11 @@ Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Bearer token</strong>
 </div>
 </div>
 </div>
-<div class="section" id="id11">
-<h2>Webhook 이벤트<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="webhookevent">
+<span id="id11"></span><h2>Webhook 이벤트<a class="headerlink" href="#webhookevent" title="Permalink to this headline">¶</a></h2>
 <p>Webhook을 설정하면 eformsign에서 특정 이벤트 발생 시 설정한 Webhook URL로 이벤트 정보를 수신할 수 있습니다.</p>
 <p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">Webhook</a>은 다음과 같습니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">/webhook document event</a> 웹훅 전송</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">/webhook document event</a> 웹훅 이벤트</p>
 <div class="section" id="id13">
 <h3>Webhook 이벤트 종류<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>현재 eformsign에서는 <strong>문서 이벤트</strong>와 <strong>PDF 생성 이벤트</strong>에 대해 Webhook을 발송하고 있습니다.</p>
@@ -708,6 +738,13 @@ mass_job_request_id 포함)</p></td>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="eformsign_api.html" class="btn btn-neutral float-left" title="eformsign API 사용하기" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
