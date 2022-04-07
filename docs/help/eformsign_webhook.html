@@ -39,8 +39,7 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="eformsign API 사용하기" href="eformsign_api.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,30 +87,11 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="eformsign_api_overview.html">개요</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="eformsign_api_overview.html">eformsign API 가이드</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_embedding.html">eformsign 기능 직접 삽입하기</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_api.html">eformsign API 사용하기</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">eformsign Webhook 사용하기</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">시작하기</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#webhook">Webhook 키 발급하기</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">서명 생성하기</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#java">Java</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#python">Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#php">PHP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">각 언어별 예제</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">Webhook 제공 리스트</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">Webhook 관련 정보</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">문서 이벤트</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pdf">PDF 생성 이벤트</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="eformsign_webhook.html">eformsign Webhook 사용하기</a></li>
 </ul>
 
             
@@ -164,7 +144,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/help/eformsign_webhook.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/help/eformsign_webhook_수정중.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -178,18 +158,18 @@
            <div itemprop="articleBody">
             
   <div class="section" id="eformsign-webhook">
-<h1>eformsign Webhook 사용하기<a class="headerlink" href="#eformsign-webhook" title="Permalink to this headline">¶</a></h1>
-<p>eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고객 시스템/서비스로 알려주는 기능입니다. Webhook을 설정하면, 고객의 Webhook endpoint로 해당 이벤트 정보를 HTTP POST형식으로 알려 줍니다.</p>
+<span id="webhook"></span><h1>eformsign Webhook 사용하기<a class="headerlink" href="#eformsign-webhook" title="Permalink to this headline">¶</a></h1>
+<p>eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고객 시스템/서비스로 알려주는 기능입니다. Webhook을 설정하면, 고객의 Webhook endpoint로 해당 이벤트 정보를 HTTP POST형식으로 알려줍니다.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Webhook의 endpoint는 고객의 client callback URL을 뜻합니다. Open API를 지속적으로 호출하여 변경사항을 체크하는 방법(polling)과 비교하여 불필요한 호출 없이 eformsign 상의 이벤트에 대한 정보를 얻을 수 있습니다.</p>
 </div>
 <div class="section" id="id1">
 <h2>시작하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="webhook">
-<span id="id2"></span><h3>Webhook 키 발급하기<a class="headerlink" href="#webhook" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="addwebhook">
+<span id="id2"></span><h3>Webhook 추가하기<a class="headerlink" href="#addwebhook" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>eformsign에 대표 관리자로 로그인 후, 메뉴 트리에서 <strong>[커넥트] &gt; [API / Webhook]</strong> 페이지로 이동합니다.</p></li>
+<li><p>eformsign에 대표 관리자로 로그인 후, 메뉴에서 <strong>[커넥트] &gt; [API / Webhook]</strong> 페이지로 이동합니다.</p></li>
 </ol>
 <a class="reference internal image-reference" href="../_images/apikey1.PNG"><img alt="커넥트 &gt; API/Webhook 메뉴 위치" src="../_images/apikey1.PNG" style="width: 700px;" /></a>
 <ol class="arabic simple" start="2">
@@ -197,77 +177,166 @@
 </ol>
 <a class="reference internal image-reference" href="../_images/webhook2.PNG"><img alt="Webhook 추가 버튼" src="../_images/webhook2.PNG" style="width: 700px;" /></a>
 <ol class="arabic simple" start="3">
-<li><p>Webhook 키 생성 팝업창에 이름, Webhook URL, 활성 상태, 적용 템플릿을 입력하고 등록 버튼을 클릭합니다.</p></li>
+<li><p>Webhook 추가 팝업창에 이름, Webhook을 수신할 URL(Endpoint URL), 활성 상태를 선택합니다.</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/webhook3.PNG"><img alt="Webhook 키 생성 팝업창" src="../_images/webhook3.PNG" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="../_images/Webhook_key1.png"><img alt="Webhook 키 생성 팝업창" src="../_images/Webhook_key1.png" style="width: 500px;" /></a>
 <ol class="arabic simple" start="4">
-<li><p>생성된 Webhook 목록에서 <strong>키보기</strong> 버튼을 클릭하여 Webhook 공개키를 확인합니다.</p></li>
+<li><p><strong>적용 대상</strong>을 선택합니다. 적용 대상은 <strong>모든 문서, 템플릿이 없이 만든 문서, 템플릿으로 만든 문서</strong> 중에 선택할 수 있습니다.</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/webhook4.PNG"><img alt="Webhook 키보기 버튼 위치" src="../_images/webhook4.PNG" style="width: 700px;" /></a>
-<a class="reference internal image-reference" href="../_images/webhook5.PNG"><img alt="Webhook 키 확인" src="../_images/webhook5.PNG" style="width: 700px;" /></a>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p><strong>키 재발행</strong> 버튼을 클릭하면 해당 Webhook의 공개 키가 재발행되며, 이전의 키는 사용할 수 없게 됩니다.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Webhook 정보 수정 방법</strong></p>
-<p>생성된 Webhook 목록에서 <strong>수정</strong> 버튼을 클릭하여 Webhook 정보를 변경할 수 있습니다.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Webhook 삭제 방법</strong></p>
-<p>생성된 Webhook 목록에서 <strong>삭제</strong> 버튼을 클릭하여 Webhook을 삭제할 수 있습니다.</p>
-</div>
+<a class="reference internal image-reference" href="../_images/Webhook_key2.png"><img alt="Webhook 키 생성 팝업창 2" src="../_images/Webhook_key2.png" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p><strong>모든 문서:</strong> 해당 회사에서 생성된 모든 문서에 대해 Webhook이 발송됩니다.</p></li>
+<li><p><strong>템플릿이 없이 만든 문서:</strong> <strong>내 파일로 문서 작성</strong>으로 템플릿 없이 생성한 문서에 대해 Webhook이 발송됩니다.</p></li>
+<li><p><strong>템플릿으로 만든 문서:</strong> 선택한 템플릿으로 생성된 문서에 대해 Webhook이 발송됩니다.</p></li>
+</ul>
+<p>템플릿 선택은 다음과 같은 절차를 통해 수행하실 수 있습니다.</p>
+<blockquote>
+<div><p>① <strong>적용 템플릿 목록</strong> 선택창을 클릭하면 템플릿 목록이 표시됩니다. 목록에서 추가하고자 하는 템플릿을 선택합니다. 이 때, 템플릿(<img alt="image1" src="../_images/template_icon.png" />)을 선택해야 합니다. 카테고리(<img alt="image2" src="../_images/category_icon.png" />)를 선택하면 적용 템플릿 목록에 추가되지 않습니다.</p>
+<a class="reference internal image-reference" href="../_images/Webhook_select_template.png"><img alt="Webhook 키 생성 팝업창 3" src="../_images/Webhook_select_template.png" style="width: 500px;" /></a>
+<p>② 추가하고자 하는 템플릿을 선택 후, 우측의 <strong>추가</strong> 버튼을 클릭합니다.</p>
+<a class="reference internal image-reference" href="../_images/Webhook_add_popup.png"><img alt="Webhook 키 생성 팝업창 4" src="../_images/Webhook_add_popup.png" style="width: 500px;" /></a>
+<p>③ <strong>적용 템플릿 목록</strong>에 선택한 템플릿이 추가 된 것을 확인할 수 있습니다. 이 절차를 반복하여, 여러 템플릿을 추가할 수도 있습니다.</p>
+<a class="reference internal image-reference" href="../_images/Webhook_add_popup2.png"><img alt="Webhook 키 생성 팝업창 5" src="../_images/Webhook_add_popup2.png" style="width: 500px;" /></a>
+</div></blockquote>
 <ol class="arabic simple" start="5">
-<li><p>생성된 Webhook 리스트에서 <strong>테스트</strong> 버튼을 클릭하면 테스트 Webhook을 전송하고 결과를 반환합니다.</p></li>
+<li><p><strong>검증 유형</strong>을 선택합니다. 검증 유형은 <strong>검증 없음, Bearer token, Basic authentication, eformsign signature</strong> 중에서 선택할 수 있습니다. 각 검증 유형에 대한 설명은 <a class="reference external" href="#webhookauth">Webhook 검증하기</a>을 확인해 주세요.</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/webhook6.PNG"><img alt="Webhook 테스트 확인" src="../_images/webhook6.PNG" style="width: 700px;" /></a>
-<p>다음은 테스트를 위한 json 파일입니다.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>{
-&quot;webhook_id&quot; : &quot;해당 Webhook ID&quot;,
-&quot;webhook_name&quot; : &quot;해당 Webhook 이름&quot;,
-&quot;company_id&quot; : &quot;회사의 ID&quot;,
-&quot;event_type&quot; : “document”,
-&quot;document&quot; : {
-  &quot;id&quot; : “test_doc_id”,
-   &quot;template_id&quot; : “test_template_id”,
-   &quot;template_version&quot; : “1”,
-   &quot;document_history_id&quot; : “test_document_history_id”,
-   &quot;doc_status&quot; : “doc_create”,
-   &quot;editor_id&quot; : &quot;사용자 ID&quot;,
-   &quot;updated_date&quot; : &quot;현재 시간(UTC Long)&quot;
-}
-}
-Test URL : 해당 Webhook의 URL
-</pre></div>
-</div>
-</div>
+<a class="reference internal image-reference" href="../_images/Webhook_add_popup3.png"><img alt="Webhook 키 생성 팝업창 6" src="../_images/Webhook_add_popup3.png" style="width: 500px;" /></a>
+<ol class="arabic simple" start="6">
+<li><p><strong>등록</strong> 버튼을 클릭하면 Webhook이 추가됩니다. <strong>Webhook 관리</strong> 목록에서 추가한 Webhook을 확인할 수 있습니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/Webhook_add.png"><img alt="Webhook 등록 완료" src="../_images/Webhook_add.png" style="width: 700px;" /></a>
 </div>
 <div class="section" id="id3">
-<h2>서명 생성하기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>서명 생성 방법에 대해서는  Java, Python, PHP 언어별로 설명합니다.</p>
-<div class="section" id="java">
-<h3>Java<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h3>
-<p>eformsign 서버로부터 전달받은 이벤트 정보를 <a class="reference external" href="#webhook">Webhook Key 발급하기</a>에서 발급받은 public key로 검증하여 eformsign에서 정상적으로 호출한 이벤트인지에 대한 검증을 진행합니다.</p>
+<h3>Webhook 관리하기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Webhook 목록에서 각 Webhook 우측의 작업 버튼을 통해 관리 작업을 수행할 수 있습니다.</p>
+<a class="reference internal image-reference" href="../_images/Webhook_manage1.png"><img alt="커넥트 &gt; Webhook 관리" src="../_images/Webhook_manage1.png" style="width: 700px;" /></a>
+<div class="section" id="id4">
+<h4>키보기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>검증 유형을 eformsign signature로 설정한 경우, Webhook 검증을 위해 필요한 공개 키를 확인할 수 있습니다.
+<strong>키 재발행</strong> 버튼을 클릭해 키를 재발행할 수 있습니다. 키를 재발행 할 경우, 기존에 사용 중이던 키는 사용할 수 없게 됩니다.</p>
+<p>검증 유형을 eformsign signature 이외의 다른 유형으로 설정한 경우, 빈 값이 표시됩니다.</p>
+<a class="reference internal image-reference" href="../_images/Webhook_Key.png"><img alt="커넥트 &gt; Webhook 키 보기" src="../_images/Webhook_Key.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="id5">
+<h4>편집<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>등록된 Webhook의 이름, URL, 활성 상태, 적용 대상, 검증 유형을 편집할 수 있습니다.</p>
+</div>
+<div class="section" id="id6">
+<h4>삭제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>등록된 Webhook을 삭제할 수 있습니다.</p>
+</div>
+<div class="section" id="id7">
+<h4>테스트<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>설정한 Webhook URL로 테스트 Webhook을 전송하고, 결과를 반환합니다.</p>
+<p>테스트 Webhook의 Body는 다음과 같습니다.
+설정한 검증 유형에 따라, 헤더에 관련 정보가 포함되어 전송됩니다.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;webhook_id&quot;</span><span class="p">:</span> <span class="s2">&quot;해당 Webhook ID&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;webhook_name&quot;</span><span class="p">:</span> <span class="s2">&quot;해당 Webhook 이름&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;company_id&quot;</span><span class="p">:</span> <span class="s2">&quot;회사 ID&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;event_type&quot;</span><span class="p">:</span> <span class="s2">&quot;document&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;document&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;test_doc_id&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;document_title&quot;</span><span class="p">:</span> <span class="s2">&quot;test_document_title&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;template_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test_template_id&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;template_name&quot;</span><span class="p">:</span> <span class="s2">&quot;test_template_name&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;workflow_seq&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;template_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;history_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test_document_history_id&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;doc_create&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;editor_id&quot;</span><span class="p">:</span> <span class="s2">&quot;사용자 ID&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;updated_date&quot;</span><span class="p">:</span> <span class="s2">&quot;현재 시간(UTC Long)&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>서명 알고리즘은 SHA256withECDSA을 사용합니다.</p>
+<p>테스트 성공 여부에 따라 다음과 같이 팝업 메시지가 표시됩니다.</p>
+<p><strong>테스트 Webhook 전송 성공 시</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/webhook_success_popup.png"><img alt="Webhook 전송 테스트 성공 시" src="../_images/webhook_success_popup.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><strong>테스트 Webhook 전송 실패 시</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/webhook_failed_popup.png"><img alt="Webhook 전송 실패 시" src="../_images/webhook_failed_popup.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p><strong>테스트 Webhook 전송 오류 발생 또는 응답이 없을 시</strong></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/webhook_error_popup.png"><img alt="Webhook 오류 발생 시" src="../_images/webhook_error_popup.png" style="width: 400px;" /></a>
+</div></blockquote>
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="webhookauth">
+<span id="id8"></span><h2>Webhook 검증하기<a class="headerlink" href="#webhookauth" title="Permalink to this headline">¶</a></h2>
+<p>수신한 Webhook이 eformsign에서 호출한 정상적인 Webhook이 맞는지 검증할 수 있는 기능입니다.</p>
+<p>Webhook 추가 혹은 편집 시, 다음과 같이 검증 유형을 선택할 수 있습니다.</p>
+<a class="reference internal image-reference" href="../_images/Webhook_auth_type.png"><img alt="Webhook 검증 유형 선택" src="../_images/Webhook_auth_type.png" style="width: 500px;" /></a>
+<ul class="simple">
+<li><p><strong>검증 없음</strong></p></li>
+</ul>
+<p>검증을 위한 별도의 정보 없이 Webhook을 발송합니다. 이 경우에도 이벤트 정보는 확인할 수 있지만, 수신한 Webhook이 정상 Webhook인지 검증할 수 없습니다.</p>
+<ul class="simple">
+<li><p><strong>Bearer Token</strong></p></li>
+</ul>
+<p>검증을 위해 사전 설정한 토큰 값을 이용하는 방식입니다.
+Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Bearer token</strong>으로 선택하고 토큰으로 사용할 값을 <strong>값</strong>란에 입력합니다.
+이와 같이 설정하면, Request Header의 Authorization 필드에 해당 값을 포함하여 Webhook을 전송하게 됩니다.</p>
+<a class="reference internal image-reference" href="../_images/Webhook_auth_type.png"><img alt="Webhook 검증 유형 선택" src="../_images/Webhook_auth_type.png" style="width: 500px;" /></a>
+<p>예를 들어 위와 같이 값을 bearer_test_value라고 입력한 경우, Webhook 수신 시 Header에서 다음과 같은 내용을 확인할 수 있습니다.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>Authentication : Bearer bearer_test_value
+</pre></div>
+</div>
+<p>이처럼 수신한 Webhook의 Header에서 Token 값을 추출한 후, 사전 설정한 값과 일치하는지 확인하는 방식으로 검증할 수 있습니다.</p>
+<ul class="simple">
+<li><p><strong>Basic Authentication</strong></p></li>
+</ul>
+<p>검증을 위해 아이디와 비밀번호를 이용하는 방식입니다.</p>
+<p>Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Basic authentication</strong>으로 선택하고 인증용으로 사용할 아이디와 비밀번호를 입력합니다.</p>
+<p>이와 같이 설정하면, Request Header의 Authorization 필드에 사전 설정한 아이디와 비밀번호가 아이디:비밀번호 형태로 Base64 인코딩 한 값을 포함하여 Webhook을 전송하게 됩니다.</p>
+<a class="reference internal image-reference" href="../_images/Webhook_auth_type2.png"><img alt="Webhook 검증 유형 선택" src="../_images/Webhook_auth_type2.png" style="width: 400px;" /></a>
+<p>예를 들어 위와 같이 아이디를 <strong>eformsign</strong>, 비밀번호를 <strong>Webhook123!</strong>라고 입력한 경우, Webhook 수신 시 Header에서 다음과 같은 내용을 확인하실 수 있습니다.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>Authentication : Basic ZWZvcm1zaWduOldlYmhvb2sxMjMh
+</pre></div>
+</div>
+<p>위의 예시에서 Basic 뒤의 값을 Base64 디코딩 시 <strong>eformsign:Webhook123!</strong>가 됩니다.</p>
+<p>이처럼 수신한 Webhook의 Header에서 Basic 뒤의 값을 Base64 디코딩하여 아이디와 비밀번호를 추출하고, 사전 설정한 아이디 및 비밀번호와 일치하는지 확인하는 방식으로 검증할 수 있습니다.</p>
+<ul class="simple">
+<li><p><strong>eformsign Signature</strong></p></li>
+</ul>
+<p>검증을 위해 eformsign Signature 서명값을 이용하는 방식입니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>eformsign Signature는 비대칭 키 방식과 타원곡선 암호화(Elliptic curve cryptography)를 사용하는 서명 방식입니다. 서명 알고리즘은 SHA256withECDSA를 사용합니다.</p>
+</div>
+<p>Webhook 추가 혹은 편집 시, 검증 유형을 <strong>eformsign signature</strong>로 설정하면 Request Header의 eformsign_signature 필드에 서명값을 포함하여 Webhook을 전송하게 됩니다.</p>
+<p>Header 내용의 예시는 다음과 같습니다.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>eformsign_signature : 3045022100b9f1e0cdd21492cb5fa16dabff4c4402bf3efb9a9741a40a0d1c70aeda24bc8c02204a57ca1abab288e968a799e2fecbf18de9ab59c7c5814144b17f32553640a71a
+</pre></div>
+</div>
+<div class="section" id="id9">
+<h3>서명 검증을 위한 샘플 코드<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Webhook의 Header에서 eformsign_signature 값을 추출한 후, Webhook 목록에서 <strong>키 보기</strong>버튼을 클릭하여 확인할 수 있는 Webhook 공개 키 및 수신한 Webhook의 Request Body 내용을 이용해 검증할 수 있습니다.</p>
+<div class="section" id="java">
+<h4>Java<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h4>
+<p>아래 샘플 코드를 확인해 주세요.</p>
 </div>
 <div class="section" id="python">
-<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
-<p>키 포맷 처리용 라이브러리를 사용해야 합니다. 작업전 다음의 명령어를 통해 해당 라이브러리를 설치하세요.</p>
+<h4>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h4>
+<p>키 포맷 처리용 라이브러리를 사용해야 합니다. 작업 전 다음 명령어를 통해 해당 라이브러리를 설치하세요.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">warner</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">ecdsa</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">master</span><span class="o">.</span><span class="n">zip</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="php">
-<h3>PHP<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h3>
-<p>다음 예제의 keycheck.inc.php, test.php 파일이 동일한 패스에 위치하게 한 후에 진행해야 합니다.</p>
+<h4>PHP<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h4>
+<p>다음 예제의 keycheck.inc.php, test.php 파일이 동일한 경로에 위치하도록 한 후에 진행해야 합니다.</p>
 </div>
-<div class="section" id="id4">
-<h3>각 언어별 예제<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h4>각 언어별 예제<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <p>다음은 각 언어별 예제입니다.</p>
 <div class="code-tabs docutils container">
 <div class="code-tab" data-title="java">
@@ -276,7 +345,7 @@ Test URL : 해당 Webhook의 URL
 <span class="kn">import</span> <span class="nn">java.security.*</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">java.security.spec.X509EncodedKeySpec</span><span class="p">;</span>
 
-<span class="p">....</span>
+
 <span class="cm">/**</span>
 <span class="cm"> *  request에서 header와 body를 읽습니다.</span>
 <span class="cm"> *</span>
@@ -321,7 +390,7 @@ Test URL : 해당 Webhook의 URL
 
 
 <span class="c1">//3. publicKey 세팅</span>
-<span class="n">String</span> <span class="n">publicKeyHex</span> <span class="o">=</span> <span class="s">&quot;발급 받은 Public Key(String)&quot;</span><span class="p">;</span>
+<span class="n">String</span> <span class="n">publicKeyHex</span> <span class="o">=</span> <span class="s">&quot;이 곳에 발급받은 공개 키를 입력하세요&quot;</span><span class="p">;</span>
 <span class="n">KeyFactory</span> <span class="n">publicKeyFact</span> <span class="o">=</span> <span class="n">KeyFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;EC&quot;</span><span class="p">);</span>
 <span class="n">X509EncodedKeySpec</span> <span class="n">x509KeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">X509EncodedKeySpec</span><span class="p">(</span><span class="k">new</span> <span class="n">BigInteger</span><span class="p">(</span><span class="n">publicKeyHex</span><span class="p">,</span><span class="mi">16</span><span class="p">).</span><span class="na">toByteArray</span><span class="p">());</span>
 <span class="n">PublicKey</span> <span class="n">publicKey</span> <span class="o">=</span> <span class="n">publicKeyFact</span><span class="p">.</span><span class="na">generatePublic</span><span class="p">(</span><span class="n">x509KeySpec</span><span class="p">);</span>
@@ -344,38 +413,36 @@ Test URL : 해당 Webhook의 URL
 </div>
 </div><div class="code-tab" data-title="Python 3.9.6">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
-        <span class="kn">import</span> <span class="nn">binascii</span>
+<span class="kn">import</span> <span class="nn">binascii</span>
 
-        <span class="kn">from</span> <span class="nn">ecdsa</span> <span class="kn">import</span> <span class="n">VerifyingKey</span><span class="p">,</span> <span class="n">BadSignatureError</span>
-        <span class="kn">from</span> <span class="nn">ecdsa.util</span> <span class="kn">import</span> <span class="n">sigencode_der</span><span class="p">,</span> <span class="n">sigdecode_der</span>
-        <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
-
-
-        <span class="o">...</span>
-        <span class="c1"># request에서 header와 body를 읽습니다.</span>
-        <span class="c1"># 1. get eformsign signature</span>
-        <span class="c1"># eformsignSignature는 request header에 담겨 있습니다.</span>
-        <span class="n">eformsign_signature_str</span><span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;eformsign_signature&#39;</span><span class="p">]</span>
-        <span class="n">eformsign_signature</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">eformsign_signature_str</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">ecdsa</span> <span class="kn">import</span> <span class="n">VerifyingKey</span><span class="p">,</span> <span class="n">BadSignatureError</span>
+<span class="kn">from</span> <span class="nn">ecdsa.util</span> <span class="kn">import</span> <span class="n">sigencode_der</span><span class="p">,</span> <span class="n">sigdecode_der</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
 
 
-        <span class="c1"># 2. get request body data</span>
-        <span class="c1"># eformsign signature 검증을 위해 body의 데이터를 String으로 변환합니다.</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span>
+<span class="c1"># request에서 header와 body를 읽습니다.</span>
+<span class="c1"># 1. get eformsign signature</span>
+<span class="c1"># eformsignSignature는 request header에 담겨 있습니다.</span>
+<span class="n">eformsignSignature</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;eformsign_signature&#39;</span><span class="p">]</span>
 
 
-        <span class="c1"># 3. publicKey 세팅</span>
-        <span class="n">publicKeyHex</span> <span class="o">=</span> <span class="s2">&quot;발급받은 public key&quot;</span>
-        <span class="n">publickey</span> <span class="o">=</span> <span class="n">VerifyingKey</span><span class="o">.</span><span class="n">from_der</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">publicKeyHex</span><span class="p">))</span>
+<span class="c1"># 2. get request body data</span>
+<span class="c1"># eformsign signature 검증을 위해 body의 데이터를 String으로 변환 합니다.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span>
 
 
-        <span class="c1"># 4. verify</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">publickey</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">eformsign_signature</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">hashfunc</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">,</span> <span class="n">sigdecode</span><span class="o">=</span><span class="n">sigdecode_der</span><span class="p">):</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;verify success&quot;</span><span class="p">)</span>
-                <span class="c1"># 이곳에 이벤트에 맞는 처리를 진행합니다.</span>
-        <span class="k">except</span> <span class="n">BadSignatureError</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;verify fail&quot;</span><span class="p">)</span>
+<span class="c1"># 3. publicKey 세팅</span>
+<span class="n">publicKeyHex</span> <span class="o">=</span> <span class="s2">&quot;이 곳에 발급받은 공개 키를 입력하세요&quot;</span>
+<span class="n">publickey</span> <span class="o">=</span> <span class="n">VerifyingKey</span><span class="o">.</span><span class="n">from_der</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">publicKeyHex</span><span class="p">))</span>
+
+
+<span class="c1"># 4. verify</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">publickey</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">eformsignSignature</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">hashfunc</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">,</span> <span class="n">sigdecode</span><span class="o">=</span><span class="n">sigdecode_der</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;verify success&quot;</span><span class="p">)</span>
+        <span class="c1"># 이곳에 이벤트에 맞는 처리를 진행 합니다.</span>
+<span class="k">except</span> <span class="n">BadSignatureError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;verify fail&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div><div class="code-tab" data-title="PHP - keycheck.inc.php">
@@ -411,8 +478,8 @@ Test URL : 해당 Webhook의 URL
 <span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/keycheck.inc.php&#39;</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">eformsignECDSA\PublicKey</span><span class="p">;</span>
 
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PUBLIC_KEY&#39;</span><span class="p">,</span> <span class="s1">&#39;발급 받은 public key를 넣어주세요.&#39;</span><span class="p">);</span>
-<span class="o">...</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PUBLIC_KEY&#39;</span><span class="p">,</span> <span class="s1">&#39;이 곳에 발급 받은 공개 키를 입력해주세요.&#39;</span><span class="p">);</span>
+
 <span class="cm">/*</span>
 <span class="cm"> *  request에서 header와 body를 읽습니다.</span>
 <span class="cm"> *</span>
@@ -445,7 +512,6 @@ Test URL : 해당 Webhook의 URL
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">print</span> <span class="s1">&#39;verify fail&#39;</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="p">}</span>
- <span class="o">...</span>
 
 <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
@@ -453,80 +519,96 @@ Test URL : 해당 Webhook의 URL
 </div></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>Webhook 제공 리스트<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>다음의 Webhook을 설정하면 해당 이벤트 발생 시 설정한 Webhook endpoint로 변경 정보를 수신할 수 있습니다.</p>
-<p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook">Webhook</a>은 다음과 같습니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook#/default/post-webhook-document-event">/webhook document event</a> 웹훅 전송</p>
-<p>각 eformsign Webhook에 대한 자세한 설명은
-<a class="reference external" href="https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook">다음</a>에서 확인하실 수 있습니다.</p>
 </div>
-<div class="section" id="id7">
-<h2>Webhook 관련 정보<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>eformsign은 Webhook 이벤트로 <strong>문서</strong> 이벤트와 <strong>PDF 생성</strong> 이벤트를 제공하고 있습니다.</p>
-<div class="section" id="id8">
-<h3>문서 이벤트<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<p>eformsign에서 문서의 생성 또는 상태 변경 시 발생하는 이벤트입니다.</p>
+<div class="section" id="id11">
+<h2>Webhook 이벤트<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>Webhook을 설정하면 eformsign에서 특정 이벤트 발생 시 설정한 Webhook URL로 이벤트 정보를 수신할 수 있습니다.</p>
+<p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">Webhook</a>은 다음과 같습니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">/webhook document event</a> 웹훅 전송</p>
+<div class="section" id="id13">
+<h3>Webhook 이벤트 종류<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>현재 eformsign에서는 <strong>문서 이벤트</strong>와 <strong>PDF 생성 이벤트</strong>에 대해 Webhook을 발송하고 있습니다.</p>
+<ul class="simple">
+<li><p><strong>문서 이벤트:</strong>eformsign에서 문서의 생성 또는 상태 변경 시 발생하는 이벤트입니다. event_type이 document이고, document Object를 포함하고 있습니다.</p></li>
+<li><p><strong>PDF 생성 이벤트:</strong>eformsign에서 문서의 PDF 파일이 생성될 때 발생하는 이벤트입니다. event_type이 ready_document_pdf이고, ready_document_pdf Object를 포함하고 있습니다.</p></li>
+</ul>
+<p>eformsign Webhook에 대한 자세한 설명은
+<a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">Webhook_swaggerhub</a>에서 확인하실 수 있습니다.</p>
+</div>
+<div class="section" id="id14">
+<h3>Webhook 구조<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>Webhook 이벤트 발생 시 사용자가 설정한 Webhook URL로 Webhook이 발송됩니다.</p>
+<p>발송되는 Webhook의 Request Body 구조는 다음과 같습니다.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 42%" />
-<col style="width: 16%" />
-<col style="width: 42%" />
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 33%" />
+<col style="width: 44%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>설명</p></th>
+<th class="head"><p>비고</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>id</p></td>
+<tr class="row-even"><td><p>webhook_id</p></td>
 <td><p>String</p></td>
-<td><p>문서 ID</p></td>
+<td><p>이벤트를 발생시킨 Webhook의 ID</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><p>template_id</p></td>
+<tr class="row-odd"><td><p>webhook_name</p></td>
 <td><p>String</p></td>
-<td><p>템플릿 ID</p></td>
+<td><p>이벤트를 발생시킨 Webhook의 이름</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><p>template_name</p></td>
+<tr class="row-even"><td><p>company_id</p></td>
 <td><p>String</p></td>
-<td><p>템플릿 명</p></td>
+<td><p>회사 ID</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><p>template_version</p></td>
+<tr class="row-odd"><td><p>event_type</p></td>
 <td><p>String</p></td>
-<td><p>템플릿 제목</p></td>
+<td><p>발생한 Webhook 이벤트의 종류</p></td>
+<td><ul class="simple">
+<li><p>document: 문서 이벤트</p></li>
+<li><p>ready_document_pdf: PDF 생성 이벤트</p></li>
+</ul>
+</td>
 </tr>
-<tr class="row-even"><td><p>workflow_seq</p></td>
-<td><p>int</p></td>
-<td><p>워크플로우 순서</p></td>
+<tr class="row-even"><td><p>document</p></td>
+<td><p>Object</p></td>
+<td><p>문서 이벤트의 상세 정보</p></td>
+<td><p>문서 이벤트 발생 시에만 표시됨
+(id, document_title, template_id, template_name,
+workflow_seq, workflow_name, template_version,
+history_id, status, editor_id, outside_token,
+updated_date, mass_job_request_id 포함)</p></td>
 </tr>
-<tr class="row-odd"><td><p>workflow_name</p></td>
+<tr class="row-odd"><td><p>ready_document_pdf</p></td>
 <td><p>String</p></td>
 <td><p>워크플로우 명칭</p></td>
-</tr>
-<tr class="row-even"><td><p>history_id</p></td>
-<td><p>String</p></td>
-<td><p>문서 히스토리 ID</p></td>
-</tr>
-<tr class="row-odd"><td><p>status</p></td>
-<td><p>String</p></td>
-<td><p>문서 상태</p></td>
-</tr>
-<tr class="row-even"><td><p>editor_id</p></td>
-<td><p>String</p></td>
-<td><p>작성자 ID</p></td>
-</tr>
-<tr class="row-odd"><td><p>updated_date</p></td>
-<td><p>long</p></td>
-<td><p>문서 변경시간</p></td>
+<td><p>PDF 생성 이벤트 발생 시에만 표시됨
+(document_id, document_title, workflow_seq,
+workflow_name, template_id, template_name,
+template_version, document_status,
+document_history_id, export_ready_list,
+mass_job_request_id 포함)</p></td>
 </tr>
 </tbody>
 </table>
-<p>이벤트 데이터 중 문서 상태를 나타내는 status의 의미는 다음을 참조하세요.</p>
-<table class="docutils align-default" id="status">
+</div>
+<div class="section" id="status">
+<span id="id15"></span><h3>문서 상태 코드<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h3>
+<p>Webhook의 Request Body에는 문서 상태를 나타내는 코드가 포함되어 있습니다.</p>
+<p>문서 이벤트의 경우 document.status, PDF 생성 이벤트의 경우 ready_document_pdf.document_status에 문서 상태 코드가 기재됩니다.</p>
+<p>각 코드의 의미는 다음과 같습니다.</p>
+<table class="docutils align-default">
 <colgroup>
-<col style="width: 59%" />
 <col style="width: 41%" />
+<col style="width: 59%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -534,123 +616,89 @@ Test URL : 해당 Webhook의 URL
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>doc_create</p></td>
-<td><p>문서 생성시</p></td>
+<tr class="row-even"><td><p>doc_tempsave</p></td>
+<td><p>초안(최초 작성자 문서 임시 저장 상태)</p></td>
 </tr>
-<tr class="row-odd"><td><p>doc_tempsave</p></td>
-<td><p>문서 임시 저장시</p></td>
+<tr class="row-odd"><td><p>doc_create</p></td>
+<td><p>문서 작성</p></td>
 </tr>
-<tr class="row-even"><td><p>doc_request_approval</p></td>
-<td><p>결재 요청시</p></td>
+<tr class="row-even"><td><p>doc_request_participant</p></td>
+<td><p>참여자 요청</p></td>
 </tr>
-<tr class="row-odd"><td><p>doc_accept_approval</p></td>
-<td><p>결재 승인시</p></td>
+<tr class="row-odd"><td><p>doc_accept_participant</p></td>
+<td><p>참여자 승인</p></td>
 </tr>
-<tr class="row-even"><td><p>doc_reject_approval</p></td>
-<td><p>결재 반려시</p></td>
+<tr class="row-even"><td><p>doc_reject_participant</p></td>
+<td><p>참여자 반려</p></td>
 </tr>
-<tr class="row-odd"><td><p>doc_request_external</p></td>
-<td><p>외부자 요청시</p></td>
+<tr class="row-odd"><td><p>doc_request_reviewer</p></td>
+<td><p>검토자 요청</p></td>
 </tr>
-<tr class="row-even"><td><p>doc_remind_external</p></td>
-<td><p>외부자 재 요청시</p></td>
+<tr class="row-even"><td><p>doc_accept_reviewer</p></td>
+<td><p>검토자 승인</p></td>
 </tr>
-<tr class="row-odd"><td><p>doc_open_external</p></td>
-<td><p>외부자 열람시</p></td>
+<tr class="row-odd"><td><p>doc_reject_reviewer</p></td>
+<td><p>검토자 반려</p></td>
 </tr>
-<tr class="row-even"><td><p>doc_accept_external</p></td>
-<td><p>외부자 승인시</p></td>
+<tr class="row-even"><td><p>doc_reject_request</p></td>
+<td><p>반려 요청</p></td>
 </tr>
-<tr class="row-odd"><td><p>doc_reject_external</p></td>
-<td><p>외부자 반려시</p></td>
+<tr class="row-odd"><td><p>doc_decline_cancel_request</p></td>
+<td><p>반려 요청 거절</p></td>
 </tr>
-<tr class="row-even"><td><p>doc_request_internal</p></td>
-<td><p>내부자 요청시</p></td>
+<tr class="row-even"><td><p>doc_delete_request</p></td>
+<td><p>삭제 요청</p></td>
 </tr>
-<tr class="row-odd"><td><p>doc_accept_internal</p></td>
-<td><p>내부자 승인시</p></td>
-</tr>
-<tr class="row-even"><td><p>doc_reject_internal</p></td>
-<td><p>내부자 반려시</p></td>
-</tr>
-<tr class="row-odd"><td><p>doc_tempsave_internal</p></td>
-<td><p>내부자 임시 저장시</p></td>
+<tr class="row-odd"><td><p>doc_decline_delete_request</p></td>
+<td><p>삭제 요청 거절</p></td>
 </tr>
 <tr class="row-even"><td><p>doc_cancel_request</p></td>
-<td><p>요청 취소시</p></td>
-</tr>
-<tr class="row-odd"><td><p>doc_reject_request</p></td>
-<td><p>반려 요청시</p></td>
-</tr>
-<tr class="row-even"><td><p>doc_decline_cancel_request</p></td>
-<td><p>반려 요청 거절시</p></td>
-</tr>
-<tr class="row-odd"><td><p>doc_delete_request</p></td>
-<td><p>삭제 요청시</p></td>
-</tr>
-<tr class="row-even"><td><p>doc_decline_delete_request</p></td>
-<td><p>삭제 요청 거절시</p></td>
+<td><p>요청 취소</p></td>
 </tr>
 <tr class="row-odd"><td><p>doc_deleted</p></td>
-<td><p>문서 삭제시</p></td>
+<td><p>문서 삭제</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_request_approval</p></td>
+<td><p>결재 요청(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_accept_approval</p></td>
+<td><p>결재 승인(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_reject_approval</p></td>
+<td><p>결재 반려(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_request_external</p></td>
+<td><p>외부자 요청(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_remind_external</p></td>
+<td><p>외부자 재 요청(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_open_external</p></td>
+<td><p>외부자 열람(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_accept_external</p></td>
+<td><p>외부자 승인(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_reject_external</p></td>
+<td><p>외부자 반려(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_request_internal</p></td>
+<td><p>내부자 요청(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_accept_internal</p></td>
+<td><p>내부자 승인(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_reject_internal</p></td>
+<td><p>내부자 반려(구형 워크플로우)</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_tempsave_internal</p></td>
+<td><p>내부자 임시 저장(구형 워크플로우)</p></td>
 </tr>
 <tr class="row-even"><td><p>doc_complete</p></td>
-<td><p>문서 완료시</p></td>
+<td><p>문서 완료</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="pdf">
-<h3>PDF 생성 이벤트<a class="headerlink" href="#pdf" title="Permalink to this headline">¶</a></h3>
-<p>eformsign에서 문서의 PDF 파일이 생성될 때 발생하는 이벤트입니다.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 49%" />
-<col style="width: 14%" />
-<col style="width: 37%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>설명</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>document_id</p></td>
-<td><p>String</p></td>
-<td><p>문서 ID</p></td>
-</tr>
-<tr class="row-odd"><td><p>template_id</p></td>
-<td><p>String</p></td>
-<td><p>템플릿 ID</p></td>
-</tr>
-<tr class="row-even"><td><p>template_name</p></td>
-<td><p>String</p></td>
-<td><p>템플릿 명</p></td>
-</tr>
-<tr class="row-odd"><td><p>template_version</p></td>
-<td><p>String</p></td>
-<td><p>템플릿 제목</p></td>
-</tr>
-<tr class="row-even"><td><p>workflow_seq</p></td>
-<td><p>int</p></td>
-<td><p>워크플로우 순서</p></td>
-</tr>
-<tr class="row-odd"><td><p>workflow_name</p></td>
-<td><p>String</p></td>
-<td><p>워크플로우 명칭</p></td>
-</tr>
-<tr class="row-even"><td><p>document_history_id</p></td>
-<td><p>String</p></td>
-<td><p>문서 히스토리 ID</p></td>
-</tr>
-<tr class="row-odd"><td><p>document_status</p></td>
-<td><p>String</p></td>
-<td><p>문서 상태</p></td>
-</tr>
-</tbody>
-</table>
-<p>이벤트 데이터 중 문서 상태를 나타내는 status의 의미는 <a class="reference external" href="#status">다음</a>을 참조하세요.</p>
 </div>
 </div>
 </div>
@@ -660,13 +708,6 @@ Test URL : 해당 Webhook의 URL
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="eformsign_api.html" class="btn btn-neutral float-left" title="eformsign API 사용하기" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
