@@ -96,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id1">시작하기</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#addwebhook">Webhook 추가하기</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Webhook 관리하기</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">키보기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">키 보기</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">편집</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">삭제</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">테스트</a></li>
@@ -219,15 +219,22 @@
 <li><p><strong>템플릿이 없이 만든 문서:</strong> <strong>내 파일로 문서 작성</strong>으로 템플릿 없이 생성한 문서에 대해 Webhook이 발송됩니다.</p></li>
 <li><p><strong>템플릿으로 만든 문서:</strong> 선택한 템플릿으로 생성된 문서에 대해 Webhook이 발송됩니다.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>템플릿 선택은 다음과 같은 절차를 통해 수행하실 수 있습니다.</p>
+<p>① <strong>적용 템플릿 목록</strong> 선택창을 클릭하면 템플릿 목록이 표시됩니다. 목록에서 추가하고자 하는 템플릿을 선택합니다. 이 때, 템플릿(<img alt="image1" src="../_images/template_icon.png" />)을 선택해야 합니다. 카테고리(<img alt="image2" src="../_images/category_icon.png" />)를 선택하면 적용 템플릿 목록에 추가되지 않습니다.</p>
 <blockquote>
-<div><p>① <strong>적용 템플릿 목록</strong> 선택창을 클릭하면 템플릿 목록이 표시됩니다. 목록에서 추가하고자 하는 템플릿을 선택합니다. 이 때, 템플릿(<img alt="image1" src="../_images/template_icon.png" />)을 선택해야 합니다. 카테고리(<img alt="image2" src="../_images/category_icon.png" />)를 선택하면 적용 템플릿 목록에 추가되지 않습니다.</p>
-<a class="reference internal image-reference" href="../_images/Webhook_select_template.png"><img alt="Webhook 키 생성 팝업창 3" src="../_images/Webhook_select_template.png" style="width: 500px;" /></a>
-<p>② 추가하고자 하는 템플릿을 선택 후, 우측의 <strong>추가</strong> 버튼을 클릭합니다.</p>
-<a class="reference internal image-reference" href="../_images/Webhook_add_popup.png"><img alt="Webhook 키 생성 팝업창 4" src="../_images/Webhook_add_popup.png" style="width: 500px;" /></a>
-<p>③ <strong>적용 템플릿 목록</strong>에 선택한 템플릿이 추가 된 것을 확인할 수 있습니다. 이 절차를 반복하여, 여러 템플릿을 추가할 수도 있습니다.</p>
-<a class="reference internal image-reference" href="../_images/Webhook_add_popup2.png"><img alt="Webhook 키 생성 팝업창 5" src="../_images/Webhook_add_popup2.png" style="width: 500px;" /></a>
+<div><a class="reference internal image-reference" href="../_images/Webhook_select_template.png"><img alt="Webhook 키 생성 팝업창 3" src="../_images/Webhook_select_template.png" style="width: 500px;" /></a>
 </div></blockquote>
+<p>② 추가하고자 하는 템플릿을 선택 후, 우측의 <strong>추가</strong> 버튼을 클릭합니다.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Webhook_add_popup.png"><img alt="Webhook 키 생성 팝업창 4" src="../_images/Webhook_add_popup.png" style="width: 500px;" /></a>
+</div></blockquote>
+<p>③ <strong>적용 템플릿 목록</strong>에 선택한 템플릿이 추가 된 것을 확인할 수 있습니다. 이 절차를 반복하여, 여러 템플릿을 추가할 수도 있습니다.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/Webhook_add_popup2.png"><img alt="Webhook 키 생성 팝업창 5" src="../_images/Webhook_add_popup2.png" style="width: 500px;" /></a>
+</div></blockquote>
+</div>
 <ol class="arabic simple" start="5">
 <li><p><strong>검증 유형</strong>을 선택합니다. 검증 유형은 <strong>검증 없음, Bearer token, Basic authentication, eformsign signature</strong> 중에서 선택할 수 있습니다. 각 검증 유형에 대한 설명은 <a class="reference external" href="#webhookauth">Webhook 검증하기</a>을 확인해 주세요.</p></li>
 </ol>
@@ -242,7 +249,7 @@
 <p>Webhook 목록에서 각 Webhook 우측의 작업 버튼을 통해 관리 작업을 수행할 수 있습니다.</p>
 <a class="reference internal image-reference" href="../_images/Webhook_manage1.png"><img alt="커넥트 &gt; Webhook 관리" src="../_images/Webhook_manage1.png" style="width: 700px;" /></a>
 <div class="section" id="id4">
-<h4>키보기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4>키 보기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>검증 유형을 eformsign signature로 설정한 경우, Webhook 검증을 위해 필요한 공개 키를 확인할 수 있습니다.
 <strong>키 재발행</strong> 버튼을 클릭해 키를 재발행할 수 있습니다. 키를 재발행 할 경우, 기존에 사용 중이던 키는 사용할 수 없게 됩니다.</p>
 <p>검증 유형을 eformsign signature 이외의 다른 유형으로 설정한 경우, 빈 값이 표시됩니다.</p>
@@ -315,7 +322,7 @@
 <p>검증을 위해 사전 설정한 토큰 값을 이용하는 방식입니다.
 Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Bearer token</strong>으로 선택하고 토큰으로 사용할 값을 <strong>값</strong>란에 입력합니다.
 이와 같이 설정하면, Request Header의 Authorization 필드에 해당 값을 포함하여 Webhook을 전송하게 됩니다.</p>
-<a class="reference internal image-reference" href="../_images/Webhook_auth_type.png"><img alt="Webhook 검증 유형 선택" src="../_images/Webhook_auth_type.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/Webhook_auth_type1.png"><img alt="Webhook 검증 유형 선택" src="../_images/Webhook_auth_type1.png" style="width: 500px;" /></a>
 <p>예를 들어 위와 같이 값을 bearer_test_value라고 입력한 경우, Webhook 수신 시 Header에서 다음과 같은 내용을 확인할 수 있습니다.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>Authentication : Bearer bearer_test_value
 </pre></div>
@@ -326,8 +333,8 @@ Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Bearer token</strong>
 </ul>
 <p>검증을 위해 아이디와 비밀번호를 이용하는 방식입니다.</p>
 <p>Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Basic authentication</strong>으로 선택하고 인증용으로 사용할 아이디와 비밀번호를 입력합니다.</p>
-<p>이와 같이 설정하면, Request Header의 Authorization 필드에 사전 설정한 아이디와 비밀번호가 아이디:비밀번호 형태로 Base64 인코딩 한 값을 포함하여 Webhook을 전송하게 됩니다.</p>
-<a class="reference internal image-reference" href="../_images/Webhook_auth_type2.png"><img alt="Webhook 검증 유형 선택" src="../_images/Webhook_auth_type2.png" style="width: 400px;" /></a>
+<p>이와 같이 설정하면, Request Header의 Authorization 필드에 사전 설정한 아이디와 비밀번호가 <strong>아이디:비밀번호</strong> 형태로 Base64 인코딩 한 값을 포함하여 Webhook을 전송하게 됩니다.</p>
+<a class="reference internal image-reference" href="../_images/Webhook_auth_type2.png"><img alt="Webhook 검증 유형 선택" src="../_images/Webhook_auth_type2.png" style="width: 500px;" /></a>
 <p>예를 들어 위와 같이 아이디를 <strong>eformsign</strong>, 비밀번호를 <strong>Webhook123!</strong>라고 입력한 경우, Webhook 수신 시 Header에서 다음과 같은 내용을 확인하실 수 있습니다.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>Authentication : Basic ZWZvcm1zaWduOldlYmhvb2sxMjMh
 </pre></div>
@@ -554,7 +561,6 @@ Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Bearer token</strong>
 <span id="id11"></span><h2>Webhook 이벤트<a class="headerlink" href="#webhookevent" title="Permalink to this headline">¶</a></h2>
 <p>Webhook을 설정하면 eformsign에서 특정 이벤트 발생 시 설정한 Webhook URL로 이벤트 정보를 수신할 수 있습니다.</p>
 <p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">Webhook</a>은 다음과 같습니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">/webhook document event</a> 웹훅 이벤트</p>
 <div class="section" id="id13">
 <h3>Webhook 이벤트 종류<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>현재 eformsign에서는 <strong>문서 이벤트</strong>와 <strong>PDF 생성 이벤트</strong>에 대해 Webhook을 발송하고 있습니다.</p>
@@ -562,8 +568,6 @@ Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Bearer token</strong>
 <li><p><strong>문서 이벤트:</strong>eformsign에서 문서의 생성 또는 상태 변경 시 발생하는 이벤트입니다. event_type이 document이고, document Object를 포함하고 있습니다.</p></li>
 <li><p><strong>PDF 생성 이벤트:</strong>eformsign에서 문서의 PDF 파일이 생성될 때 발생하는 이벤트입니다. event_type이 ready_document_pdf이고, ready_document_pdf Object를 포함하고 있습니다.</p></li>
 </ul>
-<p>eformsign Webhook에 대한 자세한 설명은
-<a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">Webhook_swaggerhub</a>에서 확인하실 수 있습니다.</p>
 </div>
 <div class="section" id="id14">
 <h3>Webhook 구조<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
@@ -629,6 +633,10 @@ mass_job_request_id 포함)</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>eformsign Webhook의 자세한 구조 및 예시는 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/">eformsign Webhook</a>에서 확인하실 수 있습니다.</p>
+</div>
 </div>
 <div class="section" id="status">
 <span id="id15"></span><h3>문서 상태 코드<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h3>

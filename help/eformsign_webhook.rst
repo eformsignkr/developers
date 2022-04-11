@@ -53,29 +53,28 @@ Webhook 추가하기
 - **템플릿이 없이 만든 문서:** **내 파일로 문서 작성**\ 으로 템플릿 없이 생성한 문서에 대해 Webhook이 발송됩니다.
 - **템플릿으로 만든 문서:** 선택한 템플릿으로 생성된 문서에 대해 Webhook이 발송됩니다.
 
-템플릿 선택은 다음과 같은 절차를 통해 수행하실 수 있습니다.
+.. note::
 
-    ① **적용 템플릿 목록** 선택창을 클릭하면 템플릿 목록이 표시됩니다. 목록에서 추가하고자 하는 템플릿을 선택합니다. 이 때, 템플릿(|image1|)을 선택해야 합니다. 카테고리(|image2|)를 선택하면 적용 템플릿 목록에 추가되지 않습니다.
+   템플릿 선택은 다음과 같은 절차를 통해 수행하실 수 있습니다.
+
+   ① **적용 템플릿 목록** 선택창을 클릭하면 템플릿 목록이 표시됩니다. 목록에서 추가하고자 하는 템플릿을 선택합니다. 이 때, 템플릿(|image1|)을 선택해야 합니다. 카테고리(|image2|)를 선택하면 적용 템플릿 목록에 추가되지 않습니다.
 
     .. image:: resources/Webhook_select_template.png
         :width: 500
         :alt: Webhook 키 생성 팝업창 3
 
-
-
-    ② 추가하고자 하는 템플릿을 선택 후, 우측의 **추가** 버튼을 클릭합니다.
+   ② 추가하고자 하는 템플릿을 선택 후, 우측의 **추가** 버튼을 클릭합니다.
 
     .. image:: resources/Webhook_add_popup.png
         :width: 500
         :alt: Webhook 키 생성 팝업창 4
 
-
-
-    ③ **적용 템플릿 목록**\ 에 선택한 템플릿이 추가 된 것을 확인할 수 있습니다. 이 절차를 반복하여, 여러 템플릿을 추가할 수도 있습니다.
+   ③ **적용 템플릿 목록**\ 에 선택한 템플릿이 추가 된 것을 확인할 수 있습니다. 이 절차를 반복하여, 여러 템플릿을 추가할 수도 있습니다.
 
     .. image:: resources/Webhook_add_popup2.png
         :width: 500
-        :alt: Webhook 키 생성 팝업창 5
+        :alt: Webhook 키 생성 팝업창 5   
+
 
 
 5. **검증 유형**\ 을 선택합니다. 검증 유형은 **검증 없음, Bearer token, Basic authentication, eformsign signature** 중에서 선택할 수 있습니다. 각 검증 유형에 대한 설명은 `Webhook 검증하기 <#webhookauth>`__\을 확인해 주세요.
@@ -85,7 +84,6 @@ Webhook 추가하기
     :alt: Webhook 키 생성 팝업창 6
 
 6. **등록** 버튼을 클릭하면 Webhook이 추가됩니다. **Webhook 관리** 목록에서 추가한 Webhook을 확인할 수 있습니다.
-
 
 .. image:: resources/Webhook_add.png
     :width: 700
@@ -104,14 +102,13 @@ Webhook 목록에서 각 Webhook 우측의 작업 버튼을 통해 관리 작업
     :alt: 커넥트 > Webhook 관리
 
 
-키보기
+키 보기
 ~~~~~~~~~~~~~~~
 
 검증 유형을 eformsign signature로 설정한 경우, Webhook 검증을 위해 필요한 공개 키를 확인할 수 있습니다.
 **키 재발행** 버튼을 클릭해 키를 재발행할 수 있습니다. 키를 재발행 할 경우, 기존에 사용 중이던 키는 사용할 수 없게 됩니다.
 
 검증 유형을 eformsign signature 이외의 다른 유형으로 설정한 경우, 빈 값이 표시됩니다.
-
 
 .. image:: resources/Webhook_Key.png
     :width: 400
@@ -207,7 +204,7 @@ Webhook 추가 혹은 편집 시, 다음과 같이 검증 유형을 선택할 �
 Webhook 추가 혹은 편집 시, 검증 유형을 **Bearer token**\ 으로 선택하고 토큰으로 사용할 값을 **값**\ 란에 입력합니다.
 이와 같이 설정하면, Request Header의 Authorization 필드에 해당 값을 포함하여 Webhook을 전송하게 됩니다.
 
-.. image:: resources/Webhook_auth_type.png
+.. image:: resources/Webhook_auth_type1.png
     :width: 500
     :alt:  Webhook 검증 유형 선택
 
@@ -228,10 +225,10 @@ Webhook 추가 혹은 편집 시, 검증 유형을 **Bearer token**\ 으로 선�
 
 Webhook 추가 혹은 편집 시, 검증 유형을 **Basic authentication**\ 으로 선택하고 인증용으로 사용할 아이디와 비밀번호를 입력합니다.
 
-이와 같이 설정하면, Request Header의 Authorization 필드에 사전 설정한 아이디와 비밀번호가 아이디:비밀번호 형태로 Base64 인코딩 한 값을 포함하여 Webhook을 전송하게 됩니다.
+이와 같이 설정하면, Request Header의 Authorization 필드에 사전 설정한 아이디와 비밀번호가 **아이디:비밀번호** 형태로 Base64 인코딩 한 값을 포함하여 Webhook을 전송하게 됩니다.
 
 .. image:: resources/Webhook_auth_type2.png
-    :width: 400
+    :width: 500
     :alt:  Webhook 검증 유형 선택
 
 예를 들어 위와 같이 아이디를 **eformsign**\ , 비밀번호를 **Webhook123!**\ 라고 입력한 경우, Webhook 수신 시 Header에서 다음과 같은 내용을 확인하실 수 있습니다.
@@ -494,9 +491,6 @@ Webhook을 설정하면 eformsign에서 특정 이벤트 발생 시 설정한 We
 현재 제공 중인 `Webhook <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/>`_\ 은 다음과 같습니다.
 
 
-``POST``: `/webhook document event <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/>`_\  웹훅 이벤트
-
-
 
 Webhook 이벤트 종류
 --------------------
@@ -506,10 +500,6 @@ Webhook 이벤트 종류
 - **문서 이벤트:**\ eformsign에서 문서의 생성 또는 상태 변경 시 발생하는 이벤트입니다. event_type이 document이고, document Object를 포함하고 있습니다.
 - **PDF 생성 이벤트:**\ eformsign에서 문서의 PDF 파일이 생성될 때 발생하는 이벤트입니다. event_type이 ready_document_pdf이고, ready_document_pdf Object를 포함하고 있습니다.
 
-
-
-eformsign Webhook에 대한 자세한 설명은 
-`Webhook_swaggerhub <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/>`__\ 에서 확인하실 수 있습니다.
 
 
 
@@ -547,6 +537,12 @@ Webhook 이벤트 발생 시 사용자가 설정한 Webhook URL로 Webhook이 �
                                                                    mass_job_request_id 포함)
 
    =================== ====== ==================================== ===============================================
+
+
+.. note::
+
+    eformsign Webhook의 자세한 구조 및 예시는 `eformsign Webhook <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/>`__\ 에서 확인하실 수 있습니다.
+
 
 
 .. _status:
