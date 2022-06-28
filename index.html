@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="개요" href="help/eformsign_api_overview.html" /> 
+    <link rel="next" title="eformsign API 가이드" href="help/eformsign_api_overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,8 +89,8 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="help/eformsign_api_overview.html">개요</a></li>
-<li class="toctree-l1"><a class="reference internal" href="help/eformsign_embedding.html">eformsign 기능 직접 삽입하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help/eformsign_api_overview.html">eformsign API 가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help/eformsign_embedding_v2.html">eformsign 기능 임베딩하기</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help/eformsign_api.html">eformsign API 사용하기</a></li>
 <li class="toctree-l1"><a class="reference internal" href="help/eformsign_webhook.html">eformsign Webhook 사용하기</a></li>
 </ul>
@@ -162,27 +162,25 @@
 <h1>eformsign API / Webhook 가이드<a class="headerlink" href="#eformsign-api-webhook" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="help/eformsign_api_overview.html">개요</a></li>
-<li class="toctree-l1"><a class="reference internal" href="help/eformsign_embedding.html">eformsign 기능 직접 삽입하기</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding.html#id1">준비하기</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding.html#id9">설치하기</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding.html#id10">eformsign 객체에 대한 설명</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding.html#document-option">document-option 파라미터</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding.html#callback">Callback 파라미터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help/eformsign_api_overview.html">eformsign API 가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help/eformsign_embedding_v2.html">eformsign 기능 임베딩하기</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding_v2.html#id1">설치하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding_v2.html#id5">임베딩 옵션 설정하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding_v2.html#id25">응답 확인 및 콜백 설정하기(옵션)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_embedding_v2.html#id35">기능 임베딩 및 구동하기</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="help/eformsign_api.html">eformsign API 사용하기</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="help/eformsign_api.html#id1">시작하기</a></li>
 <li class="toctree-l2"><a class="reference internal" href="help/eformsign_api.html#id2">서명 생성하기</a></li>
 <li class="toctree-l2"><a class="reference internal" href="help/eformsign_api.html#id4">API 제공 리스트</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/eformsign_api.html#id30">API 코드</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_api.html#id33">API 코드</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="help/eformsign_webhook.html">eformsign Webhook 사용하기</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#id1">시작하기</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#id3">서명 생성하기</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#id5">Webhook 제공 리스트</a></li>
-<li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#id7">Webhook 관련 정보</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#webhookauth">Webhook 검증하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help/eformsign_webhook.html#webhookevent">Webhook 이벤트</a></li>
 </ul>
 </li>
 </ul>
@@ -197,7 +195,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="help/eformsign_api_overview.html" class="btn btn-neutral float-right" title="개요" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="help/eformsign_api_overview.html" class="btn btn-neutral float-right" title="eformsign API 가이드" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
