@@ -8,13 +8,13 @@ eformsign은 기업에서 발생하는 종이 문서를 손쉽게 전자문서�
 
 ------------
 
-eformsign은 고객이 자사 사이트 혹은 서비스에서 eformsign의 기능을 다양하게 활용할 수 있도록, eformsign의 전자문서 기능을 직접 삽입하는 방식, Open API 방식 및 Webhook 방식의 3가지 방식을 지원하고 있습니다.  
+eformsign은 고객이 자사 사이트 혹은 서비스에서 eformsign의 기능을 다양하게 활용할 수 있도록, eformsign의 전자문서 기능을 임베딩하는 방식, Open API 방식 및 Webhook 방식의 3가지 방식을 지원하고 있습니다.  
 
 
 
-**eformsign 기능 직접 삽입하기**
+**eformsign 기능 임베딩하기**
 
-eformsign을 고객이 서비스 (또는 사이트) 내에 eformsign 전자문서 기능을 삽입(embed)함으로써 eformsign 사이트에 직접 접속하지 않더라도 고객 서비스 내에서 eformsign의 전자문서 기능을 사용할 수 있도록 할 수 있습니다. 
+eformsign을 고객이 서비스 (또는 사이트) 내에 eformsign 전자문서 기능을 임베딩함으로써 eformsign 사이트에 직접 접속하지 않더라도 고객 서비스 내에서 eformsign의 전자문서 기능을 사용할 수 있도록 할 수 있습니다. 
 
 
 
