@@ -422,7 +422,7 @@ Access Token API에 대한 자세한 설명은
    
    토큰 발급을 위해서는 다음의 내용을 각각 입력해 주세요.
 
-   - Authrize: Base64로 인코딩한 API 키
+   - Authorize: 이폼사인에서 발급받은 API 키를 Base64로 인코딩한 값 입력
    - Header: 생성한 서명값(eformsign_signature)
    - Request body: 서명 생성 시간(execution_time)과 계정 ID(member_id) 입력
 
