@@ -66,7 +66,7 @@ API 키 발급 및 비밀키 확인하기
     :alt: API 키 생성 팝업창
 
 
-4. 생성된 키 목록에서 **키보기** 버튼을 클릭하여 API 키와 비밀 키를 확인합니다.
+4. 생성된 키 목록에서 **키보기** 버튼을 클릭하여 API 키와 비밀키를 확인합니다.
 
 .. image:: resources/apikey4.PNG
     :width: 700
@@ -74,7 +74,7 @@ API 키 발급 및 비밀키 확인하기
 
 .. image:: resources/apikey5.PNG
     :width: 700
-    :alt: API 키 및 비밀 키 확인 
+    :alt: API 키 및 비밀키 확인 
 
 
 
@@ -102,7 +102,7 @@ eformsign_signature는 비대칭 키 방식과 타원곡선 암호화(Elliptic c
 Java
 -------
 
-서버의 현재 시간을 String(UTF-8)으로 변환하고, `API Key 발급하기 <#apikey>`__\에서 발급받은 private key로 서명한 후, 서명한 데이터를 hex string으로 변환합니다.
+서버의 현재 시간을 String(UTF-8)으로 변환하고, `API Key 발급하기 <#apikey>`__\에서 발급받은 비밀로 서명한 후, 서명한 데이터를 hex string으로 변환합니다.
 
 .. note:: 
 
@@ -154,6 +154,14 @@ C# (.NET)
    execution_time은 long 타입을 사용합니다. 따라서, execution_time 입력 시에는 Access Token 발급 시에 확인한 시간 뒤에 L을 넣어 입력합니다.  
 
 
+.. note:: 
+
+   서명을 생성하기 위해서는 비밀키가 필요합니다.
+   비밀키 확인하는 방법은 `API Key 발급 및 비밀키 확인하기 <#apikey>`__\를 참고해 주세요. 
+
+
+
+
 
 .. code-tabs::
 
@@ -166,7 +174,7 @@ C# (.NET)
         import java.security.Signature;
          
         //private key
-        String privateKeyHexStr = "이 곳에 발급 받은 비밀 키 (Private Key) 입력 (String 형태)";
+        String privateKeyHexStr = "이 곳에 발급받은 비밀키 입력(String 형태)";
         KeyFactory keyFact = KeyFactory.getInstance("EC");
         PKCS8EncodedKeySpec psks8KeySpec = new PKCS8EncodedKeySpec(new BigInteger(privateKeyHexStr,16).toByteArray());
         PrivateKey privateKey = keyFact.generatePrivate(psks8KeySpec);
@@ -194,7 +202,7 @@ C# (.NET)
 
         // User-Data-Here
         const execution_time  = Date.now()+"";
-        const privateKeyHex = "발급 받은 private key(String)";
+        const privateKeyHex = "발급받은 비밀키 입력(String 형태)";
 
         // User-Data-Here
         var privateKey = rs.KEYUTIL.getKeyFromPlainPrivatePKCS8Hex(privateKeyHex);
@@ -219,7 +227,7 @@ C# (.NET)
         from ecdsa.util import sigencode_der, sigdecode_der
          
         # private key
-        privateKeyHex = "발급 받은 private key(String)"
+        privateKeyHex = "발급받은 비밀키 입력(String 형태)"
         privateKey = SigningKey.from_der(binascii.unhexlify(privateKeyHex))
          
         # execution_time - 서버 현재 시간
@@ -300,7 +308,7 @@ C# (.NET)
         use eformsignECDSA\PrivateKey;
          
          
-        define('PRIVATE_KEY', '발급 받은 private key(String)');
+        define('PRIVATE_KEY', '발급받은 비밀키 입력(String 형태)');
          
          
         //private key 세팅
@@ -339,7 +347,7 @@ C# (.NET)
          
                 static void Main(string[] args)
                 {
-                    byte[] privateKeyBytes = HexStringToByteArray("이 곳에 발급 받은 비밀 키 (Private Key) 입력 (String 형태)");
+                    byte[] privateKeyBytes = HexStringToByteArray("이 곳에 발급받은 비밀키 입력(String 형태)");
                      
                     DateTime unixEpoch = new DateTime(1970, 1, 1);
                     DateTime currentTime = DateTime.UtcNow;

@@ -248,10 +248,10 @@
 </ol>
 <a class="reference internal image-reference" href="../_images/apikey3.PNG"><img alt="API 키 생성 팝업창" src="../_images/apikey3.PNG" style="width: 700px;" /></a>
 <ol class="arabic simple" start="4">
-<li><p>생성된 키 목록에서 <strong>키보기</strong> 버튼을 클릭하여 API 키와 비밀 키를 확인합니다.</p></li>
+<li><p>생성된 키 목록에서 <strong>키보기</strong> 버튼을 클릭하여 API 키와 비밀키를 확인합니다.</p></li>
 </ol>
 <a class="reference internal image-reference" href="../_images/apikey4.PNG"><img alt="API 키보기 버튼 위치" src="../_images/apikey4.PNG" style="width: 700px;" /></a>
-<a class="reference internal image-reference" href="../_images/apikey5.PNG"><img alt="API 키 및 비밀 키 확인" src="../_images/apikey5.PNG" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="../_images/apikey5.PNG"><img alt="API 키 및 비밀키 확인" src="../_images/apikey5.PNG" style="width: 700px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>API 키 수정 방법</strong></p>
@@ -274,7 +274,7 @@
 <p>서명 생성 방법에 대해서는 Java, Python, PHP 언어별로 설명합니다.</p>
 <div class="section" id="java">
 <h3>Java<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h3>
-<p>서버의 현재 시간을 String(UTF-8)으로 변환하고, <a class="reference external" href="#apikey">API Key 발급하기</a>에서 발급받은 private key로 서명한 후, 서명한 데이터를 hex string으로 변환합니다.</p>
+<p>서버의 현재 시간을 String(UTF-8)으로 변환하고, <a class="reference external" href="#apikey">API Key 발급하기</a>에서 발급받은 비밀로 서명한 후, 서명한 데이터를 hex string으로 변환합니다.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>서명 알고리즘은 SHA256withECDSA을 사용합니다.</p>
@@ -309,6 +309,11 @@
 <p class="admonition-title">Note</p>
 <p>execution_time은 long 타입을 사용합니다. 따라서, execution_time 입력 시에는 Access Token 발급 시에 확인한 시간 뒤에 L을 넣어 입력합니다.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>서명을 생성하기 위해서는 비밀키가 필요합니다.
+비밀키 확인하는 방법은 <a class="reference external" href="#apikey">API Key 발급 및 비밀키 확인하기</a>를 참고해 주세요.</p>
+</div>
 <div class="code-tabs docutils container">
 <div class="code-tab" data-title="Java">
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.security.KeyFactory</span><span class="p">;</span>
@@ -317,7 +322,7 @@
 <span class="kn">import</span> <span class="nn">java.security.Signature</span><span class="p">;</span>
 
 <span class="c1">//private key</span>
-<span class="n">String</span> <span class="n">privateKeyHexStr</span> <span class="o">=</span> <span class="s">&quot;이 곳에 발급 받은 비밀 키 (Private Key) 입력 (String 형태)&quot;</span><span class="p">;</span>
+<span class="n">String</span> <span class="n">privateKeyHexStr</span> <span class="o">=</span> <span class="s">&quot;이 곳에 발급받은 비밀키 입력(String 형태)&quot;</span><span class="p">;</span>
 <span class="n">KeyFactory</span> <span class="n">keyFact</span> <span class="o">=</span> <span class="n">KeyFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;EC&quot;</span><span class="p">);</span>
 <span class="n">PKCS8EncodedKeySpec</span> <span class="n">psks8KeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PKCS8EncodedKeySpec</span><span class="p">(</span><span class="k">new</span> <span class="n">BigInteger</span><span class="p">(</span><span class="n">privateKeyHexStr</span><span class="p">,</span><span class="mi">16</span><span class="p">).</span><span class="na">toByteArray</span><span class="p">());</span>
 <span class="n">PrivateKey</span> <span class="n">privateKey</span> <span class="o">=</span> <span class="n">keyFact</span><span class="p">.</span><span class="na">generatePrivate</span><span class="p">(</span><span class="n">psks8KeySpec</span><span class="p">);</span>
@@ -344,7 +349,7 @@
 
 <span class="c1">// User-Data-Here</span>
 <span class="kr">const</span> <span class="nx">execution_time</span>  <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">privateKeyHex</span> <span class="o">=</span> <span class="s2">&quot;발급 받은 private key(String)&quot;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">privateKeyHex</span> <span class="o">=</span> <span class="s2">&quot;발급받은 비밀키 입력(String 형태)&quot;</span><span class="p">;</span>
 
 <span class="c1">// User-Data-Here</span>
 <span class="kd">var</span> <span class="nx">privateKey</span> <span class="o">=</span> <span class="nx">rs</span><span class="p">.</span><span class="nx">KEYUTIL</span><span class="p">.</span><span class="nx">getKeyFromPlainPrivatePKCS8Hex</span><span class="p">(</span><span class="nx">privateKeyHex</span><span class="p">);</span>
@@ -367,7 +372,7 @@
 <span class="kn">from</span> <span class="nn">ecdsa.util</span> <span class="kn">import</span> <span class="n">sigencode_der</span><span class="p">,</span> <span class="n">sigdecode_der</span>
 
 <span class="c1"># private key</span>
-<span class="n">privateKeyHex</span> <span class="o">=</span> <span class="s2">&quot;발급 받은 private key(String)&quot;</span>
+<span class="n">privateKeyHex</span> <span class="o">=</span> <span class="s2">&quot;발급받은 비밀키 입력(String 형태)&quot;</span>
 <span class="n">privateKey</span> <span class="o">=</span> <span class="n">SigningKey</span><span class="o">.</span><span class="n">from_der</span><span class="p">(</span><span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">privateKeyHex</span><span class="p">))</span>
 
 <span class="c1"># execution_time - 서버 현재 시간</span>
@@ -445,7 +450,7 @@
 <span class="k">use</span> <span class="nx">eformsignECDSA\PrivateKey</span><span class="p">;</span>
 
 
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PRIVATE_KEY&#39;</span><span class="p">,</span> <span class="s1">&#39;발급 받은 private key(String)&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PRIVATE_KEY&#39;</span><span class="p">,</span> <span class="s1">&#39;발급받은 비밀키 입력(String 형태)&#39;</span><span class="p">);</span>
 
 
 <span class="c1">//private key 세팅</span>
@@ -483,7 +488,7 @@
 
         <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="kt">byte</span><span class="p">[]</span> <span class="n">privateKeyBytes</span> <span class="p">=</span> <span class="n">HexStringToByteArray</span><span class="p">(</span><span class="s">&quot;이 곳에 발급 받은 비밀 키 (Private Key) 입력 (String 형태)&quot;</span><span class="p">);</span>
+            <span class="kt">byte</span><span class="p">[]</span> <span class="n">privateKeyBytes</span> <span class="p">=</span> <span class="n">HexStringToByteArray</span><span class="p">(</span><span class="s">&quot;이 곳에 발급받은 비밀키 입력(String 형태)&quot;</span><span class="p">);</span>
 
             <span class="n">DateTime</span> <span class="n">unixEpoch</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
             <span class="n">DateTime</span> <span class="n">currentTime</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">;</span>
