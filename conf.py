@@ -16,11 +16,13 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('.'))
 
+import sphinx_rtd_theme
+
 
 # -- Project information -----------------------------------------------------
 
 project = 'eformsign API guide'
-copyright = '2021. FORCS CO., LTD. All rights reserved'
+copyright = '2023. FORCS CO., LTD. All rights reserved'
 author = 'FORCS'
 
 # The short X.Y version
@@ -41,6 +43,7 @@ extensions = [
 #'sphinxcontrib.httpdomain', 'sphinxcontrib.openapi'
 #'sphinxcontrib.redoc',
 'sphinx_code_tabs',
+"sphinx_rtd_theme",
 ]
 
 
