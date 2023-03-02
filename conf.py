@@ -16,8 +16,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('.'))
 
-import sphinx_rtd_theme
-
 
 # -- Project information -----------------------------------------------------
 
@@ -43,7 +41,6 @@ extensions = [
 #'sphinxcontrib.httpdomain', 'sphinxcontrib.openapi'
 #'sphinxcontrib.redoc',
 'sphinx_code_tabs',
-"sphinx_rtd_theme",
 ]
 
 
@@ -80,7 +77,7 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'renku'
+html_theme = 'piccolo_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
