@@ -97,7 +97,6 @@ eformsign_signature는 비대칭 키 방식과 타원곡선 암호화(Elliptic c
    타원곡선 암호화는 공개키 암호화 방식 중 하나로, 데이터 암호화 디지털 인증 등 현재 가장 많이 쓰이는 암호방식입니다. 
 
 
-서명 생성 방법에 대해서는 Java, Python, PHP 언어별로 설명합니다.
 
 Java
 -------
@@ -163,7 +162,7 @@ C# (.NET)
 
 
 
-.. code-tabs::
+.. tabs::
 
     .. code-tab:: java
         :title: Java
