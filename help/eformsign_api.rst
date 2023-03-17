@@ -13,7 +13,7 @@ eformsign API를 사용하기 위해서는 다음의 준비 작업이 필요합�
 
 - 회사 ID와 문서 ID 확인하기
 - API 키 발급 및 비밀키 확인하기
-- 서명 생성 및 검증하기
+- 서명 생성하기
 
 .. caution:: 
    
@@ -26,11 +26,11 @@ eformsign API를 사용하기 위해서는 다음의 준비 작업이 필요합�
 
 eformsign API를 사용하기 위해서는 소속 회사의 ID와 조회하고자 하는 문서의 ID를 알고 있어야 합니다. 
 
-eformsign 서비스에 로그인하여 회사 ID와 문서 ID를 확인해 주십시오.
+eformsign 서비스에 로그인하여 회사 ID와 문서 ID를 확인해 주세요.
 
 .. note:: 
 
-   회사 ID는 왼쪽 메뉴 트리의 회사 관리 > 회사 정보 메뉴의 "기본 정보" 탭에서 확인할 수 있습니다.
+   회사 ID는 **회사 관리 > 회사 정보** 메뉴의 **기본 정보** 탭에서 확인할 수 있습니다.
 
    |image1|
 
@@ -59,11 +59,64 @@ API 키 발급 및 비밀키 확인하기
     :alt: API 키 생성 버튼
 
 
-3. API 키 생성 팝업창에 별칭과 애플리케이션 이름을 입력하고 저장 버튼을 클릭합니다.
+3. **API 키 생성** 팝업창에 **별칭**\ 과 **애플리케이션 이름**\ 을 입력합니다.
 
-.. image:: resources/apikey3.PNG
-    :width: 700
+.. image:: resources/apikeyauth.PNG
+    :width: 400
     :alt: API 키 생성 팝업창
+
+4. **검증 유형**\ 을 선택 후 저장합니다.
+
+.. note:: 
+    
+   검증 유형은 **Bearer token, Basic authentication, eformsign signature** 중에서 선택할 수 있습니다. 
+
+   - **Bearer Token**\ : 검증을 위해 사전 설정한 값을 이용하는 방식입니다.
+
+    .. image:: resources/apikeyauth1.PNG
+        :width: 300
+        :alt: API 키 생성 팝업창1
+
+
+    검증 유형을 **Bearer token**\ 으로 선택하고 토큰값으로 사용할 값을 **값**\ 란에 입력 후 **저장**\ 합니다.  `Access Token 발급 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`_\  시 요청 헤더 eformsign_signature에 해당 토큰값을  **Bearer 토큰값** 형태로 입력합니다. 다음 예제를 참고해 주세요. 
+
+    .. code:: Javascript
+
+        curl --location --request POST 'https://service.eformsign.com/v2.0/api_auth/access_token' \
+        --header 'eformsign_signature: Bearer {토큰값}' \
+        --header 'Content-Type: application/json' \
+        --header 'Authorization: Bearer {base64 encoded api key }' \
+        --data-raw '{
+         "execution_time":{현재시간ms},
+         "member_id": {eformsign 계정}
+        }'
+
+
+   - **Basic Authentication**\ : 검증을 위해 아이디와 비밀번호를 이용하는 방식입니다. 
+
+    .. image:: resources/apikeyauth2.PNG
+        :width: 300
+        :alt: API 키 생성 팝업창2
+
+
+
+    검증 유형을 **Basic authentication**\ 으로 선택하고 사용할 아이디와 비밀번호를 입력 후 **저장**\ 합니다.  `Access Token 발급 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token>`__\  시 요청 헤더 eformsign_signature에 **아이디:비밀번호** 형태로 Base64 인코딩한 값을 입력합니다. 다음 예제를 참고해 주세요. 
+
+    .. code:: Javascript
+
+        curl --location --request POST 'https://service.eformsign.com/v2.0/api_auth/access_token' \
+        --header 'eformsign_signature: Basic {base64 encoded "id:password"}' \
+        --header 'Content-Type: application/json' \
+        --header 'Authorization: Bearer {base64 encoded api key }' \
+        --data-raw '{
+         "execution_time":{현재시간ms},
+         "member_id": {eformsign 계정}
+        }'
+
+
+   - **eformsign Signature**\ : 검증을 위해 eformsign Signature 서명값을 이용하는 방식입니다. 검증 유형을 **eformsign signature**\ 로 선택한 후 저장합니다. eformsign Signature로 서명 생성하는 방법은 `서명 생성하기 <#eformsign-signature>`__\를 참고해 주세요.
+
+
 
 
 4. 생성된 키 목록에서 **키보기** 버튼을 클릭하여 API 키와 비밀키를 확인합니다.
@@ -87,6 +140,8 @@ API 키 발급 및 비밀키 확인하기
     생성된 키 목록에서 **삭제** 버튼을 클릭하여 API 키를 삭제할 수 있습니다.
 
 
+.. _eformsign_signature:
+
 서명 생성하기 
 ==============
 
@@ -95,6 +150,7 @@ eformsign_signature는 비대칭 키 방식과 타원곡선 암호화(Elliptic c
 .. tip:: 
    
    타원곡선 암호화는 공개키 암호화 방식 중 하나로, 데이터 암호화 디지털 인증 등 현재 가장 많이 쓰이는 암호방식입니다. 
+
 
 
 
@@ -237,7 +293,7 @@ C# (.NET)
           
         # 현재 시간 및 현재 시간 서명값
         print("execution_time : " + execution_time)
-        print("eformsign_signature : " + binascii.hexlify(signature).decode('utf-8'))
+        print("eformsign_signature : " + binascii.hexlify(eformsign_signature).decode('utf-8'))
 
 
     .. code-tab:: php
@@ -408,6 +464,7 @@ API 제공 리스트
 eformsign API는 토큰 발급 및 갱신을 위한 API와 문서 작성 및 처리를 위한 API, 멤버 및 그룹 관리 API로 구분되어 있습니다.
 
 
+.. _access_token_api:
 
 토큰 발급 및 갱신을 위한 API
 --------------------------------
@@ -429,7 +486,7 @@ Access Token API에 대한 자세한 설명은
    토큰 발급을 위해서는 다음의 내용을 각각 입력해 주세요.
 
    - Authorize: 이폼사인에서 발급받은 API 키를 Base64로 인코딩한 값 입력
-   - Header: 생성한 서명값(eformsign_signature)
+   - Header: 생성한 서명값(eformsign_signature) (* `참고 <#apikey>`__\: API 키 발급 시 설정한 검증유형에 따라 다름)
    - Request body: 서명 생성 시간(execution_time)과 계정 ID(member_id) 입력
 
    |image5| 
@@ -450,8 +507,6 @@ Access Token API에 대한 자세한 설명은
 
 
 
-
-
 .. caution:: 
    
    토큰 생성에는 30초의 시간 제한이 있습니다. 서명 생성 시간으로부터 30초 이내에 토큰을 발급받아야 합니다. 30초가 경과하였거나, 서버 상의 시간과 현재 시간이 일치하지 않는 경우 다음과 같은 응답이 수신됩니다. 수신한 응답 메시지의 “execution_time”을 확인하세요.
@@ -464,7 +519,8 @@ Access Token API에 대한 자세한 설명은
 **토큰 갱신**
 ~~~~~~~~~~~~~~~~~~
 
-토큰의 유효시간은 현재 3600초(1시간)으로 설정되어 있습니다. 토큰의 유효시간이 만료되면 더 이상 해당 토큰으로 API를 이용할 수 없습니다. 다음 API를 사용해 토큰을 갱신해 주세요.
+토큰의 유효시간은 현재 3600초(1시간)으로 설정되어 있습니다. 
+토큰의 유효시간이 만료되면 더 이상 해당 토큰으로 API를 이용할 수 없습니다. 다음 API를 사용해 토큰을 갱신해 주세요.
 
 ``POST``: `Access Token 갱신 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-refresh_token>`_\
 
@@ -668,11 +724,12 @@ Type         Code             설명
 ===========  ===============  ===================================
 Start         00               시작 단계
 Complete      01               완료 단계
-Approval      02               결재 단계
-External      03               외부수신인 단계
-Accept        04               내부수신인 단계
+Approval      02               결재 단계(deprecated)
+External      03               외부자 단계(deprecated)
+Accept        04               내부자 단계(deprecated)
 Participant   05               참여자
 Reviewer      06               검토자
+Viewer        07               열람자     
 ===========  ===============  ===================================
 
 
