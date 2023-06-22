@@ -488,7 +488,7 @@ Webhook 이벤트
 
 Webhook을 설정하면 eformsign에서 특정 이벤트 발생 시 설정한 Webhook URL로 이벤트 정보를 수신할 수 있습니다.
 
-현재 제공 중인 `Webhook <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/>`_\ 은 다음과 같습니다.
+현재 제공 중인 `Webhook <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook#/>`_\ 은 다음과 같습니다.
 
 
 
@@ -541,7 +541,7 @@ Webhook 이벤트 발생 시 사용자가 설정한 Webhook URL로 Webhook이 �
 
 .. note::
 
-    eformsign Webhook의 자세한 구조 및 예시는 `eformsign Webhook <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/Webhook#/>`__\ 에서 확인하실 수 있습니다.
+    eformsign Webhook의 자세한 구조 및 예시는 `eformsign Webhook <https://app.swaggerhub.com/apis/eformsign_api/eformsign_API_2.0/Webhook#/>`__\ 에서 확인하실 수 있습니다.
 
 
 
