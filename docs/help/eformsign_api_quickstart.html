@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eformsign API 시작하기: 실습 가이드 &mdash; eformsign API guide 2022.06.28 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/code-tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/code-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="eformsign API 사용하기" href="eformsign_api.html" />
+    <link rel="prev" title="eformsign 기능 임베딩하기" href="eformsign_embedding_v2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/forcs_b.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="eformsign_api_overview.html">eformsign API 가이드</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eformsign_embedding_v2.html">eformsign 기능 임베딩하기</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">eformsign API 시작하기: 실습 가이드</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api">이폼사인 API를 사용하여 문서 작성 및 수신자에게 전송하기</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">준비사항 1. 템플릿 만들기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">준비사항 2. API 키 생성하기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#access-api">준비사항 3. Access 토큰 발급하기 (API 키 인증)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">API를 사용하여 문서 작성 및 요청하기</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eformsign_api.html">eformsign API 사용하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eformsign_webhook.html">eformsign Webhook 사용하기</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eformsign API guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">eformsign API 시작하기: 실습 가이드</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/help/eformsign_api_quickstart.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="eformsign-api">
+<h1>eformsign API 시작하기: 실습 가이드<a class="headerlink" href="#eformsign-api" title="Permalink to this heading"></a></h1>
+<section id="api">
+<h2>이폼사인 API를 사용하여 문서 작성 및 수신자에게 전송하기<a class="headerlink" href="#api" title="Permalink to this heading"></a></h2>
+<p>이 가이드에서는 이폼사인 API를 사용하여 <strong>수신자에게 이메일로 문서 작성 및 수신자에게 전송하는 방법</strong>을 준비부터 문서 요청까지 테스트해 보실 수 있도록 순서대로 설명합니다.</p>
+<p>이폼사인에서 API 키를 생성한 후, API 테스트용 앱인 Postman을 사용하여 키를 인증하고 문서를 작성해 수신자에게 전송해 보겠습니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>미리 <a class="reference external" href="https://identity.getpostman.com/signup?continue=https%3A%2F%2Fgo.postman.co%2Fhome%3Fref_key=IeTVD3pfe8UeAGyvUZcfyj">Postman</a> 계정을 생성하고 <a class="reference external" href="https://www.postman.com/downloads/">앱</a> 을 다운로드하거나 <a class="reference external" href="https://www.postman.com/downloads/">웹</a> 버전에 액세스하세요.</p>
+</div>
+<p>이폼사인 API를 사용한 문서 작성 및 전송은 다음의 프로세스로 진행됩니다.
+(1~3번은 API 활용을 위한 준비과정입니다.)</p>
+<blockquote>
+<div><p><strong>1. 템플릿 만들기</strong></p>
+<p><strong>2. API 키 생성하기</strong></p>
+<p><strong>3. Access token 발급하기 (API 키 인증)</strong></p>
+<p><strong>4. API를 사용하여 문서 작성 및 요청하기</strong></p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="id3">
+<h3>준비사항 1. 템플릿 만들기<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>이폼사인 API를 사용하여 문서를 작성하고 수신자에게 전송하려면 우선 이폼사인 서비스에 로그인 후 템플릿을 만들고 저장해야 합니다.</p>
+<p>이 가이드에서는 최초 문서 작성자가 한 명의 수신자에게 이메일을 통해 문서 작성 요청을 보내는 간단한 워크플로우를 설정하여 템플릿을 만들어 보겠습니다.</p>
+<ol class="arabic simple">
+<li><p>대표관리자 계정으로 이폼사인에 로그인합니다.</p></li>
+<li><p>메뉴에서 템플릿 관리를 클릭하여 템플릿 관리 페이지로 이동합니다.</p></li>
+<li><p>새로운 템플릿을 만들기 위해 템플릿으로 만들 파일을 업로드합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/select_template_kr.PNG"><img alt="템플릿 관리 메뉴" src="../_images/select_template_kr.PNG" style="width: 700px;" /></a>
+<ol class="arabic simple" start="4">
+<li><p><strong>문서 참여자</strong> 설정 팝업에서 <strong>문서 작성에 참여할 사람</strong>을 설정합니다. 이 가이드에서는 최초 작성자인 <strong>시작</strong>과 수신자인 <strong>회원</strong>을 설정하겠습니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/participants_kr.PNG"><img alt="문서 참여자 팝업" src="../_images/participants_kr.PNG" style="width: 300px;" /></a>
+<ol class="arabic simple" start="5">
+<li><p><strong>시작</strong>과 <strong>회원</strong>이 작성할 입력항목을 문서에 추가하고 입력항목 ID 입력, 참여자별 입력항목의 작성권한을 설정합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/add_fields_kr.PNG"><img alt="입력항목 추가" src="../_images/add_fields_kr.PNG" style="width: 700px;" /></a>
+<ol class="arabic simple" start="6">
+<li><p>화면 상단에서 <strong>설정하기</strong>를 클릭하여 이동 후 워크플로우를 설정합니다. <strong>워크플로우</strong>는 <strong>시작(참여자) - 회원(참여자)</strong>, 2단계로 설정하고 <strong>회원</strong> 단계 우측 속성에서 알림 옵션 - 이메일을 선택합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/email_notification_kr.PNG"><img alt="알림 옵션 - 이메일" src="../_images/email_notification_kr.PNG" style="width: 700px;" /></a>
+<ol class="arabic simple" start="7">
+<li><p>템플릿을 저장 및 배포한 후 해당 템플릿의 설정 아이콘을 다시 클릭합니다. 이때 URL의 UUID에 표시된 템플릿 ID를 복사해 둡니다. <strong>템플릿 ID</strong>는 템플릿을 사용하여 문서를 작성할 때 필요합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/template_ID_kr_2.PNG"><img alt="템플릿 ID" src="../_images/template_ID_kr_2.PNG" style="width: 700px;" /></a>
+</section>
+<section id="id4">
+<h3>준비사항 2. API 키 생성하기<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>템플릿을 다 만들었으면 이제 API 키를 생성할 차례입니다.</p>
+<ol class="arabic simple">
+<li><p>이폼사인에 로그인한 후 <strong>[커넥트 &gt; API/Webhook &gt; API 키 관리]</strong> 페이지로 이동합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/api_webhook_menu_kr.PNG"><img alt="API/Webhook 메뉴" src="../_images/api_webhook_menu_kr.PNG" style="width: 700px;" /></a>
+<ol class="arabic simple" start="2">
+<li><p>화면 우측의 <strong>API 키 생성</strong> 버튼을 클릭합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/api_webhook_page_kr.PNG"><img alt="API 키 생성 바튼" src="../_images/api_webhook_page_kr.PNG" style="width: 700px;" /></a>
+<ol class="arabic simple" start="3">
+<li><p><strong>API 키 생성</strong> 팝업이 나타나면 <strong>별칭</strong> 및 <strong>애플리케이션 이름</strong>을 입력하고 <strong>검증 유형</strong>을 <strong>Bearer token</strong>으로 선택한 후 <strong>값</strong>을 입력하고 <strong>저장</strong>합니다.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>이폼사인 API에서는 세 가지 검증 유형을 지원하고 있으며, 이번 실습 가이드에서는 <strong>Bearer token</strong> 방식을 사용해서 진행하겠습니다.</p>
+</div>
+<a class="reference internal image-reference" href="../_images/api_key_popup_kr.PNG"><img alt="API 키 생성 팝업" src="../_images/api_key_popup_kr.PNG" style="width: 300px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>검증 유형에 대한 자세한 내용은 eformsign API 사용하기 가이드의 <a class="reference external" href="https://eformsignkr.github.io/developers/help/eformsign_api.html#api">API 키 발급 및 비밀키 확인하기</a> 를 참고해 주세요.</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>생성된 API 키를 확인하고 복사합니다. API 키는 Access 토큰을 발급할 때 필요합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/api_key_kr.PNG"><img alt="API 키" src="../_images/api_key_kr.PNG" style="width: 700px;" /></a>
+</section>
+<section id="access-api">
+<h3>준비사항 3. Access 토큰 발급하기 (API 키 인증)<a class="headerlink" href="#access-api" title="Permalink to this heading"></a></h3>
+<p>API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야 합니다. 이번 가이드에서는 API 테스트 툴인 Postman을 사용하여 API 키 인증 후 Access 토큰을 발급해 보겠습니다.</p>
+<ol class="arabic simple">
+<li><p>Access 토큰 발급과 문서 작성 및 전송을 더 쉽고 빠르게 테스트 해볼 수 있도록 미리 이폼사인 API reference collection를 만들어 놓았습니다. 아래 Run in Postman 버튼을 클릭해 주세요.</p></li>
+</ol>
+<a class="reference external image-reference" href="https://god.gw.postman.com/run-collection/27891557-58257a8f-c07a-4237-af80-15f4b43b04b3?action=collection%2Ffork&amp;source=rip_markdown&amp;collection-url=entityId%3D27891557-58257a8f-c07a-4237-af80-15f4b43b04b3%26entityType%3Dcollection%26workspaceId%3D3cf5d467-c05f-46a3-9995-7bf5a33b5379"><img alt="Run in Postman 버튼" src="../_images/run_in_postman.PNG" style="width: 150px;" /></a>
+<ol class="arabic simple" start="2">
+<li><p>위 버튼을 클릭하면 로그인 창이 뜹니다. 미리 가입한 계정으로 로그인해 주세요.</p></li>
+<li><p>로그인 후 다음과 같은 화면이 표시되면 <strong>Fork Collection</strong>을 클릭합니다. 미리 만들어 놓은 이폼사인 API reference collection을 사용자의 workspace로 fork합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/fork_collection.PNG"><img alt="Fork collection" src="../_images/fork_collection.PNG" style="width: 700px;" /></a>
+<ol class="arabic simple" start="4">
+<li><p>이폼사인 API reference collection을 workspace로 fork하면 다음과 같은 화면을 확인할 수 있습니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/postman_collection.PNG"><img alt="Postman collection" src="../_images/postman_collection.PNG" style="width: 700px;" /></a>
+<ol class="arabic" start="5">
+<li><p><strong>token</strong> 폴더의 <strong>Access Token 발급(bearer)</strong>를 선택합니다.</p></li>
+<li><p><strong>Headers</strong> 탭을 클릭하여 eformsign_signature와 Authorization 값을 다음과 같은 형태로 입력합니다.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>eformsign_signature: Bearer {{API 키 생성 시 설정한 토큰값}}</p></li>
+<li><p>Authorization: Bearer {{base64 인코딩된 API 키}}</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<a class="reference internal image-reference" href="../_images/get_access_token.PNG"><img alt="Access token 발급" src="../_images/get_access_token.PNG" style="width: 700px;" /></a>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>base 64 인코더는 <a class="reference external" href="https://www.convertstring.com/ko/EncodeDecode/Base64Encode">온라인 Base 64 인코더</a> 사이트에서 진행해 주세요.</p>
+</div>
+<ol class="arabic simple" start="7">
+<li><p><strong>Body</strong> 탭으로 이동한 후 <strong>raw</strong>를 선택하고 execution_time 및 member_id 값을 입력한 다음 <strong>Send</strong> 버튼을 클릭하여 API를 호출합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/access_token_body.PNG"><img alt="API 호출" src="../_images/access_token_body.PNG" style="width: 700px;" /></a>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>execution_time은 토큰이 요청된 시간, 즉 timestamp입니다.
+요청 후 30초안에 13자리 밀리초 시간을 입력하세요.</p>
+<p>해당 값은 <a class="reference external" href="https://www.epochconverter.com/">Epoch Converter</a> 와 같은 사이트에서 변환할 수 있습니다.</p>
+<p><strong>[참고] Epoch Converter 사이트 사용법:</strong></p>
+<ol class="arabic simple">
+<li><p>Human date to Timestamp 버튼 좌측에 있는 입력란에 GMT 시간(한국시간에서 -9시간)을 입력하고 버튼을 클릭합니다.</p></li>
+<li><p>Timestamp in milliseconds 값을 확인합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/epoch_converter.PNG"><img alt="Epoch Converter 사용" src="../_images/epoch_converter.PNG" style="width: 700px;" /></a>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Member_id는 문서를 작성하는 계정ID(대표계정으로 로그인한 계정)입니다. 이 정보는 <strong>회사 관리 &gt; 회사 정보 &gt;상세 정보</strong>에서 확인할 수 있습니다.</p>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>아래와 같이 API키가 정상적으로 인증되면 (Status: 200 OK) Access 토큰이 발급됩니다. Response body에서 <strong>api_url, refresh_token, access_token</strong> 값을 확인할 수 있습니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/response_body_token.PNG"><img alt="Access 토큰 발급" src="../_images/response_body_token.PNG" style="width: 700px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Access 토큰의 유효시간은 3600초(1시간)으로 설정되어 있으며, 유효시간이 만료되면 해당 토큰으로 더 이상 API를 사용할 수 없습니다. 따라서 Access 토큰을 재발급하거나 Access 토큰 갱신 API를 사용해 토큰을 갱신해야 합니다.</p>
+<p>Access 토큰 갱신 API에 대한 내용은 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-refresh_token">Swagger</a> 에서 확인하실 수 있습니다.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h3>API를 사용하여 문서 작성 및 요청하기<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 끝났습니다. 이제 API를 사용하여 문서 작성 및 요청을 해보겠습니다.</p>
+<ol class="arabic simple">
+<li><p>eformsign API reference collection의 document 폴더에서 POST 새 문서 작성 (최초 작성자가 회사 멤버)를 선택합니다.</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>중요!</strong></p>
+<p>URL은 위의 준비사항 3-8 단계에서의 response body에서 받은 api_URL을 입력하세요(예 kr.api.eformsign.com).</p>
+</div>
+<a class="reference internal image-reference" href="../_images/new_doc_api_call.PNG"><img alt="POST 새 문서 작성" src="../_images/new_doc_api_call.PNG" style="width: 700px;" /></a>
+<ol class="arabic simple" start="2">
+<li><dl class="simple">
+<dt><strong>Params</strong> 탭에서 template_id*에 값을 입력합니다.</dt><dd><p><a href="#id7"><span class="problematic" id="id8">*</span></a>템플릿 ID는 템플릿 생성 후 URL에서 복사해 둔 값입니다.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<a class="reference internal image-reference" href="../_images/template_ID_params.PNG"><img alt="template_id 값" src="../_images/template_ID_params.PNG" style="width: 700px;" /></a>
+<ol class="arabic simple" start="3">
+<li><p><strong>Authorization</strong> 탭에서, <strong>Type</strong>을 Bearer Token으로 선택하고 발급받은 Access 토큰 값을 입력합니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/beareraccess_token.PNG"><img alt="Access 토큰 값" src="../_images/beareraccess_token.PNG" style="width: 700px;" /></a>
+<ol class="arabic" start="4">
+<li><p>이제 API로 문서를 작성하고 보낼 준비가 거의 완료되었습니다! 하지만 그 전에 마지막으로 해야할 일이 있습니다. 문서를 보내기 전에 문서 이름, 수신자 정보, 워크플로우 정보, 그리고 최초 작성자가 입력해야 하는 필드 ID 및 값 등의 문서 정보를 입력해야 합니다.</p>
+<p>해당 정보는 Body 탭에서 JSON 형식으로 입력합니다. 실습용은 샘플로 거의 모든 데이터가 미리 입력되어 있습니다. 사용자의 문서 정보에 맞게 데이터를 수정할 수 있으며, 문서 정보의 모든 schema는 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-refresh_token">Swagger</a> 에서 확인할 수 있습니다.</p>
+</li>
+</ol>
+<a class="reference internal image-reference" href="../_images/response_body_send.PNG"><img alt="문서 정보 입력" src="../_images/response_body_send.PNG" style="width: 700px;" /></a>
+<p><strong>샘플</strong></p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;document_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;회원가입 신청서&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;신청서 작성 부탁드립니다.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;recipients&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;step_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;05&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;use_mail&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;use_sms&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;member&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;홍길동&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;honggildong@forcs.com&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;sms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;country_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+82&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;phone_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;01023456789&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;auth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6789&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;password_hint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;휴대폰번호 뒷자리를 입력해주세요.&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;valid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;day&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;hour&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;회원구분&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;일반&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;select_group_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;notification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>위와 같이 body를 입력하면 13646ef03fd54f2388c0e0e25afe017c의 ID를 가진 템플릿으로 회사 멤버인 최초 작성자가 입력항목 ID ‘회원구분’에 ‘일반’을 입력하고 수신자 이메일 주소인 <a class="reference external" href="mailto:honggildong&#37;&#52;&#48;forcs&#46;com">honggildong<span>&#64;</span>forcs<span>&#46;</span>com</a> 으로 문서가 전송됩니다.</p>
+<ol class="arabic simple" start="5">
+<li><p>모든 데이터를 확인한 후 <strong>Send</strong> 버튼을 클릭하면 문서가 수신자에게 전송됩니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/api_call_success.PNG"><img alt="API 호출 성공" src="../_images/api_call_success.PNG" style="width: 700px;" /></a>
+<p>위와 같이 API 호출이 성공하면(Status: 200 OK) 수신자의 이메일로 문서 작성 요청 메일이 전송됩니다.</p>
+<ol class="arabic simple" start="6">
+<li><p><strong>진행 중 문서함</strong>에서 API로 전송된 문서를 확인할 수 있습니다.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/in_progress_doc.PNG"><img alt="진행 중 문서함 확인" src="../_images/in_progress_doc.PNG" style="width: 700px;" /></a>
+<p>이제 수신자는 이폼사인을 통해 작성된 문서를 이메일로 받아서 확인하면 이폼사인을 통해 문서 작성 요청을 받았으며, 이를 작성하여 제출하면 문서가 완료됩니다.</p>
+<p>위와 같은 방식으로 이폼사인의 다양한 API를 손쉽게 테스트해볼 수 있습니다.</p>
+<p>이폼사인 API에 대한 자세한 내용은 <a class="reference external" href="https://eformsignkr.github.io/developers/help/eformsign_api.html#eformsign-api">eformsign API 사용하기</a> 가이드 및 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents">Swagger eformsign API 가이드</a> 에서 확인할 수 있습니다.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eformsign_embedding_v2.html" class="btn btn-neutral float-left" title="eformsign 기능 임베딩하기" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eformsign_api.html" class="btn btn-neutral float-right" title="eformsign API 사용하기" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023. FORCS CO., LTD. All rights reserved.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
