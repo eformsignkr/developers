@@ -90,7 +90,7 @@ Webhook 추가하기
     :alt: Webhook 등록 완료
 
 
-
+.. _managewebhook:
 
 Webhook 관리하기
 --------------------
@@ -117,14 +117,17 @@ Webhook 목록에서 각 Webhook 우측의 작업 버튼을 통해 관리 작업
 
 편집
 ~~~~~~~~~~~~~~~
+
 등록된 Webhook의 이름, URL, 활성 상태, 적용 대상, 검증 유형을 편집할 수 있습니다.
 
 삭제
 ~~~~~~~~~~~~~~~
+
 등록된 Webhook을 삭제할 수 있습니다.
 
 테스트
 ~~~~~~~~~~~~~~~
+
 설정한 Webhook URL로 테스트 Webhook을 전송하고, 결과를 반환합니다.
 
 테스트 Webhook의 Body는 다음과 같습니다.
@@ -497,8 +500,8 @@ Webhook 이벤트 종류
 
 현재 eformsign에서는 **문서 이벤트**\ 와 **PDF 생성 이벤트**\ 에 대해 Webhook을 발송하고 있습니다.
 
-- **문서 이벤트:**\ eformsign에서 문서의 생성 또는 상태 변경 시 발생하는 이벤트입니다. event_type이 document이고, document Object를 포함하고 있습니다.
-- **PDF 생성 이벤트:**\ eformsign에서 문서의 PDF 파일이 생성될 때 발생하는 이벤트입니다. event_type이 ready_document_pdf이고, ready_document_pdf Object를 포함하고 있습니다.
+- **문서 이벤트:** eformsign에서 문서의 생성 또는 상태 변경 시 발생하는 이벤트입니다. event_type이 document이고, document Object를 포함하고 있습니다.
+- **PDF 생성 이벤트:** eformsign에서 문서의 PDF 파일이 생성될 때 발생하는 이벤트입니다. event_type이 ready_document_pdf이고, ready_document_pdf Object를 포함하고 있습니다.
 
 
 

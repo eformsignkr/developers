@@ -47,11 +47,12 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="eformsign_api_overview.html">eformsign API 가이드</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_embedding_v2.html">eformsign 기능 임베딩하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eformsign_api_quickstart.html">eformsign API 시작하기: 실습 가이드</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_api.html">eformsign API 사용하기</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">eformsign Webhook 사용하기</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">시작하기</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#addwebhook">Webhook 추가하기</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Webhook 관리하기</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managewebhook">Webhook 관리하기</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id4">키 보기</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5">편집</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6">삭제</a></li>
@@ -161,8 +162,8 @@
 </ol>
 <a class="reference internal image-reference" href="../_images/Webhook_add.png"><img alt="Webhook 등록 완료" src="../_images/Webhook_add.png" style="width: 700px;" /></a>
 </section>
-<section id="id3">
-<h3>Webhook 관리하기<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<section id="managewebhook">
+<span id="id3"></span><h3>Webhook 관리하기<a class="headerlink" href="#managewebhook" title="Permalink to this heading"></a></h3>
 <p>Webhook 목록에서 각 Webhook 우측의 작업 버튼을 통해 관리 작업을 수행할 수 있습니다.</p>
 <a class="reference internal image-reference" href="../_images/Webhook_manage1.png"><img alt="커넥트 &gt; Webhook 관리" src="../_images/Webhook_manage1.png" style="width: 700px;" /></a>
 <section id="id4">
@@ -486,8 +487,8 @@ PHP - test.php</li></ul><div class="tab codetab selected" data-id="0">
 <h3>Webhook 이벤트 종류<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
 <p>현재 eformsign에서는 <strong>문서 이벤트</strong>와 <strong>PDF 생성 이벤트</strong>에 대해 Webhook을 발송하고 있습니다.</p>
 <ul class="simple">
-<li><p><strong>문서 이벤트:</strong>eformsign에서 문서의 생성 또는 상태 변경 시 발생하는 이벤트입니다. event_type이 document이고, document Object를 포함하고 있습니다.</p></li>
-<li><p><strong>PDF 생성 이벤트:</strong>eformsign에서 문서의 PDF 파일이 생성될 때 발생하는 이벤트입니다. event_type이 ready_document_pdf이고, ready_document_pdf Object를 포함하고 있습니다.</p></li>
+<li><p><strong>문서 이벤트:</strong> eformsign에서 문서의 생성 또는 상태 변경 시 발생하는 이벤트입니다. event_type이 document이고, document Object를 포함하고 있습니다.</p></li>
+<li><p><strong>PDF 생성 이벤트:</strong> eformsign에서 문서의 PDF 파일이 생성될 때 발생하는 이벤트입니다. event_type이 ready_document_pdf이고, ready_document_pdf Object를 포함하고 있습니다.</p></li>
 </ul>
 </section>
 <section id="id14">
