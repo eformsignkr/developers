@@ -137,7 +137,8 @@ eformsign API 시작하기: 실습 가이드
 
 API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야 합니다. 이번 가이드에서는 API 테스트 툴인 Postman을 사용하여 API 키 인증 후 Access 토큰을 발급해 보겠습니다.
 
-1. Access 토큰 발급과 문서 작성 및 전송을 더 쉽고 빠르게 테스트 해볼 수 있도록 미리 이폼사인 API reference collection를 만들어 놓았습니다. 아래 Run in Postman 버튼을 클릭해 주세요. 
+1. Access 토큰 발급과 문서 작성 및 전송을 더 쉽고 빠르게 테스트 해볼 수 있도록 미리 **이폼사인 API 실습 가이드용**를 만들어 놓았습니다. 아래 Run in Postman 버튼을 클릭해 주세요.
+***이폼사인 API 실습 가이드용** Postman collection은 실습가이드를 따라 하는데 필요한 API만 포함하고 있습니다. 현제 제공 중인 모든 API는 `Swagger eformsign API 가이드 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents>`_ 에서 확인할 수 있습니다.
 
 .. image:: resources/run_in_postman.PNG
     :alt: Run in Postman 버튼
@@ -148,14 +149,14 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
 
 2. 위 버튼을 클릭하면 로그인 창이 뜹니다. 미리 가입한 계정으로 로그인해 주세요.
 
-3. 로그인 후 다음과 같은 화면이 표시되면 **Fork Collection**\ 을 클릭합니다. 미리 만들어 놓은 이폼사인 API reference collection을 사용자의 workspace로 fork합니다.
+3. 로그인 후 다음과 같은 화면이 표시되면 **Fork Collection**\ 을 클릭합니다. 미리 만들어 놓은 이폼사인 API 실습 가이드용을 사용자의 workspace로 fork합니다.
 
 .. image:: resources/fork_collection.PNG
     :width: 700
     :alt: Fork collection
 
 
-4. 이폼사인 API reference collection을 workspace로 fork하면 다음과 같은 화면을 확인할 수 있습니다.
+4. 이폼사인 API 실습 가이드용을 workspace로 fork하면 다음과 같은 화면을 확인할 수 있습니다.
 
 .. image:: resources/postman_collection.PNG
     :width: 700
@@ -230,7 +231,7 @@ API를 사용하여 문서 작성 및 요청하기
 
 API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 끝났습니다. 이제 API를 사용하여 문서 작성 및 요청을 해보겠습니다. 
 
-1. eformsign API reference collection의 document 폴더에서 POST 새 문서 작성 (최초 작성자가 회사 멤버)를 선택합니다. 
+1. 이폼사인 API 실습 가이드용의 document 폴더에서 POST 새 문서 작성 (최초 작성자가 회사 멤버)를 선택합니다. 
 
 .. important:: 
     
