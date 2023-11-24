@@ -138,7 +138,7 @@ eformsign API 시작하기: 실습 가이드
 API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야 합니다. 이번 가이드에서는 API 테스트 툴인 Postman을 사용하여 API 키 인증 후 Access 토큰을 발급해 보겠습니다.
 
 1. Access 토큰 발급과 문서 작성 및 전송을 더 쉽고 빠르게 테스트 해볼 수 있도록 미리 **이폼사인 API 실습 가이드용** 를 만들어 놓았습니다. 아래 Run in Postman 버튼을 클릭해 주세요.
-**이폼사인 API 실습 가이드용** Postman collection은 실습가이드를 따라 하는데 필요한 API만 포함하고 있습니다. 현제 제공 중인 모든 API는 `Swagger eformsign API 가이드 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents>`_ 에서 확인할 수 있습니다.
+**이폼사인 API 실습 가이드용** Postman collection은 실습가이드를 따라 하는데 필요한 API만 포함하고 있습니다. 현재 제공 중인 모든 API는 `Swagger eformsign API 가이드 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents>`_ 에서 확인할 수 있습니다.
 
 .. image:: resources/run_in_postman.PNG
     :alt: Run in Postman 버튼
