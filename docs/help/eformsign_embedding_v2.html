@@ -8,16 +8,16 @@
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/code-tabs.css" type="text/css" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-        <script src="../_static/code-tabs.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=696c1345"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/code-tabs.js?v=c983d12e"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -35,7 +35,6 @@
           
           <a href="../index.html">
             
-              <img src="../_static/forcs_b.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -133,13 +132,13 @@
            <div itemprop="articleBody">
              
   <section id="eformsign">
-<h1>eformsign 기능 임베딩하기<a class="headerlink" href="#eformsign" title="Permalink to this heading"></a></h1>
+<h1>eformsign 기능 임베딩하기<a class="headerlink" href="#eformsign" title="Link to this heading"></a></h1>
 <p>eformsign 기능을 임베딩하게 되면, 고객이 제공하고 있는 서비스(혹은 사이트) 내에서 고객사의 사용자(최종 사용자)가 eformsign 서비스 사이트를 통하지 않고 고객의 서비스를 통해 eformsign 전자문서를 사용할 수 있습니다.</p>
 <p>예를 들면, 내 블로그에서 특정 YouTube 동영상을 소개하고자 할 때, 블로그에서 YouTube 동영상을 임베딩하여 해당 동영상을 블로그 내에서 바로 재생할 수 있도록 하는 방식과 유사합니다.</p>
 <section id="id1">
-<h2>설치하기<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<h2>설치하기<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <section id="id2">
-<h3>개요<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>개요<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>eformsign 임베딩은 현재 다음의 기능을 지원하고 있습니다.</p>
 <ul class="simple">
 <li><p>템플릿으로 문서 작성</p></li>
@@ -152,7 +151,7 @@
 </ul>
 <p>위의 기능을 임베딩하기 위한 객체는 현재 EformSignDocument와 EformSignTemplate 두 종류를 제공하고 있습니다. 각 객체가 담당하고 있는 기능을 확인 후 설치해 주세요.</p>
 <section id="id3">
-<h4>eformsign 임베딩용 객체<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<h4>eformsign 임베딩용 객체<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>객체명</p></th>
@@ -182,7 +181,7 @@
 </section>
 </section>
 <section id="id4">
-<h3>설치 방법<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>설치 방법<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>eformsign의 기능을 사용하고자 하는 웹 페이지에 다음의 스크립트를 추가합니다.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--</span><span class="nx">jQuery</span><span class="o">--&gt;</span>
 <span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;https://www.eformsign.com/plugins/jquery/jquery.min.js&quot;</span><span class="o">/&gt;</span>
@@ -201,11 +200,11 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </section>
 </section>
 <section id="id5">
-<h2>임베딩 옵션 설정하기<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<h2>임베딩 옵션 설정하기<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <p>eformsign 기능 임베딩 시, 임베딩하는 기능에 대한 상세 옵션을 JSON 형태로 설정해야 합니다.
 회사 정보, 임베딩 모드, 사용자 정보, 레이아웃, 자동 기입 등을 설정할 수 있습니다.</p>
 <section id="id6">
-<h3><strong>기능별 설정값</strong><a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<h3><strong>기능별 설정값</strong><a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>eformsign 기능 임베딩은 어떤 객체를 사용하고, 어떤 모드를 설정하는 지에 따라 구동되는 기능이 달라집니다.
 다음 표에서 각 기능별로 사용해야 할 객체와 임베딩 모드를 확인해 주세요.</p>
 <div class="admonition note">
@@ -252,10 +251,10 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </table>
 </section>
 <section id="id7">
-<h3><strong>필요한 값 확인</strong><a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<h3><strong>필요한 값 확인</strong><a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <p>임베딩 옵션 설정 시, 삽입하는 기능에 따라 회사 ID, 템플릿 ID, 문서 ID를 입력해야 할 때가 있습니다.</p>
 <section id="id">
-<h4>회사 ID 확인 방법<a class="headerlink" href="#id" title="Permalink to this heading"></a></h4>
+<h4>회사 ID 확인 방법<a class="headerlink" href="#id" title="Link to this heading"></a></h4>
 <p>회사 ID는 회사 관리자 혹은 대표 관리자 계정으로 로그인 후 <strong>회사 관리 &gt; 회사 정보 &gt; 기본 정보</strong>에서 회사 ID를 확인할 수 있습니다.</p>
 <ol class="arabic simple">
 <li><p>eformsign 사이드바 메뉴에서 <strong>회사 정보</strong> 메뉴를 클릭합니다.</p></li>
@@ -267,7 +266,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 <a class="reference internal image-reference" href="../_images/companyinfo_companyid.png"><img alt="회사 정보 &gt; 기본 정보" src="../_images/companyinfo_companyid.png" style="width: 700px;" /></a>
 </section>
 <section id="id8">
-<h4>템플릿 ID 확인 방법<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<h4>템플릿 ID 확인 방법<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
 <p>템플릿 관리 메뉴로 이동하여 사용하려는 템플릿의 설정 아이콘을 클릭하면 해당 템플릿의 URL에서 form_id를 확인할 수 있습니다.</p>
 <ol class="arabic simple">
 <li><p>eformsign 사이드바 메뉴에서 <strong>템플릿 관리</strong>를 클릭합니다.</p></li>
@@ -283,7 +282,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 <a class="reference internal image-reference" href="../_images/templateURL_templateID.png"><img alt="템플릿 ID 위치" src="../_images/templateURL_templateID.png" style="width: 700px;" /></a>
 </section>
 <section id="id9">
-<h4>문서 ID 확인 방법<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
+<h4>문서 ID 확인 방법<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
 <p>문서 ID는 해당 문서가 있는 문서함 목록에서 확인할 수 있습니다.</p>
 <ol class="arabic simple">
 <li><p>eformsign 사이드바 메뉴에서 <strong>해당 문서가 있는 문서함</strong> 메뉴를 클릭합니다.</p></li>
@@ -296,7 +295,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </section>
 </section>
 <section id="id10">
-<h3>템플릿 문서 작성, 문서 처리, 문서 미리보기<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<h3>템플릿 문서 작성, 문서 처리, 문서 미리보기<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <p>eformsign을 임베딩하여 템플릿으로 문서를 작성하거나, 수신한 문서를 처리 또는 생성된 문서를 미리보기하는 기능을 삽입하는 경우에 대해 설명합니다.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">eformsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EformSignDocument</span><span class="p">();</span>
 
@@ -386,7 +385,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </pre></div>
 </div>
 <section id="document-option">
-<h4>document_option<a class="headerlink" href="#document-option" title="Permalink to this heading"></a></h4>
+<h4>document_option<a class="headerlink" href="#document-option" title="Link to this heading"></a></h4>
 <p>옵션 설정을 위한 JSON은 다음과 같은 구조로 이루어져 있습니다.</p>
 <table class="docutils align-default">
 <thead>
@@ -441,7 +440,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 <p>회사 정보와 모드는 필수 입력정보입니다.</p>
 </div>
 <section id="company">
-<h5>1. company(회사 정보/필수)<a class="headerlink" href="#company" title="Permalink to this heading"></a></h5>
+<h5>1. company(회사 정보/필수)<a class="headerlink" href="#company" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -485,7 +484,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="mode">
-<h5>2. mode(임베딩 모드/필수)<a class="headerlink" href="#mode" title="Permalink to this heading"></a></h5>
+<h5>2. mode(임베딩 모드/필수)<a class="headerlink" href="#mode" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -550,7 +549,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="user">
-<h5>3. user(사용자 정보/비필수)<a class="headerlink" href="#user" title="Permalink to this heading"></a></h5>
+<h5>3. user(사용자 정보/비필수)<a class="headerlink" href="#user" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -658,7 +657,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="layout">
-<h5>4. layout(레이아웃/비필수)<a class="headerlink" href="#layout" title="Permalink to this heading"></a></h5>
+<h5>4. layout(레이아웃/비필수)<a class="headerlink" href="#layout" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -703,7 +702,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="prefill">
-<h5>5. prefill(자동 기입/비필수)<a class="headerlink" href="#prefill" title="Permalink to this heading"></a></h5>
+<h5>5. prefill(자동 기입/비필수)<a class="headerlink" href="#prefill" title="Link to this heading"></a></h5>
 <p>문서 작성 과정 중에 자동으로 입력될 수 있도록 처리 시 사용합니다.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -917,7 +916,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="return-fields">
-<h5>6. return_fields(리턴 필드/비필수)<a class="headerlink" href="#return-fields" title="Permalink to this heading"></a></h5>
+<h5>6. return_fields(리턴 필드/비필수)<a class="headerlink" href="#return-fields" title="Link to this heading"></a></h5>
 <p>문서 작성 및 수정 후, 사용자가 작성한 필드의 내용을 Response를 통해 전달할 항목을 지정합니다.
 “return_fields” Array 내에 필드명을 String 형태로 입력합니다.</p>
 <div class="admonition note">
@@ -937,7 +936,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </section>
 </section>
 <section id="id11">
-<h3>내 파일로 문서 작성<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<h3>내 파일로 문서 작성<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <p>eformsign을 임베딩하여 내 파일로 문서 작성 기능을 사용할 수 있습니다.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">eformsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EformSignTemplate</span><span class="p">();</span>
 
@@ -1052,7 +1051,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </pre></div>
 </div>
 <section id="template-option">
-<h4>template_option<a class="headerlink" href="#template-option" title="Permalink to this heading"></a></h4>
+<h4>template_option<a class="headerlink" href="#template-option" title="Link to this heading"></a></h4>
 <p>옵션 설정을 위한 JSON은 다음과 같은 구조로 이루어져 있습니다.</p>
 <table class="docutils align-default">
 <thead>
@@ -1107,7 +1106,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 <p>회사 정보와 모드는 필수 입력정보입니다.</p>
 </div>
 <section id="id12">
-<h5>1. company(회사 정보/필수)<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h5>
+<h5>1. company(회사 정보/필수)<a class="headerlink" href="#id12" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -1151,7 +1150,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id13">
-<h5>2. mode(임베딩 모드/필수)<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h5>
+<h5>2. mode(임베딩 모드/필수)<a class="headerlink" href="#id13" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -1188,7 +1187,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id14">
-<h5>3. user(사용자 정보/비필수)<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h5>
+<h5>3. user(사용자 정보/비필수)<a class="headerlink" href="#id14" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -1242,7 +1241,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id15">
-<h5>4. layout(레이아웃/비필수)<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h5>
+<h5>4. layout(레이아웃/비필수)<a class="headerlink" href="#id15" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -1287,7 +1286,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id16">
-<h5>5. prefill(자동 기입/비필수)<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h5>
+<h5>5. prefill(자동 기입/비필수)<a class="headerlink" href="#id16" title="Link to this heading"></a></h5>
 <p>문서 작성 과정 중에 자동으로 입력될 수 있도록 처리 시 사용합니다.</p>
 <table class="docutils align-default">
 <thead>
@@ -1703,7 +1702,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="template-file">
-<h5>6. template_file(템플릿 파일/비필수)<a class="headerlink" href="#template-file" title="Permalink to this heading"></a></h5>
+<h5>6. template_file(템플릿 파일/비필수)<a class="headerlink" href="#template-file" title="Link to this heading"></a></h5>
 <p>템플릿에 사용될 파일이 자동으로 업로드되도록 설정합니다.</p>
 <table class="docutils align-default">
 <thead>
@@ -1750,7 +1749,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </section>
 </section>
 <section id="id17">
-<h3>템플릿 생성, 템플릿 수정, 템플릿 복제<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
+<h3>템플릿 생성, 템플릿 수정, 템플릿 복제<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
 <p>eformsign을 임베딩하여 템플릿을 생성, 수정, 복제하는 경우에 대해 설명합니다.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">eformsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EformSignTemplate</span><span class="p">();</span>
 
@@ -1842,7 +1841,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </pre></div>
 </div>
 <section id="id18">
-<h4>template_option<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h4>
+<h4>template_option<a class="headerlink" href="#id18" title="Link to this heading"></a></h4>
 <p>옵션 설정을 위한 JSON은 다음과 같은 구조로 이루어져 있습니다.</p>
 <table class="docutils align-default">
 <thead>
@@ -1897,7 +1896,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 <p>회사 정보와 모드는 필수 입력정보입니다.</p>
 </div>
 <section id="id19">
-<h5>1. company(회사 정보/필수)<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h5>
+<h5>1. company(회사 정보/필수)<a class="headerlink" href="#id19" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -1941,7 +1940,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id20">
-<h5>2. mode(임베딩 모드/필수)<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h5>
+<h5>2. mode(임베딩 모드/필수)<a class="headerlink" href="#id20" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -2006,7 +2005,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id21">
-<h5>3. user(사용자 정보/비필수)<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h5>
+<h5>3. user(사용자 정보/비필수)<a class="headerlink" href="#id21" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -2060,7 +2059,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id22">
-<h5>4. layout(레이아웃/비필수)<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h5>
+<h5>4. layout(레이아웃/비필수)<a class="headerlink" href="#id22" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -2105,7 +2104,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id23">
-<h5>5. prefill(자동 기입/비필수)<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h5>
+<h5>5. prefill(자동 기입/비필수)<a class="headerlink" href="#id23" title="Link to this heading"></a></h5>
 <p>문서 작성 과정 중에 자동으로 입력될 수 있도록 처리 시 사용합니다.</p>
 <table class="docutils align-default">
 <thead>
@@ -2574,7 +2573,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id24">
-<h5>6. template_file(템플릿 파일/비필수)<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h5>
+<h5>6. template_file(템플릿 파일/비필수)<a class="headerlink" href="#id24" title="Link to this heading"></a></h5>
 <p>템플릿에 사용될 파일이 자동으로 업로드되도록 설정합니다.</p>
 <table class="docutils align-default">
 <thead>
@@ -2622,7 +2621,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </section>
 </section>
 <section id="id25">
-<h2>응답 확인 및 콜백 설정하기(옵션)<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h2>
+<h2>응답 확인 및 콜백 설정하기(옵션)<a class="headerlink" href="#id25" title="Link to this heading"></a></h2>
 <p>eformsign 기능을 임베딩하여 사용 시, 특정 상황에서 eformsign으로부터 정보를 담은 응답을 수신할 수 있습니다.
 또한, 해당 응답을 활용하여 특정 동작을 실행하도록 콜백을 설정할 수 있습니다.</p>
 <p><strong>응답 및 콜백의 종류</strong></p>
@@ -2636,13 +2635,13 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 <p>임베딩한 화면이 로드되면서 해당 화면에서 수행할 수 있는 작업의 목록 정보를 담은 응답이 수신되고, 콜백을 사용할 수 있습니다.
 수신한 응답의 작업 목록을 기반으로, 상단바의 액션 버튼을 대체할 수 있는 버튼을 설정할 수 있습니다.</p>
 <section id="success-fail">
-<span id="id26"></span><h3>작업 성공/실패 시<a class="headerlink" href="#success-fail" title="Permalink to this heading"></a></h3>
+<span id="id26"></span><h3>작업 성공/실패 시<a class="headerlink" href="#success-fail" title="Link to this heading"></a></h3>
 <p>eformsign을 임베딩하여 수행한 작업을 성공 혹은 실패 했을 때 반환되는 응답과, 응답 수신 후 특정 기능을 실행할 수 있는 콜백 함수인 Success Callback / Error Callback에 대해 설명합니다.</p>
 <section id="response">
-<h4>응답(Response)<a class="headerlink" href="#response" title="Permalink to this heading"></a></h4>
+<h4>응답(Response)<a class="headerlink" href="#response" title="Link to this heading"></a></h4>
 <p>문서 작성/처리, 템플릿 생성/수정/복제 등의 작업을 성공하거나 실패했을 때, 다음과 같은 response가 반환됩니다.</p>
 <section id="eformsigndocument">
-<h5>EformSignDocument(템플릿 문서 작성, 문서 처리)<a class="headerlink" href="#eformsigndocument" title="Permalink to this heading"></a></h5>
+<h5>EformSignDocument(템플릿 문서 작성, 문서 처리)<a class="headerlink" href="#eformsigndocument" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -2816,7 +2815,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="eformsigntemplate">
-<h5>EformSignTemplate (내 파일로 문서 작성, 템플릿 생성, 템플릿 수정, 템플릿 복제)<a class="headerlink" href="#eformsigntemplate" title="Permalink to this heading"></a></h5>
+<h5>EformSignTemplate (내 파일로 문서 작성, 템플릿 생성, 템플릿 수정, 템플릿 복제)<a class="headerlink" href="#eformsigntemplate" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -2918,12 +2917,12 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </section>
 </section>
 <section id="callback">
-<h4>콜백 (Callback)<a class="headerlink" href="#callback" title="Permalink to this heading"></a></h4>
+<h4>콜백 (Callback)<a class="headerlink" href="#callback" title="Link to this heading"></a></h4>
 <p>Success Callback과 Error Callback은 각각 작업을 성공했을 때 또는 실패했을 때 실행되는 함수입니다.
 작업 성공/실패 시 반환되는 response를 받아 원하는 작업을 수행하도록 설정할 수 있습니다.</p>
 <p>예를 들어 필요에 따라 원하는 값을 콘솔에 출력하거나 (console.log) 경고창을 표출할 수 있으며(alert), 조건문 등을 이용해 원하는 상황에 원하는 기능을 수행하도록 할 수 있습니다.</p>
 <section id="id27">
-<h5>EformSignDocument 예시<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h5>
+<h5>EformSignDocument 예시<a class="headerlink" href="#id27" title="Link to this heading"></a></h5>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">eformsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EformSignDocument</span><span class="p">();</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="nx">document_option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 생략 */</span><span class="w"> </span><span class="p">};</span>
@@ -2947,7 +2946,7 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </div>
 </section>
 <section id="id28">
-<h5>EformSignTemplate 예시<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h5>
+<h5>EformSignTemplate 예시<a class="headerlink" href="#id28" title="Link to this heading"></a></h5>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">eformsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EformSignTemplate</span><span class="p">();</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="nx">document_option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 생략 */</span><span class="w"> </span><span class="p">};</span>
@@ -2978,15 +2977,15 @@ jQuery의 경우, 이미 다른 방식으로 웹페이지에 추가되어 있다
 </section>
 </section>
 <section id="loading">
-<span id="id29"></span><h3>화면 로드 시<a class="headerlink" href="#loading" title="Permalink to this heading"></a></h3>
+<span id="id29"></span><h3>화면 로드 시<a class="headerlink" href="#loading" title="Link to this heading"></a></h3>
 <p>eformsign을 임베딩한 화면이 로드 되었을 때의 응답과, 응답 수신 후 특정 기능을 실행할 수 있는 콜백 함수인 Action Callback에 대해 설명합니다.
 또한, 상단바(헤더)에 위치한 액션 버튼을 대체할 버튼을 생성하는 방법에 대해서 설명합니다.</p>
 <section id="id30">
-<h4>응답(Response)<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h4>
+<h4>응답(Response)<a class="headerlink" href="#id30" title="Link to this heading"></a></h4>
 <p>임베딩한 eformsign 기능의 화면이 로드될 때, response를 통해 해당 화면에서 수행할 수 있는 기능에 대한 정보가 반환됩니다.
 Response의 구조 및 예시는 다음과 같습니다.</p>
 <section id="id31">
-<h5>EformSignDocument (템플릿 문서 작성, 문서 처리)<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h5>
+<h5>EformSignDocument (템플릿 문서 작성, 문서 처리)<a class="headerlink" href="#id31" title="Link to this heading"></a></h5>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>변수명</p></th>
@@ -3048,11 +3047,11 @@ Response의 구조 및 예시는 다음과 같습니다.</p>
 </section>
 </section>
 <section id="id32">
-<h4>콜백 (Callback)<a class="headerlink" href="#id32" title="Permalink to this heading"></a></h4>
+<h4>콜백 (Callback)<a class="headerlink" href="#id32" title="Link to this heading"></a></h4>
 <p>Action Callback은 기능 화면이 로드될 때, response 수신 후 실행되는 함수입니다.
 Response와 무관한 별도의 작업을 자동으로 수행하도록 설정하거나, 문서 화면 로드 시 반환되는 response를 받아서 그에 따라 원하는 작업을 수행하도록 설정할 수 있습니다.</p>
 <section id="id33">
-<h5>예시<a class="headerlink" href="#id33" title="Permalink to this heading"></a></h5>
+<h5>예시<a class="headerlink" href="#id33" title="Link to this heading"></a></h5>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">eformsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EformSignDocument</span><span class="p">();</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="nx">document_option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 생략 */</span><span class="w"> </span><span class="p">};</span>
@@ -3077,7 +3076,7 @@ Response와 무관한 별도의 작업을 자동으로 수행하도록 설정하
 </section>
 </section>
 <section id="creating-button">
-<span id="id34"></span><h4>액션 버튼 생성<a class="headerlink" href="#creating-button" title="Permalink to this heading"></a></h4>
+<span id="id34"></span><h4>액션 버튼 생성<a class="headerlink" href="#creating-button" title="Link to this heading"></a></h4>
 <p>기능 옵션 설정 시, 상단 헤더를 숨길 수 있는 옵션이 존재합니다.
 그러나 상단 헤더를 숨길 시, 상단 헤더에 존재하는 액션 버튼(제출, 요청 등)이 함께 숨겨지기에 별도로 액션 버튼을 생성해주어야 합니다.</p>
 <p>EformsignDocument 객체와 EformsignTemplate 객체에 모두 존재하는 sendAction 함수를 사용하면, 특정 액션을 실행할 수 있습니다.
@@ -3313,7 +3312,7 @@ Response와 무관한 별도의 작업을 자동으로 수행하도록 설정하
 </tbody>
 </table>
 <p>예를 들어, 클릭 시 (신형 워크플로우를 사용하며, 다음 수신자가 있는 문서를 작성 후) 전송하는 버튼은 다음과 같이 생성할 수 있습니다.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>&lt;button id=&quot;btn_21&quot; onclick=&quot;eformsign.sendAction({type: &quot;01&quot;, code: &quot;21&quot;});&quot;&gt;전송&lt;/button&gt;
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_21&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;eformsign.sendAction({type: &quot;</span><span class="mo">01</span><span class="s2">&quot;, code: &quot;</span><span class="mf">21</span><span class="s2">&quot;});&quot;</span><span class="o">&gt;</span><span class="nx">전송</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -3362,55 +3361,55 @@ Response와 무관한 별도의 작업을 자동으로 수행하도록 설정하
 <span class="nx">eformsign</span><span class="p">.</span><span class="nb">document</span><span class="p">(</span><span class="nx">document_option</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;eformsign_iframe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">success_callback</span><span class="p">,</span><span class="w"> </span><span class="nx">error_callback</span><span class="p">,</span><span class="w"> </span><span class="nx">action_callback</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>&lt;!-- 모든 액션에 대한 버튼을 생성해두고, 보이지 않도록 설정한 후 action_callback에서 필요한 버튼만 표시하도록 처리 --&gt;
-&lt;div id=&quot;buttonList&quot; style=&quot;padding: 10px;&quot;&gt;
-    &lt;button id=&quot;btn_01&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;01&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_02&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;02&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_03&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;03&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_04&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;04&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_05&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;05&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_06&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;06&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_07&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;07&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_08&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;08&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_09&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;09&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_10&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;10&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_11&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;11&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_12&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;12&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_13&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;13&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_14&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;14&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_15&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;15&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_16&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;16&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_17&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;17&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_18&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;18&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_19&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;19&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_20&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;20&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_21&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;21&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_22&quot; style=&quot;width:150px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;22&#39;);&quot;&gt;&lt;/button&gt;
-&lt;/div&gt;
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">모든</span><span class="w"> </span><span class="nx">액션에</span><span class="w"> </span><span class="nx">대한</span><span class="w"> </span><span class="nx">버튼을</span><span class="w"> </span><span class="nx">생성해두고</span><span class="p">,</span><span class="w"> </span><span class="nx">보이지</span><span class="w"> </span><span class="nx">않도록</span><span class="w"> </span><span class="nx">설정한</span><span class="w"> </span><span class="nx">후</span><span class="w"> </span><span class="nx">action_callback에서</span><span class="w"> </span><span class="nx">필요한</span><span class="w"> </span><span class="nx">버튼만</span><span class="w"> </span><span class="nx">표시하도록</span><span class="w"> </span><span class="nx">처리</span><span class="w"> </span><span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;buttonList&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;padding: 10px;&quot;</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_01&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;01&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_02&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;02&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_03&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;03&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_04&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;04&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_05&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;05&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_06&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;06&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_07&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;07&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_08&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;08&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_09&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;09&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_10&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;10&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_11&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;11&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_12&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;12&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_13&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;13&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_14&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;14&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_15&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;15&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_16&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;16&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_17&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;17&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_18&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;18&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_19&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;19&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_20&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;20&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_21&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:80px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;21&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;btn_22&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width:150px; height:30px; display: none;&quot;</span><span class="w"> </span><span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;actionTest(&#39;22&#39;);&quot;</span><span class="o">&gt;&lt;</span><span class="err">/button&gt;</span>
+<span class="o">&lt;</span><span class="err">/div&gt;</span>
 
 
-&lt;!-- 임베딩할 iframe 생성 --&gt;
-&lt;iframe id=&quot;eformsign_iframe&quot; name=&quot;eformsign_iframe&quot; style=&quot;width: 100%; height: 700px;&quot;&gt;&lt;/iframe&gt;
+<span class="c">&lt;!--</span><span class="w"> </span><span class="nx">임베딩할</span><span class="w"> </span><span class="nx">iframe</span><span class="w"> </span><span class="nx">생성</span><span class="w"> </span><span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">iframe</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;eformsign_iframe&quot;</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;eformsign_iframe&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;width: 100%; height: 700px;&quot;</span><span class="o">&gt;&lt;</span><span class="err">/iframe&gt;</span>
 </pre></div>
 </div>
 </section>
 </section>
 </section>
 <section id="id35">
-<h2>기능 임베딩 및 구동하기<a class="headerlink" href="#id35" title="Permalink to this heading"></a></h2>
+<h2>기능 임베딩 및 구동하기<a class="headerlink" href="#id35" title="Link to this heading"></a></h2>
 <p>앞서 생성한 옵션과 콜백을 사용하여 eformsign 기능을 실제로 임베딩 및 구동하기 위한 코드를 작성합니다.</p>
 <section id="id36">
-<h3>eformsign 기능을 임베딩할 영역 생성<a class="headerlink" href="#id36" title="Permalink to this heading"></a></h3>
+<h3>eformsign 기능을 임베딩할 영역 생성<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
 <p>먼저 eformsign 기능을 임베딩하여 표시할 영역을 생성해야 합니다.
 eformsign 기능 임베딩을 위한 영역은 iframe 형태를 지원하고 있습니다.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>&lt;iframe id=&quot;eformsign_iframe&quot; width=&quot;1440&quot; height=&quot;1024&quot;&gt; &lt;/iframe&gt;
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">iframe</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;eformsign_iframe&quot;</span><span class="w"> </span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;1440&quot;</span><span class="w"> </span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;1024&quot;</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="err">/iframe&gt;</span>
 </pre></div>
 </div>
 <p>예를 들어, 위와 같이 가로 1440픽셀, 세로 1024픽셀의 iframe을 생성할 수 있습니다.
 영역 생성 시 id를 설정해야 합니다. 위 예시에서는 id를 “eformsign_iframe”으로 설정하였습니다.</p>
 </section>
 <section id="id37">
-<h3>eformsign 기능 임베딩용 코드 작성<a class="headerlink" href="#id37" title="Permalink to this heading"></a></h3>
+<h3>eformsign 기능 임베딩용 코드 작성<a class="headerlink" href="#id37" title="Link to this heading"></a></h3>
 <p>앞서 생성한 iframe 영역에 eformsign 기능을 임베딩하여 표시되도록 코드를 작성하여야 합니다.
 먼저 임베딩하고자 하는 기능에 맞는 객체를 변수 형태로 생성합니다. 아래 예시에서는 변수명을 “eformsign”으로 설정하였습니다.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">eformsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EformSignDocument</span><span class="p">();</span>
@@ -3523,7 +3522,7 @@ eformsign 기능 임베딩을 위한 영역은 iframe 형태를 지원하고 있
 </div>
 </section>
 <section id="id38">
-<h3>eformsign 기능 구동하기<a class="headerlink" href="#id38" title="Permalink to this heading"></a></h3>
+<h3>eformsign 기능 구동하기<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
 <p>eformsign 기능을 구동하기 위해서는 open 함수의 호출이 필요합니다.
 open 함수는 설정해야 할 패러미터가 없으며, 옵션 설정을 마친 EformSignDocument 객체 혹은 EformSignTemplate 객체에 사용하여 삽입된 기능을 구동하는 역할을 합니다.
 기능 구동을 위한 옵션을 설정하는 document 혹은 template 함수 작성을 마쳤다면, 그 후에 open 함수를 작성합니다.</p>
@@ -3531,49 +3530,49 @@ open 함수는 설정해야 할 패러미터가 없으며, 옵션 설정을 마�
 </pre></div>
 </div>
 <section id="id39">
-<h4>예시<a class="headerlink" href="#id39" title="Permalink to this heading"></a></h4>
+<h4>예시<a class="headerlink" href="#id39" title="Link to this heading"></a></h4>
 <p>설치 작업을 포함한 전체 예시 코드는 다음과 같습니다.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;embedding test&lt;/title&gt;
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">embedding</span><span class="w"> </span><span class="nx">test</span><span class="o">&lt;</span><span class="err">/title&gt;</span>
 
-    &lt;script src=&quot;https://www.eformsign.com/plugins/jquery/jquery.min.js&quot;/&gt;
-    &lt;script src=&quot;https://www.eformsign.com/lib/js/efs_embedded_v2.js&quot;/&gt;
-&lt;/head&gt;
-
-
-&lt;body&gt;
-    &lt;iframe id=&quot;eformsign_iframe&quot; width=&quot;1440&quot; height=&quot;1024&quot;&gt; &lt;/iframe&gt;
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;https://www.eformsign.com/plugins/jquery/jquery.min.js&quot;</span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;https://www.eformsign.com/lib/js/efs_embedded_v2.js&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="err">/head&gt;</span>
 
 
-    &lt;script&gt;
-        var eformsign = new EformSignDocument();
+<span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">iframe</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;eformsign_iframe&quot;</span><span class="w"> </span><span class="nx">width</span><span class="o">=</span><span class="s2">&quot;1440&quot;</span><span class="w"> </span><span class="nx">height</span><span class="o">=</span><span class="s2">&quot;1024&quot;</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="err">/iframe&gt;</span>
 
-        var document_option = {
-            // 중략
-            &quot;mode&quot; : {
-               &quot;type&quot; : &quot;01&quot;,
-               &quot;template_id&quot; : &quot;a2c6ed9df9b642f2ade43c7efe58c9a3&quot;
-            },
-            // 중략
-        };
 
-        var success_callback= function(response){
-            // 생략
-        };
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">eformsign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EformSignDocument</span><span class="p">();</span>
 
-        var error_callback= function(response){
-            //생략
-        };
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">document_option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 중략</span>
+<span class="w">            </span><span class="s2">&quot;mode&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">               </span><span class="s2">&quot;type&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;01&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="s2">&quot;template_id&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;a2c6ed9df9b642f2ade43c7efe58c9a3&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="c1">// 중략</span>
+<span class="w">        </span><span class="p">};</span>
 
-        var action_callback= function(response){
-            //생략
-        };
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">success_callback</span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+<span class="w">            </span><span class="c1">// 생략</span>
+<span class="w">        </span><span class="p">};</span>
 
-        eformsign.document(document_option, &quot;eformsign_iframe&quot;, success_callback, error_callback, action_callback);
-        eformsign.open();
-    &lt;/script&gt;
-&lt;/body&gt;
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">error_callback</span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+<span class="w">            </span><span class="c1">//생략</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">action_callback</span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>
+<span class="w">            </span><span class="c1">//생략</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="nx">eformsign</span><span class="p">.</span><span class="nb">document</span><span class="p">(</span><span class="nx">document_option</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;eformsign_iframe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">success_callback</span><span class="p">,</span><span class="w"> </span><span class="nx">error_callback</span><span class="p">,</span><span class="w"> </span><span class="nx">action_callback</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">eformsign</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/script&gt;</span>
+<span class="o">&lt;</span><span class="err">/body&gt;</span>
 </pre></div>
 </div>
 </section>
