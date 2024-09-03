@@ -20,28 +20,21 @@ eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고�
 Webhook 추가하기
 --------------------
 
-1. eformsign에 대표 관리자로 로그인 후, 메뉴에서 **[커넥트] > [API / Webhook]** 페이지로 이동합니다. 
+1. 메뉴에서 **[커넥트] > [API / Webhook]** 클릭하여 이동한 후, **[Webhook 관리]** 탭을 선택하고 **Webhook 추가** 버튼을 클릭합니다.
 
 .. image:: resources/apikey1.PNG
     :width: 700
     :alt: 커넥트 > API/Webhook 메뉴 위치
 
 
-2. **[Webhook 관리]** 탭을 선택하고 **Webhook 추가** 버튼을 클릭합니다.
-
-.. image:: resources/webhook2.PNG
-    :width: 700
-    :alt: Webhook 추가 버튼
-
-
-3. Webhook 추가 팝업창에 이름, Webhook을 수신할 URL(Endpoint URL), 활성 상태를 선택합니다.
+2. Webhook 추가 팝업창에 이름, Webhook을 수신할 URL(Endpoint URL), 활성 상태를 선택합니다.
 
 .. image:: resources/Webhook_key1.png
     :width: 500
     :alt: Webhook 키 생성 팝업창
 
 
-4. **적용 대상**\ 을 선택합니다. 적용 대상은 **모든 문서, 템플릿이 없이 만든 문서, 템플릿으로 만든 문서** 중에 선택할 수 있습니다.
+3. **적용 대상**\ 을 선택합니다. 적용 대상은 **모든 문서, 템플릿이 없이 만든 문서, 템플릿으로 만든 문서** 중에 선택할 수 있습니다.
 
 .. image:: resources/Webhook_key2.png
     :width: 500
@@ -77,13 +70,13 @@ Webhook 추가하기
 
 
 
-5. **검증 유형**\ 을 선택합니다. 검증 유형은 **검증 없음, Bearer token, Basic authentication, eformsign signature** 중에서 선택할 수 있습니다. 각 검증 유형에 대한 설명은 `Webhook 검증하기 <#webhookauth>`__\을 확인해 주세요.
+4. **검증 유형**\ 을 선택합니다. 검증 유형은 **검증 없음, Bearer token, Basic authentication, eformsign signature** 중에서 선택할 수 있습니다. 각 검증 유형에 대한 설명은 `Webhook 검증하기 <#webhookauth>`__\을 확인해 주세요.
 
 .. image:: resources/Webhook_add_popup3.png
     :width: 500
     :alt: Webhook 키 생성 팝업창 6
 
-6. **등록** 버튼을 클릭하면 Webhook이 추가됩니다. **Webhook 관리** 목록에서 추가한 Webhook을 확인할 수 있습니다.
+5. **등록** 버튼을 클릭하면 Webhook이 추가됩니다. **Webhook 관리** 목록에서 추가한 Webhook을 확인할 수 있습니다.
 
 .. image:: resources/Webhook_add.png
     :width: 700
