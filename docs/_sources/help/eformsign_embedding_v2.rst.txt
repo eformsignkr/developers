@@ -2324,9 +2324,10 @@ action.type       action.code    버튼명                              버튼 �
 
 예를 들어, 클릭 시 (신형 워크플로우를 사용하며, 다음 수신자가 있는 문서를 작성 후) 전송하는 버튼은 다음과 같이 생성할 수 있습니다.
 
-.. code-block:: javascript
+.. code-block:: html
 
-    <button id="btn_21" onclick="eformsign.sendAction({type: "01", code: "21"});">전송</button>
+    <button id="btn_21" onclick="eformsign.sendAction({type: '01', code: '21'});">전송</button>
+
 
 
 
@@ -2382,7 +2383,7 @@ action.type       action.code    버튼명                              버튼 �
 
 
 
-.. code-block:: javascript
+.. code-block:: html
 
     <!-- 모든 액션에 대한 버튼을 생성해두고, 보이지 않도록 설정한 후 action_callback에서 필요한 버튼만 표시하도록 처리 -->
     <div id="buttonList" style="padding: 10px;">
@@ -2435,7 +2436,7 @@ eformsign 기능을 임베딩할 영역 생성
 eformsign 기능 임베딩을 위한 영역은 iframe 형태를 지원하고 있습니다.
 
 
-.. code-block:: javascript
+.. code-block:: html
 
     <iframe id="eformsign_iframe" width="1440" height="1024"> </iframe>
 
@@ -2536,20 +2537,18 @@ open 함수는 설정해야 할 패러미터가 없으며, 옵션 설정을 마�
 설치 작업을 포함한 전체 예시 코드는 다음과 같습니다.
 
 
-.. code-block:: javascript
+.. code-block:: html
 
     <html>
     <head>
         <title>embedding test</title>
          
-        <script src="https://www.eformsign.com/plugins/jquery/jquery.min.js"/>
-        <script src="https://www.eformsign.com/lib/js/efs_embedded_v2.js"/>
+        <script src="https://www.eformsign.com/plugins/jquery/jquery.min.js"></script>
+        <script src="https://www.eformsign.com/lib/js/efs_embedded_v2.js"></script>
     </head>
-     
      
     <body>
         <iframe id="eformsign_iframe" width="1440" height="1024"> </iframe>
-     
      
         <script>
             var eformsign = new EformSignDocument();
@@ -2579,6 +2578,7 @@ open 함수는 설정해야 할 패러미터가 없으며, 옵션 설정을 마�
             eformsign.open();
         </script>
     </body>
+    </html>
 
 
 .. |image1| image:: resources/column_icon.png
