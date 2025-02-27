@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'eformsign User Guide'
+project = 'eformsign API 가이드'
 copyright = '2025, FORCS CO., LTD. All rights reserved.'
 author = 'FORCS'
 
