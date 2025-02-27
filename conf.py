@@ -145,7 +145,7 @@ html_favicon = 'C:\docbook\eformsignkr.github.io\images\\favicon.ico'
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'eformsignUserGuidedoc'
+htmlhelp_basename = 'eformsign API 가이드'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -216,7 +216,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'eformsignUserGuide.tex', 'eformsign 사용 매뉴얼',
+    ('index', 'eformsignUserGuide.tex', 'eeformsign API 가이드',
      'FORCS', 'manual'),
 ]
 
@@ -229,7 +229,7 @@ latex_additional_files = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'eformsignuserguide', 'eformsign 사용 매뉴얼',
+    (master_doc, 'eformsign API 가이드', 'eformsign API 가이드',
      [author], 1)
 ]
 
@@ -240,8 +240,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'eformsignUserGuide', 'eformsign 사용 매뉴얼',
-     author, 'eformsignUserGuide', 'One line description of project.',
+    (master_doc, 'eformsign API 가이드', 'eformsign API 가이드',
+     author, 'eformsign API 가이드', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -252,7 +252,7 @@ texinfo_documents = [
 epub_title = project
 
 
-html_short_title = "eformsign 사용 매뉴얼"
+html_short_title = "eformsign API 가이드"
 
 # The unique identifier of the text. This can be a ISBN number
 # or the project homepage.
