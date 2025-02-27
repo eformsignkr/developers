@@ -280,7 +280,7 @@ pygments_style = "stata-dark"
 html_theme_options = {
     "source_url": 'https://www.eformsign.com/',
     "source_icon": "C:\Docbook\eformsignkr.github.io\docs\_static\favicon.png",
-    "banner_text": '<a href="https://www.eformsign.com/">eformsign 바로가기</a>!'
+    "banner_text": '<a href="https://www.eformsign.com/">eformsign 바로가기</a>'
 }
 
 
