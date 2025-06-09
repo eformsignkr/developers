@@ -33,9 +33,18 @@ eformsign API 시작하기: 실습 가이드
 준비사항 1. 템플릿 만들기 
 ===========================
 
+.. youtube:: Ck04fz-RKeY?si=q4UOxIyBDlqNM4Zv
+   :height: 315
+   :width: 560
+   :align: center
+
 이폼사인 API를 사용하여 문서를 작성하고 수신자에게 전송하려면 우선 이폼사인 서비스에 로그인 후 템플릿을 만들고 저장해야 합니다. 
 
 이 가이드에서는 최초 문서 작성자가 한 명의 수신자에게 이메일을 통해 문서 작성 요청을 보내는 간단한 워크플로우를 설정하여 템플릿을 만들어 보겠습니다. 
+
+
+
+
 
 
 1. 대표관리자 계정으로 이폼사인에 로그인합니다.
@@ -88,6 +97,10 @@ eformsign API 시작하기: 실습 가이드
 준비사항 2. API 키 생성하기
 =============================
 
+.. youtube:: m08fK3juY8w?si=iHT_xuBPU3kGkq-E
+   :height: 315
+   :width: 560
+   :align: center
 
 템플릿을 다 만들었으면 이제 API 키를 생성할 차례입니다.
 
@@ -134,6 +147,11 @@ eformsign API 시작하기: 실습 가이드
 
 준비사항 3. Access 토큰 발급하기 (API 키 인증)
 =================================================
+
+.. youtube:: jV0VmjjaUqU?si=ffJGugkYydr1i6Zd
+   :height: 315
+   :width: 560
+   :align: center
 
 API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야 합니다. 이번 가이드에서는 API 테스트 툴인 Postman을 사용하여 API 키 인증 후 Access 토큰을 발급해 보겠습니다.
 
@@ -216,18 +234,30 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
     :width: 700
     :alt: Access 토큰 발급
 
+
+.. youtube:: dJ2ndoqxPrU?si=hTHFCanhNr6J2gyh
+   :height: 315
+   :width: 560
+   :align: center
+
 .. note:: 
     
    Access 토큰의 유효시간은 3600초(1시간)으로 설정되어 있으며, 유효시간이 만료되면 해당 토큰으로 더 이상 API를 사용할 수 없습니다. 따라서 Access 토큰을 재발급하거나 Access 토큰 갱신 API를 사용해 토큰을 갱신해야 합니다. 
 
-   Access 토큰 갱신 API에 대한 내용은 `Swagger <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-refresh_token>`_ 에서 확인하실 수 있습니다.
 
+
+   Access 토큰 갱신 API에 대한 내용은 `Swagger <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-refresh_token>`_ 에서 확인하실 수 있습니다.
 
 ----------------------------------------------------------------
 
 
 API를 사용하여 문서 작성 및 요청하기
 ======================================
+
+.. youtube:: VhlIz8l1TB0?si=lzQ52pFvv9cdpSGI
+   :height: 315
+   :width: 560
+   :align: center
 
 API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 끝났습니다. 이제 API를 사용하여 문서 작성 및 요청을 해보겠습니다. 
 
@@ -336,3 +366,11 @@ API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 
 위와 같은 방식으로 이폼사인의 다양한 API를 손쉽게 테스트해볼 수 있습니다.
 
 이폼사인 API에 대한 자세한 내용은 `eformsign API 사용하기 <https://eformsignkr.github.io/developers/help/eformsign_api.html#eformsign-api>`_ 가이드 및 `Swagger eformsign API 가이드 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents>`_ 에서 확인할 수 있습니다.
+
+
+Swagger 이폼사인 API 가이드를 활용하여 이폼사인 API를 사용하는 방법은 아래 동영상에서 확인하세요.
+
+.. youtube:: aR9K81wLslU?si=zLgWGP8HUt-29YYj
+   :height: 315
+   :width: 560
+   :align: center

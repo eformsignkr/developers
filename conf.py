@@ -42,7 +42,10 @@ extensions = [
 #'sphinxcontrib.redoc',
     'sphinx_code_tabs',
     'sphinx_rtd_theme',
-    'sphinx.ext.todo', 'sphinx.ext.mathjax', #'sphinxcontrib.fulltoc'
+    'sphinxcontrib.youtube',
+    'sphinx.ext.todo', 
+    'sphinx.ext.mathjax',
+    'sphinxcontrib.youtube',
 ]
 
 

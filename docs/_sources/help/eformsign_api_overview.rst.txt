@@ -29,7 +29,6 @@ eformsign이 제공하는 API를 사용해 eformsign의 기능을 고객의 시�
 eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고객 시스템/서비스로 알려주는 기능입니다. 
 
 
-
 .. note:: 
 
 
