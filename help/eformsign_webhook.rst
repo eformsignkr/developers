@@ -12,13 +12,13 @@ eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고�
 
 
 시작하기 
-=========
+========
 
 
 .. _addwebhook:
 
 Webhook 추가하기
---------------------
+-----------------
 
 1. 메뉴에서 **[커넥트] > [API / Webhook]** 클릭하여 이동한 후, **[Webhook 관리]** 탭을 선택하고 **Webhook 추가** 버튼을 클릭합니다.
 
@@ -206,7 +206,7 @@ Webhook 추가 혹은 편집 시, 검증 유형을 **Bearer token**\ 으로 선�
 
 예를 들어 위와 같이 값을 bearer_test_value라고 입력한 경우, Webhook 수신 시 Header에서 다음과 같은 내용을 확인할 수 있습니다.
 
-.. code:: JSON
+.. code:: javascript
 
     Authentication : Bearer bearer_test_value
 
@@ -229,7 +229,7 @@ Webhook 추가 혹은 편집 시, 검증 유형을 **Basic authentication**\ 으
 
 예를 들어 위와 같이 아이디를 **eformsign**\ , 비밀번호를 **Webhook123!**\ 라고 입력한 경우, Webhook 수신 시 Header에서 다음과 같은 내용을 확인하실 수 있습니다.
 
-.. code:: JSON
+.. code:: javascript
 
     Authentication : Basic ZWZvcm1zaWduOldlYmhvb2sxMjMh
 
@@ -251,7 +251,7 @@ Webhook 추가 혹은 편집 시, 검증 유형을 **eformsign signature**\ 로 
 
 Header 내용의 예시는 다음과 같습니다.
 
-.. code:: JSON
+.. code:: javascript
 
     eformsign_signature : 3045022100b9f1e0cdd21492cb5fa16dabff4c4402bf3efb9a9741a40a0d1c70aeda24bc8c02204a57ca1abab288e968a799e2fecbf18de9ab59c7c5814144b17f32553640a71a
 

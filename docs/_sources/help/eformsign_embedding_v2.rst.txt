@@ -15,7 +15,7 @@ eformsign 기능을 임베딩하게 되면, 고객이 제공하고 있는 서비
 ---------------
 
 개요
-========================
+===================
 
 eformsign 임베딩은 현재 다음의 기능을 지원하고 있습니다. 
 
@@ -367,6 +367,7 @@ document_option
       }
     }
 
+
 **수신한 문서를 이용한 추가 작성** 
 
 수신한 문서를 이용하여 추가로 문서를 작성합니다.  
@@ -380,6 +381,7 @@ document_option
         "document_id" : "5c19ff8c703f401c968236837d701e92"  // document_id 입력
       }
     }
+
 
 **특정 문서를 미리보기**
 
@@ -517,7 +519,7 @@ footer            푸터 표시 여부            Boolean      X      미입력 
 문서 작성 과정 중에 자동으로 입력될 수 있도록 처리 시 사용합니다.
 
 
-.. note::
+.. important::
 
    mode.type이 "03"일 경우(문서 미리보기 시)에는 작동하지 않습니다. 
 
@@ -609,8 +611,8 @@ comment                            다음 수신자에게 전달할 메시지   
                         "password": "6789", // 워크플로우 설정에서 문서 열람 전 본인확인 설정 - 본인확인 정보에 체크한 경우 비밀번호 입력
                         "password_hint": "핸드폰 뒷자리를 입력하세요.", // 위 조건에 따라 비밀번호를 입력한 경우, 비밀번호 힌트
                         "valid": {
-                            "day": 7,       // 문서 전송 기한 (일)
-                            "hour": 0       // 문서 전송 기한 (시간)
+                            "day": 7,       // 문서 전송 기한(일)
+                            "hour": 0       // 문서 전송 기한(시간)
                         }
                     }
                 }
@@ -1004,7 +1006,7 @@ disabled_form_id                                                           폼 �
 
 **문서 이름 기입**   
 
-**옵션 > 문서 제목** 에 구매신청서가 입력됩니다.
+**옵션 > 문서 제목**\ 에 구매신청서가 입력됩니다.
 
 .. code-block:: javascript
 
@@ -2322,9 +2324,10 @@ action.type       action.code    버튼명                              버튼 �
 
 예를 들어, 클릭 시 (신형 워크플로우를 사용하며, 다음 수신자가 있는 문서를 작성 후) 전송하는 버튼은 다음과 같이 생성할 수 있습니다.
 
-.. code-block:: javascript
+.. code-block:: html
 
-    <button id="btn_21" onclick="eformsign.sendAction({type: "01", code: "21"});">전송</button>
+    <button id="btn_21" onclick="eformsign.sendAction({type: '01', code: '21'});">전송</button>
+
 
 
 
@@ -2380,7 +2383,7 @@ action.type       action.code    버튼명                              버튼 �
 
 
 
-.. code-block:: javascript
+.. code-block:: html
 
     <!-- 모든 액션에 대한 버튼을 생성해두고, 보이지 않도록 설정한 후 action_callback에서 필요한 버튼만 표시하도록 처리 -->
     <div id="buttonList" style="padding: 10px;">
@@ -2433,7 +2436,7 @@ eformsign 기능을 임베딩할 영역 생성
 eformsign 기능 임베딩을 위한 영역은 iframe 형태를 지원하고 있습니다.
 
 
-.. code-block:: javascript
+.. code-block:: html
 
     <iframe id="eformsign_iframe" width="1440" height="1024"> </iframe>
 
@@ -2534,20 +2537,18 @@ open 함수는 설정해야 할 패러미터가 없으며, 옵션 설정을 마�
 설치 작업을 포함한 전체 예시 코드는 다음과 같습니다.
 
 
-.. code-block:: javascript
+.. code-block:: html
 
     <html>
     <head>
         <title>embedding test</title>
          
-        <script src="https://www.eformsign.com/plugins/jquery/jquery.min.js"/>
-        <script src="https://www.eformsign.com/lib/js/efs_embedded_v2.js"/>
+        <script src="https://www.eformsign.com/plugins/jquery/jquery.min.js"></script>
+        <script src="https://www.eformsign.com/lib/js/efs_embedded_v2.js"></script>
     </head>
-     
      
     <body>
         <iframe id="eformsign_iframe" width="1440" height="1024"> </iframe>
-     
      
         <script>
             var eformsign = new EformSignDocument();
@@ -2577,6 +2578,7 @@ open 함수는 설정해야 할 패러미터가 없으며, 옵션 설정을 마�
             eformsign.open();
         </script>
     </body>
+    </html>
 
 
 .. |image1| image:: resources/column_icon.png

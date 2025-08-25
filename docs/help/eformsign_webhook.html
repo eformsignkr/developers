@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<<<<<<< HEAD
     <title>eformsign Webhook 사용하기 &#8212; eformsign API guide 2024.09.03 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=9b2032db" />
@@ -13,11 +14,24 @@
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script src="../_static/documentation_options.js?v=3f65cc9a"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
+=======
+    <title>eformsign Webhook 사용하기 &#8212; eformsign API 가이드 2024.12.27 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic_mod.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/code-tabs.css" type="text/css" />
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=5680ed0d"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+>>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/code-tabs.js?v=c983d12e"></script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
+<<<<<<< HEAD
     <link rel="icon" href="../_static/favicon.ico"/>
+=======
+>>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="eformsign API 사용하기" href="eformsign_api.html" /> 
@@ -26,7 +40,11 @@
 <div id="top_nav">
     
         <div id="notification_banner" data-banner-hiding="temporary" v-show="!permanentlyHidden">
+<<<<<<< HEAD
     <p v-if="visible" id="content"><a href="https://www.eformsign.com/">eformsign 바로가기</a>!</p>
+=======
+    <p v-if="visible" id="content"><a href="https://www.eformsign.com/">eformsign 바로가기</a></p>
+>>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
     <a class="close" href="#" @click.prevent="toggleVisible()">[[ visible ? '&#x25B2; HIDE' : '&#x25BC; SHOW BANNER' ]]</a>
 </div>
 
@@ -231,7 +249,11 @@
 
         <div class="searchbox_wrapper">
             
+<<<<<<< HEAD
 <search id="searchbox" style="display: none" role="search">
+=======
+<div id="searchbox" style="display: none" role="search">
+>>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -239,14 +261,22 @@
       <input type="submit" value="Go" />
     </form>
     </div>
+<<<<<<< HEAD
 </search>
+=======
+</div>
+>>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
     </nav>
 </div>
 
     
+<<<<<<< HEAD
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
+=======
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+>>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
         <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="eformsign_api_overview.html">eformsign API 가이드</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_embedding_v2.html">eformsign 기능 임베딩하기</a></li>
@@ -412,7 +442,7 @@ Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Bearer token</strong>
 <a class="reference internal image-reference" href="../_images/Webhook_auth_type1.png"><img alt="Webhook 검증 유형 선택" src="../_images/Webhook_auth_type1.png" style="width: 500px;" />
 </a>
 <p>예를 들어 위와 같이 값을 bearer_test_value라고 입력한 경우, Webhook 수신 시 Header에서 다음과 같은 내용을 확인할 수 있습니다.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="err">Au</span><span class="kc">t</span><span class="err">he</span><span class="kc">nt</span><span class="err">ica</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">Bearer</span><span class="w"> </span><span class="err">bearer_</span><span class="kc">test</span><span class="err">_value</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">Authentication</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">Bearer</span><span class="w"> </span><span class="nx">bearer_test_value</span>
 </pre></div>
 </div>
 <p>이처럼 수신한 Webhook의 Header에서 Token 값을 추출한 후, 사전 설정한 값과 일치하는지 확인하는 방식으로 검증할 수 있습니다.</p>
@@ -425,7 +455,7 @@ Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Bearer token</strong>
 <a class="reference internal image-reference" href="../_images/Webhook_auth_type2.png"><img alt="Webhook 검증 유형 선택" src="../_images/Webhook_auth_type2.png" style="width: 500px;" />
 </a>
 <p>예를 들어 위와 같이 아이디를 <strong>eformsign</strong>, 비밀번호를 <strong>Webhook123!</strong>라고 입력한 경우, Webhook 수신 시 Header에서 다음과 같은 내용을 확인하실 수 있습니다.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="err">Au</span><span class="kc">t</span><span class="err">he</span><span class="kc">nt</span><span class="err">ica</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">Basic</span><span class="w"> </span><span class="err">ZWZvcm</span><span class="mi">1</span><span class="err">zaWduOldlYmhvb</span><span class="mi">2</span><span class="err">sxMjMh</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">Authentication</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">Basic</span><span class="w"> </span><span class="nx">ZWZvcm1zaWduOldlYmhvb2sxMjMh</span>
 </pre></div>
 </div>
 <p>위의 예시에서 Basic 뒤의 값을 Base64 디코딩 시 <strong>eformsign:Webhook123!</strong>가 됩니다.</p>
@@ -440,7 +470,7 @@ Webhook 추가 혹은 편집 시, 검증 유형을 <strong>Bearer token</strong>
 </div>
 <p>Webhook 추가 혹은 편집 시, 검증 유형을 <strong>eformsign signature</strong>로 설정하면 Request Header의 eformsign_signature 필드에 서명값을 포함하여 Webhook을 전송하게 됩니다.</p>
 <p>Header 내용의 예시는 다음과 같습니다.</p>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="err">e</span><span class="kc">f</span><span class="err">ormsig</span><span class="kc">n</span><span class="err">_sig</span><span class="kc">nature</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3045022100</span><span class="err">b</span><span class="mi">9</span><span class="kc">f</span><span class="mf">1e0</span><span class="err">cdd</span><span class="mi">21492</span><span class="err">cb</span><span class="mi">5</span><span class="kc">fa</span><span class="mi">16</span><span class="err">dab</span><span class="kc">ff</span><span class="mi">4</span><span class="err">c</span><span class="mi">4402</span><span class="err">b</span><span class="kc">f</span><span class="mf">3e</span><span class="kc">f</span><span class="err">b</span><span class="mi">9</span><span class="err">a</span><span class="mi">9741</span><span class="err">a</span><span class="mi">40</span><span class="err">a</span><span class="mi">0</span><span class="err">d</span><span class="mi">1</span><span class="err">c</span><span class="mi">70</span><span class="err">aeda</span><span class="mi">24</span><span class="err">bc</span><span class="mi">8</span><span class="err">c</span><span class="mi">02204</span><span class="err">a</span><span class="mi">57</span><span class="err">ca</span><span class="mi">1</span><span class="err">abab</span><span class="mf">288e968</span><span class="err">a</span><span class="mf">799e2</span><span class="kc">fe</span><span class="err">cb</span><span class="kc">f</span><span class="mi">18</span><span class="err">de</span><span class="mi">9</span><span class="err">ab</span><span class="mi">59</span><span class="err">c</span><span class="mi">7</span><span class="err">c</span><span class="mi">5814144</span><span class="err">b</span><span class="mi">17</span><span class="kc">f</span><span class="mi">32553640</span><span class="err">a</span><span class="mi">71</span><span class="err">a</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">eformsign_signature</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">3045022100</span><span class="nx">b9f1e0cdd21492cb5fa16dabff4c4402bf3efb9a9741a40a0d1c70aeda24bc8c02204a57ca1abab288e968a799e2fecbf18de9ab59c7c5814144b17f32553640a71a</span>
 </pre></div>
 </div>
 <section id="id9">
@@ -893,8 +923,13 @@ mass_job_request_id 포함)</p></td>
 
 
     <div class="footer" role="contentinfo">
+<<<<<<< HEAD
     &#169; Copyright 2024. FORCS CO., LTD. All rights reserved.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+=======
+    &#169; Copyright 2025, FORCS CO., LTD. All rights reserved..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+>>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
