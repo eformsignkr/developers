@@ -47,30 +47,23 @@ API 키 발급 및 비밀키 확인하기
 
 .. note:: 
 
-    API 키는 대표 관리자만 발급할 수 있습니다. 대표 관리자가 아닌 경우, API 키 필요 시 대표 관리자에게 요청하시기 바랍니.
+    API 키는 대표 관리자만 발급할 수 있습니다. 대표 관리자가 아닌 경우, API 키 필요 시 대표 관리자에게 요청하시기 바랍니다.
 
 
-1. eformsign에 대표 관리자로 로그인 후, 메뉴 트리에서 **[커넥트] > [API / Webhook]** 페이지로 이동합니다. 
+1. 메뉴에서 **[커넥트] > [API / Webhook]** 클릭하여 이동한 후 **API 키 생성** 버튼을 클릭합니다.
 
-.. image:: resources/apikey1.PNG
+.. image:: resources/apikey-menu.PNG
     :width: 700
     :alt: 커넥트 > API/Webhook 메뉴 위치
 
 
-2. **[API 키 관리]** 탭을 선택하고 **API 키 생성** 버튼을 클릭합니다.
-
-.. image:: resources/apikey2.PNG
-    :width: 700
-    :alt: API 키 생성 버튼
-
-
-3. **API 키 생성** 팝업창에 **별칭**\ 과 **애플리케이션 이름**\ 을 입력합니다.
+2. **API 키 생성** 팝업창에 **별칭**\ 과 **애플리케이션 이름**\ 을 입력합니다.
 
 .. image:: resources/apikeyauth.PNG
     :width: 400
     :alt: API 키 생성 팝업창
 
-4. **검증 유형**\ 을 선택 후 저장합니다.
+3. **검증 유형**\ 을 선택 후 저장합니다.
 
 .. note:: 
     
@@ -571,40 +564,112 @@ Access Token API에 대한 자세한 설명은
 
 ``POST``: `새 문서 작성_최초 작성자가 회사 멤버 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents>`_\ 
 
-``POST``: `새 문서 작성_최초 작성자가 외부 수신자 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-external>`_\ 
+회사 멤버가 템플릿으로 문서를 한 건 작성합니다. 
 
+``POST``: `새 문서 작성_최초 작성자가 외부 사용자 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-external>`_\ 
+
+회사 멤버가 아닌 사용자가 문서를 한 건 작성합니다. **템플릿 설정>워크플로우 설정**\ 의 시작 단계 속성에서 **URL로 문서 작성 허용**\ 이 체크되어 있는 템플릿만 사용할 수 있습니다.
+
+문서 재요청 
+
+``POST``: `문서 일괄 작성 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms-mass_documents%3Ftemplate_id%3D-form_id>`_\  
+
+회사 멤버 계정을 통해 한 템플릿으로 문서를 여러 건 일괄 작성합니다.
+
+``POST``: `문서 일괄 작성_멀티 템플릿 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms%2Fmass_multi_documents>`_\  
+
+멤버 계정을 통 여러 템플릿으로 문서를 일괄작성하는 API입니다.
+
+
+``POST``: `문서 재요청 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-document_id-re_request_outsider>`_\ 
+
+기존에 수신자에게 요청한 문서를 다시 요청하는 API입니다.
 
 
 ``GET``: `문서 정보 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID>`_\
 
+특정 문서의 일반 정보, 상세 정보, 이력, 진행 상황 등을 조회합니다.
+
 ``GET``: `문서 파일 다운로드_문서 PDF 및 감사추적증명서 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_files>`_\
+
+문서 파일 및 감사추적증명서 파일을 PDF 형태로 다운로드합니다.
 
 ``GET``: `문서 첨부 파일 다운로드 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_attach_files>`_\ 
 
+문서에 첨부된 파일을 다운로드합니다.
+
 ``GET``: `문서 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents>`_\ 
+
+문서함의 문서 목록을 조회하고, 각 문서의 일반 정보, 상세 정보, 이력, 진행상황 등을 확인할 수 있는 API입니다.
 
 ``POST``: `문서 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-list-documents>`_\ 
 
+문서함의 문서 목록을 조회하고, 각 문서의 일반 정보, 상세 정보, 이력, 진행상황 등을 확인할 수 있는 API입니다.
+
 ``DELETE``: `문서 삭제 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/delete-api-documents>`_\ 
+
+문서를 삭제하는 API입니다.
 
 ``DELETE``: `문서 취소 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-cancel>`_\ 
 
-``POST``: `외부 수신자 문서 재요청 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-document_id-re_request_outsider>`_\ 
+문서를 취소하는 API입니다.
 
 
-``POST``: `문서 일괄 작성 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms-mass_documents%3Ftemplate_id%3D-form_id>`_\  
-
-``POST``: `문서 일괄 작성_멀티 템플릿 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms%2Fmass_multi_documents>`_\  
 
 ``POST``: `이용현황 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-companies-COMPANY_ID-use_status>`_\  
 
+기간(연/월)별 이용현황을 조회하는 API입니다.
+
 ``POST``: `내부자 반려 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-document-DOCUMENT_ID-decline>`_\  
+
+문서 반려 시, 이전 상태로 되돌리는 API입니다.
 
 ``POST``: `외부자 반려 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-document-DOCUMENT_ID-external_decline>`_\  
 
-``GET``: `작성가능한 템플릿 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-forms>`_\  
+문서 반려 시, 이전 상태로 되돌리는 API입니다.
 
-``DELETE``: `템플릿 삭제 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/delete-forms>`_\  
+
+``POST``: `PDF 압축 API <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-optimize>`_\  
+
+PDF 파일 요청 시 파일을 압축하는 API입니다.
+
+
+``POST``: `문서 컴포넌트 정보 조희 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/documents/post-api-documents-DOCUMENT_ID-document_component>`_\  
+
+문서에 사용된 컴포넌트 목록의 정보를 조회하는 API입니다.
+
+
+
+템플릿 관리를 위한 API
+----------------------------------
+
+API를 사용해 템플릿을 관리할 수 있습니다. 
+
+
+
+``GET``: `작성가능한 템플릿 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-forms>`_\  
+
+회사 멤버 정보가 포함된 Access Token으로 작성 가능한 템플릿 목록을 조회하는 API입니다.
+
+
+``GET``: `단일 템플릿 정보 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-forms-form_id>`_\  
+
+내부 멤버의 작성 가능한 템플릿 정보를 조회하는 API입니다.
+
+
+``GET``: `템플릿 이미지 다운로드 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-template_image-template_image_id>`_\  
+
+템플릿 이미지를 다운로드하는 API입니다.
+
+
+``PATCH``: `템플릿 수정 및 작성 권한 수정 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/patch-api-forms-form_id-permissions>`_\  
+
+템플릿에 대한 멤버의 권한을 수정하는 API입니다.
+
+
+``DELETE``: `템플릿 삭제 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/delete-forms>`_\  
+
+템플릿을 삭제하는 API입니다.
 
 
 -----------------
@@ -635,9 +700,15 @@ API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그
 
 ``GET``: `멤버 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/get-api-members>`_\   
 
+회사에 소속된 멤버 목록을 조회합니다. 삭제된 멤버를 제외한 활성, 비활성, 탈퇴 멤버의 정보를 포함한 목록을 조회할 수 있습니다.
+
 ``PATCH``: `멤버 수정 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/patch-api-members-member_id>`_\  
 
+회사의 멤버 정보를 수정합니다.
+
 ``DELETE``: `멤버 삭제 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/delete-api-members-member_id>`_\  
+
+회사에서 멤버를 삭제합니다. 해당 멤버의 eformsign 계정은 삭제되지 않고, 회사에서만 탈퇴됩니다.
 
 
 그룹 관리 API
@@ -646,12 +717,19 @@ API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그
 
 ``GET``: `그룹 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/get-api-groups>`_\  
 
+회사의 그룹 목록을 조회합니다.
+
 ``POST``: `그룹 추가 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/post-api-groups>`_\  
+
+회사에 새로운 그룹을 추가합니다.
 
 ``PATCH``: `그룹 수정 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/patch-api-groups>`_\  
 
+회사의 그룹 정보를 수정합니다.
+
 ``DELETE``: `그룹 삭제 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/delete-api-groups>`_\  
 
+회사의 그룹을 삭제합니다.
 
 
 .. note:: 
@@ -659,6 +737,32 @@ API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그
     각 eformsign API에 대한 자세한 설명은 `다음 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/>`__\ 에서 확인하실 수 있습니다.
 
 
+
+회사 도장 관리를 위한 API
+----------------------------------
+
+API를 사용해 회사 도장을 관리할 수 있습니다. 
+
+
+``GET``: `회사 도장 정보 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/get-api-company_stamp-STAMP_ID>`_\  
+
+회사 도장의 정보를 조회할 수 있는 API입니다.
+
+``GET``: `회사 도장 목록 조회 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/get-api-company_stamp>`_\  
+
+회사 도장 목록을 조회할 수 있는 API입니다.
+
+``POST``: `회사 도장 추가 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/post-api-company_stamp>`_\  
+
+회사 도장 관리에 회사 도장을 추가하는 API입니다.
+
+``PATCH``: `회사 도장 수정 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/patch-api-company_stamp-STAMP_ID>`_\  
+
+회사 도장 관리에 등록된 회사 도장을 수정하는 API입니다.
+
+``DELETE``: `회사 도장 삭제 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/delete-api-company_stamp-STAMP_ID>`_\  
+
+회사 도장 관리의 회사 도장을 삭제하는 API입니다.
 
 
 
@@ -751,7 +855,7 @@ Code                 설명              비고
 ===========  ===============  ===================================
 Type         Code             설명
 ===========  ===============  ===================================
-내부 멤버     01                회사 내부 멤버일 경우
+멤버          01                회사 내부 멤버일 경우
 외부 사용자   02                회사 내부 멤버가 아닌 외부 사용자일 경우
 ===========  ===============  ===================================
 
@@ -788,6 +892,16 @@ doc_delete                   049              문서 삭제
 doc_request_revoke           040              문서 취소 요청
 doc_revoke                   042              문서 취소
 doc_request_reject           045              문서 반려 요청
+doc_request_approval         010              문서 결재 요청
+doc_accept_approval          012              문서 결재 승인
+doc_reject_approval          011              문서 결재 반려
+doc_cancel                   013              문서 결재 취소
+doc_request_reception        020              문서 내부자 요청
+doc_accept_reception         022              문서 내부자 승인
+doc_reject_reception         021              문서 내부자 반려
+doc_request_outsider         030              문서 외부자 요청
+doc_accept_outsider          032              문서 외부자 승인
+doc_reject_outsider          031              문서 외부자 반려
 doc_request_participant      060              참여자 요청
 doc_accept_participant       062              참여자 승인
 doc_reject_participant       061              참여자 반려
@@ -856,9 +970,15 @@ doc_rerequest_participant    063              참여자 재요청(외부 수신�
 doc_open_participant         064              참여자 문서 열람(외부 수신자)
 doc_request_reviewer         070              검토자 요청
 doc_reject_reviewer          071              검토자 반려
-doc_request_reviewer         072              검토자 승인 
+doc_accept_reviewer          072              검토자 승인 
 doc_rerequest_reviewer       073              검토자 재요청(외부 수신자)
-doc_open_review              074              검토자 문서 열람(외부 수신자자)
+doc_open_review              074              검토자 문서 열람(외부 수신자)
+doc_request_reader           075              열람자 요청  
+doc_read                     076              열람자 열람  
+doc_rerequest_reader         077              열람자 재요청    
+doc_inperson_start           090              대면 서명 시작    
+doc_inperson_tempsave        091              대면 서명 임시저장  
+doc_inperson_complete        092              대면 서명 완료
 ==========================  ===============  ===================================
 
 

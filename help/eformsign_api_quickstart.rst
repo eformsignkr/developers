@@ -48,22 +48,13 @@ eformsign API 시작하기: 실습 가이드
 
 
 1. 대표관리자 계정으로 이폼사인에 로그인합니다.
-2. 메뉴에서 템플릿 관리를 클릭하여 템플릿 관리 페이지로 이동합니다.
-3. 새로운 템플릿을 만들기 위해 템플릿으로 만들 파일을 업로드합니다. 
-
-
-.. image:: resources/select_template_kr.PNG
-    :width: 700
-    :alt: 템플릿 관리 메뉴
-
-
-
-4. **문서 참여자** 설정 팝업에서 **문서 작성에 참여할 사람**\ 을 설정합니다. 이 가이드에서는 최초 작성자인 **시작**\ 과 수신자인 **회원**\ 을 설정하겠습니다. 
+2. 메뉴에서 **템플릿 관리**\ 를 클릭하여 이동합니다.
+3. 새로운 템플릿을 만들기 위해 **새 템플릿 만들기**\ 를 클릭합니다. 
+4. **서 참여자** 설정 팝업에서 **문서 작성에 참여할 사람**\ 을 설정합니다. 이 가이드에서는 최초 작성자인 **시작**\ 과 수신자인 **회원**\ 을 설정하겠습니다. 
 
 .. image:: resources/participants_kr.PNG
     :width: 300
     :alt: 문서 참여자 팝업
-
 
 
 5. **시작**\ 과 **회원**\ 이 작성할 입력항목을 문서에 추가하고 입력항목 ID 입력, 참여자별 입력항목의 작성권한을 설정합니다. 
@@ -105,7 +96,8 @@ eformsign API 시작하기: 실습 가이드
 템플릿을 다 만들었으면 이제 API 키를 생성할 차례입니다.
 
 
-1. 이폼사인에 로그인한 후 **[커넥트 > API/Webhook > API 키 관리]** 페이지로 이동합니다.
+1. 이폼사인에서 **[커넥트 > API/Webhook > API 키 관리]** 페이지로 이동한 후 화면 우측의 **API 키 생성**\ 을 클릭합니다.
+
 
 .. image:: resources/api_webhook_menu_kr.PNG
     :width: 700
@@ -113,15 +105,7 @@ eformsign API 시작하기: 실습 가이드
 
 
 
-2. 화면 우측의 **API 키 생성** 버튼을 클릭합니다.
-
-.. image:: resources/api_webhook_page_kr.PNG
-    :width: 700
-    :alt: API 키 생성 바튼
-
-
-
-3. **API 키 생성** 팝업이 나타나면 **별칭** 및 **애플리케이션 이름**\ 을 입력하고 **검증 유형**\ 을 **Bearer token**\ 으로 선택한 후 **값**\ 을 입력하고 **저장**\ 합니다. 
+2. **API 키 생성** 팝업이 나타나면 **별칭** 및 **애플리케이션 이름**\ 을 입력하고 **검증 유형**\ 을 **Bearer token**\ 으로 선택한 후 **값**\ 을 입력하고 **저장**\ 합니다. 
 
 .. note:: 
     
@@ -137,7 +121,7 @@ eformsign API 시작하기: 실습 가이드
    검증 유형에 대한 자세한 내용은 eformsign API 사용하기 가이드의 `API 키 발급 및 비밀키 확인하기 <https://eformsignkr.github.io/developers/help/eformsign_api.html#api>`_ 를 참고해 주세요.
 
     
-4. 생성된 API 키를 확인하고 복사합니다. API 키는 Access 토큰을 발급할 때 필요합니다.
+3. 생성된 API 키를 확인하고 복사합니다. API 키는 Access 토큰을 발급할 때 필요합니다.
 
 .. image:: resources/api_key_kr.PNG
     :width: 700
@@ -155,8 +139,7 @@ eformsign API 시작하기: 실습 가이드
 
 API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야 합니다. 이번 가이드에서는 API 테스트 툴인 Postman을 사용하여 API 키 인증 후 Access 토큰을 발급해 보겠습니다.
 
-1. Access 토큰 발급과 문서 작성 및 전송을 더 쉽고 빠르게 테스트 해볼 수 있도록 미리 **이폼사인 API 실습 가이드용** 를 만들어 놓았습니다. 아래 Run in Postman 버튼을 클릭해 주세요.
-**이폼사인 API 실습 가이드용** Postman collection은 실습가이드를 따라 하는데 필요한 API만 포함하고 있습니다. 현재 제공 중인 모든 API는 `Swagger eformsign API 가이드 <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents>`_ 에서 확인할 수 있습니다.
+1. Access 토큰 발급과 문서 작성 및 전송을 더 쉽고 빠르게 테스트 해볼 수 있도록 미리 이폼사인 API reference collection를 만들어 놓았습니다. 아래 Run in Postman 버튼을 클릭해 주세요. 
 
 .. image:: resources/run_in_postman.PNG
     :alt: Run in Postman 버튼
@@ -167,14 +150,14 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
 
 2. 위 버튼을 클릭하면 로그인 창이 뜹니다. 미리 가입한 계정으로 로그인해 주세요.
 
-3. 로그인 후 다음과 같은 화면이 표시되면 **Fork Collection**\ 을 클릭합니다. 미리 만들어 놓은 이폼사인 API 실습 가이드용을 사용자의 workspace로 fork합니다.
+3. 로그인 후 다음과 같은 화면이 표시되면 **Fork Collection**\ 을 클릭합니다. 미리 만들어 놓은 이폼사인 API reference collection을 사용자의 workspace로 fork합니다.
 
 .. image:: resources/fork_collection.PNG
     :width: 700
     :alt: Fork collection
 
 
-4. 이폼사인 API 실습 가이드용을 workspace로 fork하면 다음과 같은 화면을 확인할 수 있습니다.
+4. 이폼사인 API reference collection을 workspace로 fork하면 다음과 같은 화면을 확인할 수 있습니다.
 
 .. image:: resources/postman_collection.PNG
     :width: 700
@@ -196,7 +179,7 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
 
 .. tip:: 
     
-   base 64 인코더는 `온라인 Base 64 인코더 <https://www.convertstring.com/ko/EncodeDecode/Base64Encode>`_ 사이트에서 진행해 주세요.
+   base 64 인코딩은 `온라인 Base 64 인코더 <https://www.convertstring.com/ko/EncodeDecode/Base64Encode>`_ 사이트에서 진행해 주세요.
 
 
 7. **Body** 탭으로 이동한 후 **raw**\ 를 선택하고 execution_time 및 member_id 값을 입력한 다음 **Send** 버튼을 클릭하여 API를 호출합니다.
@@ -261,7 +244,7 @@ API를 사용하여 문서 작성 및 요청하기
 
 API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 끝났습니다. 이제 API를 사용하여 문서 작성 및 요청을 해보겠습니다. 
 
-1. 이폼사인 API 실습 가이드용의 document 폴더에서 POST 새 문서 작성 (최초 작성자가 회사 멤버)를 선택합니다. 
+1. eformsign API reference collection의 document 폴더에서 POST 새 문서 작성 (최초 작성자가 회사 멤버)를 선택합니다. 
 
 .. important:: 
     
