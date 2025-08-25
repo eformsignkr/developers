@@ -52,14 +52,14 @@ API 키 발급 및 비밀키 확인하기
 
 1. 메뉴에서 **[커넥트] > [API / Webhook]** 클릭하여 이동한 후 **API 키 생성** 버튼을 클릭합니다.
 
-.. image:: resources/apikey-menu.PNG
+.. image:: resources/apikey-menu.png
     :width: 700
     :alt: 커넥트 > API/Webhook 메뉴 위치
 
 
 2. **API 키 생성** 팝업창에 **별칭**\ 과 **애플리케이션 이름**\ 을 입력합니다.
 
-.. image:: resources/apikeyauth.PNG
+.. image:: resources/apikeyauth.png
     :width: 400
     :alt: API 키 생성 팝업창
 

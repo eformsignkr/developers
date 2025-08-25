@@ -22,7 +22,7 @@ Webhook 추가하기
 
 1. 메뉴에서 **[커넥트] > [API / Webhook]** 클릭하여 이동한 후, **[Webhook 관리]** 탭을 선택하고 **Webhook 추가** 버튼을 클릭합니다.
 
-.. image:: resources/apikey1.PNG
+.. image:: resources/apikey1.png
     :width: 700
     :alt: 커넥트 > API/Webhook 메뉴 위치
 

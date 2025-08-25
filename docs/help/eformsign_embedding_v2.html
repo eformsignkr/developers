@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>eformsign 기능 임베딩하기 &#8212; eformsign API guide 2024.09.03 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=9b2032db" />
-    <link rel="stylesheet" type="text/css" href="../_static/code-tabs.css?v=1bc26e2f" />
+    <title>eformsign 기능 임베딩하기 &#8212; eformsign API 가이드 2025.08.25 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic_mod.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/code-tabs.css" type="text/css" />
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=3f65cc9a"></script>
+    <script src="../_static/documentation_options.js?v=9b887c12"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/code-tabs.js?v=c983d12e"></script>
@@ -27,7 +27,7 @@
 <div id="top_nav">
     
         <div id="notification_banner" data-banner-hiding="temporary" v-show="!permanentlyHidden">
-    <p v-if="visible" id="content"><a href="https://www.eformsign.com/">eformsign 바로가기</a>!</p>
+    <p v-if="visible" id="content"><a href="https://www.eformsign.com/">eformsign 바로가기</a></p>
     <a class="close" href="#" @click.prevent="toggleVisible()">[[ visible ? '&#x25B2; HIDE' : '&#x25BC; SHOW BANNER' ]]</a>
 </div>
 
@@ -152,7 +152,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="../index.html" title="Go to homepage">eformsign API 가이드</a></h1>
+        <h1><a href="../index.html" title="Go to homepage"><img src="../_static/eformsign_guide_logo1.png"/></a></h1>
             <a id="source_link" href="https://www.eformsign.com/">
     
         <svg width="100%" height="100%" viewBox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
@@ -4064,9 +4064,14 @@ Response와 무관한 별도의 작업을 자동으로 수행하도록 설정하
 </tbody>
 </table>
 <p>예를 들어, 클릭 시 (신형 워크플로우를 사용하며, 다음 수신자가 있는 문서를 작성 후) 전송하는 버튼은 다음과 같이 생성할 수 있습니다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">button</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;btn_21&quot;</span> <span class="n">onclick</span><span class="o">=</span><span class="s2">&quot;eformsign.sendAction({type: &quot;</span><span class="mi">01</span><span class="s2">&quot;, code: &quot;</span><span class="mi">21</span><span class="s2">&quot;});&quot;</span><span class="o">&gt;</span><span class="n">전송</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
-</pre></div>
-</div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+.. code-block::
+=======
+.. code-block:: html</p>
+<blockquote>
+<div><p>&lt;button id=”btn_21” onclick=”eformsign.sendAction({type: ‘01’, code: ‘21’});”&gt;전송&lt;/button&gt;</p>
+</div></blockquote>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; fef5abbbfa2466a7f28388c5ef5ef9d075685fde</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>위 액션 코드 목록에서 확인하실 수 있듯, 워크플로우 구성과 문서 상태 등에 따라 사용해야 할 버튼의 종류가 달라집니다.
@@ -4113,37 +4118,42 @@ Response와 무관한 별도의 작업을 자동으로 수행하도록 설정하
 <span class="nx">eformsign</span><span class="p">.</span><span class="nb">document</span><span class="p">(</span><span class="nx">document_option</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;eformsign_iframe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">success_callback</span><span class="p">,</span><span class="w"> </span><span class="nx">error_callback</span><span class="p">,</span><span class="w"> </span><span class="nx">action_callback</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- 모든 액션에 대한 버튼을 생성해두고, 보이지 않도록 설정한 후 action_callback에서 필요한 버튼만 표시하도록 처리 --&gt;
-&lt;div id=&quot;buttonList&quot; style=&quot;padding: 10px;&quot;&gt;
-    &lt;button id=&quot;btn_01&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;01&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_02&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;02&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_03&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;03&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_04&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;04&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_05&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;05&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_06&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;06&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_07&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;07&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_08&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;08&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_09&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;09&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_10&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;10&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_11&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;11&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_12&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;12&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_13&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;13&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_14&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;14&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_15&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;15&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_16&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;16&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_17&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;17&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_18&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;18&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_19&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;19&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_20&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;20&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_21&quot; style=&quot;width:80px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;21&#39;);&quot;&gt;&lt;/button&gt;
-    &lt;button id=&quot;btn_22&quot; style=&quot;width:150px; height:30px; display: none;&quot; onclick=&quot;actionTest(&#39;22&#39;);&quot;&gt;&lt;/button&gt;
-&lt;/div&gt;
-
-
-&lt;!-- 임베딩할 iframe 생성 --&gt;
-&lt;iframe id=&quot;eformsign_iframe&quot; name=&quot;eformsign_iframe&quot; style=&quot;width: 100%; height: 700px;&quot;&gt;&lt;/iframe&gt;
-</pre></div>
-</div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+.. code-block::
+=======
+.. code-block:: html
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fef5abbbfa2466a7f28388c5ef5ef9d075685fde</p>
+<blockquote>
+<div><p>&lt;!– 모든 액션에 대한 버튼을 생성해두고, 보이지 않도록 설정한 후 action_callback에서 필요한 버튼만 표시하도록 처리 –&gt;
+&lt;div id=”buttonList” style=”padding: 10px;”&gt;</p>
+<blockquote>
+<div><p>&lt;button id=”btn_01” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘01’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_02” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘02’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_03” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘03’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_04” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘04’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_05” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘05’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_06” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘06’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_07” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘07’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_08” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘08’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_09” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘09’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_10” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘10’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_11” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘11’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_12” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘12’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_13” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘13’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_14” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘14’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_15” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘15’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_16” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘16’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_17” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘17’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_18” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘18’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_19” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘19’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_20” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘20’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_21” style=”width:80px; height:30px; display: none;” onclick=”actionTest(‘21’);”&gt;&lt;/button&gt;
+&lt;button id=”btn_22” style=”width:150px; height:30px; display: none;” onclick=”actionTest(‘22’);”&gt;&lt;/button&gt;</p>
+</div></blockquote>
+<p>&lt;/div&gt;</p>
+<p>&lt;!– 임베딩할 iframe 생성 –&gt;
+&lt;iframe id=”eformsign_iframe” name=”eformsign_iframe” style=”width: 100%; height: 700px;”&gt;&lt;/iframe&gt;</p>
+</div></blockquote>
 </section>
 </section>
 </section>
@@ -4154,9 +4164,14 @@ Response와 무관한 별도의 작업을 자동으로 수행하도록 설정하
 <h3>eformsign 기능을 임베딩할 영역 생성<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
 <p>먼저 eformsign 기능을 임베딩하여 표시할 영역을 생성해야 합니다.
 eformsign 기능 임베딩을 위한 영역은 iframe 형태를 지원하고 있습니다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">iframe</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;eformsign_iframe&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;1440&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;1024&quot;</span><span class="o">&gt;</span> <span class="o">&lt;/</span><span class="n">iframe</span><span class="o">&gt;</span>
-</pre></div>
-</div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+.. code-block::
+=======
+.. code-block:: html
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fef5abbbfa2466a7f28388c5ef5ef9d075685fde</p>
+<blockquote>
+<div><p>&lt;iframe id=”eformsign_iframe” width=”1440” height=”1024”&gt; &lt;/iframe&gt;</p>
+</div></blockquote>
 <p>예를 들어, 위와 같이 가로 1440픽셀, 세로 1024픽셀의 iframe을 생성할 수 있습니다.
 영역 생성 시 id를 설정해야 합니다. 위 예시에서는 id를 “eformsign_iframe”으로 설정하였습니다.</p>
 </section>
@@ -4284,49 +4299,61 @@ open 함수는 설정해야 할 패러미터가 없으며, 옵션 설정을 마�
 <section id="id39">
 <h4>예시<a class="headerlink" href="#id39" title="Link to this heading"></a></h4>
 <p>설치 작업을 포함한 전체 예시 코드는 다음과 같습니다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">embedding</span> <span class="n">test</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
-
-    <span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://www.eformsign.com/plugins/jquery/jquery.min.js&quot;</span><span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://www.eformsign.com/lib/js/efs_embedded_v2.js&quot;</span><span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
-
-
-<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">iframe</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;eformsign_iframe&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;1440&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;1024&quot;</span><span class="o">&gt;</span> <span class="o">&lt;/</span><span class="n">iframe</span><span class="o">&gt;</span>
-
-
-    <span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-        <span class="n">var</span> <span class="n">eformsign</span> <span class="o">=</span> <span class="n">new</span> <span class="n">EformSignDocument</span><span class="p">();</span>
-
-        <span class="n">var</span> <span class="n">document_option</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="o">//</span> <span class="n">중략</span>
-            <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="p">{</span>
-               <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;01&quot;</span><span class="p">,</span>
-               <span class="s2">&quot;template_id&quot;</span> <span class="p">:</span> <span class="s2">&quot;a2c6ed9df9b642f2ade43c7efe58c9a3&quot;</span>
-            <span class="p">},</span>
-            <span class="o">//</span> <span class="n">중략</span>
-        <span class="p">};</span>
-
-        <span class="n">var</span> <span class="n">success_callback</span><span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">response</span><span class="p">){</span>
-            <span class="o">//</span> <span class="n">생략</span>
-        <span class="p">};</span>
-
-        <span class="n">var</span> <span class="n">error_callback</span><span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">response</span><span class="p">){</span>
-            <span class="o">//</span><span class="n">생략</span>
-        <span class="p">};</span>
-
-        <span class="n">var</span> <span class="n">action_callback</span><span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">response</span><span class="p">){</span>
-            <span class="o">//</span><span class="n">생략</span>
-        <span class="p">};</span>
-
-        <span class="n">eformsign</span><span class="o">.</span><span class="n">document</span><span class="p">(</span><span class="n">document_option</span><span class="p">,</span> <span class="s2">&quot;eformsign_iframe&quot;</span><span class="p">,</span> <span class="n">success_callback</span><span class="p">,</span> <span class="n">error_callback</span><span class="p">,</span> <span class="n">action_callback</span><span class="p">);</span>
-        <span class="n">eformsign</span><span class="o">.</span><span class="n">open</span><span class="p">();</span>
-    <span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
-</pre></div>
-</div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+.. code-block::
+=======
+.. code-block:: html
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fef5abbbfa2466a7f28388c5ef5ef9d075685fde</p>
+<blockquote>
+<div><p>&lt;html&gt;
+&lt;head&gt;</p>
+<blockquote>
+<div><p>&lt;title&gt;embedding test&lt;/title&gt;</p>
+<p>&lt;script src=”<a class="reference external" href="https://www.eformsign.com/plugins/jquery/jquery.min.js">https://www.eformsign.com/plugins/jquery/jquery.min.js</a>”&gt;&lt;/script&gt;
+&lt;script src=”<a class="reference external" href="https://www.eformsign.com/lib/js/efs_embedded_v2.js">https://www.eformsign.com/lib/js/efs_embedded_v2.js</a>”&gt;&lt;/script&gt;</p>
+</div></blockquote>
+<p>&lt;/head&gt;</p>
+<dl>
+<dt>&lt;body&gt;</dt><dd><p>&lt;iframe id=”eformsign_iframe” width=”1440” height=”1024”&gt; &lt;/iframe&gt;</p>
+<dl>
+<dt>&lt;script&gt;</dt><dd><p>var eformsign = new EformSignDocument();</p>
+<dl>
+<dt>var document_option = {</dt><dd><p>// 중략
+“mode” : {</p>
+<blockquote>
+<div><p>“type” : “01”,
+“template_id” : “a2c6ed9df9b642f2ade43c7efe58c9a3”</p>
+</div></blockquote>
+<p>},
+// 중략</p>
+</dd>
+</dl>
+<p>};</p>
+<dl class="simple">
+<dt>var success_callback= function(response){</dt><dd><p>// 생략</p>
+</dd>
+</dl>
+<p>};</p>
+<dl class="simple">
+<dt>var error_callback= function(response){</dt><dd><p>//생략</p>
+</dd>
+</dl>
+<p>};</p>
+<dl class="simple">
+<dt>var action_callback= function(response){</dt><dd><p>//생략</p>
+</dd>
+</dl>
+<p>};</p>
+<p>eformsign.document(document_option, “eformsign_iframe”, success_callback, error_callback, action_callback);
+eformsign.open();</p>
+</dd>
+</dl>
+<p>&lt;/script&gt;</p>
+</dd>
+</dl>
+<p>&lt;/body&gt;
+&lt;/html&gt;</p>
+</div></blockquote>
 </section>
 </section>
 </section>
@@ -4473,7 +4500,7 @@ open 함수는 설정해야 할 패러미터가 없으며, 옵션 설정을 마�
 
 
     <div class="footer" role="contentinfo">
-    &#169; Copyright 2024. FORCS CO., LTD. All rights reserved.
+    &#169; Copyright 2025, FORCS CO., LTD. All rights reserved..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     </div>
 
