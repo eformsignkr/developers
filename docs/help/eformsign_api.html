@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>eformsign API 사용하기 &#8212; eformsign API guide 2024.09.03 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=9b2032db" />
-    <link rel="stylesheet" type="text/css" href="../_static/code-tabs.css?v=1bc26e2f" />
+    <title>eformsign API 사용하기 &#8212; eformsign API 가이드 2025.08.25 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic_mod.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/code-tabs.css" type="text/css" />
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=3f65cc9a"></script>
+    <script src="../_static/documentation_options.js?v=9b887c12"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/code-tabs.js?v=c983d12e"></script>
@@ -27,7 +27,7 @@
 <div id="top_nav">
     
         <div id="notification_banner" data-banner-hiding="temporary" v-show="!permanentlyHidden">
-    <p v-if="visible" id="content"><a href="https://www.eformsign.com/">eformsign 바로가기</a>!</p>
+    <p v-if="visible" id="content"><a href="https://www.eformsign.com/">eformsign 바로가기</a></p>
     <a class="close" href="#" @click.prevent="toggleVisible()">[[ visible ? '&#x25B2; HIDE' : '&#x25BC; SHOW BANNER' ]]</a>
 </div>
 
@@ -152,7 +152,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="../index.html" title="Go to homepage">eformsign API 가이드</a></h1>
+        <h1><a href="../index.html" title="Go to homepage"><img src="../_static/eformsign_guide_logo1.png"/></a></h1>
             <a id="source_link" href="https://www.eformsign.com/">
     
         <svg width="100%" height="100%" viewBox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
@@ -728,55 +728,33 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 <p>문서 API의 <strong>Authorize</strong> 버튼에는 Access Token 값을 입력해야 합니다.</p>
 </div>
 <p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document">문서 API</a>는 다음과 같습니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents">새 문서 작성_최초 작성자가 회사 멤버</a></p>
-<p>회사 멤버가 템플릿으로 문서를 한 건 작성합니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-external">새 문서 작성_최초 작성자가 외부 사용자</a></p>
-<p>회사 멤버가 아닌 사용자가 문서를 한 건 작성합니다. <strong>템플릿 설정&gt;워크플로우 설정</strong>의 시작 단계 속성에서 <strong>URL로 문서 작성 허용</strong>이 체크되어 있는 템플릿만 사용할 수 있습니다.</p>
-<p>문서 재요청</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms-mass_documents%3Ftemplate_id%3D-form_id">문서 일괄 작성</a></p>
-<p>회사 멤버 계정을 통해 한 템플릿으로 문서를 여러 건 일괄 작성합니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms%2Fmass_multi_documents">문서 일괄 작성_멀티 템플릿</a></p>
-<p>멤버 계정을 통 여러 템플릿으로 문서를 일괄작성하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-document_id-re_request_outsider">문서 재요청</a></p>
-<p>기존에 수신자에게 요청한 문서를 다시 요청하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID">문서 정보 조회</a></p>
-<p>특정 문서의 일반 정보, 상세 정보, 이력, 진행 상황 등을 조회합니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_files">문서 파일 다운로드_문서 PDF 및 감사추적증명서</a></p>
-<p>문서 파일 및 감사추적증명서 파일을 PDF 형태로 다운로드합니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_attach_files">문서 첨부 파일 다운로드</a></p>
-<p>문서에 첨부된 파일을 다운로드합니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents">문서 목록 조회</a></p>
-<p>문서함의 문서 목록을 조회하고, 각 문서의 일반 정보, 상세 정보, 이력, 진행상황 등을 확인할 수 있는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-list-documents">문서 목록 조회</a></p>
-<p>문서함의 문서 목록을 조회하고, 각 문서의 일반 정보, 상세 정보, 이력, 진행상황 등을 확인할 수 있는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/delete-api-documents">문서 삭제</a></p>
-<p>문서를 삭제하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-cancel">문서 취소</a></p>
-<p>문서를 취소하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-companies-COMPANY_ID-use_status">이용현황 조회</a></p>
-<p>기간(연/월)별 이용현황을 조회하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-document-DOCUMENT_ID-decline">내부자 반려</a></p>
-<p>문서 반려 시, 이전 상태로 되돌리는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-document-DOCUMENT_ID-external_decline">외부자 반려</a></p>
-<p>문서 반려 시, 이전 상태로 되돌리는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-optimize">PDF 압축 API</a></p>
-<p>PDF 파일 요청 시 파일을 압축하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/documents/post-api-documents-DOCUMENT_ID-document_component">문서 컴포넌트 정보 조희</a></p>
-<p>문서에 사용된 컴포넌트 목록의 정보를 조회하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents">새 문서 작성_최초 작성자가 회사 멤버</a> - 회사 멤버가 템플릿으로 문서를 한 건 작성합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-external">새 문서 작성_최초 작성자가 외부 사용자</a> - 회사 멤버가 아닌 사용자가 문서를 한 건 작성합니다.
+(참고. <strong>템플릿 설정&gt;워크플로우 설정</strong>의 시작 단계 속성에서 <strong>URL로 문서 작성 허용</strong>이 체크되어 있는 템플릿만 사용할 수 있습니다.)</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms-mass_documents%3Ftemplate_id%3D-form_id">문서 일괄 작성</a> - 회사 멤버 계정을 통해 한 템플릿으로 문서를 여러 건 일괄 작성합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms%2Fmass_multi_documents">문서 일괄 작성_멀티 템플릿</a>  - 멤버 계정을 통 여러 템플릿으로 문서를 일괄작성하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-document_id-re_request_outsider">문서 재요청</a> - 기존에 수신자에게 요청한 문서를 다시 요청하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID">문서 정보 조회</a> - 특정 문서의 일반 정보, 상세 정보, 이력, 진행 상황 등을 조회합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_files">문서 파일 다운로드_문서 PDF 및 감사추적증명서</a>  - 문서 파일 및 감사추적증명서 파일을 PDF 형태로 다운로드합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_attach_files">문서 첨부 파일 다운로드</a> - 문서에 첨부된 파일을 다운로드합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents">문서 목록 조회</a> - 문서함의 문서 목록을 조회하고, 각 문서의 일반 정보, 상세 정보, 이력, 진행상황 등을 확인할 수 있는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-list-documents">문서 목록 조회</a> - 문서함의 문서 목록을 조회하고, 각 문서의 일반 정보, 상세 정보, 이력, 진행상황 등을 확인할 수 있는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/delete-api-documents">문서 삭제</a> - 문서를 삭제하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-cancel">문서 취소</a> - 문서를 취소하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-companies-COMPANY_ID-use_status">이용현황 조회</a> - 기간(연/월)별 이용현황을 조회하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-document-DOCUMENT_ID-decline">내부자 반려</a> - 문서 반려 시, 이전 상태로 되돌리는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-document-DOCUMENT_ID-external_decline">외부자 반려</a> - 문서 반려 시, 이전 상태로 되돌리는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-optimize">PDF 압축 API</a> - PDF 파일 요청 시 파일을 압축하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/documents/post-api-documents-DOCUMENT_ID-document_component">문서 컴포넌트 정보 조희</a> -  문서에 사용된 컴포넌트 목록의 정보를 조회하는 API입니다.</p>
 </section>
 <section id="id29">
 <h3>템플릿 관리를 위한 API<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
 <p>API를 사용해 템플릿을 관리할 수 있습니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-forms">작성가능한 템플릿 목록 조회</a></p>
-<p>회사 멤버 정보가 포함된 Access Token으로 작성 가능한 템플릿 목록을 조회하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-forms-form_id">단일 템플릿 정보 조회</a></p>
-<p>내부 멤버의 작성 가능한 템플릿 정보를 조회하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-template_image-template_image_id">템플릿 이미지 다운로드</a></p>
-<p>템플릿 이미지를 다운로드하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/patch-api-forms-form_id-permissions">템플릿 수정 및 작성 권한 수정</a></p>
-<p>템플릿에 대한 멤버의 권한을 수정하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/delete-forms">템플릿 삭제</a></p>
-<p>템플릿을 삭제하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-forms">작성가능한 템플릿 목록 조회</a> - 회사 멤버 정보가 포함된 Access Token으로 작성 가능한 템플릿 목록을 조회하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-forms-form_id">단일 템플릿 정보 조회</a> - 내부 멤버의 작성 가능한 템플릿 정보를 조회하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-template_image-template_image_id">템플릿 이미지 다운로드</a> - 템플릿 이미지를 다운로드하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/patch-api-forms-form_id-permissions">템플릿 수정 및 작성 권한 수정</a> - 템플릿에 대한 멤버의 권한을 수정하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/delete-forms">템플릿 삭제</a> - 템플릿을 삭제하는 API입니다.</p>
 </section>
 <hr class="docutils" />
 <section id="id35">
@@ -793,23 +771,16 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 <p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members">멤버 및 그룹 관리 API</a>는 다음과 같습니다.</p>
 <section id="id38">
 <h4>멤버 관리 API<a class="headerlink" href="#id38" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/get-api-members">멤버 목록 조회</a></p>
-<p>회사에 소속된 멤버 목록을 조회합니다. 삭제된 멤버를 제외한 활성, 비활성, 탈퇴 멤버의 정보를 포함한 목록을 조회할 수 있습니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/patch-api-members-member_id">멤버 수정</a></p>
-<p>회사의 멤버 정보를 수정합니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/delete-api-members-member_id">멤버 삭제</a></p>
-<p>회사에서 멤버를 삭제합니다. 해당 멤버의 eformsign 계정은 삭제되지 않고, 회사에서만 탈퇴됩니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/get-api-members">멤버 목록 조회</a> - 회사에 소속된 멤버 목록을 조회합니다. 삭제된 멤버를 제외한 활성, 비활성, 탈퇴 멤버의 정보를 포함한 목록을 조회할 수 있습니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/patch-api-members-member_id">멤버 수정</a> - 회사의 멤버 정보를 수정합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/delete-api-members-member_id">멤버 삭제</a> - 회사에서 멤버를 삭제합니다. 해당 멤버의 eformsign 계정은 삭제되지 않고, 회사에서만 탈퇴됩니다.</p>
 </section>
 <section id="id42">
 <h4>그룹 관리 API<a class="headerlink" href="#id42" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/get-api-groups">그룹 목록 조회</a></p>
-<p>회사의 그룹 목록을 조회합니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/post-api-groups">그룹 추가</a></p>
-<p>회사에 새로운 그룹을 추가합니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/patch-api-groups">그룹 수정</a></p>
-<p>회사의 그룹 정보를 수정합니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/delete-api-groups">그룹 삭제</a></p>
-<p>회사의 그룹을 삭제합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/get-api-groups">그룹 목록 조회</a> - 회사의 그룹 목록을 조회합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/post-api-groups">그룹 추가</a> - 회사에 새로운 그룹을 추가합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/patch-api-groups">그룹 수정</a> - 회사의 그룹 정보를 수정합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/delete-api-groups">그룹 삭제</a> - 회사의 그룹을 삭제합니다.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>각 eformsign API에 대한 자세한 설명은 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/">다음</a>에서 확인하실 수 있습니다.</p>
@@ -819,16 +790,11 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 <section id="id47">
 <h3>회사 도장 관리를 위한 API<a class="headerlink" href="#id47" title="Link to this heading"></a></h3>
 <p>API를 사용해 회사 도장을 관리할 수 있습니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/get-api-company_stamp-STAMP_ID">회사 도장 정보 조회</a></p>
-<p>회사 도장의 정보를 조회할 수 있는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/get-api-company_stamp">회사 도장 목록 조회</a></p>
-<p>회사 도장 목록을 조회할 수 있는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/post-api-company_stamp">회사 도장 추가</a></p>
-<p>회사 도장 관리에 회사 도장을 추가하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/patch-api-company_stamp-STAMP_ID">회사 도장 수정</a></p>
-<p>회사 도장 관리에 등록된 회사 도장을 수정하는 API입니다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/delete-api-company_stamp-STAMP_ID">회사 도장 삭제</a></p>
-<p>회사 도장 관리의 회사 도장을 삭제하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/get-api-company_stamp-STAMP_ID">회사 도장 정보 조회</a> - 회사 도장의 정보를 조회할 수 있는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/get-api-company_stamp">회사 도장 목록 조회</a> - 회사 도장 목록을 조회할 수 있는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/post-api-company_stamp">회사 도장 추가</a> - 회사 도장 관리에 회사 도장을 추가하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/patch-api-company_stamp-STAMP_ID">회사 도장 수정</a> - 회사 도장 관리에 등록된 회사 도장을 수정하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/delete-api-company_stamp-STAMP_ID">회사 도장 삭제</a> - 회사 도장 관리의 회사 도장을 삭제하는 API입니다.</p>
 </section>
 </section>
 <section id="id53">
@@ -1484,7 +1450,7 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 
 
     <div class="footer" role="contentinfo">
-    &#169; Copyright 2024. FORCS CO., LTD. All rights reserved.
+    &#169; Copyright 2025, FORCS CO., LTD. All rights reserved..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     </div>
 

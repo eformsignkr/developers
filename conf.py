@@ -19,24 +19,19 @@
 
 # -- Project information -----------------------------------------------------
 
-<<<<<<< HEAD
-project = 'eformsign API guide'
-copyright = '2024. FORCS CO., LTD. All rights reserved'
-=======
+
 project = 'eformsign API 가이드'
 copyright = '2025, FORCS CO., LTD. All rights reserved.'
->>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
+
 author = 'FORCS'
 
 # The short X.Y version
-version = 'version 10.2024.1211.209'
+version = 'version 10.2025.0625'
 # The full version, including alpha/beta/rc tags
-<<<<<<< HEAD
-release = '2024.09.03'
-=======
-release = '2024.12.27'
 
->>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
+release = '2025.08.25'
+
+
 
 # -- General configuration ---------------------------------------------------
 
@@ -51,7 +46,6 @@ extensions = [
 #'sphinxcontrib.redoc',
     'sphinx_code_tabs',
     'sphinx_rtd_theme',
-    'sphinxcontrib.youtube',
     'sphinx.ext.todo', 
     'sphinx.ext.mathjax',
     'sphinxcontrib.youtube',
@@ -94,14 +88,11 @@ pygments_style = None
 import sphinx_rtd_theme
 
 html_theme = 'piccolo_theme'
-<<<<<<< HEAD
 
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 html_css_files = []
 
-=======
->>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -109,7 +100,7 @@ html_css_files = []
 #
 # html_theme_options = {}
 
-<<<<<<< HEAD
+
 html_theme_options = {
     "navbar_fixed_top": True,
     "show_sidebar": True,
@@ -118,10 +109,6 @@ html_theme_options = {
 }
 
 
-=======
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-
-html_css_files = []
 
 
 #html_theme_options = {
@@ -147,7 +134,7 @@ html_theme_options = {
     "show_sidebar": True,
 }
 
->>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -281,11 +268,6 @@ texinfo_documents = [
 
 # Bibliographic Dublin Core info.
 epub_title = project
-
-<<<<<<< HEAD
-=======
-
->>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
 html_short_title = "eformsign API 가이드"
 
 # The unique identifier of the text. This can be a ISBN number
@@ -306,21 +288,12 @@ html_theme_options = {
     "globaltoc_collapse": True,
     "show_theme_credit": False,
 }
-<<<<<<< HEAD
 
-
-html_theme_options = {
-    "source_url": 'https://www.eformsign.com/',
-    "source_icon": "C:\Docbook\eformsignkr.github.io\docs\_static\favicon.png",
-    "banner_text": '<a href="https://www.eformsign.com/">eformsign 바로가기</a>!'
-}
 
 
 
 html_logo = "C:\docbook\eformsignkr.github.io\images\\eformsign_API_guide_logo.png"
 
-=======
->>>>>>> fef5abbbfa2466a7f28388c5ef5ef9d075685fde
 
 #html_logo = "C:\docbook\eformsignkr.github.io\images\\forcs_b.png"
 
