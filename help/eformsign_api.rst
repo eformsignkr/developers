@@ -71,7 +71,7 @@ API 키 발급 및 비밀키 확인하기
 
    - **Bearer Token**\ : 검증을 위해 사전 설정한 값을 이용하는 방식입니다.
 
-    .. image:: resources/apikeyauth1.png
+    .. image:: resources/apikeyauth1_1.png
         :width: 300
         :alt: API 키 생성 팝업창1
 
@@ -92,7 +92,7 @@ API 키 발급 및 비밀키 확인하기
 
    - **Basic Authentication**\ : 검증을 위해 아이디와 비밀번호를 이용하는 방식입니다. 
 
-    .. image:: resources/apikeyauth2.png
+    .. image:: resources/apikeyauth2_1.png
         :width: 300
         :alt: API 키 생성 팝업창2
 
@@ -119,11 +119,11 @@ API 키 발급 및 비밀키 확인하기
 
 4. 생성된 키 목록에서 **키보기** 버튼을 클릭하여 API 키와 비밀키를 확인합니다.
 
-.. image:: resources/apikey4.png
+.. image:: resources/apikey4_1.png
     :width: 700
     :alt: API 키보기 버튼 위치
 
-.. image:: resources/apikey5.png
+.. image:: resources/apikey5_1.png
     :width: 700
     :alt: API 키 및 비밀키 확인 
 
