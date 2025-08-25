@@ -1,128 +1,270 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>eformsign API 사용하기 &mdash; eformsign API guide 2022.06.28 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/code-tabs.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=696c1345"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/code-tabs.js?v=c983d12e"></script>
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>eformsign API 사용하기 &#8212; eformsign API guide 2024.09.03 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="../_static/code-tabs.css?v=1bc26e2f" />
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=3f65cc9a"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/code-tabs.js?v=c983d12e"></script>
     <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/petite-vue.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="eformsign Webhook 사용하기" href="eformsign_webhook.html" />
     <link rel="prev" title="eformsign API 시작하기: 실습 가이드" href="eformsign_api_quickstart.html" /> 
-</head>
+  </head><body data-dark_mode_code_blocks="true">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html">
-            
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div id="top_nav">
+    
+        <div id="notification_banner" data-banner-hiding="temporary" v-show="!permanentlyHidden">
+    <p v-if="visible" id="content"><a href="https://www.eformsign.com/">eformsign 바로가기</a>!</p>
+    <a class="close" href="#" @click.prevent="toggleVisible()">[[ visible ? '&#x25B2; HIDE' : '&#x25BC; SHOW BANNER' ]]</a>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+
+<script>
+(function() {
+    const topNav = document.querySelector('#top_nav')
+    const notificationContent = document.querySelector('#notification_banner p#content').innerText
+    const localStorageKey = 'readNotification'
+    const bannerHiding = document.querySelector('#notification_banner').dataset['bannerHiding']
+    const cssVariableName = '--navbarHeight'
+    const rootElement = document.documentElement
+
+    /*************************************************************************/
+    // Local storage for remembering if the user has read the notification.
+
+    function checkAlreadyRead() {
+        return localStorage.getItem(localStorageKey) == notificationContent
+    }
+
+    function setRead() {
+        localStorage.setItem(localStorageKey, notificationContent)
+    }
+
+    function clearRead() {
+        localStorage.removeItem(localStorageKey)
+    }
+
+    const alreadyRead = checkAlreadyRead()
+    const permanentlyHidden = alreadyRead && bannerHiding == 'permanent'
+
+    /*************************************************************************/
+    // Updating a CSS variable so other elements adjust to the nav bar height.
+
+    function updateNavbarHeight() {
+        // Only update it if the delta is significant. Otherwise it causes
+        // unnecessary browser repaints.
+        const documentStyles = getComputedStyle(rootElement)
+        // We store the value in REM, so need to convert to pixels
+        const currentValue = parseFloat(
+            documentStyles.getPropertyValue(cssVariableName)
+        ) * parseFloat(documentStyles.fontSize)
+
+        const newValue = topNav.clientHeight
+
+        if (newValue - 5 > currentValue) {
+            console.log(`Updating ${cssVariableName} - overlapping`)
+            rootElement.style.setProperty(
+                cssVariableName, newValue + "px"
+            );
+        } else if (currentValue - newValue >= 30) {
+            console.log(`Updating ${cssVariableName} - gap too large`)
+            rootElement.style.setProperty(
+                cssVariableName, newValue + "px"
+            );
+        }
+    }
+
+    /*************************************************************************/
+    // After loading the page, and resizing the window, recalculate the nav bar
+    // height.
+
+    if (!permanentlyHidden) {
+        // This height is approximately correct when there's a banner, so
+        // shouldn't require any page reflow:
+        rootElement.style.setProperty(
+            '--navbarHeight', "5.5rem"
+        );
+
+        document.addEventListener("DOMContentLoaded", function() {
+            updateNavbarHeight()
+        });
+
+        var interval = undefined
+
+        window.addEventListener('resize', () => {
+            if (interval) {
+                clearTimeout(interval)
+            }
+            interval = setTimeout(() => {
+                console.log("Finished resizing")
+                updateNavbarHeight()
+            }, 100)
+        })
+    }
+
+    /*************************************************************************/
+
+    PetiteVue.createApp({
+        visible: !alreadyRead,
+        permanentlyHidden: permanentlyHidden,
+        bannerHiding: bannerHiding,
+        $delimiters: ['[[', ']]'],
+        toggleVisible() {
+            this.visible = !this.visible
+
+            if (this.visible) {
+                clearRead()
+            } else {
+                setRead()
+            }
+
+            if (!this.visible && bannerHiding == 'permanent') {
+                this.permanentlyHidden = true
+            }
+
+            // Run this after Vue has had time to update the DOM:
+            setTimeout(
+                updateNavbarHeight,
+                0
+            )
+        }
+    }).mount('#notification_banner')
+})()
+</script>
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="../index.html" title="Go to homepage">eformsign API 가이드</a></h1>
+            <a id="source_link" href="https://www.eformsign.com/">
+    
+        <svg width="100%" height="100%" viewBox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <path fill="white" d="M89.42,41.51l-39.794,-39.791c-2.29,-2.292 -6.006,-2.292 -8.299,-0l-8.263,8.264l10.481,10.482c2.437,-0.823 5.23,-0.271 7.171,1.67c1.952,1.954 2.5,4.771 1.657,7.216l10.102,10.102c2.444,-0.842 5.264,-0.298 7.215,1.657c2.729,2.728 2.729,7.148 0,9.876c-2.729,2.73 -7.148,2.73 -9.878,-0c-2.052,-2.053 -2.56,-5.067 -1.52,-7.595l-9.422,-9.422l-0.001,24.793c0.666,0.329 1.293,0.769 1.847,1.321c2.728,2.727 2.728,7.146 0,9.878c-2.728,2.727 -7.15,2.727 -9.876,-0c-2.728,-2.732 -2.728,-7.151 0,-9.878c0.675,-0.674 1.454,-1.183 2.287,-1.524l0,-25.023c-0.833,-0.34 -1.611,-0.846 -2.287,-1.524c-2.066,-2.065 -2.564,-5.098 -1.504,-7.635l-10.333,-10.335l-27.285,27.284c-2.291,2.294 -2.291,6.011 0,8.303l39.794,39.791c2.291,2.291 6.007,2.291 8.301,-0l39.607,-39.607c2.292,-2.293 2.292,-6.011 0,-8.303Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="../search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="eformsign_api_overview.html">eformsign API 가이드</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_embedding_v2.html">eformsign 기능 임베딩하기</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_api_quickstart.html">eformsign API 시작하기: 실습 가이드</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">eformsign API 사용하기</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">시작하기</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id-id">회사 ID와 문서 ID 확인하기</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#api">API 키 발급 및 비밀키 확인하기</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#eformsign-signature">서명 생성하기</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#java">Java</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#javascript-node-js">Javascript(Node.JS)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#python">Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#php">PHP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#c-net">C# (.NET)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">각 언어별 예제</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">API 제공 리스트</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#access-token-api">토큰 발급 및 갱신을 위한 API</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6"><strong>토큰 발급</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8"><strong>토큰 갱신</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">문서 작성 및 처리를 위한 API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id30">멤버 및 그룹 관리를 위한 API</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id33">멤버 관리 API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id37">그룹 관리 API</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id42">API 코드</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id43">API 상태 코드</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id44">200</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id45">202</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id46">400</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id47">403</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id48">405</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id49">500</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#user-type">사용자 타입(user_type)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-type">단계 타입(step_type)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#current-status-status-type">문서 현재 상태 타입 (current_status.status_type)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#next-status-status-type">문서 다음 상태 타입(next_status.status_type)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#action-type">액션 타입 (action_type)</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">eformsign API 사용하기</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eformsign_webhook.html">eformsign Webhook 사용하기</a></li>
 </ul>
 
         </div>
       </div>
-    </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">eformsign API guide</a>
-      </nav>
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">eformsign API 사용하기</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/help/eformsign_api.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
   <section id="eformsign-api">
 <h1>eformsign API 사용하기<a class="headerlink" href="#eformsign-api" title="Link to this heading"></a></h1>
 <p>eformsign이 제공하는 API를 사용해 eformsign의 기능을 고객의 시스템/서비스에서 호출해 사용할 수 있습니다.</p>
@@ -154,21 +296,19 @@
 <span id="apikey"></span><h3>API 키 발급 및 비밀키 확인하기<a class="headerlink" href="#api" title="Link to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>API 키는 대표 관리자만 발급할 수 있습니다. 대표 관리자가 아닌 경우, API 키 필요 시 대표 관리자에게 요청하시기 바랍니.</p>
+<p>API 키는 대표 관리자만 발급할 수 있습니다. 대표 관리자가 아닌 경우, API 키 필요 시 대표 관리자에게 요청하시기 바랍니다.</p>
 </div>
 <ol class="arabic simple">
-<li><p>eformsign에 대표 관리자로 로그인 후, 메뉴 트리에서 <strong>[커넥트] &gt; [API / Webhook]</strong> 페이지로 이동합니다.</p></li>
+<li><p>메뉴에서 <strong>[커넥트] &gt; [API / Webhook]</strong> 클릭하여 이동한 후 <strong>API 키 생성</strong> 버튼을 클릭합니다.</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/apikey1.PNG"><img alt="커넥트 &gt; API/Webhook 메뉴 위치" src="../_images/apikey1.PNG" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="../_images/apikey-menu.PNG"><img alt="커넥트 &gt; API/Webhook 메뉴 위치" src="../_images/apikey-menu.PNG" style="width: 700px;" />
+</a>
 <ol class="arabic simple" start="2">
-<li><p><strong>[API 키 관리]</strong> 탭을 선택하고 <strong>API 키 생성</strong> 버튼을 클릭합니다.</p></li>
-</ol>
-<a class="reference internal image-reference" href="../_images/apikey2.PNG"><img alt="API 키 생성 버튼" src="../_images/apikey2.PNG" style="width: 700px;" /></a>
-<ol class="arabic simple" start="3">
 <li><p><strong>API 키 생성</strong> 팝업창에 <strong>별칭</strong>과 <strong>애플리케이션 이름</strong>을 입력합니다.</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/apikeyauth.PNG"><img alt="API 키 생성 팝업창" src="../_images/apikeyauth.PNG" style="width: 400px;" /></a>
-<ol class="arabic simple" start="4">
+<a class="reference internal image-reference" href="../_images/apikeyauth.PNG"><img alt="API 키 생성 팝업창" src="../_images/apikeyauth.PNG" style="width: 400px;" />
+</a>
+<ol class="arabic simple" start="3">
 <li><p><strong>검증 유형</strong>을 선택 후 저장합니다.</p></li>
 </ol>
 <div class="admonition note">
@@ -178,7 +318,8 @@
 <li><p><strong>Bearer Token</strong>: 검증을 위해 사전 설정한 값을 이용하는 방식입니다.</p></li>
 </ul>
 <blockquote>
-<div><a class="reference internal image-reference" href="../_images/apikeyauth1.PNG"><img alt="API 키 생성 팝업창1" src="../_images/apikeyauth1.PNG" style="width: 300px;" /></a>
+<div><a class="reference internal image-reference" href="../_images/apikeyauth1.png"><img alt="API 키 생성 팝업창1" src="../_images/apikeyauth1.png" style="width: 300px;" />
+</a>
 <p>검증 유형을 <strong>Bearer token</strong>으로 선택하고 토큰값으로 사용할 값을 <strong>값</strong>란에 입력 후 <strong>저장</strong>합니다.  <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token">Access Token 발급</a> 시 요청 헤더 eformsign_signature에 해당 토큰값을  <strong>Bearer 토큰값</strong> 형태로 입력합니다. 다음 예제를 참고해 주세요.</p>
 <div class="highlight-Javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">curl</span><span class="w"> </span><span class="o">--</span><span class="nx">location</span><span class="w"> </span><span class="o">--</span><span class="nx">request</span><span class="w"> </span><span class="nx">POST</span><span class="w"> </span><span class="s1">&#39;https://service.eformsign.com/v2.0/api_auth/access_token&#39;</span><span class="w"> </span><span class="o">\</span>
 <span class="o">--</span><span class="nx">header</span><span class="w"> </span><span class="s1">&#39;eformsign_signature: Bearer {토큰값}&#39;</span><span class="w"> </span><span class="o">\</span>
@@ -195,7 +336,8 @@
 <li><p><strong>Basic Authentication</strong>: 검증을 위해 아이디와 비밀번호를 이용하는 방식입니다.</p></li>
 </ul>
 <blockquote>
-<div><a class="reference internal image-reference" href="../_images/apikeyauth2.PNG"><img alt="API 키 생성 팝업창2" src="../_images/apikeyauth2.PNG" style="width: 300px;" /></a>
+<div><a class="reference internal image-reference" href="../_images/apikeyauth2.png"><img alt="API 키 생성 팝업창2" src="../_images/apikeyauth2.png" style="width: 300px;" />
+</a>
 <p>검증 유형을 <strong>Basic authentication</strong>으로 선택하고 사용할 아이디와 비밀번호를 입력 후 <strong>저장</strong>합니다.  <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-access_token">Access Token 발급</a> 시 요청 헤더 eformsign_signature에 <strong>아이디:비밀번호</strong> 형태로 Base64 인코딩한 값을 입력합니다. 다음 예제를 참고해 주세요.</p>
 <div class="highlight-Javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">curl</span><span class="w"> </span><span class="o">--</span><span class="nx">location</span><span class="w"> </span><span class="o">--</span><span class="nx">request</span><span class="w"> </span><span class="nx">POST</span><span class="w"> </span><span class="s1">&#39;https://service.eformsign.com/v2.0/api_auth/access_token&#39;</span><span class="w"> </span><span class="o">\</span>
 <span class="o">--</span><span class="nx">header</span><span class="w"> </span><span class="s1">&#39;eformsign_signature: Basic {base64 encoded &quot;id:password&quot;}&#39;</span><span class="w"> </span><span class="o">\</span>
@@ -215,8 +357,10 @@
 <ol class="arabic simple" start="4">
 <li><p>생성된 키 목록에서 <strong>키보기</strong> 버튼을 클릭하여 API 키와 비밀키를 확인합니다.</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/apikey4.PNG"><img alt="API 키보기 버튼 위치" src="../_images/apikey4.PNG" style="width: 700px;" /></a>
-<a class="reference internal image-reference" href="../_images/apikey5.PNG"><img alt="API 키 및 비밀키 확인" src="../_images/apikey5.PNG" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="../_images/apikey4.png"><img alt="API 키보기 버튼 위치" src="../_images/apikey4.png" style="width: 700px;" />
+</a>
+<a class="reference internal image-reference" href="../_images/apikey5.png"><img alt="API 키 및 비밀키 확인" src="../_images/apikey5.png" style="width: 700px;" />
+</a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>API 키 수정 방법</strong></p>
@@ -339,12 +483,12 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </pre></div>
 </div>
 </div><div class="tab codetab" data-id="2">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
-<span class="kn">import</span> <span class="nn">binascii</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">binascii</span>
 
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
-<span class="kn">from</span> <span class="nn">ecdsa</span> <span class="kn">import</span> <span class="n">SigningKey</span><span class="p">,</span> <span class="n">VerifyingKey</span><span class="p">,</span> <span class="n">BadSignatureError</span>
-<span class="kn">from</span> <span class="nn">ecdsa.util</span> <span class="kn">import</span> <span class="n">sigencode_der</span><span class="p">,</span> <span class="n">sigdecode_der</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ecdsa</span><span class="w"> </span><span class="kn">import</span> <span class="n">SigningKey</span><span class="p">,</span> <span class="n">VerifyingKey</span><span class="p">,</span> <span class="n">BadSignatureError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ecdsa.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigencode_der</span><span class="p">,</span> <span class="n">sigdecode_der</span>
 
 <span class="c1"># private key</span>
 <span class="n">privateKeyHex</span> <span class="o">=</span> <span class="s2">&quot;발급받은 비밀키 입력(String 형태)&quot;</span>
@@ -465,7 +609,7 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">privateKeyBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HexStringToByteArray</span><span class="p">(</span><span class="s">&quot;이 곳에 발급받은 비밀키 입력(String 형태)&quot;</span><span class="p">);</span>
 
-<span class="w">            </span><span class="n">DateTime</span><span class="w"> </span><span class="n">unixEpoch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DateTime</span><span class="p">(</span><span class="m">1970</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">DateTime</span><span class="w"> </span><span class="n">unixEpoch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DateTime</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">            </span><span class="n">DateTime</span><span class="w"> </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">;</span>
 <span class="w">            </span><span class="n">TimeSpan</span><span class="w"> </span><span class="n">timeDiff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentTime</span><span class="p">.</span><span class="n">Subtract</span><span class="p">(</span><span class="n">unixEpoch</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">long</span><span class="w"> </span><span class="n">unixCurrentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">timeDiff</span><span class="p">.</span><span class="n">TotalMilliseconds</span><span class="p">;</span>
@@ -479,7 +623,7 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 <span class="w">            </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">dataBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">execution_time</span><span class="p">);</span>
 
 
-<span class="w">            </span><span class="n">signer</span><span class="p">.</span><span class="n">BlockUpdate</span><span class="p">(</span><span class="n">dataBytes</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">dataBytes</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+<span class="w">            </span><span class="n">signer</span><span class="p">.</span><span class="n">BlockUpdate</span><span class="p">(</span><span class="n">dataBytes</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">dataBytes</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">signatureBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signer</span><span class="p">.</span><span class="n">GenerateSignature</span><span class="p">();</span>
 
 
@@ -491,7 +635,7 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 <span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">ByteArrayToHexString</span><span class="p">(</span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
 <span class="w">                </span><span class="n">builder</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ToString</span><span class="p">(</span><span class="s">&quot;x2&quot;</span><span class="p">));</span>
 <span class="w">            </span><span class="p">}</span>
@@ -501,15 +645,15 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 
 <span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="nf">HexStringToByteArray</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">hexString</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hexString</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hexString</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">ArgumentException</span><span class="p">(</span><span class="s">&quot;{0} must have an even length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nameof</span><span class="p">(</span><span class="n">hexString</span><span class="p">));</span>
+<span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">ArgumentException</span><span class="p">(</span><span class="s">&quot;{0} must have an even length&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">nameof</span><span class="p">(</span><span class="n">hexString</span><span class="p">));</span>
 <span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="p">[</span><span class="n">hexString</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">2</span><span class="p">];</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bytes</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="p">[</span><span class="n">hexString</span><span class="p">.</span><span class="n">Length</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bytes</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="kt">string</span><span class="w"> </span><span class="n">currentHex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hexString</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">);</span>
-<span class="w">                </span><span class="n">bytes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Convert</span><span class="p">.</span><span class="n">ToByte</span><span class="p">(</span><span class="n">currentHex</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">string</span><span class="w"> </span><span class="n">currentHex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hexString</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">                </span><span class="n">bytes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Convert</span><span class="p">.</span><span class="n">ToByte</span><span class="p">(</span><span class="n">currentHex</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">bytes</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
@@ -585,26 +729,58 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </div>
 <p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document">문서 API</a>는 다음과 같습니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents">새 문서 작성_최초 작성자가 회사 멤버</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-external">새 문서 작성_최초 작성자가 외부 수신자</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID">문서 정보 조회</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_files">문서 파일 다운로드_문서 PDF 및 감사추적증명서</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_attach_files">문서 첨부 파일 다운로드</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents">문서 목록 조회</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-list-documents">문서 목록 조회</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/delete-api-documents">문서 삭제</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-cancel">문서 취소</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-document_id-re_request_outsider">외부 수신자 문서 재요청</a></p>
+<p>회사 멤버가 템플릿으로 문서를 한 건 작성합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-external">새 문서 작성_최초 작성자가 외부 사용자</a></p>
+<p>회사 멤버가 아닌 사용자가 문서를 한 건 작성합니다. <strong>템플릿 설정&gt;워크플로우 설정</strong>의 시작 단계 속성에서 <strong>URL로 문서 작성 허용</strong>이 체크되어 있는 템플릿만 사용할 수 있습니다.</p>
+<p>문서 재요청</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms-mass_documents%3Ftemplate_id%3D-form_id">문서 일괄 작성</a></p>
+<p>회사 멤버 계정을 통해 한 템플릿으로 문서를 여러 건 일괄 작성합니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-forms%2Fmass_multi_documents">문서 일괄 작성_멀티 템플릿</a></p>
+<p>멤버 계정을 통 여러 템플릿으로 문서를 일괄작성하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-document_id-re_request_outsider">문서 재요청</a></p>
+<p>기존에 수신자에게 요청한 문서를 다시 요청하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID">문서 정보 조회</a></p>
+<p>특정 문서의 일반 정보, 상세 정보, 이력, 진행 상황 등을 조회합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_files">문서 파일 다운로드_문서 PDF 및 감사추적증명서</a></p>
+<p>문서 파일 및 감사추적증명서 파일을 PDF 형태로 다운로드합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents-DOCUMENT_ID-download_attach_files">문서 첨부 파일 다운로드</a></p>
+<p>문서에 첨부된 파일을 다운로드합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-documents">문서 목록 조회</a></p>
+<p>문서함의 문서 목록을 조회하고, 각 문서의 일반 정보, 상세 정보, 이력, 진행상황 등을 확인할 수 있는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-list-documents">문서 목록 조회</a></p>
+<p>문서함의 문서 목록을 조회하고, 각 문서의 일반 정보, 상세 정보, 이력, 진행상황 등을 확인할 수 있는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/delete-api-documents">문서 삭제</a></p>
+<p>문서를 삭제하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-documents-cancel">문서 취소</a></p>
+<p>문서를 취소하는 API입니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-companies-COMPANY_ID-use_status">이용현황 조회</a></p>
+<p>기간(연/월)별 이용현황을 조회하는 API입니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-document-DOCUMENT_ID-decline">내부자 반려</a></p>
+<p>문서 반려 시, 이전 상태로 되돌리는 API입니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-document-DOCUMENT_ID-external_decline">외부자 반려</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/get-api-forms">작성가능한 템플릿 목록 조회</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/delete-forms">템플릿 삭제</a></p>
+<p>문서 반려 시, 이전 상태로 되돌리는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/document/post-api-optimize">PDF 압축 API</a></p>
+<p>PDF 파일 요청 시 파일을 압축하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/documents/post-api-documents-DOCUMENT_ID-document_component">문서 컴포넌트 정보 조희</a></p>
+<p>문서에 사용된 컴포넌트 목록의 정보를 조회하는 API입니다.</p>
+</section>
+<section id="id29">
+<h3>템플릿 관리를 위한 API<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<p>API를 사용해 템플릿을 관리할 수 있습니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-forms">작성가능한 템플릿 목록 조회</a></p>
+<p>회사 멤버 정보가 포함된 Access Token으로 작성 가능한 템플릿 목록을 조회하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-forms-form_id">단일 템플릿 정보 조회</a></p>
+<p>내부 멤버의 작성 가능한 템플릿 정보를 조회하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/get-api-template_image-template_image_id">템플릿 이미지 다운로드</a></p>
+<p>템플릿 이미지를 다운로드하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/patch-api-forms-form_id-permissions">템플릿 수정 및 작성 권한 수정</a></p>
+<p>템플릿에 대한 멤버의 권한을 수정하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/templates/delete-forms">템플릿 삭제</a></p>
+<p>템플릿을 삭제하는 API입니다.</p>
 </section>
 <hr class="docutils" />
-<section id="id30">
-<h3>멤버 및 그룹 관리를 위한 API<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<section id="id35">
+<h3>멤버 및 그룹 관리를 위한 API<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
 <p>API를 사용해 멤버 및 그룹을 관리할 수 있습니다. 멤버 및 그룹 목록을 조회할 수 있으며, 멤버 및 그룹을 수정, 삭제할 수 있습니다.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -615,33 +791,54 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 <p>API의 <strong>Authorize</strong> 버튼에는 Access Token 값을 입력해야 합니다.</p>
 </div>
 <p>현재 제공 중인 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members">멤버 및 그룹 관리 API</a>는 다음과 같습니다.</p>
-<section id="id33">
-<h4>멤버 관리 API<a class="headerlink" href="#id33" title="Link to this heading"></a></h4>
+<section id="id38">
+<h4>멤버 관리 API<a class="headerlink" href="#id38" title="Link to this heading"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/get-api-members">멤버 목록 조회</a></p>
+<p>회사에 소속된 멤버 목록을 조회합니다. 삭제된 멤버를 제외한 활성, 비활성, 탈퇴 멤버의 정보를 포함한 목록을 조회할 수 있습니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/patch-api-members-member_id">멤버 수정</a></p>
+<p>회사의 멤버 정보를 수정합니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/members/delete-api-members-member_id">멤버 삭제</a></p>
+<p>회사에서 멤버를 삭제합니다. 해당 멤버의 eformsign 계정은 삭제되지 않고, 회사에서만 탈퇴됩니다.</p>
 </section>
-<section id="id37">
-<h4>그룹 관리 API<a class="headerlink" href="#id37" title="Link to this heading"></a></h4>
+<section id="id42">
+<h4>그룹 관리 API<a class="headerlink" href="#id42" title="Link to this heading"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/get-api-groups">그룹 목록 조회</a></p>
+<p>회사의 그룹 목록을 조회합니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/post-api-groups">그룹 추가</a></p>
+<p>회사에 새로운 그룹을 추가합니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/patch-api-groups">그룹 수정</a></p>
+<p>회사의 그룹 정보를 수정합니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/groups/delete-api-groups">그룹 삭제</a></p>
+<p>회사의 그룹을 삭제합니다.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>각 eformsign API에 대한 자세한 설명은 <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/">다음</a>에서 확인하실 수 있습니다.</p>
 </div>
 </section>
 </section>
+<section id="id47">
+<h3>회사 도장 관리를 위한 API<a class="headerlink" href="#id47" title="Link to this heading"></a></h3>
+<p>API를 사용해 회사 도장을 관리할 수 있습니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/get-api-company_stamp-STAMP_ID">회사 도장 정보 조회</a></p>
+<p>회사 도장의 정보를 조회할 수 있는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/get-api-company_stamp">회사 도장 목록 조회</a></p>
+<p>회사 도장 목록을 조회할 수 있는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/post-api-company_stamp">회사 도장 추가</a></p>
+<p>회사 도장 관리에 회사 도장을 추가하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PATCH</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/patch-api-company_stamp-STAMP_ID">회사 도장 수정</a></p>
+<p>회사 도장 관리에 등록된 회사 도장을 수정하는 API입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>: <a class="reference external" href="https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/company%20stamps/delete-api-company_stamp-STAMP_ID">회사 도장 삭제</a></p>
+<p>회사 도장 관리의 회사 도장을 삭제하는 API입니다.</p>
 </section>
-<section id="id42">
-<h2>API 코드<a class="headerlink" href="#id42" title="Link to this heading"></a></h2>
+</section>
+<section id="id53">
+<h2>API 코드<a class="headerlink" href="#id53" title="Link to this heading"></a></h2>
 <p>Open API 사용 시 다음의 코드를 참조하시기 바랍니다.</p>
-<section id="id43">
-<h3>API 상태 코드<a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
+<section id="id54">
+<h3>API 상태 코드<a class="headerlink" href="#id54" title="Link to this heading"></a></h3>
 <p>API 상태 코드는 다음과 같습니다.</p>
-<section id="id44">
-<h4>200<a class="headerlink" href="#id44" title="Link to this heading"></a></h4>
+<section id="id55">
+<h4>200<a class="headerlink" href="#id55" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
@@ -657,8 +854,8 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </tbody>
 </table>
 </section>
-<section id="id45">
-<h4>202<a class="headerlink" href="#id45" title="Link to this heading"></a></h4>
+<section id="id56">
+<h4>202<a class="headerlink" href="#id56" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
@@ -678,8 +875,8 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </tbody>
 </table>
 </section>
-<section id="id46">
-<h4>400<a class="headerlink" href="#id46" title="Link to this heading"></a></h4>
+<section id="id57">
+<h4>400<a class="headerlink" href="#id57" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
@@ -711,8 +908,8 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </tbody>
 </table>
 </section>
-<section id="id47">
-<h4>403<a class="headerlink" href="#id47" title="Link to this heading"></a></h4>
+<section id="id58">
+<h4>403<a class="headerlink" href="#id58" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
@@ -744,8 +941,8 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </tbody>
 </table>
 </section>
-<section id="id48">
-<h4>405<a class="headerlink" href="#id48" title="Link to this heading"></a></h4>
+<section id="id59">
+<h4>405<a class="headerlink" href="#id59" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
@@ -761,8 +958,8 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </tbody>
 </table>
 </section>
-<section id="id49">
-<h4>500<a class="headerlink" href="#id49" title="Link to this heading"></a></h4>
+<section id="id60">
+<h4>500<a class="headerlink" href="#id60" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
@@ -790,7 +987,7 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>내부 멤버</p></td>
+<tr class="row-even"><td><p>멤버</p></td>
 <td><p>01</p></td>
 <td><p>회사 내부 멤버일 경우</p></td>
 </tr>
@@ -891,6 +1088,46 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 <tr class="row-even"><td><p>doc_request_reject</p></td>
 <td><p>045</p></td>
 <td><p>문서 반려 요청</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_request_approval</p></td>
+<td><p>010</p></td>
+<td><p>문서 결재 요청</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_accept_approval</p></td>
+<td><p>012</p></td>
+<td><p>문서 결재 승인</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_reject_approval</p></td>
+<td><p>011</p></td>
+<td><p>문서 결재 반려</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_cancel</p></td>
+<td><p>013</p></td>
+<td><p>문서 결재 취소</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_request_reception</p></td>
+<td><p>020</p></td>
+<td><p>문서 내부자 요청</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_accept_reception</p></td>
+<td><p>022</p></td>
+<td><p>문서 내부자 승인</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_reject_reception</p></td>
+<td><p>021</p></td>
+<td><p>문서 내부자 반려</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_request_outsider</p></td>
+<td><p>030</p></td>
+<td><p>문서 외부자 요청</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_accept_outsider</p></td>
+<td><p>032</p></td>
+<td><p>문서 외부자 승인</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_reject_outsider</p></td>
+<td><p>031</p></td>
+<td><p>문서 외부자 반려</p></td>
 </tr>
 <tr class="row-odd"><td><p>doc_request_participant</p></td>
 <td><p>060</p></td>
@@ -1114,7 +1351,7 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 <td><p>071</p></td>
 <td><p>검토자 반려</p></td>
 </tr>
-<tr class="row-even"><td><p>doc_request_reviewer</p></td>
+<tr class="row-even"><td><p>doc_accept_reviewer</p></td>
 <td><p>072</p></td>
 <td><p>검토자 승인</p></td>
 </tr>
@@ -1124,7 +1361,31 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </tr>
 <tr class="row-even"><td><p>doc_open_review</p></td>
 <td><p>074</p></td>
-<td><p>검토자 문서 열람(외부 수신자자)</p></td>
+<td><p>검토자 문서 열람(외부 수신자)</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_request_reader</p></td>
+<td><p>075</p></td>
+<td><p>열람자 요청</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_read</p></td>
+<td><p>076</p></td>
+<td><p>열람자 열람</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_rerequest_reader</p></td>
+<td><p>077</p></td>
+<td><p>열람자 재요청</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_inperson_start</p></td>
+<td><p>090</p></td>
+<td><p>대면 서명 시작</p></td>
+</tr>
+<tr class="row-odd"><td><p>doc_inperson_tempsave</p></td>
+<td><p>091</p></td>
+<td><p>대면 서명 임시저장</p></td>
+</tr>
+<tr class="row-even"><td><p>doc_inperson_complete</p></td>
+<td><p>092</p></td>
+<td><p>대면 서명 완료</p></td>
 </tr>
 </tbody>
 </table>
@@ -1133,34 +1394,100 @@ C#(.NET) - Program.cs</li></ul><div class="tab codetab selected" data-id="0">
 </section>
 
 
-           </div>
+            <div class="clearer"></div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="eformsign_api_quickstart.html" class="btn btn-neutral float-left" title="eformsign API 시작하기: 실습 가이드" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="eformsign_webhook.html" class="btn btn-neutral float-right" title="eformsign Webhook 사용하기" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2023. FORCS CO., LTD. All rights reserved.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
         </div>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
 
-</body>
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">eformsign API 사용하기</a><ul>
+<li><a class="reference internal" href="#id1">시작하기</a><ul>
+<li><a class="reference internal" href="#id-id">회사 ID와 문서 ID 확인하기</a></li>
+<li><a class="reference internal" href="#api">API 키 발급 및 비밀키 확인하기</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eformsign-signature">서명 생성하기</a><ul>
+<li><a class="reference internal" href="#java">Java</a></li>
+<li><a class="reference internal" href="#javascript-node-js">Javascript(Node.JS)</a></li>
+<li><a class="reference internal" href="#python">Python</a></li>
+<li><a class="reference internal" href="#php">PHP</a></li>
+<li><a class="reference internal" href="#c-net">C# (.NET)</a></li>
+<li><a class="reference internal" href="#id3">각 언어별 예제</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">API 제공 리스트</a><ul>
+<li><a class="reference internal" href="#access-token-api">토큰 발급 및 갱신을 위한 API</a><ul>
+<li><a class="reference internal" href="#id6"><strong>토큰 발급</strong></a></li>
+<li><a class="reference internal" href="#id8"><strong>토큰 갱신</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">문서 작성 및 처리를 위한 API</a></li>
+<li><a class="reference internal" href="#id29">템플릿 관리를 위한 API</a></li>
+<li><a class="reference internal" href="#id35">멤버 및 그룹 관리를 위한 API</a><ul>
+<li><a class="reference internal" href="#id38">멤버 관리 API</a></li>
+<li><a class="reference internal" href="#id42">그룹 관리 API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id47">회사 도장 관리를 위한 API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id53">API 코드</a><ul>
+<li><a class="reference internal" href="#id54">API 상태 코드</a><ul>
+<li><a class="reference internal" href="#id55">200</a></li>
+<li><a class="reference internal" href="#id56">202</a></li>
+<li><a class="reference internal" href="#id57">400</a></li>
+<li><a class="reference internal" href="#id58">403</a></li>
+<li><a class="reference internal" href="#id59">405</a></li>
+<li><a class="reference internal" href="#id60">500</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-type">사용자 타입(user_type)</a></li>
+<li><a class="reference internal" href="#step-type">단계 타입(step_type)</a></li>
+<li><a class="reference internal" href="#current-status-status-type">문서 현재 상태 타입 (current_status.status_type)</a></li>
+<li><a class="reference internal" href="#next-status-status-type">문서 다음 상태 타입(next_status.status_type)</a></li>
+<li><a class="reference internal" href="#action-type">액션 타입 (action_type)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="eformsign_api_quickstart.html">
+                    <span class="icon">&lt;</span><span>eformsign API 시작하기: 실습 가이드</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="eformsign_webhook.html"><span>eformsign Webhook 사용하기</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024. FORCS CO., LTD. All rights reserved.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+<p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
+  </body>
 </html>

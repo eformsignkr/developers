@@ -20,13 +20,13 @@ sys.path.insert(0, os.path.abspath('.'))
 # -- Project information -----------------------------------------------------
 
 project = 'eformsign API guide'
-copyright = '2023. FORCS CO., LTD. All rights reserved'
+copyright = '2024. FORCS CO., LTD. All rights reserved'
 author = 'FORCS'
 
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '2022.06.28'
+release = '2024.09.03'
 
 # -- General configuration ---------------------------------------------------
 
@@ -78,14 +78,28 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
-html_theme_path = ["_themes", ]
+import sphinx_rtd_theme
+
+html_theme = 'piccolo_theme'
+
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+html_css_files = []
+
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
 # html_theme_options = {}
+
+html_theme_options = {
+    "navbar_fixed_top": True,
+    "show_sidebar": True,
+    "globaltoc_depth": 2,  # 최대 2depth까지 표시
+    "globaltoc_includehidden": True,
+}
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -168,6 +182,8 @@ texinfo_documents = [
 # Bibliographic Dublin Core info.
 epub_title = project
 
+html_short_title = "eformsign API 가이드"
+
 # The unique identifier of the text. This can be a ISBN number
 # or the project homepage.
 #
@@ -181,8 +197,21 @@ epub_title = project
 epub_exclude_files = ['search.html']
 
 html_theme_options = {
-    'logo_only': True,
-    # ...
+    'logo_only': True, 
+    'titles_only': False,
+    "globaltoc_collapse": True,
+    "show_theme_credit": False,
 }
-html_logo = "C:\docbook\eformsignkr_developers\images\\forcs_b.png"
+
+
+html_theme_options = {
+    "source_url": 'https://www.eformsign.com/',
+    "source_icon": "C:\Docbook\eformsignkr.github.io\docs\_static\favicon.png",
+    "banner_text": '<a href="https://www.eformsign.com/">eformsign 바로가기</a>!'
+}
+
+
+
+html_logo = "C:\docbook\eformsignkr.github.io\images\\eformsign_API_guide_logo.png"
+
 
