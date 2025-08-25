@@ -52,14 +52,14 @@ eformsign API 시작하기: 실습 가이드
 3. 새로운 템플릿을 만들기 위해 **새 템플릿 만들기**\ 를 클릭합니다. 
 4. **서 참여자** 설정 팝업에서 **문서 작성에 참여할 사람**\ 을 설정합니다. 이 가이드에서는 최초 작성자인 **시작**\ 과 수신자인 **회원**\ 을 설정하겠습니다. 
 
-.. image:: resources/participants_kr.png
+.. image:: resources/participants.png
     :width: 300
     :alt: 문서 참여자 팝업
 
 
 5. **시작**\ 과 **회원**\ 이 작성할 입력항목을 문서에 추가하고 입력항목 ID 입력, 참여자별 입력항목의 작성권한을 설정합니다. 
 
-.. image:: resources/add_fields_kr.png
+.. image:: resources/add_fields.png
     :width: 700
     :alt: 입력항목 추가
 
@@ -67,7 +67,7 @@ eformsign API 시작하기: 실습 가이드
 
 6. 화면 상단에서 **설정하기**\ 를 클릭하여 이동 후 워크플로우를 설정합니다. **워크플로우**\ 는 **시작(참여자) - 회원(참여자)**\ , 2단계로 설정하고 **회원** 단계 우측 속성에서 알림 옵션 - 이메일을 선택합니다.
 
-.. image:: resources/email_notification_kr.png
+.. image:: resources/email_notification.png
     :width: 700
     :alt: 알림 옵션 - 이메일
 
@@ -77,7 +77,7 @@ eformsign API 시작하기: 실습 가이드
 7. 템플릿을 저장 및 배포한 후 해당 템플릿의 설정 아이콘을 다시 클릭합니다. 이때 URL의 UUID에 표시된 템플릿 ID를 복사해 둡니다. **템플릿 ID**\ 는 템플릿을 사용하여 문서를 작성할 때 필요합니다. 
 
 
-.. image:: resources/template_ID_kr_2.png
+.. image:: resources/template_ID_2.png
     :width: 700
     :alt: 템플릿 ID
 
@@ -99,7 +99,7 @@ eformsign API 시작하기: 실습 가이드
 1. 이폼사인에서 **[커넥트 > API/Webhook > API 키 관리]** 페이지로 이동한 후 화면 우측의 **API 키 생성**\ 을 클릭합니다.
 
 
-.. image:: resources/api_webhook_menu_kr.png
+.. image:: resources/api_webhook_menu.png
     :width: 700
     :alt: API/Webhook 메뉴
 
@@ -111,7 +111,7 @@ eformsign API 시작하기: 실습 가이드
     
    이폼사인 API에서는 세 가지 검증 유형을 지원하고 있으며, 이번 실습 가이드에서는 **Bearer token** 방식을 사용해서 진행하겠습니다.
 
-.. image:: resources/api_key_popup_kr.png
+.. image:: resources/api_key_popup.png
     :width: 300
     :alt: API 키 생성 팝업
 
@@ -123,7 +123,7 @@ eformsign API 시작하기: 실습 가이드
     
 3. 생성된 API 키를 확인하고 복사합니다. API 키는 Access 토큰을 발급할 때 필요합니다.
 
-.. image:: resources/api_key_kr.png
+.. image:: resources/api_key.png
     :width: 700
     :alt: API 키
 
@@ -141,7 +141,7 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
 
 1. Access 토큰 발급과 문서 작성 및 전송을 더 쉽고 빠르게 테스트 해볼 수 있도록 미리 이폼사인 API reference collection를 만들어 놓았습니다. 아래 Run in Postman 버튼을 클릭해 주세요. 
 
-.. image:: resources/run_in_postman.png
+.. image:: resources/run_in_postman1.png
     :alt: Run in Postman 버튼
     :width: 150
     :target: https://god.gw.postman.com/run-collection/27891557-58257a8f-c07a-4237-af80-15f4b43b04b3?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D27891557-58257a8f-c07a-4237-af80-15f4b43b04b3%26entityType%3Dcollection%26workspaceId%3D3cf5d467-c05f-46a3-9995-7bf5a33b5379 
@@ -152,14 +152,14 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
 
 3. 로그인 후 다음과 같은 화면이 표시되면 **Fork Collection**\ 을 클릭합니다. 미리 만들어 놓은 이폼사인 API reference collection을 사용자의 workspace로 fork합니다.
 
-.. image:: resources/fork_collection.png
+.. image:: resources/fork_collection1.png
     :width: 700
     :alt: Fork collection
 
 
 4. 이폼사인 API reference collection을 workspace로 fork하면 다음과 같은 화면을 확인할 수 있습니다.
 
-.. image:: resources/postman_collection.png
+.. image:: resources/postman_collection1.png
     :width: 700
     :alt: Postman collection
 
@@ -172,7 +172,7 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
     - eformsign_signature: Bearer {{API 키 생성 시 설정한 토큰값}}
     - Authorization: Bearer {{base64 인코딩된 API 키}}
 
-.. image:: resources/get_access_token.png
+.. image:: resources/get_access_token1.png
     :width: 700
     :alt: Access token 발급
 
@@ -184,7 +184,7 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
 
 7. **Body** 탭으로 이동한 후 **raw**\ 를 선택하고 execution_time 및 member_id 값을 입력한 다음 **Send** 버튼을 클릭하여 API를 호출합니다.
 
-.. image:: resources/access_token_body.png
+.. image:: resources/access_token_body1.png
     :width: 700
     :alt: API 호출
 
@@ -201,7 +201,7 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
 
    2. Timestamp in milliseconds 값을 확인합니다.
 
-   .. image:: resources/epoch_converter.png
+   .. image:: resources/epoch_converter1.png
        :width: 700
        :alt: Epoch Converter 사용
 
@@ -213,7 +213,7 @@ API 키를 생성한 후에는 인증을 거쳐 Access 토큰을 발급받아야
 
 8. 아래와 같이 API키가 정상적으로 인증되면 (Status: 200 OK) Access 토큰이 발급됩니다. Response body에서 **api_url, refresh_token, access_token** 값을 확인할 수 있습니다.
 
-.. image:: resources/response_body_token.png
+.. image:: resources/response_body_token1.png
     :width: 700
     :alt: Access 토큰 발급
 
@@ -253,7 +253,7 @@ API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 
    URL은 위의 준비사항 3-8 단계에서의 response body에서 받은 api_URL을 입력하세요(예 kr.api.eformsign.com).
 
 
-.. image:: resources/new_doc_api_call.png
+.. image:: resources/new_doc_api_call1.png
     :width: 700
     :alt: POST 새 문서 작성
 
@@ -261,14 +261,14 @@ API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 
 2. **Params** 탭에서 template_id*에 값을 입력합니다.
     *템플릿 ID는 템플릿 생성 후 URL에서 복사해 둔 값입니다. 
 
-.. image:: resources/template_ID_params.png
+.. image:: resources/template_ID_params1.png
     :width: 700
     :alt: template_id 값
 
 
 3. **Authorization** 탭에서, **Type**\ 을 Bearer Token으로 선택하고 발급받은 Access 토큰 값을 입력합니다.
 
-.. image:: resources/beareraccess_token.png
+.. image:: resources/beareraccess_token1.png
     :width: 700
     :alt: Access 토큰 값
 
@@ -276,7 +276,7 @@ API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 
 
    해당 정보는 Body 탭에서 JSON 형식으로 입력합니다. 실습용은 샘플로 거의 모든 데이터가 미리 입력되어 있습니다. 사용자의 문서 정보에 맞게 데이터를 수정할 수 있으며, 문서 정보의 모든 schema는 `Swagger <https://app.swaggerhub.com/apis-docs/eformsign_api/eformsign_API_2.0/2.0#/token/post-api_auth-refresh_token>`_ 에서 확인할 수 있습니다.
 
-.. image:: resources/response_body_send.png
+.. image:: resources/response_body_send1.png
     :width: 700
     :alt: 문서 정보 입력
 
@@ -330,7 +330,7 @@ API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 
 
 5. 모든 데이터를 확인한 후 **Send** 버튼을 클릭하면 문서가 수신자에게 전송됩니다.
 
-.. image:: resources/api_call_success.png
+.. image:: resources/api_call_success1.png
     :width: 700
     :alt: API 호출 성공
 
@@ -339,7 +339,7 @@ API 키가 인증되어 Access 토큰이 발급되었으므로 모든 준비가 
 
 6. **진행 중 문서함**\ 에서 API로 전송된 문서를 확인할 수 있습니다.
 
-.. image:: resources/in_progress_doc.png
+.. image:: resources/in_progress_doc1.png
     :width: 700
     :alt: 진행 중 문서함 확인
 

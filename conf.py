@@ -292,7 +292,7 @@ html_theme_options = {
 
 
 
-html_logo = "C:\docbook\eformsignkr.github.io\images\\eformsign_API_guide_logo.png"
+html_logo = "C:\Docbook\developers\images\\eformsign_API_guide_logo.png"
 
 
 #html_logo = "C:\docbook\eformsignkr.github.io\images\\forcs_b.png"
@@ -306,8 +306,6 @@ html_theme_options = {
 }
 
 
-
-html_logo = "C:\docbook\eformsignkr.github.io\images\\eformsign_guide_logo1.png"
 
 #html_logo = "C:\docbook\eformsignkr.github.io\images\\forcs_b.png"
 
