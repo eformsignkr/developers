@@ -91,9 +91,7 @@ html_theme = 'piccolo_theme'
 
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
-html_css_files = ['custom.css']
 
-html_static_path = ['docs/_static']
 
 
 # Theme options are theme-specific and customize the look and feel of a theme
