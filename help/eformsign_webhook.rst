@@ -4,7 +4,8 @@
 eformsign Webhook 사용하기
 ----------------------------
 
-eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고객 시스템/서비스로 알려주는 기능입니다. Webhook을 설정하면, 고객의 Webhook endpoint로 해당 이벤트 정보를 HTTP POST형식으로 알려줍니다.
+eformsign에 이벤트가 발생했을 때 발생한 이벤트의 정보를 고객 시스템/서비스로 알려주는 기능입니다. 
+Webhook을 설정하면, 고객의 Webhook endpoint로 해당 이벤트 정보를 HTTP POST형식으로 알려줍니다.
 
 .. tip:: 
 
@@ -22,7 +23,7 @@ Webhook 추가하기
 
 1. 메뉴에서 **[커넥트] > [API / Webhook]** 클릭하여 이동한 후, **[Webhook 관리]** 탭을 선택하고 **Webhook 추가** 버튼을 클릭합니다.
 
-.. image:: resources/apikey1.png
+.. image:: resources/apikey1_1.png
     :width: 700
     :alt: 커넥트 > API/Webhook 메뉴 위치
 

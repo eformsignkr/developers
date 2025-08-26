@@ -56,7 +56,7 @@
   --notificationBannerColor: white;
   --searchHighlightColor: #fff150;
   --sidebarColor: white;
-  --navbarHeight: 4rem;
+  --navbarHeight: 5rem;
 }
 :root[data-mode=darkest] {
   --mainBackgroundColor: black;
@@ -216,7 +216,7 @@ div#top_nav nav h1 a {
   color: white;
 }
 div#top_nav nav h1 img {
-  height: 2.5rem;
+  height: 2rem;
   width: auto;
 }
 div#top_nav nav p#toggle_sidebar {
@@ -423,17 +423,28 @@ div.document hr {
 }
 div.document table.docutils {
   border-collapse: collapse;
+  font-size: 0.7rem;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+div.document table.docutils th {
+  background-color: #f1f1f1;
+  font-weight: bold;
 }
 div.document table.docutils th, div.document table.docutils td {
-  border: 1px solid var(--dividerColor);
-  box-sizing: border-box;
-  padding: 0.5rem 1rem;
-}
-div.document table.docutils th p, div.document table.docutils th ul, div.document table.docutils td p, div.document table.docutils td ul {
-  margin: 0.3rem 0;
+  padding: 2px 4px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.2;
 }
 div.document table.docutils th ul, div.document table.docutils td ul {
-  padding-left: 1rem;
+  padding-left: 0.2rem;
+}
+div.document table.docutils p {
+  margin: 0 ;             /* 셀 안에 <p> 태그 여백 제거 */
 }
 div.document form input {
   padding: 0.5rem;
